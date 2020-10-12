@@ -1,0 +1,36 @@
+- title: "exBERT: A Visual Analysis of Transformer Models"
+  authors:
+    - Benjamin Hoover
+    - Hendrik Strobelt
+    - Sebastian Gehrmann
+  venue: "Association for Computational Linguistics: System Demonstrations (ACL)"
+  venueShorthand: ACL
+  url: https://exbert.net/
+  demo: https://exbert.net/exBERT.html
+  pdf: https://arxiv.org/abs/1910.05276
+  video: https://www.youtube.com/watch?v=e31oyfo_thY&feature=youtu.be
+  code: https://github.com/bhoov/exbert
+  year: 2020
+  month: July
+  type: conference
+  # preview: 
+  # slides:
+  # image:
+  # location: 
+  # venueLink: 
+  bibtex: |-
+
+    @inproceedings{hoover-etal-2020-exbert,
+      title = "ex{BERT}: {A} {V}isual {A}nalysis {T}ool to {E}xplore {L}earned {R}epresentations in {T}ransformer {M}odels",
+      author = "Hoover, Benjamin  and
+        Strobelt, Hendrik  and
+        Gehrmann, Sebastian",
+      booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations",
+      month = jul,
+      year = "2020",
+      address = "Online",
+      publisher = "Association for Computational Linguistics",
+      url = "https://www.aclweb.org/anthology/2020.acl-demos.22",
+      doi = "10.18653/v1/2020.acl-demos.22",
+      pages = "187--196",
+    }
