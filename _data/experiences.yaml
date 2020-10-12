@@ -1,0 +1,28 @@
+- institution: IBM Research
+  location: "Cambridge, MA"
+  role: Research Engineer
+  team: Visual AI Lab
+  start: "Sep. '18"
+  end: Present
+  mentors:
+    - Hendrik Strobelt
+    - Mauro Martino
+
+- institution: Medtronic Diabetes
+  location: "Northridge, CA"
+  role: Research Intern
+  team: Algorithms
+  start: "Summer 2017"
+  mentors:
+    - Peter Ajemba
+    - Keith Noguiera
+
+- institution: "International Genetically Engineered Machine (iGEM)"
+  location: "Durham, NC"
+  role: Undergraduate Research Assistant
+  team: "Bass Connections & Lynch Lab"
+  start: "Apr. '15"
+  end: "May. '17"
+  mentors:
+    - Adim Moreb
+    - Michael D. Lynch
