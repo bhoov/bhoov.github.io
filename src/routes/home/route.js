@@ -13,8 +13,9 @@ module.exports = {
     // in our Svelte template.
 
     // data.hookEntityDefinitions = hookEntityDefinitions
-    let fileContents = fs.readFileSync('data/cv.yaml', 'utf8');
-    let sections = yaml.safeLoad(fileContents);
+    // let fileContents = fs.readFileSync('data/cv.yaml', 'utf8');
+    // let sections = yaml.safeLoad(fileContents);
+    // let sections = []
 
     // const sections = [
     //   "Education",
@@ -24,6 +25,6 @@ module.exports = {
     //   "Teaching"
     // ]
 
-    return {...data, ...sections};
+    return {...data};
   },
 };

@@ -75,13 +75,15 @@
   <div class="title">
     <div class="left">
       <h1>Ben Hoover</h1>
-      <p>Making Moves</p>
+      <p>A website waiting to happen. Tick tock</p>
     </div>
     <div class="right">
       <Clock hydrate-client={{}} />
     </div>
   </div>
 </div>
+
+<a href="/cv">To My CV!</a>
 
 <!-- {#each data.sections as s}
 <div>
