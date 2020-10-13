@@ -30,6 +30,33 @@
 
 - title: "RXNMapper: Unsupervised Attention Guided Atom Mapping"
   authors:
+    - Philippe Schwaller
+    - Benjamin Hoover
+    - JL Reymond
+    - Hendrik Strobelt
+    - Teodoro Laino
+  venue: "ChemRxiv Preprint"
+  year: 2020
+  month: May
+  pdf: https://chemrxiv.org/articles/Unsupervised_Attention-Guided_Atom-Mapping/12298559
+  video: https://vimeo.com/434757113
+  code: https://github.com/rxn4chemistry/rxnmapper
+  bibtex: |-
+
+    @article{Schwaller2020Unsupervised,
+      author = "Philippe Schwaller and Benjamin Hoover and Jean-Louis Reymond and Hendrik Strobelt and Teodoro Laino",
+      title = "{Unsupervised Attention-Guided Atom-Mapping}",
+      year = "2020",
+      month = "5",
+      url = "https://chemrxiv.org/articles/Unsupervised_Attention-Guided_Atom-Mapping/12298559",
+      doi = "10.26434/chemrxiv.12298559.v1"
+    }      
+
+- title: >- 
+    Managing the SOS Response for Enhanced 
+    CRISPR-Cas-Based Recombineering in E. coli 
+    through Transient Inhibition of Host RecA Activity
+  authors:
     - Eirik Adim Moreb
     - Benjamin Hoover
     - Adam Yaseen
@@ -40,8 +67,6 @@
   venue: "American Chemical Society: Synthetic Biology"
   year: 2017
   pdf: https://pubs.acs.org/doi/pdf/10.1021/acssynbio.7b00174
-  video: https://vimeo.com/434757113
-  code: https://github.com/rxn4chemistry/rxnmapper
   bibtex: |-
 
     @article{doi:10.1021/acssynbio.7b00174,
