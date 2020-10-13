@@ -4,20 +4,13 @@
     - Hendrik Strobelt
     - Sebastian Gehrmann
   venue: "Association for Computational Linguistics: System Demonstrations (ACL)"
-  venueShorthand: ACL
-  url: https://exbert.net/
-  demo: https://exbert.net/exBERT.html
-  pdf: https://arxiv.org/abs/1910.05276
-  video: https://www.youtube.com/watch?v=e31oyfo_thY&feature=youtu.be
-  code: https://github.com/bhoov/exbert
   year: 2020
   month: July
-  type: conference
-  # preview: 
-  # slides:
-  # image:
-  # location: 
-  # venueLink: 
+  url: https://exbert.net/
+  demo: https://exbert.net/exBERT.html
+  pdf: https://www.aclweb.org/anthology/2020.acl-demos.22/
+  video: https://www.youtube.com/watch?v=e31oyfo_thY&feature=youtu.be
+  code: https://github.com/bhoov/exbert
   bibtex: |-
 
     @inproceedings{hoover-etal-2020-exbert,
@@ -33,4 +26,34 @@
       url = "https://www.aclweb.org/anthology/2020.acl-demos.22",
       doi = "10.18653/v1/2020.acl-demos.22",
       pages = "187--196",
+    }
+
+- title: "RXNMapper: Unsupervised Attention Guided Atom Mapping"
+  authors:
+    - Eirik Adim Moreb
+    - Benjamin Hoover
+    - Adam Yaseen
+    - Nisakorn Valyasevi
+    - Zoe Roecker
+    - Romel Menacho-Melgar
+    - Michael D. Lynch
+  venue: "American Chemical Society: Synthetic Biology"
+  year: 2017
+  pdf: https://pubs.acs.org/doi/pdf/10.1021/acssynbio.7b00174
+  video: https://vimeo.com/434757113
+  code: https://github.com/rxn4chemistry/rxnmapper
+  bibtex: |-
+
+    @article{doi:10.1021/acssynbio.7b00174,
+      author = {Moreb, Eirik Adim and Hoover, Benjamin and Yaseen, Adam and Valyasevi, Nisakorn and Roecker, Zoe and Menacho-Melgar, Romel and Lynch, Michael D.},
+      title = {Managing the SOS Response for Enhanced CRISPR-Cas-Based Recombineering in E. coli through Transient Inhibition of Host RecA Activity},
+      journal = {ACS Synthetic Biology},
+      volume = {6},
+      number = {12},
+      pages = {2209-2218},
+      year = {2017},
+      doi = {10.1021/acssynbio.7b00174}, 
+      note = {PMID: 28915012},
+      URL = { https://doi.org/10.1021/acssynbio.7b00174 },
+      eprint = { https://doi.org/10.1021/acssynbio.7b00174 }
     }
