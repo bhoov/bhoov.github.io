@@ -2,8 +2,11 @@
   location: "Cambridge, MA"
   role: Research Engineer
   team: Visual AI Lab
+  teamUrl: "https://researcher.watson.ibm.com/researcher/view_group.php?id=5948"
   start: "Sep. '18"
   end: Present
+  # description: >-
+  #   Designed, developed....
   mentors:
     - Hendrik Strobelt
     - Mauro Martino
@@ -15,7 +18,7 @@
   start: "Summer 2017"
   mentors:
     - Peter Ajemba
-    - Keith Noguiera
+    - Keith Nogueira
 
 - institution: "International Genetically Engineered Machine (iGEM)"
   location: "Durham, NC"
@@ -24,5 +27,5 @@
   start: "Apr. '15"
   end: "May. '17"
   mentors:
-    - Adim Moreb
+    - Eirik Adim Moreb
     - Michael D. Lynch

@@ -1,8 +1,10 @@
 <script>
   export let data;
+  import EducationCvBlurb from "../../components/EducationCvBlurb.svelte"
+  import ResearchExperienceCvBlurb from "../../components/ResearchExperienceCvBlurb.svelte"
 
-  // add permalinks to the hook list so we can link to the posts.
-  // const hooks = data.hookInterface.map((hook) => ({ ...hook, link: helpers.permalinks.hooks({ slug: hook.hook }) }));
+  console.log("LET MY PEOPLE GO: ", data.db.people)
+
 </script>
 
 <style>
@@ -12,22 +14,17 @@
     -moz-box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
   }
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  html {
+  /* html {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
       'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 16px;
     line-height: 1.5;
-  }
-  @media screen and (max-width: 768px) {
+  } */
+  /* @media screen and (max-width: 768px) {
     html {
       font-size: 14px;
     }
-  }
+  } */
   body {
     color: #414141;
     background-color: #fff;
@@ -143,12 +140,12 @@
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
   }
-  a {
+  :global(a.link) {
     color: #357edd;
     text-decoration: none;
   }
-  a:hover,
-  a:focus {
+  :global(a.link:hover),
+  :global(a.link:focus) {
     color: #00449e;
     text-decoration: underline;
     text-decoration-color: #aaa;
@@ -879,7 +876,8 @@
   .cv-social-link-text-wrapper > a {
     color: #414141;
   }
-  .cv-left-date {
+
+  :global(.cv-date-info) {
     grid-column: kicker !important;
     text-align: right;
     font-size: 0.7rem;
@@ -950,7 +948,7 @@
     width: 0;
   }
   @media screen and (max-width: 768px) {
-    .cv-left-date {
+    .cv-date-info {
       text-align: left;
     }
     .cv-image-links-wrapper {
@@ -1201,7 +1199,7 @@
   </script>
 </svelte:head>
 
-<h1>Ben has a cv?</h1>
+<!-- <div class="cv-spacer" /> -->
 
 <div id="cv">
   <h1 id="cv-title">Benjamin Hoover</h1>
@@ -1276,42 +1274,36 @@
 
   <h2 id="education">Education</h2>
 
-  <div class="cv-left-date">May 2018</div>
-  <b>Master of Engineering: Electrical and Computer Engineering</b>
-  <div><a href="https://www.duke.edu/">Duke University</a>, Durham, NC</div>
+  {#each data.db.education as education}
+    <EducationCvBlurb {...education}></EducationCvBlurb>
+    <div class="cv-spacer"/>
+  {/each}
 
-  <div class="cv-description">
-    <div>GPA: 4.00/4.00, Emphasis on Big Data and Signal Processing</div>
-  </div>
-  <div class="cv-spacer" />
+  <h2 id="research-experience">Research Experience</h2>
 
-  <div class="cv-left-date">May '17 - Aug. '13</div>
-  <div><b>B.S.E in Biomedical Engineering</b></div>
-  <div><a href="https://www.duke.edu/">Duke University</a>, Durham, NC</div>
+  {#each data.db.experiences as experience}
 
-  <div class="cv-description">
-    <div>GPA: 3.91/4.00, Magna Cum Laude, Emphasis on Electrobiology + Signal Processing</div>
-  </div>
-  <div class="cv-spacer" />
+    <!-- <div class="cv-date-info">Present - Sep. '18</div>
+    <div><a href="https://www.research.ibm.com/artificial-intelligence/"><b>IBM Research</b></a>, Cambridge, MA</div>
+    <div>
+      <i>Research Engineer, <a href="https://researcher.watson.ibm.com/researcher/view_group.php?id=5948">Visual AI Lab</a></i>
+    </div>
+    <div class="cv-description">
+      Mentors: <a href="http://hendrik.strobelt.com/">Hendrik Strobelt</a>, <a href="http://www.mamartino.com/">Mauro
+        Martino</a>
+    </div> -->
 
-  <h2 id="work-experience">Research Experience</h2>
+    <ResearchExperienceCvBlurb {...experience} people={data.db.people}/>
+    <div class="cv-spacer"/>
+  {/each}
 
-  <div class="cv-left-date">Present - Sep. '18</div>
-  <div><a href="https://www.research.ibm.com/artificial-intelligence/"><b>IBM Research</b></a>, Cambridge, MA</div>
-  <div>
-    <i>Research Engineer, <a href="https://researcher.watson.ibm.com/researcher/view_group.php?id=5948">Visual AI Lab</a></i>
-  </div>
-  <div class="cv-description">
-    Mentors: <a href="http://hendrik.strobelt.com/">Hendrik Strobelt</a>, <a href="http://www.mamartino.com/">Mauro
-      Martino</a>
-  </div>
 
   <!-- <div class="cv-description">Designed and developed interactive visualizations for data iteration in machine
     learning, published at CHI 2020.</div> -->
 
   <div class="cv-spacer" />
 
-  <div class="cv-left-date">Summer 2017</div>
+  <div class="cv-date-info">Summer 2017</div>
   <div><a href="https://www.medtronicdiabetes.com/home"><b>Medtronic Diabetes</b></a>, Northridge, CA</div>
   <div><i>Research Intern, Algorithms</i></div>
   <div class="cv-description">
@@ -1323,7 +1315,7 @@
 
   <div class="cv-spacer" />
 
-  <div class="cv-left-date">May '17 - Apr '15</div>
+  <div class="cv-date-info">May '17 - Apr '15</div>
   <div><a href="http://2016.igem.org/"><b>International Genetically Engineered Machine (iGEM)</b></a>, Durham, NC</div>
   <div>
     <i>Undergraduate Research Assistant, <a href="https://bassconnections.duke.edu/">Bass Connections</a> &amp; <a href="https://lynchlab.pratt.duke.edu/#">Lynch
@@ -1342,7 +1334,7 @@
   <div class="cv-item">
     <div><a href="https://exbert.net/"><b>exBERT: A Visual Analysis of Transformer Models</b></a></div>
     <div>
-      <a href="#"><span class="my-name">Benjamin Hoover</span></a>, <a href="http://hendrik.strobelt.com/">Hendrik
+      <a href="/"><span class="my-name">Benjamin Hoover</span></a>, <a href="http://hendrik.strobelt.com/">Hendrik
         Strobelt</a>, <a href="https://sebastiangehrmann.com/">Sebastian Gehrmann</a>
     </div>
   </div>
@@ -1387,7 +1379,7 @@
 
   <div><a href="https://rxnmapper.ai/"><b>RXNMapper: Unsupervised Attention Guided Atom Mapping</b></a></div>
   <div>
-    <a href="https://pschwllr.github.io/#">Philippe Schwaller</a>, <a href="#"><span class="my-name">Benjamin Hoover</span></a>,
+    <a href="https://pschwllr.github.io/#">Philippe Schwaller</a>, <a href="/"><span class="my-name">Benjamin Hoover</span></a>,
     <a href="http://www.gdb.unibe.ch/">JL Reymond</a>, <a href="http://hendrik.strobelt.com/">Hendrik Strobelt</a>, <a
       href="https://researcher.watson.ibm.com/researcher/view.php?person=zurich-teo">Teodoro Laino</a>
   </div>
@@ -1429,7 +1421,7 @@
         CRISPR-Cas-Based Recombineering in E. coli through Transient Inhibition of Host RecA Activity</b></a>
   </div>
   <div>
-    <a href="https://lynchlab.pratt.duke.edu/people/e-adim-moreb">Eirik Adim Moreb</a>, <a href="#"><span
+    <a href="https://lynchlab.pratt.duke.edu/people/e-adim-moreb">Eirik Adim Moreb</a>, <a href="/"><span
         class="my-name">Benjamin Hoover</span></a>, <a href="https://yin.hms.harvard.edu/cv/cv.yaseen.adam.pdf">Adam
       Yaseen</a>, <a href="https://www.linkedin.com/in/nisavalyasevi/">Nisakorn Valyasevi</a>, <a
       href="https://www.linkedin.com/in/zoe-roecker-5a417b104/">Zoe Roecker</a>, <a
@@ -1472,20 +1464,20 @@
 
   <div><b>exBERT: Exploring Learned Embeddings and Attentions in Transformer Models</b></div>
 
-  <div class="cv-left-date">July 2020</div>
+  <div class="cv-date-info">July 2020</div>
   <div>ACL 2020 System Demonstrations</div>
 
-  <div class="cv-left-date">Apr. 2020</div>
+  <div class="cv-date-info">Apr. 2020</div>
   <div>ICLR IBM Exposition Demos</div>
 
-  <div class="cv-left-date">Dec. 2019</div>
+  <div class="cv-date-info">Dec. 2019</div>
   <div>NeurIPS 2019 Demonstrations</div>
 
   <div class="cv-spacer" />
 
   <div><b>RXNMapper: Unsupervised Attention Guided Atom Mapping</b></div>
 
-  <div class="cv-left-date">July 2020</div>
+  <div class="cv-date-info">July 2020</div>
   <div>ICML: ML Interpretability for Scientific Discovery Workshop &amp; IBM Exposition Demo</div>
 
   <div class="cv-spacer" />
@@ -1496,14 +1488,14 @@
       Algorithm Development</b>
   </div>
 
-  <div class="cv-left-date">July 2017</div>
+  <div class="cv-date-info">July 2017</div>
   <div>Medtronic Diabetes R&amp;D</div>
 
   <div class="cv-spacer" />
 
   <h2 id="teaching">Teaching</h2>
 
-  <div class="cv-left-date">Spring 2018</div>
+  <div class="cv-date-info">Spring 2018</div>
   <div><a href="https://www.coursicle.com/duke/courses/ECE/681/"><b>Graduate Teaching Assistant</b></a></div>
   <div><i><a href="http://duke.edu">Duke University</a>, Durham, NC</i></div>
 
@@ -1519,12 +1511,12 @@
 
   <div class="cv-spacer" />
 
-  <div class="cv-left-date">Spring 2018</div>
-  <div><a href="#"><b>Graduate Teaching Assistant</b></a></div>
+  <div class="cv-date-info">Spring 2018</div>
+  <div><a href="/"><b>Graduate Teaching Assistant</b></a></div>
   <div><i><a href="http://duke.edu">Duke University</a>, Durham, NC</i></div>
 
   <div>
-    <a href="#">Biopotential Amplifier Design (BME 590)</a>, Instructor: <a
+    <a href="/">Biopotential Amplifier Design (BME 590)</a>, Instructor: <a
       href="https://bme.duke.edu/faculty/jonathan-viventi">Jonathan Viventi</a>
   </div>
 
@@ -1535,7 +1527,7 @@
 
   <div class="cv-spacer" />
 
-  <div class="cv-left-date">Spring 2018</div>
+  <div class="cv-date-info">Spring 2018</div>
   <div><a href="https://pratt.duke.edu/about/news/data-decision-sciences"><b>Graduate Teaching Assistant</b></a></div>
   <div><i><a href="http://duke.edu">Duke University</a>, Durham, NC</i></div>
 
@@ -1552,12 +1544,12 @@
   </div>
   <div class="cv-spacer" />
 
-  <div class="cv-left-date">Spring 2017</div>
+  <div class="cv-date-info">Spring 2017</div>
   <div><a href="https://www.coursicle.com/duke/courses/BME/354L/"><b>Undergraduate Teaching Assistant</b></a></div>
   <div><i><a href="http://duke.edu">Duke University</a>, Durham, NC</i></div>
 
   <div>
-    <a href="#">Introduction to Medical Instrumentation (BME 354L)</a>, Instructor: <a
+    <a href="/">Introduction to Medical Instrumentation (BME 354L)</a>, Instructor: <a
       href="https://bme.duke.edu/faculty/jonathan-viventi">Jonathan Viventi</a>
   </div>
 
@@ -1568,7 +1560,7 @@
 
   <div class="cv-spacer" />
 
-  <div class="cv-left-date">May '18 - Jan. '15</div>
+  <div class="cv-date-info">May '18 - Jan. '15</div>
   <div><a href="https://ece.duke.edu/undergrad/students/courses"><b>Undergraduate Teaching Assistant</b></a></div>
   <div><i><a href="http://duke.edu">Duke University</a>, Durham, NC</i></div>
   <div>
@@ -1581,7 +1573,7 @@
   </div>
   <div class="cv-spacer" />
 
-  <div class="cv-left-date">May '17 - Jan. '16</div>
+  <div class="cv-date-info">May '17 - Jan. '16</div>
   <div><a href="https://boeingfellows.pratt.duke.edu/content/fellows"><b>Boeing Fellowship</b></a></div>
   <div><i><a href="http://duke.edu">Duke University</a>, Durham, NC</i></div>
   <div>Supervisor: <a href="https://boeingfellows.pratt.duke.edu/member/rawls">Carmen Rawls</a></div>

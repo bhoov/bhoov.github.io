@@ -2,6 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const fs = require('fs-extra');
 const os = require('os');
+const yaml = require('js-yaml');
 
 /**
  * Hooks! 
@@ -86,30 +87,44 @@ const hooks = [
   //   },
   // },
 
-  // {
-  //   hook: 'bootstrap',
-  //   name: 'populateDataForAllRequests',
-  //   description:
-  //     'The goal of this hook is to show you that you can get data from anywhere and add it to the data object.',
-  //   priority: 50,
-  //   run: async ({ data }) => {
-  //     // when you uncomment this, check the homepage for a new box at the top.
-  //     return {
-  //       data: {
-  //         ...data,
-  //         testingHooks: true,
-  //         // here we are using the 'os' node.js native, and passing in data on the number of CPUs
-  //         cpus: os.cpus(),
+  {
+    hook: 'bootstrap',
+    name: 'populateDataForAllRequests',
+    description:
+      'The goal of this hook is to show you that you can get data from anywhere and add it to the data object.',
+    priority: 50,
+    run: async ({ data }) => {
+      // when you uncomment this, check the homepage for a new box at the top.
+      // Name all files
+      // For each, read the corresponding "yaml" file
+      // Add to data
 
-  //         // NOTE: here we are polluting the global data object across all 'requests' because we are using the 'bootstrap' hook.
-  //         // This is bad practice in this example because cpus is only used by Home.svelte, but it is illustrated to show how you could
-  //         // add global data.
+      const dataFileNames = [
+        "education",
+        "experiences",
+        "people",
+        "publications",
+        "talks",
+        "teaching"
+      ]
 
-  //         // IMPORTANT: If you want to add data to a specific route only, you should probably do it in your /route.js for that route.
-  //       },
-  //     };
-  //   },
-  // },
+      const fileData = await Promise.all(dataFileNames.map(async (fkey) => {
+        const fdata = await fs.readFile(`_data/${fkey}.yaml`, 'utf8')
+        return yaml.safeLoad(fdata)
+      }))
+      const db = {}
+      dataFileNames.forEach((fkey, i) => {
+        db[fkey] = fileData[i]
+      })
+
+      return {
+        data: {
+          ...data,
+          db
+        }
+      }
+    },
+  },
 
   // If you'd like to see specific examples of how to do things that you think could help improve the template please create a GH issue.
 ];
