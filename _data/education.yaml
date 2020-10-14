@@ -3,11 +3,11 @@
   location: "Durham, NC"
   date: May 2018
   description: "GPA: 4.00/4.00, Emphasis on Big Data and Signal Processing"
-  institution-url: https://www.duke.edu/
+  institutionUrl: https://www.duke.edu/
 
 - degree: "B.S.E. in Biomedical Engineering"
   institution: Duke University
   location: "Durham, NC"
   date: "May 2017"
   description: "GPA: 3.91/4.00, Magna Cum Laude, Emphasis on Neurobiology and Imaging"
-  institution-url: https://www.duke.edu/
+  institutionUrl: https://www.duke.edu/
