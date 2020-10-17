@@ -1,10 +1,9 @@
 <script>
   export let data;
-  import EducationCvBlurb from "../../components/EducationCvBlurb.svelte"
-  import ResearchExperienceCvBlurb from "../../components/ResearchExperienceCvBlurb.svelte"
+  import EducationCvBlurb from '../../components/EducationCvBlurb.svelte';
+  import ResearchExperienceCvBlurb from '../../components/ResearchExperienceCvBlurb.svelte';
 
-  console.log("LET MY PEOPLE GO: ", data.db.people)
-
+  let people = data.db.people;
 </script>
 
 <style>
@@ -1274,62 +1273,60 @@
 
   <h2 id="education">Education</h2>
 
-  {#each data.db.education as education}
-    <EducationCvBlurb {...education}></EducationCvBlurb>
-    <div class="cv-spacer"/>
+  {#each data.db.education as school}
+    <div class="cv-date-info">{school.date}</div>
+    <b>{school.degree}</b>
+    <!-- <div><a href="https://www.duke.edu/">Duke University</a>, Durham, NC</div> -->
+    <div><a class="link" href={school.institutionUrl}>{school.institution}</a>, {school.location}</div>
+
+    <div class="cv-description">
+      <div>{school.description}</div>
+    </div>
+    <div class="cv-spacer" />
   {/each}
 
   <h2 id="research-experience">Research Experience</h2>
 
-  {#each data.db.experiences as experience}
-
-    <!-- <div class="cv-date-info">Present - Sep. '18</div>
-    <div><a href="https://www.research.ibm.com/artificial-intelligence/"><b>IBM Research</b></a>, Cambridge, MA</div>
-    <div>
-      <i>Research Engineer, <a href="https://researcher.watson.ibm.com/researcher/view_group.php?id=5948">Visual AI Lab</a></i>
-    </div>
+  {#each data.db.experiences as work}
+    <div class="cv-date-info">{work.end ? `${work.start} - ${work.end}` : work.start}</div>
+    <div><a href={work.institutionUrl}><b>{work.institution}</b></a>, {work.location}</div>
+    <div><i>{work.role}, <a href={work.teamUrl}>{work.team}</a></i></div>
     <div class="cv-description">
-      Mentors: <a href="http://hendrik.strobelt.com/">Hendrik Strobelt</a>, <a href="http://www.mamartino.com/">Mauro
-        Martino</a>
-    </div> -->
-
-    <ResearchExperienceCvBlurb {...experience} people={data.db.people}/>
-    <div class="cv-spacer"/>
+      Mentors: {#each work.mentors as mentor, i}
+        {@debug mentor}
+        <a href={people[mentor].url}>{mentor}</a>{i != work.mentors.length - 1 ? ', ' : ''}
+      {/each}
+    </div>
+    <div class="cv-spacer" />
   {/each}
-
-
-  <!-- <div class="cv-description">Designed and developed interactive visualizations for data iteration in machine
-    learning, published at CHI 2020.</div> -->
-
-  <div class="cv-spacer" />
-
-  <div class="cv-date-info">Summer 2017</div>
-  <div><a href="https://www.medtronicdiabetes.com/home"><b>Medtronic Diabetes</b></a>, Northridge, CA</div>
-  <div><i>Research Intern, Algorithms</i></div>
-  <div class="cv-description">
-    Mentors: <a href="https://www.linkedin.com/in/peter-ajemba/">Peter Ajemba</a>, <a href="https://www.linkedin.com/in/keith-public-profile/">Keith
-      Noguiera</a>
-  </div>
-  <!-- <div class="cv-description">Designed, developed, and deployed interactive interface for operationalizing machine
-      learning interpretability, published at CHI 2019.</div> -->
-
-  <div class="cv-spacer" />
-
-  <div class="cv-date-info">May '17 - Apr '15</div>
-  <div><a href="http://2016.igem.org/"><b>International Genetically Engineered Machine (iGEM)</b></a>, Durham, NC</div>
-  <div>
-    <i>Undergraduate Research Assistant, <a href="https://bassconnections.duke.edu/">Bass Connections</a> &amp; <a href="https://lynchlab.pratt.duke.edu/#">Lynch
-        Lab</a></i>
-  </div>
-
-  <div class="cv-description">
-    Advisors: <a href="https://lynchlab.pratt.duke.edu/people/e-adim-moreb">Adim Moreb</a>, <a href="https://lynchlab.pratt.duke.edu/people/michael-lynch">Michael
-      D Lynch</a>
-  </div>
-  <div class="cv-spacer" />
 
   <div class="pg-break" />
   <h2 id="publications">Publications</h2>
+
+  {#each data.db.publications as pub}
+    <div class="cv-item">
+      <div><a href={pub.title}><b>{pub.title}</b></a></div>
+      <div>
+        {#each pub.authors as author, i}
+          <a href={people[author].url}><span class:my-name={people[author].me}>{author}</span>{i != pub.authors.length - 1 ? ', ' : ''}</a>
+        {/each}
+      </div>
+      <div class="pub-misc">
+        <a href={pub.url}> <i class="fas fa-link" aria-hidden="true" /> Project </a>
+        <a href={pub.demo}> <i class="fas fa-play" aria-hidden="true" /> Demo </a>
+        <a href={pub.pdf}>
+          <i class="far fa-file-pdf" aria-hidden="true" /> PDF
+        </a>
+        <a href={pub.video}> <i class="fas fa-film" aria-hidden="true" /> Video </a>
+        <a href={pub.code}> <i class="fas fa-code" aria-hidden="true" /> Code </a>
+        <a style="cursor:pointer" onclick="toggleBibtex('_/papers/exbert')">
+          <i class="fas fa-book" aria-hidden="true" /> BibTeX 
+        </a>
+      </div>
+    </div>
+
+    <div class="cv-spacer" />
+  {/each}
 
   <div class="cv-item">
     <div><a href="https://exbert.net/"><b>exBERT: A Visual Analysis of Transformer Models</b></a></div>
