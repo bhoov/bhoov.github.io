@@ -1,4 +1,5 @@
 - institution: IBM Research
+  institutionUrl: https://www.research.ibm.com/artificial-intelligence/
   location: "Cambridge, MA"
   role: Research Engineer
   team: Visual AI Lab
@@ -12,6 +13,7 @@
     - Mauro Martino
 
 - institution: Medtronic Diabetes
+  institutionUrl: https://www.medtronicdiabetes.com/home
   location: "Northridge, CA"
   role: Research Intern
   team: Algorithms
@@ -21,6 +23,7 @@
     - Keith Nogueira
 
 - institution: "International Genetically Engineered Machine (iGEM)"
+  institutionUrl: http://2016.igem.org/
   location: "Durham, NC"
   role: Undergraduate Research Assistant
   team: "Bass Connections & Lynch Lab"
