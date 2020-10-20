@@ -74,8 +74,9 @@
 <div class="banner">
   <div class="title">
     <div class="left">
-      <h1>Ben Hoover</h1>
+      <h1  class="text-red-600 font-bold text-xl">Ben Hoover</h1>
       <p>A website waiting to happen. Tick tock</p>
+      <h3  class="text-teal-600 font-bold text-xl">This is teal by tailwind standards</h3>
     </div>
     <div class="right">
       <Clock hydrate-client={{}} />

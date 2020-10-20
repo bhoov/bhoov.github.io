@@ -27,4 +27,5 @@ module.exports = {
 
     return {...data};
   },
+  layout: "CvLayout.svelte"
 };
