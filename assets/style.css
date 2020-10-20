@@ -1,8 +1,11 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 .code,
 code {
   padding: 0 0.25rem;
-  background: #eee;
+  background:#04A071;
   border-radius: 3px;
   margin-right: 0.5rem;
   font-family: monospace;
@@ -27,3 +30,14 @@ body {
     'Helvetica Neue', sans-serif;
   background: #f4f7fb;
 }
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+:root {
+  --balloon-color: #06395a;
+  --balloon-font-size: 14px;
+} 
