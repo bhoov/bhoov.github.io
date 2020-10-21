@@ -3,9 +3,14 @@
   export let templateHtml;
 </script>
 
+<svelte:head>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://kit.fontawesome.com/ab1be9b975.js" crossorigin="anonymous"></script>
+</svelte:head>
+
 <GlobalLayout>
   <div class="container">
-    <div class="text-red-600 font-bold">NO NAVBAR</div>
+    <a href="/" class="text-red-500 text-xs font-serif">Take me home</a>
     {@html templateHtml}
   </div>
 </GlobalLayout>
