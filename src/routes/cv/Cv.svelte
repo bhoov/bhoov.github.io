@@ -27,114 +27,39 @@
   body {
     color: #414141;
     background-color: #fff;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
   }
+
+  #main {
+    @apply grid grid-cols-5 gap-x-5;
+  }
+
+  .cv-content {
+    @apply col-span-4 col-start-2;
+  }
+
+  .cv-date-info {
+    @apply place-self-end self-start text-xs col-end-2;
+  }
+
   img {
     display: block;
     max-width: 100%;
     width: 100%;
   }
-  .fake-image {
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  main,
-  header,
-  footer,
-  .cv-item,
-  #paper-title-wrapper {
-    display: grid;
-    justify-items: stretch;
-    grid-template-columns:
-      [screen-start] 1fr [page-start kicker-start] minmax(min-content, 3.5rem) [middle-start] minmax(
-        min-content,
-        3.5rem
-      )
-      [text-start kicker-end] repeat(8, minmax(min-content, 3.5rem)) [text-end gutter-start] minmax(min-content, 3.5rem)
-      [middle-end] minmax(min-content, 3.5rem) [page-end gutter-end] 1fr [screen-end];
-    grid-column-gap: 1.5rem;
-    /* position: relative; */
-  }
-  @media screen and (max-width: 768px) {
-    main,
-    header,
-    footer,
-    /* .cv-item, */
-    #paper-title-wrapper {
-      grid-template-columns:
-        [screen-start] 8px [page-start kicker-start text-start gutter-start middle-start] repeat(8, 1fr)
-        [text-end page-end gutter-end kicker-end middle-end] 8px [screen-end];
-      grid-column-gap: 0.5rem;
-    }
-  }
-  main > * {
-    grid-column: text;
-  }
-  .cv-item > * {
-    grid-column: text;
-  }
-  .l-kicker {
-    grid-column: kicker;
-  }
-  .l-gutter {
-    grid-column: gutter;
-  }
-  .l-text {
-    grid-column: text;
-  }
-  .l-middle {
-    grid-column: middle;
-  }
-  .l-page {
-    grid-column: page;
-  }
-  .l-screen {
-    grid-column: screen;
-  }
-  .l-screen-inset {
-    grid-column: screen;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
+
   h1 {
     font-size: 2.5rem;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
     line-height: 1.25;
   }
+
   h2 {
     font-size: 2rem;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
   }
-  h3 {
-    font-size: 1.5rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  h4 {
-    font-size: 1.25rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  h5 {
-    font-size: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  h6 {
-    font-size: 0.875rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-  }
+
   p {
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
@@ -221,201 +146,7 @@
     color: inherit;
     background-color: transparent;
   }
-  .highlight {
-    background: #ffffff;
-  }
-  .highlight .c {
-    color: #999988;
-    font-style: italic;
-  }
-  .highlight .err {
-    color: #a61717;
-    background-color: #e3d2d2;
-  }
-  .highlight .k {
-    font-weight: bold;
-  }
-  .highlight .o {
-    font-weight: bold;
-  }
-  .highlight .cm {
-    color: #999988;
-    font-style: italic;
-  }
-  .highlight .cp {
-    color: #999999;
-    font-weight: bold;
-  }
-  .highlight .c1 {
-    color: #999988;
-    font-style: italic;
-  }
-  .highlight .cs {
-    color: #999999;
-    font-weight: bold;
-    font-style: italic;
-  }
-  .highlight .gd {
-    color: #000000;
-    background-color: #fdd;
-  }
-  .highlight .gd .x {
-    color: #000000;
-    background-color: #faa;
-  }
-  .highlight .ge {
-    font-style: italic;
-  }
-  .highlight .gr {
-    color: #a00;
-  }
-  .highlight .gh {
-    color: #999;
-  }
-  .highlight .gi {
-    color: #000000;
-    background-color: #dfd;
-  }
-  .highlight .gi .x {
-    color: #000000;
-    background-color: #afa;
-  }
-  .highlight .go {
-    color: #888;
-  }
-  .highlight .gp {
-    color: #555;
-  }
-  .highlight .gs {
-    font-weight: bold;
-  }
-  .highlight .gu {
-    color: #aaa;
-  }
-  .highlight .gt {
-    color: #a00;
-  }
-  .highlight .kc {
-    font-weight: bold;
-  }
-  .highlight .kd {
-    font-weight: bold;
-  }
-  .highlight .kp {
-    font-weight: bold;
-  }
-  .highlight .kr {
-    font-weight: bold;
-  }
-  .highlight .kt {
-    color: #445588;
-    font-weight: bold;
-  }
-  .highlight .m {
-    color: #099;
-  }
-  .highlight .s {
-    color: #d14;
-  }
-  .highlight .na {
-    color: teal;
-  }
-  .highlight .nb {
-    color: #0086b3;
-  }
-  .highlight .nc {
-    color: #445588;
-    font-weight: bold;
-  }
-  .highlight .no {
-    color: teal;
-  }
-  .highlight .ni {
-    color: purple;
-  }
-  .highlight .ne {
-    color: #990000;
-    font-weight: bold;
-  }
-  .highlight .nf {
-    color: #990000;
-    font-weight: bold;
-  }
-  .highlight .nn {
-    color: #555;
-  }
-  .highlight .nt {
-    color: navy;
-  }
-  .highlight .nv {
-    color: teal;
-  }
-  .highlight .ow {
-    font-weight: bold;
-  }
-  .highlight .w {
-    color: #bbb;
-  }
-  .highlight .mf {
-    color: #099;
-  }
-  .highlight .mh {
-    color: #099;
-  }
-  .highlight .mi {
-    color: #099;
-  }
-  .highlight .mo {
-    color: #099;
-  }
-  .highlight .sb {
-    color: #d14;
-  }
-  .highlight .sc {
-    color: #d14;
-  }
-  .highlight .sd {
-    color: #d14;
-  }
-  .highlight .s2 {
-    color: #d14;
-  }
-  .highlight .se {
-    color: #d14;
-  }
-  .highlight .sh {
-    color: #d14;
-  }
-  .highlight .si {
-    color: #d14;
-  }
-  .highlight .sx {
-    color: #d14;
-  }
-  .highlight .sr {
-    color: #009926;
-  }
-  .highlight .s1 {
-    color: #d14;
-  }
-  .highlight .ss {
-    color: #990073;
-  }
-  .highlight .bp {
-    color: #999;
-  }
-  .highlight .vc {
-    color: teal;
-  }
-  .highlight .vg {
-    color: teal;
-  }
-  .highlight .vi {
-    color: teal;
-  }
-  .highlight .il {
-    color: #099;
-  }
+
   .css .o,
   .css .o + .nt,
   .css .nt + .nt {
@@ -805,46 +536,7 @@
       margin-right: 1rem;
     }
   }
-  #cv {
-    margin-top: 1rem;
-    margin-bottom: 3rem;
-  }
-  #cv > * {
-    grid-column: text-start / page-end;
-  }
-  #cv a {
-    color: #414141;
-  }
-  #cv a:hover {
-    color: #00449e;
-  }
-  #cv a b {
-    color: #333;
-  }
-  #cv a b:hover {
-    color: #00449e;
-  }
-  #cv-title {
-    margin-bottom: 0rem;
-  }
-  #cv-title > a,
-  #cv-title > a:hover {
-    color: #333;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  #cv-subtitle {
-    font-size: 1.25rem;
-    margin-top: 0rem;
-    margin-bottom: 0.25rem;
-  }
-  #cv h2 {
-    font-weight: 500;
-  }
-  #cv h3 {
-    font-weight: 300;
-    margin-top: 0rem;
-  }
+
   .cv-ai {
     color: #ff6300;
   }
@@ -876,14 +568,6 @@
     color: #414141;
   }
 
-  :global(.cv-date-info) {
-    grid-column: kicker !important;
-    text-align: right;
-    font-size: 0.7rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
   .cv-description {
     color: #999 !important;
     font-size: 0.875rem;
@@ -947,9 +631,6 @@
     width: 0;
   }
   @media screen and (max-width: 768px) {
-    .cv-date-info {
-      text-align: left;
-    }
     .cv-image-links-wrapper {
       display: block;
     }
@@ -1145,11 +826,6 @@
     border-bottom-color: rgb(97, 97, 97);
   }
 
-  .cv-research-statement {
-    font-weight: 300;
-    font-size: 1.5rem;
-  }
-
   .cv-item {
     display: block;
     position: relative;
@@ -1178,8 +854,7 @@
 
 <svelte:head>
   <title>CV: Ben Hoover</title>
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
-  </script>
+  <!--<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>-->
   <script>
     function toggleBibtex(id) {
       let bibtex = document.getElementById(id);
@@ -1200,20 +875,22 @@
 
 <!-- <div class="cv-spacer" /> -->
 
-<div id="cv">
-  <h1 id="cv-title">Benjamin Hoover</h1>
+<!-- <div id="cv"> -->
+<div id="main" class="mt-1 mb-3 place-items-start place-self-center max-w-screen-md mx-auto">
+  <div class="cv-content">
+    <h1 id="cv-title">Benjamin Hoover</h1>
 
-  <p id="cv-subtitle">
-    <i>AI <span class="cv-ai">Interpretability</span> &amp; <span class="cv-vis">Visualization</span> Research Engineer</i>
-  </p>
+    <p id="cv-subtitle">
+      <i>AI <span class="cv-ai">Interpretability</span> &amp; <span class="cv-vis">Visualization</span> Research Engineer</i>
+    </p>
 
-  <div class="cv-research-statement">"What can AI teach us about our world?"</div>
+    <div class="font-light text-2xl">What can AI teach us about our world?</div>
 
-  <div class="cv-spacer" />
+    <div class="cv-spacer" />
 
-  <div class="cv-image-links-wrapper">
-    <div class="cv-image-links">
-      <!-- 
+    <div class="cv-image-links-wrapper">
+      <div class="cv-image-links">
+        <!-- 
       <div class="cv-social-link" style="display: flex">
         <div class="cv-social-link-icon-wrapper">
           <a href="https://fredhohman.com"><i class="fas fa-home icon" style="color: #515151"></i></a>
@@ -1223,27 +900,27 @@
         </div>
       </div> -->
 
-      <div class="cv-social-link" style="display: flex">
-        <div class="cv-social-link-icon-wrapper">
-          <a href="mailto:benhoover34@gmail.com"><i class="fas fa-envelope icon" style="color: #515151" /></a>
+        <div class="cv-social-link" style="display: flex">
+          <div class="cv-social-link-icon-wrapper">
+            <a href="mailto:benhoover34@gmail.com"><i class="fas fa-envelope icon" style="color: #515151" /></a>
+          </div>
+          <div class="cv-social-link-text-wrapper">
+            <a href="mailto:benhoover34@gmail.com"><span>benhoover34@gmail.com</span></a>
+          </div>
         </div>
-        <div class="cv-social-link-text-wrapper">
-          <a href="mailto:benhoover34@gmail.com"><span>benhoover34@gmail.com</span></a>
-        </div>
-      </div>
 
-      <div class="cv-social-link" style="display: flex">
-        <div class="cv-social-link-icon-wrapper">
-          <a href="https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en"><i
-              class="fa fa-graduation-cap icon"
-              style="color: #515151" /></a>
+        <div class="cv-social-link" style="display: flex">
+          <div class="cv-social-link-icon-wrapper">
+            <a href="https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en"><i
+                class="fa fa-graduation-cap icon"
+                style="color: #515151" /></a>
+          </div>
+          <div class="cv-social-link-text-wrapper">
+            <a href="https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en">Google Scholar</a>
+          </div>
         </div>
-        <div class="cv-social-link-text-wrapper">
-          <a href="https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en">Google Scholar</a>
-        </div>
-      </div>
 
-      <!-- <div class="cv-social-link" style="display: flex">
+        <!-- <div class="cv-social-link" style="display: flex">
         <div class="cv-social-link-icon-wrapper">
           <a onclick="exportToPdf()"><i class="far fa-file-pdf icon" style="color: #ba2818"></i></a>
         </div>
@@ -1251,76 +928,81 @@
           <a onclick="exportToPdf()">CV PDF</a>
         </div>
       </div> -->
-    </div>
-    <div class="cv-image-links">
-      <div class="cv-social-link" style="display: flex">
-        <div class="cv-social-link-icon-wrapper">
-          <a href="https://twitter.com/ben_hoov"><i class="fab fa-twitter icon" style="color: #1da1f2" /></a>
-        </div>
-        <div class="cv-social-link-text-wrapper"><a href="https://twitter.com/ben_hoov">@ben_hoov</a></div>
       </div>
-
-      <div class="cv-social-link" style="display: flex">
-        <div class="cv-social-link-icon-wrapper">
-          <a href="https://github.com/bhoov"><i class="fab fa-github icon" style="color: #6e5494" /></a>
+      <div class="cv-image-links">
+        <div class="cv-social-link" style="display: flex">
+          <div class="cv-social-link-icon-wrapper">
+            <a href="https://twitter.com/ben_hoov"><i class="fab fa-twitter icon" style="color: #1da1f2" /></a>
+          </div>
+          <div class="cv-social-link-text-wrapper"><a href="https://twitter.com/ben_hoov">@ben_hoov</a></div>
         </div>
-        <div class="cv-social-link-text-wrapper"><a href="https://github.com/bhoov">@bhoov</a></div>
+
+        <div class="cv-social-link" style="display: flex">
+          <div class="cv-social-link-icon-wrapper">
+            <a href="https://github.com/bhoov"><i class="fab fa-github icon" style="color: #6e5494" /></a>
+          </div>
+          <div class="cv-social-link-text-wrapper"><a href="https://github.com/bhoov">@bhoov</a></div>
+        </div>
       </div>
     </div>
   </div>
-
   <hr />
 
-  <h2 id="education">Education</h2>
+  <h2 id="education" class="cv-content">Education</h2>
 
   {#each data.db.education as school}
-    <div class="cv-date-info">{school.date}</div>
-    <b>{school.degree}</b>
-    <!-- <div><a href="https://www.duke.edu/">Duke University</a>, Durham, NC</div> -->
-    <div><a class="link" href={school.institutionUrl}>{school.institution}</a>, {school.location}</div>
+    <div class="cv-date-info col-end-2">{school.date}</div>
 
-    <div class="cv-description">
-      <div>{school.description}</div>
+    <div class="cv-content">
+      <b>{school.degree}</b>
+      <div><a class="link" href={school.institutionUrl}>{school.institution}</a>, {school.location}</div>
+
+      <div class="cv-description">
+        <div>{school.description}</div>
+      </div>
     </div>
+
     <div class="cv-spacer" />
   {/each}
 
-  <h2 id="research-experience">Research Experience</h2>
+  <h2 id="research-experience" class="cv-content">Research Experience</h2>
 
   {#each data.db.experiences as work}
     <div class="cv-date-info">{work.end ? `${work.start} - ${work.end}` : work.start}</div>
-    <div><a href={work.institutionUrl}><b>{work.institution}</b></a>, {work.location}</div>
-    <div><i>{work.role}, <a href={work.teamUrl}>{work.team}</a></i></div>
-    <div class="cv-description">
-      Mentors: {#each work.mentors as mentor, i}
-        {@debug mentor}
-        <a href={people[mentor].url}>{mentor}</a>{i != work.mentors.length - 1 ? ', ' : ''}
-      {/each}
+
+    <div class="cv-content">
+      <div><a href={work.institutionUrl}><b>{work.institution}</b></a>, {work.location}</div>
+      <div><i>{work.role}, <a href={work.teamUrl}>{work.team}</a></i></div>
+      <div class="cv-description">
+        Mentors: {#each work.mentors as mentor, i}
+          {@debug mentor}
+          <a href={people[mentor].url}>{mentor}</a>{i != work.mentors.length - 1 ? ', ' : ''}
+        {/each}
+      </div>
     </div>
     <div class="cv-spacer" />
   {/each}
 
   <div class="pg-break" />
-  <h2 id="publications">Publications</h2>
+  <h2 id="publications" class="cv-content">Publications</h2>
 
   {#each data.db.publications as pub}
-    <div class="cv-item">
+    <div class="cv-content">
       <div><a href={pub.title}><b>{pub.title}</b></a></div>
       <div>
         {#each pub.authors as author, i}
           <a href={people[author].url}><span class:my-name={people[author].me}>{author}</span>{i != pub.authors.length - 1 ? ', ' : ''}</a>
         {/each}
       </div>
+      <div><i>{pub.venue}</i></div>
       <div class="pub-misc">
         <a href={pub.url}> <i class="fas fa-link" aria-hidden="true" /> Project </a>
         <a href={pub.demo}> <i class="fas fa-play" aria-hidden="true" /> Demo </a>
-        <a href={pub.pdf}>
-          <i class="far fa-file-pdf" aria-hidden="true" /> PDF
-        </a>
+        <a href={pub.pdf}> <i class="far fa-file-pdf" aria-hidden="true" /> PDF </a>
         <a href={pub.video}> <i class="fas fa-film" aria-hidden="true" /> Video </a>
         <a href={pub.code}> <i class="fas fa-code" aria-hidden="true" /> Code </a>
         <a style="cursor:pointer" onclick="toggleBibtex('_/papers/exbert')">
-          <i class="fas fa-book" aria-hidden="true" /> BibTeX 
+          <i class="fas fa-book" aria-hidden="true" /> BibTeX
         </a>
       </div>
     </div>
@@ -1328,254 +1010,46 @@
     <div class="cv-spacer" />
   {/each}
 
-  <div class="cv-item">
-    <div><a href="https://exbert.net/"><b>exBERT: A Visual Analysis of Transformer Models</b></a></div>
-    <div>
-      <a href="/"><span class="my-name">Benjamin Hoover</span></a>, <a href="http://hendrik.strobelt.com/">Hendrik
-        Strobelt</a>, <a href="https://sebastiangehrmann.com/">Sebastian Gehrmann</a>
+  <h2 id="talks" class="cv-content">Talks</h2>
+
+  {#each data.db.talks as talk}
+    <div class="cv-content"><b>{talk.title}</b></div>
+
+    {#each talk.venues as venue}
+          <div class="cv-date-info">{venue.date}</div>
+          <div class="cv-content">{venue.name}</div>
+    {/each}
+    <div class="cv-spacer" />
+    <div class="cv-spacer" />
+  {/each}
+
+  <div class="cv-spacer" />
+
+  <h2 id="teaching" class="cv-content">Teaching</h2>
+
+  {#each data.db.teaching as course}
+    <div class="cv-date-info">{course.date}</div>
+    <div class="cv-content">
+      <div><a href={course.courseUrl}><b>{course.role}</b></a></div>
+      <div><i><a href={course.institionUrl}>{course.institution}</a>, {course.location}</i></div>
+
+      <div>
+        {#if course.course}
+          <a href={course.courseUrl}>{course.course}
+            {#if course.courseCode}<span class="text-gray-600 text-s">({course.courseCode})</span>{/if}
+          </a>
+        {/if}
+        <div>
+          {course.instructors.length > 1 ? 'Instructors: ' : 'Instructor: '}
+
+          {#each course.instructors as instructor}<a href={people[instructor].url}>{instructor}</a>{/each}
+        </div>
+      </div>
+      <div class="cv-description">
+        {@html course.description}
+      </div>
     </div>
-  </div>
 
-  <div><i>Association for Computational Linguistics: System Demonstrations (ACL). Online, 2020.</i></div>
-
-  <div class="pub-misc">
-    <a href="https://exbert.net/"> <i class="fas fa-link" aria-hidden="true" /> Project </a>
-    <a href="https://exbert.net/exBERT.html"> <i class="fas fa-play" aria-hidden="true" /> Demo </a>
-    <a href="https://www.aclweb.org/anthology/2020.acl-demos.22.pdf">
-      <i class="far fa-file-pdf" aria-hidden="true" /> PDF
-    </a>
-    <a href="https://youtu.be/e31oyfo_thY"> <i class="fas fa-film" aria-hidden="true" /> Video </a>
-    <a href="https://github.com/bhoov/exbert"> <i class="fas fa-code" aria-hidden="true" /> Code </a>
-    <a style="cursor:pointer" onclick="toggleBibtex('_/papers/exbert')">
-      <i class="fas fa-book" aria-hidden="true" /> BibTeX
-    </a>
-  </div>
-
-  <div class="highlighter-rouge bibtex bibtex-wrapper" style="display: none;" id="_/papers/exbert">
-    <div class="highlight">
-      <!-- <pre>
-        @inproceedings{hoover-etal-2020-exbert,
-        title = "ex{BERT}: {A} {V}isual {A}nalysis {T}ool to {E}xplore {L}earned {R}epresentations in {T}ransformer {M}odels",
-        author = "Hoover, Benjamin  and
-          Strobelt, Hendrik  and
-          Gehrmann, Sebastian",
-        booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations",
-        month = jul,
-        year = "2020",
-        address = "Online",
-        publisher = "Association for Computational Linguistics",
-        url = "https://www.aclweb.org/anthology/2020.acl-demos.22",
-        doi = "10.18653/v1/2020.acl-demos.22",
-        pages = "187--196",
-        }
-    </pre> -->
-    </div>
-  </div>
-
-  <div class="cv-spacer" />
-
-  <div><a href="https://rxnmapper.ai/"><b>RXNMapper: Unsupervised Attention Guided Atom Mapping</b></a></div>
-  <div>
-    <a href="https://pschwllr.github.io/#">Philippe Schwaller</a>, <a href="/"><span class="my-name">Benjamin Hoover</span></a>,
-    <a href="http://www.gdb.unibe.ch/">JL Reymond</a>, <a href="http://hendrik.strobelt.com/">Hendrik Strobelt</a>, <a
-      href="https://researcher.watson.ibm.com/researcher/view.php?person=zurich-teo">Teodoro Laino</a>
-  </div>
-
-  <div><i>ChemRxiv Preprint, May 2020</i></div>
-
-  <div class="pub-misc">
-    <a href="http://rxnmapper.ai/"> <i class="fas fa-link" aria-hidden="true" /> Project </a>
-    <a href="http://rxnmapper.ai/demo.html"> <i class="fas fa-play" aria-hidden="true" /> Demo </a>
-    <a href="https://chemrxiv.org/articles/Unsupervised_Attention-Guided_Atom-Mapping/12298559">
-      <i class="far fa-file-pdf" aria-hidden="true" /> PDF
-    </a>
-    <a href="https://vimeo.com/434757113"> <i class="fas fa-film" aria-hidden="true" /> Video </a>
-    <a href="https://github.com/rxn4chemistry/rxnmapper"> <i class="fas fa-code" aria-hidden="true" /> Code </a>
-    <a style="cursor:pointer" onclick="toggleBibtex('_/papers/rxnmapper')">
-      <i class="fas fa-book" aria-hidden="true" /> BibTeX
-    </a>
-  </div>
-
-  <div class="highlighter-rouge bibtex bibtex-wrapper" style="display: none;" id="_/papers/rxnmapper">
-    <div class="highlight">
-      <!-- <pre>
-        @article{Schwaller2020Unsupervised,
-        author = "Philippe Schwaller and Benjamin Hoover and Jean-Louis Reymond and Hendrik Strobelt and Teodoro Laino",
-        title = "{Unsupervised Attention-Guided Atom-Mapping}",
-        year = "2020",
-        month = "5",
-        url = "https://chemrxiv.org/articles/Unsupervised_Attention-Guided_Atom-Mapping/12298559",
-        doi = "10.26434/chemrxiv.12298559.v1"
-        }      
-    </pre> -->
-    </div>
-  </div>
-
-  <div class="cv-spacer" />
-
-  <div>
-    <a href="https://pubs.acs.org/doi/abs/10.1021/acssynbio.7b00174"><b>Managing the SOS Response for Enhanced
-        CRISPR-Cas-Based Recombineering in E. coli through Transient Inhibition of Host RecA Activity</b></a>
-  </div>
-  <div>
-    <a href="https://lynchlab.pratt.duke.edu/people/e-adim-moreb">Eirik Adim Moreb</a>, <a href="/"><span
-        class="my-name">Benjamin Hoover</span></a>, <a href="https://yin.hms.harvard.edu/cv/cv.yaseen.adam.pdf">Adam
-      Yaseen</a>, <a href="https://www.linkedin.com/in/nisavalyasevi/">Nisakorn Valyasevi</a>, <a
-      href="https://www.linkedin.com/in/zoe-roecker-5a417b104/">Zoe Roecker</a>, <a
-      href="https://www.linkedin.com/in/romel-menacho-melgar-0881b4a8/">Romel Menacho-Melgar</a>, <a
-      href="https://lynchlab.pratt.duke.edu/people/michael-lynch">Michael D. Lynch</a>
-  </div>
-
-  <div><i>American Chemical Society: Synthetic Biology, 2017</i></div>
-
-  <div class="pub-misc">
-    <a href="https://pubs.acs.org/doi/pdf/10.1021/acssynbio.7b00174">
-      <i class="far fa-file-pdf" aria-hidden="true" /> PDF
-    </a>
-    <a style="cursor:pointer" onclick="toggleBibtex('_/papers/reca')">
-      <i class="fas fa-book" aria-hidden="true" /> BibTeX
-    </a>
-  </div>
-
-  <div class="highlighter-rouge bibtex bibtex-wrapper" style="display: none;" id="_/papers/reca">
-    <div class="highlight">
-      <!-- <pre>
-        @article{doi:10.1021/acssynbio.7b00174,
-        author = {Moreb, Eirik Adim and Hoover, Benjamin and Yaseen, Adam and Valyasevi, Nisakorn and Roecker, Zoe and Menacho-Melgar, Romel and Lynch, Michael D.},
-        title = {Managing the SOS Response for Enhanced CRISPR-Cas-Based Recombineering in E. coli through Transient Inhibition of Host RecA Activity},
-        journal = {ACS Synthetic Biology},
-        volume = {6},
-        number = {12},
-        pages = {2209-2218},
-        year = {2017},
-        doi = {10.1021/acssynbio.7b00174}, 
-        note ={PMID: 28915012},
-        URL = { https://doi.org/10.1021/acssynbio.7b00174 },
-        eprint = { https://doi.org/10.1021/acssynbio.7b00174 }
-        }
-    </pre> -->
-    </div>
-  </div>
-
-  <h2 id="talks">Talks</h2>
-
-  <div><b>exBERT: Exploring Learned Embeddings and Attentions in Transformer Models</b></div>
-
-  <div class="cv-date-info">July 2020</div>
-  <div>ACL 2020 System Demonstrations</div>
-
-  <div class="cv-date-info">Apr. 2020</div>
-  <div>ICLR IBM Exposition Demos</div>
-
-  <div class="cv-date-info">Dec. 2019</div>
-  <div>NeurIPS 2019 Demonstrations</div>
-
-  <div class="cv-spacer" />
-
-  <div><b>RXNMapper: Unsupervised Attention Guided Atom Mapping</b></div>
-
-  <div class="cv-date-info">July 2020</div>
-  <div>ICML: ML Interpretability for Scientific Discovery Workshop &amp; IBM Exposition Demo</div>
-
-  <div class="cv-spacer" />
-
-  <div>
-    <b>Using Matlab's <a
-        href="https://www.mathworks.com/matlabcentral/fileexchange/46392-pattern-recognition-toolbox">PRT</a> to Accelerate
-      Algorithm Development</b>
-  </div>
-
-  <div class="cv-date-info">July 2017</div>
-  <div>Medtronic Diabetes R&amp;D</div>
-
-  <div class="cv-spacer" />
-
-  <h2 id="teaching">Teaching</h2>
-
-  <div class="cv-date-info">Spring 2018</div>
-  <div><a href="https://www.coursicle.com/duke/courses/ECE/681/"><b>Graduate Teaching Assistant</b></a></div>
-  <div><i><a href="http://duke.edu">Duke University</a>, Durham, NC</i></div>
-
-  <div>
-    <a href="https://www.coursicle.com/duke/courses/ECE/681/">Pattern Recognition Technology</a>, Instructor: <a
-      href="https://ece.duke.edu/faculty/patrick-wang">Patrick Wang</a>
-  </div>
-
-  <div class="cv-description">
-    Design homeworks, supervise projects, and periodically teach Pattern Recognition Technology (ECE 681), a graduate
-    course with 60 students enrolled.
-  </div>
-
-  <div class="cv-spacer" />
-
-  <div class="cv-date-info">Spring 2018</div>
-  <div><a href="/"><b>Graduate Teaching Assistant</b></a></div>
-  <div><i><a href="http://duke.edu">Duke University</a>, Durham, NC</i></div>
-
-  <div>
-    <a href="/">Biopotential Amplifier Design (BME 590)</a>, Instructor: <a
-      href="https://bme.duke.edu/faculty/jonathan-viventi">Jonathan Viventi</a>
-  </div>
-
-  <div class="cv-description">
-    Supervised and graded capstone design projects in Biopotential Amplifier Design (BME 590) where students created a
-    2-channel EEG reader
-  </div>
-
-  <div class="cv-spacer" />
-
-  <div class="cv-date-info">Spring 2018</div>
-  <div><a href="https://pratt.duke.edu/about/news/data-decision-sciences"><b>Graduate Teaching Assistant</b></a></div>
-  <div><i><a href="http://duke.edu">Duke University</a>, Durham, NC</i></div>
-
-  <div>
-    <a href="https://pratt.duke.edu/about/news/data-decision-sciences">Fundamentals of Data Analysis and Decision
-      Science (EGR 190L)</a>, Instructors: <a href="https://ece.duke.edu/faculty/stacy-tantum">Stacy Tantum</a>
-    <a href="https://math.duke.edu/people/paul-l-bendich">Paul Bendich</a>
-  </div>
-
-  <div class="cv-description">
-    Discussed curriculum planning, helped setup the IT infrastructure, held office hours, and graded exams for
-    Fundamentals of Data Analysis and Decision Science (EGR 190L), a 25 student pilot course for <a
-      href="https://bigdata.duke.edu/data">Duke's Data+ Program</a>
-  </div>
-  <div class="cv-spacer" />
-
-  <div class="cv-date-info">Spring 2017</div>
-  <div><a href="https://www.coursicle.com/duke/courses/BME/354L/"><b>Undergraduate Teaching Assistant</b></a></div>
-  <div><i><a href="http://duke.edu">Duke University</a>, Durham, NC</i></div>
-
-  <div>
-    <a href="/">Introduction to Medical Instrumentation (BME 354L)</a>, Instructor: <a
-      href="https://bme.duke.edu/faculty/jonathan-viventi">Jonathan Viventi</a>
-  </div>
-
-  <div class="cv-description">
-    Prepared, supervised, and graded labs where students designed medical devices such as Ultrasound, ECGs, and Baby
-    Incubators for Introduction to Medical Instrumentation (BME 354L)
-  </div>
-
-  <div class="cv-spacer" />
-
-  <div class="cv-date-info">May '18 - Jan. '15</div>
-  <div><a href="https://ece.duke.edu/undergrad/students/courses"><b>Undergraduate Teaching Assistant</b></a></div>
-  <div><i><a href="http://duke.edu">Duke University</a>, Durham, NC</i></div>
-  <div>
-    <a href="https://ece.duke.edu/undergrad/students/courses">Introduction to Electrical Circuits (ECE 110)</a>,
-    Instructor: <a href="https://ece.duke.edu/faculty/stacy-tantum">Stacy Tantum</a>
-  </div>
-
-  <div class="cv-description">
-    Graded homeworks, held weekly office hours, supervised labs, and tutored students in Introductory Circuits (ECE 110)
-  </div>
-  <div class="cv-spacer" />
-
-  <div class="cv-date-info">May '17 - Jan. '16</div>
-  <div><a href="https://boeingfellows.pratt.duke.edu/content/fellows"><b>Boeing Fellowship</b></a></div>
-  <div><i><a href="http://duke.edu">Duke University</a>, Durham, NC</i></div>
-  <div>Supervisor: <a href="https://boeingfellows.pratt.duke.edu/member/rawls">Carmen Rawls</a></div>
-
-  <div class="cv-description">Wrote STEM lesson plans to teach to high schools around the Durham area.</div>
-
-  <div class="cv-spacer" />
+    <div class="cv-spacer" />
+  {/each}
 </div>

@@ -60,3 +60,8 @@ This will build all of your html into the /public/ folder.
 - Nodemon is watching your files for changes. It will restart when it needs to.
 - Rollup is watching your files for changes. It will restart when it needs to.
 - If your `elder.config.js` has `@elderjs/plugin-browser-reload': {}` in it's plugins, your browser will automatically restart after the server restarts.
+
+# TODO
+- [ ] Create an "institutions.yaml" much like "people.yaml" that contains location, institutionURL, etc. (How do I handle nicknames?)
+- [ ] Remove all CV data from `data.db`. Only include references like "people" and "institutions"
+- [ ] Remove old CSS from CV
