@@ -1,5 +1,6 @@
 <script>
   import GlobalLayout from "./GlobalLayout.svelte"
+  import NavBar from "../components/NavBar.svelte"
   export let templateHtml, settings;
 </script>
 
@@ -10,8 +11,8 @@
 </style>
 
 <GlobalLayout>
+  <NavBar></NavBar>
   <div class="container">
-    <div class="text-teal-600 font-bold">THIS IS MY NAVBAR</div>
     {@html templateHtml}
   </div>  
 </GlobalLayout>
