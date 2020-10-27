@@ -1,29 +1,29 @@
 <script>
+  import PrivateEmail from '../../components/PrivateEmail.svelte';
+  import Clock from '../../components/Clock.svelte';
   export let data;
-  import EducationCvBlurb from '../../components/EducationCvBlurb.svelte';
-  import ResearchExperienceCvBlurb from '../../components/ResearchExperienceCvBlurb.svelte';
 
   let people = data.db.people;
+  let encodedEmail = 'ben-XyX-hoover-XyX-34-XyX-@gmail.com';
+  let removeCode = /-XyX-/g;
+
+  function formatPubDate(pub) {
+    return pub.year;
+  }
+
+  function decodeEmail(email) {
+    return email.replace(removeCode, '');
+  }
+
+  function stripPunc(s) {
+    return s.replace(/[^a-zA-Z1-9]/g, '');
+  }
+
+  let decodedEmail = decodeEmail(encodedEmail);
+  $: mailtoAddress = decodedEmail == null ? '#' : `mailto:${decodedEmail}`;
 </script>
 
 <style>
-  * {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-  }
-  /* html {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    font-size: 16px;
-    line-height: 1.5;
-  } */
-  /* @media screen and (max-width: 768px) {
-    html {
-      font-size: 14px;
-    }
-  } */
   body {
     color: #414141;
     background-color: #fff;
@@ -125,26 +125,15 @@
       padding-left: 1rem;
     }
   }
+
   code,
   pre {
     font-family: Consolas, monaco, monospace;
-  }
-  code {
-    padding: 0.25rem 0.5rem;
-    font-size: 85%;
-    color: #bf616a;
-    background-color: #f4f4f4;
-    border-radius: 3px;
-  }
-  pre {
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
-  pre code {
-    padding: 0;
-    font-size: 100%;
-    color: inherit;
-    background-color: transparent;
+    white-space: pre-wrap; /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
   }
 
   .css .o,
@@ -553,18 +542,18 @@
   .cv-image-links {
     flex: 1;
   }
-  .cv-social-link {
+  :global(.cv-social-link) {
     display: flex;
   }
-  .cv-social-link-icon-wrapper {
+  :global(.cv-social-link-icon-wrapper) {
     flex: 0 0 25px;
     text-align: center;
     margin-right: 0.5rem;
   }
-  .cv-social-link-text-wrapper {
+  :global(.cv-social-link-text-wrapper) {
     flex: 1;
   }
-  .cv-social-link-text-wrapper > a {
+  :global(.cv-social-link-text-wrapper > a) {
     color: #414141;
   }
 
@@ -857,18 +846,26 @@
   <!--<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>-->
   <script>
     function toggleBibtex(id) {
-      let bibtex = document.getElementById(id);
+      let el = id instanceof HTMLElement ? id : document.getElementById(id);
+      console.log('el: ', el);
 
-      if (bibtex.style.display === 'none') {
-        bibtex.style.display = 'inline-block';
+      if (el.style.display === 'none') {
+        el.style.display = 'inline-block';
       } else {
-        bibtex.style.display = 'none';
+        el.style.display = 'none';
       }
     }
 
     function exportToPdf() {
       console.log('TRYING TO EXPORT');
       printJS({ printable: 'cv', type: 'html' });
+    }
+
+    let encodedEmail = 'ben-XyX-hoover-XyX-34-XyX-@gmail.com';
+    let removeCode = '-XyX-';
+
+    function decodeEmail(email) {
+      return email.replaceAll(removeCode, '');
     }
   </script>
 </svelte:head>
@@ -900,14 +897,7 @@
         </div>
       </div> -->
 
-        <div class="cv-social-link" style="display: flex">
-          <div class="cv-social-link-icon-wrapper">
-            <a href="mailto:benhoover34@gmail.com"><i class="fas fa-envelope icon" style="color: #515151" /></a>
-          </div>
-          <div class="cv-social-link-text-wrapper">
-            <a href="mailto:benhoover34@gmail.com"><span>benhoover34@gmail.com</span></a>
-          </div>
-        </div>
+        <PrivateEmail hydrate-client={{}} />
 
         <div class="cv-social-link" style="display: flex">
           <div class="cv-social-link-icon-wrapper">
@@ -987,6 +977,7 @@
   <h2 id="publications" class="cv-content">Publications</h2>
 
   {#each data.db.publications as pub}
+    <div class="cv-date-info">{formatPubDate(pub)}</div>
     <div class="cv-content">
       <div><a href={pub.title}><b>{pub.title}</b></a></div>
       <div>
@@ -996,16 +987,22 @@
       </div>
       <div><i>{pub.venue}</i></div>
       <div class="pub-misc">
-        <a href={pub.url}> <i class="fas fa-link" aria-hidden="true" /> Project </a>
-        <a href={pub.demo}> <i class="fas fa-play" aria-hidden="true" /> Demo </a>
-        <a href={pub.pdf}> <i class="far fa-file-pdf" aria-hidden="true" /> PDF </a>
-        <a href={pub.video}> <i class="fas fa-film" aria-hidden="true" /> Video </a>
-        <a href={pub.code}> <i class="fas fa-code" aria-hidden="true" /> Code </a>
-        <a style="cursor:pointer" onclick="toggleBibtex('_/papers/exbert')">
-          <i class="fas fa-book" aria-hidden="true" /> BibTeX
-        </a>
+        {#if pub.url}<a href={pub.url}> <i class="fas fa-link" aria-hidden="true" /> Project </a>{/if}
+        {#if pub.demo}<a href={pub.demo}> <i class="fas fa-play" aria-hidden="true" /> Demo </a>{/if}
+        {#if pub.pdf}<a href={pub.pdf}> <i class="far fa-file-pdf" aria-hidden="true" /> PDF </a>{/if}
+        {#if pub.video}<a href={pub.video}> <i class="fas fa-film" aria-hidden="true" /> Video </a>{/if}
+        {#if pub.code}<a href={pub.code}> <i class="fas fa-code" aria-hidden="true" /> Code </a>{/if}
+        {#if pub.bibtex}
+          <span style="cursor:pointer; color: #357edd;" onclick={`toggleBibtex(${stripPunc(pub.title)})`}>
+            <i class="fas fa-book" aria-hidden="true" /> BibTeX
+          </span>
+        {/if}
       </div>
     </div>
+    <pre
+      class="border-solid border-gray-600 rounded-xl bg-gray-200 my-5 px-3 py-2 border-2 text-xs cv-content"
+      id={`${stripPunc(pub.title)}`}
+      style="display:none;">{pub.bibtex}</pre>
 
     <div class="cv-spacer" />
   {/each}
@@ -1016,8 +1013,8 @@
     <div class="cv-content"><b>{talk.title}</b></div>
 
     {#each talk.venues as venue}
-          <div class="cv-date-info">{venue.date}</div>
-          <div class="cv-content">{venue.name}</div>
+      <div class="cv-date-info">{venue.date}</div>
+      <div class="cv-content">{venue.name}</div>
     {/each}
     <div class="cv-spacer" />
     <div class="cv-spacer" />

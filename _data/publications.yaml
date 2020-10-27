@@ -5,7 +5,7 @@
     - Sebastian Gehrmann
   venue: "Association for Computational Linguistics: System Demonstrations (ACL)"
   year: 2020
-  month: July
+  month: Jul
   url: https://exbert.net/
   demo: https://exbert.net/exBERT.html
   pdf: https://www.aclweb.org/anthology/2020.acl-demos.22/
@@ -38,6 +38,8 @@
   venue: "ChemRxiv Preprint"
   year: 2020
   month: May
+  url: http://rxnmapper.ai/
+  demo: http://rxnmapper.ai/demo.html
   pdf: https://chemrxiv.org/articles/Unsupervised_Attention-Guided_Atom-Mapping/12298559
   video: https://vimeo.com/434757113
   code: https://github.com/rxn4chemistry/rxnmapper
