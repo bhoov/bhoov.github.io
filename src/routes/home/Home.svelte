@@ -1,8 +1,6 @@
 <script>
-  import HookDetail from '../../components/HookDetail.svelte';
-  import BlogTeaser from '../../components/BlogTeaser.svelte';
   import Clock from '../../components/Clock.svelte';
-  export let data, helpers;
+  import PrivateEmail from '../../components/PrivateEmail.svelte';
 
   // add permalinks to the hook list so we can link to the posts.
   // const hooks = data.hookInterface.map((hook) => ({ ...hook, link: helpers.permalinks.hooks({ slug: hook.hook }) }));
@@ -81,6 +79,7 @@
     <div class="right">
       <Clock hydrate-client={{}} />
     </div>
+      <PrivateEmail hydrate-client={{}} />
   </div>
 </div>
 

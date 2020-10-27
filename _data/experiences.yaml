@@ -4,7 +4,7 @@
   role: Research Engineer
   team: Visual AI Lab
   teamUrl: "https://researcher.watson.ibm.com/researcher/view_group.php?id=5948"
-  start: "Sep. '18"
+  start: "Sep '18"
   end: Present
   # description: >-
   #   Designed, developed....
@@ -17,7 +17,7 @@
   location: "Northridge, CA"
   role: Research Intern
   team: Algorithms
-  start: "Summer 2017"
+  start: "Summer '17"
   mentors:
     - Peter Ajemba
     - Keith Nogueira
@@ -27,8 +27,8 @@
   location: "Durham, NC"
   role: Undergraduate Research Assistant
   team: "Bass Connections & Lynch Lab"
-  start: "Apr. '15"
-  end: "May. '17"
+  start: "Apr '15"
+  end: "May '17"
   mentors:
     - Eirik Adim Moreb
     - Michael D. Lynch

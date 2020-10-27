@@ -7,7 +7,7 @@
   courseCode: ECE 681
   instructors:
     - Patrick Wang
-  date: Spring 2018
+  date: Spring '18
   description: >-
     Design homeworks, supervise projects, and periodically teach lecture, a graduate course with 60 students
 
@@ -18,7 +18,7 @@
   courseCode: BME 590
   instructors:
     - Jonathan Viventi
-  date: Spring 2018
+  date: Spring '18
   description: >-
     Supervised and graded capstone design projects where students designed, printed, and built a 2 channel EEG reader
 
@@ -30,7 +30,7 @@
   instructors:
     - Stacy Tantum
     - Paul Bendich
-  date: Spring 2018
+  date: Spring '18
   description: >-
     Helped setup class infrastructure (Python, jupyter), discussed curriculum 
     planning, held office hours, and graded exams for this 25 student pilot course 
@@ -43,7 +43,7 @@
   courseCode: BME 354L
   instructors:
     - Jonathan Viventi
-  date: Spring 2017
+  date: Spring '17
   description: >-
     Prepared, supervised, and graded labs where students designed medical devices 
     such as Ultrasound, ECGs, Baby Incubators, and functional FitBits.
@@ -55,14 +55,13 @@
   courseCode: ECE 110
   instructors:
     - Stacy Tantum
-  date: "Jan. '15"
-  end: "May '18"
+  date: "Jan '15 - May '18"
   description: >-
     Graded homeworks, held weekly office hours, supervised labs, and private tutored students.
 
 - role: Boeing Fellow 
   institution: Duke University
-  date: "Jan. '16 - May '17"
+  date: "Jan '16 - May '17"
   location: "Durham, NC"
   instructors:
     - Carmen Rawls

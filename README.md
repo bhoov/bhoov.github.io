@@ -62,6 +62,6 @@ This will build all of your html into the /public/ folder.
 - If your `elder.config.js` has `@elderjs/plugin-browser-reload': {}` in it's plugins, your browser will automatically restart after the server restarts.
 
 # TODO
-- [ ] Create an "institutions.yaml" much like "people.yaml" that contains location, institutionURL, etc. (How do I handle nicknames?)
+- [ ] Create an "institutions.yaml" much like "people.yaml" that contains location, institutionURL, etc. (How do I handle nicknames? How do I handle something like `iGEM`?)
 - [ ] Remove all CV data from `data.db`. Only include references like "people" and "institutions"
 - [ ] Remove old CSS from CV
