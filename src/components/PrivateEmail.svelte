@@ -20,7 +20,7 @@
   }
 </style>
 
-<div class="cv-social-link" style="display: flex">
+<div class="cv-social-link">
   <div class="cv-social-link-icon-wrapper">
     <a href={mailtoAddress}> <i class="fas fa-envelope icon" style="color: #515151" /> </a>
   </div>

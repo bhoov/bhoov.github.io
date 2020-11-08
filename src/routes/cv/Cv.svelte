@@ -41,12 +41,6 @@
     @apply place-self-end self-start text-xs col-end-2;
   }
 
-  img {
-    display: block;
-    max-width: 100%;
-    width: 100%;
-  }
-
   h1 {
     font-size: 2.5rem;
     margin-top: 1rem;
@@ -543,24 +537,17 @@
     flex: 1;
   }
   :global(.cv-social-link) {
-    display: flex;
+    @apply grid grid-cols-6;
   }
   :global(.cv-social-link-icon-wrapper) {
-    flex: 0 0 25px;
-    text-align: center;
-    margin-right: 0.5rem;
+    @apply place-self-center;
   }
   :global(.cv-social-link-text-wrapper) {
-    flex: 1;
-  }
-  :global(.cv-social-link-text-wrapper > a) {
-    color: #414141;
+    @apply col-start-2 col-end-7 place-self-start;
   }
 
   .cv-description {
-    color: #999 !important;
-    font-size: 0.875rem;
-    font-weight: 300;
+    @apply text-gray-700 text-sm font-thin;
   }
   .cv-spacer {
     margin-top: 0.75rem;
@@ -570,137 +557,22 @@
     margin-top: 0.25rem;
     display: block;
   }
-  .appears-on,
-  .appears-on a {
-    font-size: 0.75rem;
-    font-weight: 400;
-  }
-  .cv-award {
-    color: #ffb700;
-    font-weight: 600;
-  }
-  .cv-service-title {
-    margin-top: 0.7rem;
-    margin-bottom: 0rem;
-  }
-  .pub-misc,
   .pub-misc {
-    font-size: 0.75rem;
+    @apply text-sm text-blue-500;
   }
-  .pub-misc a {
-    color: #357edd !important;
-    margin-right: 0.5rem;
+  .pub-misc-txt {
+    @apply mr-2 text-blue-600;
     white-space: nowrap;
   }
-  .pub-misc a:hover {
-    color: #00449e !important;
+  .pub-misc-txt:hover {
+    @apply text-blue-900;
     text-decoration: none;
-  }
-  .equal-contribution {
-    color: #777;
-  }
-  .cv-blue-link a {
-    color: #357edd !important;
-  }
-  .cv-blue-link a:hover {
-    color: #00449e !important;
-  }
-  .bibtex-wrapper {
-    overflow-x: scroll;
-    background-color: #f4f4f4;
-    border-left: 2px solid #ccc;
-    padding-left: 1rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.75rem;
-  }
-  .highlight {
-    width: 0;
-  }
-  @media screen and (max-width: 768px) {
-    .cv-image-links-wrapper {
-      display: block;
-    }
-  }
-  #paper-title-wrapper {
-    background-color: #f4f4f4;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #ddd;
-  }
-  #paper-title-wrapper > h1 {
-    grid-column: middle;
-    line-height: 1.25;
-    margin-top: 0rem;
-    text-align: center;
-  }
-  #author-wrapper {
-    grid-column: text;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 0.875rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  .author {
-    text-align: center;
-    font-size: 1.1em;
-    line-height: 1.25;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .author-image {
-    height: 80px;
-    width: 80px;
-    border-radius: 40px;
-    margin: 0 auto;
-    margin-bottom: 0.5rem;
-  }
-  .author > a {
-    color: #414141;
   }
   #venue,
   #paper-award,
-  #paper-equal-contribution {
-    grid-column: text;
-    color: #555;
-    font-size: 1.1em;
-  }
   #paper-award {
     color: #ffb700;
     margin-top: 0.5rem;
-  }
-  #paper-equal-contribution {
-    margin-top: 0.5rem;
-  }
-  #paper-materials {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
-  #paper-materials > a {
-    border: 1px solid #ddd;
-    padding: 0.75rem;
-    margin: 0.25rem;
-    text-align: center;
-    grid-column: 1fr;
-  }
-  #paper-materials > a:hover {
-    border: 1px solid #333;
-    text-decoration: none;
-  }
-  @media screen and (max-width: 768px) {
-    #author-wrapper {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    #paper-title-wrapper > h1 {
-      text-align: left;
-    }
-    #paper-materials {
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
   .cd-wrapper {
     display: flex;
@@ -875,9 +747,9 @@
 <!-- <div id="cv"> -->
 <div id="main" class="mt-1 mb-3 place-items-start place-self-center max-w-screen-md mx-auto">
   <div class="cv-content">
-    <h1 id="cv-title">Benjamin Hoover</h1>
+    <h1 class="text-3xl">Benjamin Hoover</h1>
 
-    <p id="cv-subtitle">
+    <p>
       <i>AI <span class="cv-ai">Interpretability</span> &amp; <span class="cv-vis">Visualization</span> Research Engineer</i>
     </p>
 
@@ -885,8 +757,8 @@
 
     <div class="cv-spacer" />
 
-    <div class="cv-image-links-wrapper">
-      <div class="cv-image-links">
+    <div class="grid md:grid-cols-2">
+      <div>
         <!-- 
       <div class="cv-social-link" style="display: flex">
         <div class="cv-social-link-icon-wrapper">
@@ -899,7 +771,7 @@
 
         <PrivateEmail hydrate-client={{}} />
 
-        <div class="cv-social-link" style="display: flex">
+        <div class="cv-social-link">
           <div class="cv-social-link-icon-wrapper">
             <a href="https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en"><i
                 class="fa fa-graduation-cap icon"
@@ -919,15 +791,15 @@
         </div>
       </div> -->
       </div>
-      <div class="cv-image-links">
-        <div class="cv-social-link" style="display: flex">
+      <div>
+        <div class="cv-social-link">
           <div class="cv-social-link-icon-wrapper">
             <a href="https://twitter.com/ben_hoov"><i class="fab fa-twitter icon" style="color: #1da1f2" /></a>
           </div>
           <div class="cv-social-link-text-wrapper"><a href="https://twitter.com/ben_hoov">@ben_hoov</a></div>
         </div>
 
-        <div class="cv-social-link" style="display: flex">
+        <div class="cv-social-link">
           <div class="cv-social-link-icon-wrapper">
             <a href="https://github.com/bhoov"><i class="fab fa-github icon" style="color: #6e5494" /></a>
           </div>
@@ -964,9 +836,9 @@
       <div><a href={work.institutionUrl}><b>{work.institution}</b></a>, {work.location}</div>
       <div><i>{work.role}, <a href={work.teamUrl}>{work.team}</a></i></div>
       <div class="cv-description">
-        Mentors: {#each work.mentors as mentor, i}
+        <span class="font-semibold">Mentors:</span> {#each work.mentors as mentor, i}
           {@debug mentor}
-          <a href={people[mentor].url}>{mentor}</a>{i != work.mentors.length - 1 ? ', ' : ''}
+          <a href={people[mentor].url} class="hover:border-b-2">{mentor}</a>{i != work.mentors.length - 1 ? ', ' : ''}
         {/each}
       </div>
     </div>
@@ -987,13 +859,13 @@
       </div>
       <div><i>{pub.venue}</i></div>
       <div class="pub-misc">
-        {#if pub.url}<a href={pub.url}> <i class="fas fa-link" aria-hidden="true" /> Project </a>{/if}
-        {#if pub.demo}<a href={pub.demo}> <i class="fas fa-play" aria-hidden="true" /> Demo </a>{/if}
-        {#if pub.pdf}<a href={pub.pdf}> <i class="far fa-file-pdf" aria-hidden="true" /> PDF </a>{/if}
-        {#if pub.video}<a href={pub.video}> <i class="fas fa-film" aria-hidden="true" /> Video </a>{/if}
-        {#if pub.code}<a href={pub.code}> <i class="fas fa-code" aria-hidden="true" /> Code </a>{/if}
+        {#if pub.url}<a href={pub.url} class="pub-misc-txt"> <i class="fas fa-link" aria-hidden="true" /> Project </a>{/if}
+        {#if pub.demo}<a href={pub.demo} class="pub-misc-txt"> <i class="fas fa-play" aria-hidden="true" /> Demo </a>{/if}
+        {#if pub.pdf}<a href={pub.pdf} class="pub-misc-txt"> <i class="far fa-file-pdf" aria-hidden="true" /> PDF </a>{/if}
+        {#if pub.video}<a href={pub.video} class="pub-misc-txt"> <i class="fas fa-film" aria-hidden="true" /> Video </a>{/if}
+        {#if pub.code}<a href={pub.code} class="pub-misc-txt"> <i class="fas fa-code" aria-hidden="true" /> Code </a>{/if}
         {#if pub.bibtex}
-          <span style="cursor:pointer; color: #357edd;" onclick={`toggleBibtex(${stripPunc(pub.title)})`}>
+          <span style="cursor:pointer;" class="pub-misc-txt" onclick={`toggleBibtex(${stripPunc(pub.title)})`}>
             <i class="fas fa-book" aria-hidden="true" /> BibTeX
           </span>
         {/if}
