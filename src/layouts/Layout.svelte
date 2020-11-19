@@ -5,7 +5,7 @@
 </script>
 
 <GlobalLayout>
-  <NavBar></NavBar>
+  <NavBar hydrate-client={{}}/>
   <div class="container">
     {@html templateHtml}
   </div>  
