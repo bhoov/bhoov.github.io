@@ -23,7 +23,7 @@
   $: mailtoAddress = decodedEmail == null ? '#' : `mailto:${decodedEmail}`;
 </script>
 
-<style>
+<style lang="postcss">
   body {
     color: #414141;
     background-color: #fff;
@@ -753,7 +753,7 @@
       <i>AI <span class="cv-ai">Interpretability</span> &amp; <span class="cv-vis">Visualization</span> Research Engineer</i>
     </p>
 
-    <div class="font-light text-2xl">What can AI teach us about our world?</div>
+    <!-- <div class="font-light text-2xl">What can AI teach us about our world?</div> -->
 
     <div class="cv-spacer" />
 
