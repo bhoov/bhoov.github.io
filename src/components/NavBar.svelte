@@ -31,10 +31,13 @@
 </script>
 
 <style>
+  :root {
+    --nav-height: 45px;
+  }
   nav {
     background-color: rgba(0, 0, 0, 0.8);
     font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-    height: 45px;
+    height: var(--nav-height);
   }
 
   .inner {
@@ -42,7 +45,7 @@
     padding-left: 20px;
     padding-right: 20px;
     margin: auto;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     display: flex;
     align-items: center;
     height: 100%;
@@ -120,7 +123,7 @@
     background-color: rgba(0, 0, 0, 0.8);
     position: fixed;
     display: block;
-    height: calc(100% - 45px);
+    height: calc(100% - var(--nav-height));
     bottom: 0;
     left: 0;
   }
@@ -128,16 +131,6 @@
   .navbar-list li {
     list-style-type: none;
     position: relative;
-  }
-
-  .navbar-list li:before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #424245;
   }
 
   .nav-link {
@@ -170,13 +163,11 @@
 
   .navbar-list a {
     color: #fff;
-    /* text-decoration: none; */
     display: inline-block;
     white-space: nowrap;
-    /* flex: 0 1 auto; */
-    height: 45px;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 3px;
+    margin: 0 7px;
     font-size: 1.05rem;
   }
 
@@ -186,7 +177,7 @@
     margin-right: 2rem;
   }
 
-  @media only screen and (min-width: 767px) {
+  @media only screen and (min-width: 600px) {
     .mobile-icon {
       display: none;
     }
@@ -198,6 +189,7 @@
 
     .navbar-list a {
       display: inline-flex;
+      /* height: 45px; */
       /* flex: 0 1 auto; */
     }
   }
