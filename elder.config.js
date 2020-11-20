@@ -1,5 +1,5 @@
 module.exports = {
-  origin: '', // TODO: update this.
+  origin: 'http://www.bhoov.com', // TODO: update this.
   srcDir: 'src',
   distDir: 'public',
   rootDir: process.cwd(),
