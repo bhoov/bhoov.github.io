@@ -1,9 +1,75 @@
+- title: "LMdiff: A Visual Diff Tool to Compare Language Models"
+  name: LMdiff
+  authors: 
+    - Hendrik Strobelt
+    - Benjamin Hoover
+    - Arvind Satyanarayan
+    - Sebastian Gehrmann
+  venue: "NeurIPS 2020: Demo"
+  year: 2020
+  month: Dec
+  url: http://difflm.xyz/
+  demo: http://difflm.xyz/
+  thumbnail: "imgs/thumbnails/diffLM.png"
+
+- title: "CogMol: Target-Specific and Selective Drug Design for COVID-19 Using Deep Generative Models"
+  name: CogMol
+  authors:
+    - Enara Vijil
+    - Payel Das
+    - Samuel Hoffman
+    - Hendrik Strobelt
+    - Inkit Padhi
+    - Kar Wai Lim
+    - Benjamin Hoover
+    - Matteo Manica
+    - Jannis Born
+    - Teodoro Laino
+    - Aleksandra Mojsilovic
+  venue: "NeurIPS 2020, Spotlight Poster"
+  year: 2020
+  month: Dec
+  url: https://covid19-mol.mybluemix.net/
+  demo: https://covid19-mol.mybluemix.net/new
+  pdf: https://papers.nips.cc/paper/2020/file/2d16ad1968844a4300e9a490588ff9f8-Paper.pdf
+  thumbnail: "imgs/thumbnails/cogmol.png"
+  # video: https://www.youtube.com/watch?v=e31oyfo_thY&feature=youtu.be
+  # code: https://github.com/bhoov/exbert
+  bibtex: |-
+
+    Neurips citation available soon.
+    @misc{chenthamarakshan2020cogmol,
+        title={CogMol: Target-Specific and Selective Drug Design for COVID-19 Using Deep Generative Models}, 
+        author={Vijil Chenthamarakshan and Payel Das and Samuel C. Hoffman and Hendrik Strobelt and Inkit Padhi and Kar Wai Lim and Benjamin Hoover and Matteo Manica and Jannis Born and Teodoro Laino and Aleksandra Mojsilovic},
+        year={2020},
+        eprint={2004.01215},
+        archivePrefix={arXiv},
+        primaryClass={cs.LG}
+    }
+
+- title: "Shared Interest: Human Annotations vs. AI Saliency"
+  name: Shared Interest
+  authors: 
+    - Angie Boggust
+    - Benjamin Hoover
+    - Arvind Satyanarayan
+    - Hendrik Strobelt
+  venue: "IEEE Vis: VisXAI Workshop"
+  year: 2020
+  month: Oct
+  url: http://visxai-submission.xyz/index-distill.html
+  demo: http://visxai-submission.xyz/
+  thumbnail: "imgs/thumbnails/saliencyExplorer.png"
+  # pdf: http://visxai-submission.xyz/index-distill.html
+
+
 - title: "exBERT: A Visual Analysis of Transformer Models"
+  name: exBERT
   authors:
     - Benjamin Hoover
     - Hendrik Strobelt
     - Sebastian Gehrmann
-  venue: "Association for Computational Linguistics: System Demonstrations (ACL)"
+  venue: "ACL 2020: System Demonstrations"
   year: 2020
   month: Jul
   url: https://exbert.net/
@@ -11,6 +77,7 @@
   pdf: https://www.aclweb.org/anthology/2020.acl-demos.22/
   video: https://www.youtube.com/watch?v=e31oyfo_thY&feature=youtu.be
   code: https://github.com/bhoov/exbert
+  thumbnail: "imgs/thumbnails/exBERT.png"
   bibtex: |-
 
     @inproceedings{hoover-etal-2020-exbert,
@@ -29,13 +96,14 @@
     }
 
 - title: "RXNMapper: Unsupervised Attention Guided Atom Mapping"
+  name: RXNMapper
   authors:
     - Philippe Schwaller
     - Benjamin Hoover
     - JL Reymond
     - Hendrik Strobelt
     - Teodoro Laino
-  venue: "ChemRxiv Preprint"
+  venue: "ChemRxiv Preprint, #IOPPoster, SCS Fall 2020, ICML 2020 Workshop: AI for Scientific Discovery, ACS Fall 2020"
   year: 2020
   month: May
   url: http://rxnmapper.ai/
@@ -43,6 +111,7 @@
   pdf: https://chemrxiv.org/articles/Unsupervised_Attention-Guided_Atom-Mapping/12298559
   video: https://vimeo.com/434757113
   code: https://github.com/rxn4chemistry/rxnmapper
+  thumbnail: "imgs/thumbnails/rxnmapper.png"
   bibtex: |-
 
     @article{Schwaller2020Unsupervised,
@@ -58,6 +127,7 @@
     Managing the SOS Response for Enhanced 
     CRISPR-Cas-Based Recombineering in E. coli 
     through Transient Inhibition of Host RecA Activity
+  name: Cas9 RecA Inhibition
   authors:
     - Eirik Adim Moreb
     - Benjamin Hoover
@@ -66,9 +136,10 @@
     - Zoe Roecker
     - Romel Menacho-Melgar
     - Michael D. Lynch
-  venue: "American Chemical Society: Synthetic Biology"
+  venue: "American Chemical Society (ACS): Synthetic Biology"
   year: 2017
   pdf: https://pubs.acs.org/doi/pdf/10.1021/acssynbio.7b00174
+  thumbnail: "imgs/thumbnails/sos.png"
   bibtex: |-
 
     @article{doi:10.1021/acssynbio.7b00174,

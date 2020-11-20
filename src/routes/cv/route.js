@@ -1,6 +1,8 @@
 const { hookInterface, hookEntityDefinitions } = require('@elderjs/elderjs');
 const fs = require('fs');
 const yaml = require('js-yaml');
+// const utils = require("utils")
+// import { loadFnamesFromDatabase } from "utils.js"
 
 module.exports = {
   // the all function returns an array of all of the 'request' objects of a route. Since this is the homepage, there is only one.
@@ -16,6 +18,29 @@ module.exports = {
     // let fileContents = fs.readFileSync('data/cv.yaml', 'utf8');
     // let sections = yaml.safeLoad(fileContents);
     // let sections = []
+    // const dataFileNames = [
+    //   "education",
+    //   "experiences",
+    //   "publications",
+    //   "talks",
+    //   "teaching"
+    // ]
+
+    // const fileData = await Promise.all(dataFileNames.map(async (fkey) => {
+    //   const fdata = await fs.readFile(`_data/${fkey}.yaml`, 'utf8')
+    //   return yaml.safeLoad(fdata)
+    // }))
+    // const db = {}
+    // dataFileNames.forEach((fkey, i) => {
+    //   db[fkey] = fileData[i]
+    // })
+
+    // return {
+    //   data: {
+    //     ...data,
+    //     db
+    //   }
+    // }
 
     // const sections = [
     //   "Education",
@@ -25,7 +50,7 @@ module.exports = {
     //   "Teaching"
     // ]
 
-    return {...data};
+    return { ...data };
   },
   layout: "Layout.svelte"
 };

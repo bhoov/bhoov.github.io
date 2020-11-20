@@ -1,6 +1,5 @@
 <script>
   import PrivateEmail from '../../components/PrivateEmail.svelte';
-  import Clock from '../../components/Clock.svelte';
   export let data;
 
   let people = data.db.people;
@@ -48,6 +47,10 @@
     line-height: 1.25;
   }
 
+  a {
+    color: inherit;
+  }
+
   h2 {
     font-size: 2rem;
     margin-top: 1rem;
@@ -57,6 +60,7 @@
   p {
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
+    line-height: 1rem;
   }
   :global(a.link) {
     color: #357edd;
@@ -757,15 +761,14 @@
 
     <div class="cv-spacer" />
 
-    <div class="grid md:grid-cols-2">
+    <div class="grid sm:grid-cols-2">
       <div>
         <!-- 
       <div class="cv-social-link" style="display: flex">
         <div class="cv-social-link-icon-wrapper">
           <a href="https://fredhohman.com"><i class="fas fa-home icon" style="color: #515151"></i></a>
         </div>
-        <div class="cv-social-link-text-wrapper">
-          <a href="https://fredhohman.com">fredhohman.com</a>
+        <div class="cv-social-link-text-wrapper"> <a href="https://fredhohman.com">fredhohman.com</a>
         </div>
       </div> -->
 
@@ -817,7 +820,7 @@
 
     <div class="cv-content">
       <b>{school.degree}</b>
-      <div><a class="link" href={school.institutionUrl}>{school.institution}</a>, {school.location}</div>
+      <div><a href={school.institutionUrl}>{school.institution}</a>, {school.location}</div>
 
       <div class="cv-description">
         <div>{school.description}</div>
@@ -836,8 +839,8 @@
       <div><a href={work.institutionUrl}><b>{work.institution}</b></a>, {work.location}</div>
       <div><i>{work.role}, <a href={work.teamUrl}>{work.team}</a></i></div>
       <div class="cv-description">
-        <span class="font-semibold">Mentors:</span> {#each work.mentors as mentor, i}
-          {@debug mentor}
+        <span class="font-semibold">Mentors:</span>
+        {#each work.mentors as mentor, i}
           <a href={people[mentor].url} class="hover:border-b-2">{mentor}</a>{i != work.mentors.length - 1 ? ', ' : ''}
         {/each}
       </div>
@@ -859,11 +862,21 @@
       </div>
       <div><i>{pub.venue}</i></div>
       <div class="pub-misc">
-        {#if pub.url}<a href={pub.url} class="pub-misc-txt"> <i class="fas fa-link" aria-hidden="true" /> Project </a>{/if}
-        {#if pub.demo}<a href={pub.demo} class="pub-misc-txt"> <i class="fas fa-play" aria-hidden="true" /> Demo </a>{/if}
-        {#if pub.pdf}<a href={pub.pdf} class="pub-misc-txt"> <i class="far fa-file-pdf" aria-hidden="true" /> PDF </a>{/if}
-        {#if pub.video}<a href={pub.video} class="pub-misc-txt"> <i class="fas fa-film" aria-hidden="true" /> Video </a>{/if}
-        {#if pub.code}<a href={pub.code} class="pub-misc-txt"> <i class="fas fa-code" aria-hidden="true" /> Code </a>{/if}
+        {#if pub.url}
+          <a href={pub.url} class="pub-misc-txt"> <i class="fas fa-link" aria-hidden="true" /> Project </a>
+        {/if}
+        {#if pub.demo}
+          <a href={pub.demo} class="pub-misc-txt"> <i class="fas fa-play" aria-hidden="true" /> Demo </a>
+        {/if}
+        {#if pub.pdf}
+          <a href={pub.pdf} class="pub-misc-txt"> <i class="far fa-file-pdf" aria-hidden="true" /> PDF </a>
+        {/if}
+        {#if pub.video}
+          <a href={pub.video} class="pub-misc-txt"> <i class="fas fa-film" aria-hidden="true" /> Video </a>
+        {/if}
+        {#if pub.code}
+          <a href={pub.code} class="pub-misc-txt"> <i class="fas fa-code" aria-hidden="true" /> Code </a>
+        {/if}
         {#if pub.bibtex}
           <span style="cursor:pointer;" class="pub-misc-txt" onclick={`toggleBibtex(${stripPunc(pub.title)})`}>
             <i class="fas fa-book" aria-hidden="true" /> BibTeX
@@ -911,7 +924,10 @@
         <div>
           {course.instructors.length > 1 ? 'Instructors: ' : 'Instructor: '}
 
-          {#each course.instructors as instructor}<a href={people[instructor].url}>{instructor}</a>{/each}
+          {#each course.instructors as instructor, i}
+            <a href={people[instructor].url} class="mr-0 pr-0">{instructor}</a>
+            {#if i != course.instructors.length - 1}<span class="ml-0 pl-0">, </span>{/if}
+          {/each}
         </div>
       </div>
       <div class="cv-description">

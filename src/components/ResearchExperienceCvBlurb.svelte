@@ -36,7 +36,6 @@
 <div class="cv-description">
     Mentors:
     {#each mentors as mentor, i}
-        {@debug mentor}
         <a href={people[mentor].url}>{mentor}</a>{i != mentors.length - 1 ? ", " : ""}
     {/each}
 </div>
