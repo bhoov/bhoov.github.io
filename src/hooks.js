@@ -100,12 +100,13 @@ const hooks = [
       // Add to data
 
       const dataFileNames = [
+        "people",
         "education",
         "experiences",
-        "people",
         "publications",
         "talks",
-        "teaching"
+        "teaching",
+        "socialLinks"
       ]
 
       const fileData = await Promise.all(dataFileNames.map(async (fkey) => {

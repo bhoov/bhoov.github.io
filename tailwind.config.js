@@ -1,6 +1,9 @@
 const production = !process.env.ROLLUP_WATCH; // or some other env var like NODE_ENV
 
 module.exports = {
+  corePlugins: {
+    preflight: false,
+  },
   important: true,
   future: {
     // removeDeprecatedGapUtilities: true,
