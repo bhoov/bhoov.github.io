@@ -84,7 +84,7 @@
     </div>
   </div>
 
-  <div class="col-start-2 col-end-5">
+  <div class="col-start-2 col-end-5 w-11/12">
     <div class="mb-4">
       <h1 class="text-4xl m-auto place-items-center">Welcome</h1>
       <p>
