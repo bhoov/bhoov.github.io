@@ -1,7 +1,7 @@
 <script>
   import GlobalLayout from "./GlobalLayout.svelte"
   import NavBar from "../components/NavBar.svelte"
-  export let templateHtml, settings;
+  export let templateHtml;
 </script>
 
 <GlobalLayout>
