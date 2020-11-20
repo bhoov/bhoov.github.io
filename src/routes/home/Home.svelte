@@ -36,16 +36,13 @@
     /* max-height: 100%; */
     object-fit: cover;
   }
-  .headshot {
-    @apply mb-4;
-  }
 
   .social-links {
-    @apply grid gap-x-3 grid-cols-6;
+    @apply grid gap-x-3 grid-cols-6 m-auto my-4 col-start-3 col-end-7 mb-0 pb-0;
   }
 
   .social-link-icon-wrapper {
-    @apply col-start-1 col-end-2 place-self-end;
+    @apply col-start-1 col-end-2 place-self-start;
   }
 
   .social-link-text-wrapper {
@@ -53,17 +50,13 @@
   }
 
   #main {
-    @apply grid grid-cols-12 gap-x-8;
+    /* @apply grid grid-cols-12 gap-x-8; */
     max-width: 960px;
     margin: auto;
   }
 
   .left-bar {
     @apply col-start-1 col-end-4;
-  }
-
-  .content {
-    @apply col-start-4 col-end-13;
   }
 
   .me {
@@ -74,24 +67,24 @@
 <svelte:head>
   <title>Ben Hoover</title>
 </svelte:head>
-<div id="main" class="grid grid-cols-12 gap-24">
-  <div class="about-me col-start-1 col-end-4">
-    <div class="face-and-links">
-      <div class="headshot m-auto my-4">
-        <img class="rounded-full shadow-lg" src="imgs/people/me-headshot-la.png" alt="My headshot" />
+<div id="main" class="md:grid grid-cols-4 gap-16">
+  <div class="md:col-start-1 md:col-end-2">
+    <div class="face-and-links grid grid-cols-6 md:block">
+      <div class="m-auto my-4 col-start-1 col-end-3">
+        <img class="rounded-full shadow-lg w-full" src="imgs/people/me-headshot-la.png" alt="My headshot" />
       </div>
-      <div class="social-links m-auto my-4">
+      <div class="social-links gap-x-2 gap-0 md:gap-2">
         {#each data.db.socialLinks as link}
-          <div class="social-link-icon-wrapper">
+          <div class="social-link-icon-wrapper md:pb-2 md:mb-2">
             <a href={link.href}><i class={`fa ${link.faIcon} icon`} style={`color: ${link.color || '#515151'}`} /></a>
           </div>
-          <div class="social-link-text-wrapper"><a href={link.href} class="text-gray-800 hover:text-blue-800">{link.label}</a></div>
+          <div class="social-link-text-wrapper place-self-start"><a href={link.href} class="text-gray-800 hover:text-blue-800">{link.label}</a></div>
         {/each}
       </div>
     </div>
   </div>
 
-  <div class="col-start-4 col-end-13">
+  <div class="col-start-2 col-end-5">
     <div class="mb-4">
       <h1 class="text-4xl m-auto place-items-center">Welcome</h1>
       <p>
@@ -147,7 +140,5 @@
     </div>
   </div>
 </div>
-
-<div class="about" />
 
 <div />
