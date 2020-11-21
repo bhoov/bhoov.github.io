@@ -8,33 +8,14 @@
 
 <style lang="postcss">
   :global(h1) {
-  font-family: "Lato", -apple-system, "Segoe UI", Roboto, Oxygen, serif;
-  font-weight: bold;
-  line-height: 2.35rem;
+    font-family: 'Lato', -apple-system, 'Segoe UI', Roboto, Oxygen, serif;
+    font-weight: bold;
+    line-height: 2.35rem;
 
-  /* font-size: 2.5rem; */
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.25;
-
-  }
-
-  .thumbnail-wrapper {
-    position: relative;
-  }
-  .thumbnail-wrapper::after {
-    content: '';
-    display: block;
-    padding-bottom: 100%;
-  }
-
-  .thumbnail {
-    @apply shadow-lg rounded-md;
-    position: absolute;
-    width: 100%;
-    /* height: 100%; */
-    /* max-height: 100%; */
-    object-fit: cover;
+    /* font-size: 2.5rem; */
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.25;
   }
 
   .social-links {
@@ -67,18 +48,23 @@
 <svelte:head>
   <title>Ben Hoover</title>
 </svelte:head>
-<div id="main" class="md:grid grid-cols-4 gap-16 pl-2">
+<div id="main" class="md:grid grid-cols-4 gap-16 w-full mx-6">
   <div class="md:col-start-1 md:col-end-2">
     <div class="face-and-links grid grid-cols-6 md:block">
-      <div class="m-auto my-4 col-start-1 col-end-3">
-        <img class="rounded-full shadow-lg w-full" src="imgs/people/me-headshot-la.png" alt="My headshot" />
+      <div class="md:my-4 col-start-1 col-end-3">
+        <img
+          class="rounded-full shadow-lg mx-auto mt-4 w-full md:w-full block"
+          src="imgs/people/me-headshot-la.png"
+          alt="My headshot" />
       </div>
       <div class="social-links gap-x-2 gap-0 md:gap-2">
         {#each data.db.socialLinks as link}
           <div class="social-link-icon-wrapper md:pb-2 md:mb-2">
             <a href={link.href}><i class={`fa ${link.faIcon} icon`} style={`color: ${link.color || '#515151'}`} /></a>
           </div>
-          <div class="social-link-text-wrapper place-self-start"><a href={link.href} class="text-gray-800 hover:text-blue-800">{link.label}</a></div>
+          <div class="social-link-text-wrapper place-self-start">
+            <a href={link.href} class="text-gray-800 hover:text-blue-800">{link.label}</a>
+          </div>
         {/each}
       </div>
     </div>
@@ -88,28 +74,33 @@
     <div class="mb-4">
       <h1 class="text-4xl">Welcome</h1>
       <p>
-        I am a Research Engineer at IBM Research working on AI interpretability and interaction through visualization.
-        My goal is to make exploring, editing, and characterizing models an easy part of the normal development
-        pipeline. To date, my experiences lie primarily in the domains of Natural Language Processing, Chemistry, and
-        Biology, though my interests are for any data can be construed as a language, whether scientifically defined or
-        naturally evolved.
+        I am a Research Engineer at <a href="https://www.research.ibm.com/artificial-intelligence/">IBM Research</a> working
+        on AI Interpretability and Interaction through visualization. My goal is to make exploring, editing, and understanding
+        models an easy part of the normal development pipeline. I have experience in Natural Language Processing, Chemistry,
+        and Biology, though my interests are for any domain that can be construed as a language.
       </p>
     </div>
 
-    <hr/>
+    <hr />
 
     <div class="projects">
       <h1>Projects</h1>
       {#each projects as project}
-        <div class="mb-3 grid grid-cols-7 gap-4">
-          <div class="thumbnail-wrapper col-start-1 col-end-2">
-            <a href={project.url || project.pdf}><img src={project.thumbnail} alt={project.name} class="thumbnail" /></a>
+        <div class="mb-8 md:grid grid-cols-7 gap-4" >
+          <div class="thumbnail-wrapper col-start-1 col-end-2 mb-2">
+            <a href={project.url || project.pdf}><img
+                src={project.thumbnail}
+                alt={project.name}
+                class="thumbnail shadow-lg rounded-md w-10/12 md:w-full md:h-24 bg-cover bg-center" /></a>
           </div>
           <div class="project-description col-start-2 col-end-8">
-            <div class="align-top text-lg font-bold"><a href={project.url || project.pdf} class="text-gray-800 hover:text-blue-800">{project.title}</a></div>
+            <div class="align-top text-lg font-bold">
+              <a href={project.url || project.pdf} class="text-gray-800 hover:text-blue-800">{project.title}</a>
+            </div>
             <div class="mb-2">
               {#each project.authors as author, i}
-                <a href={people[author].url} class="text-gray-800" class:me={people[author].me}><span class:my-name={people[author].me}>{author}</span>{i != project.authors.length - 1 ? ', ' : ''}</a>
+                <a href={people[author].url} class="text-gray-800" class:me={people[author].me}><span
+                    class:my-name={people[author].me}>{author}</span>{i != project.authors.length - 1 ? ', ' : ''}</a>
               {/each}
             </div>
             <div class="">
@@ -128,11 +119,6 @@
               {#if project.code}
                 <a href={project.code} class="pub-misc-txt"> <i class="fas fa-code" aria-hidden="true" /> Code </a>
               {/if}
-              <!-- {#if project.bibtex}
-              <span style="cursor:pointer;" class="pub-misc-txt" onclick={`toggleBibtex(${stripPunc(pub.title)})`}>
-                <i class="fas fa-book" aria-hidden="true" /> BibTeX
-              </span>
-            {/if} -->
             </div>
           </div>
         </div>
