@@ -15,7 +15,6 @@
     /* font-size: 2.5rem; */
     margin-top: 1rem;
     margin-bottom: 1.5rem;
-    line-height: 1.25;
   }
 
   .social-links {
@@ -91,7 +90,7 @@
             <a href={project.url || project.pdf}><img
                 src={project.thumbnail}
                 alt={project.name}
-                class="thumbnail shadow-lg rounded-md w-10/12 md:w-full md:h-24 bg-cover bg-center" /></a>
+                class="thumbnail shadow-lg rounded-md w-10/12 md:w-full md:h-16 bg-cover bg-center" /></a>
           </div>
           <div class="project-description col-start-2 col-end-8">
             <div class="align-top text-lg font-bold">
