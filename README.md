@@ -1,8 +1,8 @@
 # Personal Website
 
-My personal website, experimenting with Elder.js.
+My personal website.
 
-## Getting started
+## Development
 ```bash
 npm install # or just yarn
 npm run dev:server # For development
@@ -22,4 +22,9 @@ Navigate to [localhost:3000](http://localhost:3000).
 npm run build
 ```
 
-This will build all of your html into the /public/ folder.
+This will build all of your html into the `/public/` folder.
+
+## Stack
+- [Elder.JS](https://github.com/Elderjs/elderjs) with [SvelteJS](https://svelte.dev/) + [Tailwind.css](https://github.com/Elderjs/elderjs) for frontend
+- Deployed to [Netlify](https://www.netlify.com/)
+- DNS through [NameCheap](https://www.namecheap.com/)
