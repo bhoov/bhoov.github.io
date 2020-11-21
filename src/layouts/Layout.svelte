@@ -4,6 +4,14 @@
   export let templateHtml;
 </script>
 
+<style>
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+</style>
+
 <GlobalLayout>
   <NavBar hydrate-client={{}}/>
   <div class="container">

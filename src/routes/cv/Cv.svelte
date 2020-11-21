@@ -23,14 +23,6 @@
 </script>
 
 <style lang="postcss">
-  /* body {
-    color: #414141;
-    background-color: #fff;
-  } */
-
-  #main {
-    @apply grid grid-cols-5 gap-x-5;
-  }
 
   .cv-content {
     @apply col-span-4 col-start-2;
@@ -314,7 +306,7 @@
 <!-- <div class="cv-spacer" /> -->
 
 <!-- <div id="cv"> -->
-<div id="main" class="mt-1 mb-3 place-items-start place-self-center max-w-screen-md mx-auto">
+<div id="main" class="mt-1 mb-3 place-items-start w-10/12 md:w-8/12 place-self-center mx-auto md:grid grid-cols-5 gap-x-5">
   <div class="cv-content">
     <h1 class="text-3xl">Benjamin Hoover</h1>
 

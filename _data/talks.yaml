@@ -23,3 +23,13 @@
   venues:
     - name: "Medtronic Diabetes R&D"
       date: "Jul 2017"
+
+- title: "The Inside Story"
+  venues:
+    - name: "Duke University: MEng Graduation"
+      date: "May 2018"
+
+- title: "The Impact of Encouragement"
+  venues:
+    - name: "Cary Christian School Graduation"
+      date: "May 2013"
