@@ -6,6 +6,7 @@
 
   // List of navigation items
   const navItems = [
+    { label: 'Home', href: '/' },
     { label: 'CV', href: '/cv' },
   ];
 
@@ -44,9 +45,8 @@
   }
 
   .inner {
-    max-width: 980px;
-    padding-left: 20px;
-    padding-right: 20px;
+    /* max-width: 980px; */
+    /* padding-left: 20px; */
     margin: auto;
     /* box-sizing: border-box; */
     display: flex;
@@ -131,13 +131,9 @@
     left: 0;
   }
 
-  .navbar-list li {
-    list-style-type: none;
-    position: relative;
-  }
-
   .nav-link {
     opacity: 0.8;
+    display: block;
     text-decoration: none;
     position: relative;
   }
@@ -149,7 +145,7 @@
     height: 3px;
     bottom: -0.25rem;
     left: 0;
-    background-color: rgba(214, 207, 207, 0.8);
+    background-color: rgba(190, 70, 225, 0.9);
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.15s ease-in-out 0s;
@@ -169,8 +165,8 @@
     display: inline-block;
     white-space: nowrap;
     align-items: center;
-    padding: 0 3px;
-    margin: 0 7px;
+    padding: 0 0px;
+    margin: 0 10px;
     font-size: 1.05rem;
   }
 
@@ -200,14 +196,18 @@
 
 <nav>
   <div class="inner">
-    <div class="text-2xl text-white me font-extrabold nav-link"><a href="/">Ben Hoover</a></div>
+    <div class="text-2xl me font-extrabold nav-link ml-4"><a class="text-white" href="/">Ben Hoover</a></div>
     <div on:click={handleMobileIconClick} class={`mobile-icon${showMobileMenu ? ' active' : ''}`}>
       <div class="middle-line" />
     </div>
-    <ul class={`navbar-list${showMobileMenu ? ' mobile' : ''}`}>
+    <div class={`navbar-list${showMobileMenu ? ' mobile' : ''}`}>
       {#each navItems as item}
-        <li class="nav-link"><a href={item.href}>{item.label}</a></li>
+        <div>
+          <a class="w-full place-self-center place-items-center margin-auto my-4" href={item.href}>
+            <span class="nav-link block">{item.label} </span>
+          </a>
+        </div>
       {/each}
-    </ul>
+    </div>
   </div>
 </nav>

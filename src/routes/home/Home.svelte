@@ -67,7 +67,7 @@
 <svelte:head>
   <title>Ben Hoover</title>
 </svelte:head>
-<div id="main" class="md:grid grid-cols-4 gap-16">
+<div id="main" class="md:grid grid-cols-4 gap-16 pl-2">
   <div class="md:col-start-1 md:col-end-2">
     <div class="face-and-links grid grid-cols-6 md:block">
       <div class="m-auto my-4 col-start-1 col-end-3">
@@ -86,7 +86,7 @@
 
   <div class="col-start-2 col-end-5 w-11/12">
     <div class="mb-4">
-      <h1 class="text-4xl m-auto place-items-center">Welcome</h1>
+      <h1 class="text-4xl">Welcome</h1>
       <p>
         I am a Research Engineer at IBM Research working on AI interpretability and interaction through visualization.
         My goal is to make exploring, editing, and characterizing models an easy part of the normal development
