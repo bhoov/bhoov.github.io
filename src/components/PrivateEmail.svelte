@@ -22,7 +22,7 @@
 
 <div class="cv-social-link">
   <div class="cv-social-link-icon-wrapper">
-    <a href={mailtoAddress}> <i class="fas fa-envelope icon" style="color: #515151" /> </a>
+    <a target="_blank" href={mailtoAddress}> <i class="fas fa-envelope icon" style="color: #515151" /> </a>
   </div>
   <div class="cv-social-link-text-wrapper">
     {#if decodedEmail == null}
@@ -31,6 +31,6 @@
         on:click={() => {
           decodedEmail = decodeEmail(encodedEmail);
         }}>Click to Reveal</span>
-    {:else}<a href={mailtoAddress}><span>{decodedEmail}</span></a>{/if}
+    {:else}<a target="_blank" href={mailtoAddress}><span>{decodedEmail}</span></a>{/if}
   </div>
 </div>

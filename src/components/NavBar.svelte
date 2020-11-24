@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  export let showLinks = false;
 
   // Show mobile icon and display menu
   let showMobileMenu = false;
@@ -197,17 +198,19 @@
 <nav>
   <div class="inner">
     <div class="text-2xl me font-extrabold nav-link ml-4"><a class="text-white" href="/">Ben Hoover</a></div>
-    <div on:click={handleMobileIconClick} class={`mobile-icon${showMobileMenu ? ' active' : ''}`}>
-      <div class="middle-line" />
-    </div>
-    <div class={`navbar-list${showMobileMenu ? ' mobile' : ''}`}>
-      {#each navItems as item}
-        <div>
-          <a class="w-full place-self-center place-items-center margin-auto my-4" href={item.href}>
-            <span class="nav-link block">{item.label} </span>
-          </a>
-        </div>
-      {/each}
-    </div>
+    {#if showLinks}
+      <div on:click={handleMobileIconClick} class={`mobile-icon${showMobileMenu ? ' active' : ''}`}>
+        <div class="middle-line" />
+      </div>
+      <div class={`navbar-list${showMobileMenu ? ' mobile' : ''}`}>
+        {#each navItems as item}
+          <div>
+            <a class="w-full place-self-center place-items-center margin-auto my-4" href={item.href}>
+              <span class="nav-link block">{item.label} </span>
+            </a>
+          </div>
+        {/each}
+      </div>
+    {/if}
   </div>
 </nav>

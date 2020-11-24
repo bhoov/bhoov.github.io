@@ -6,6 +6,9 @@
 
 <svelte:head>
   <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" 
+      type="image/png" 
+      href="/favicon.ico">
   <script src="https://kit.fontawesome.com/ab1be9b975.js" crossorigin="anonymous"></script>
 </svelte:head>
 
