@@ -303,9 +303,6 @@
   </script>
 </svelte:head>
 
-<!-- <div class="cv-spacer" /> -->
-
-<!-- <div id="cv"> -->
 <div id="main" class="mt-1 mb-3 place-items-start w-10/12 md:w-8/12 place-self-center mx-auto md:grid grid-cols-5 gap-x-5">
   <div class="cv-content">
     <h1 class="text-3xl">Benjamin Hoover</h1>
@@ -320,25 +317,17 @@
 
     <div class="grid sm:grid-cols-2">
       <div>
-        <!-- 
-      <div class="cv-social-link" style="display: flex">
-        <div class="cv-social-link-icon-wrapper">
-          <a href="https://fredhohman.com"><i class="fas fa-home icon" style="color: #515151"></i></a>
-        </div>
-        <div class="cv-social-link-text-wrapper"> <a href="https://fredhohman.com">fredhohman.com</a>
-        </div>
-      </div> -->
 
         <PrivateEmail hydrate-client={{}} />
 
         <div class="cv-social-link">
           <div class="cv-social-link-icon-wrapper">
-            <a href="https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en"><i
+            <a target="_blank" href="https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en"><i
                 class="fa fa-graduation-cap icon"
                 style="color: #515151" /></a>
           </div>
           <div class="cv-social-link-text-wrapper">
-            <a href="https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en">Google Scholar</a>
+            <a target="_blank" href="https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en">Google Scholar</a>
           </div>
         </div>
 
@@ -354,16 +343,16 @@
       <div>
         <div class="cv-social-link">
           <div class="cv-social-link-icon-wrapper">
-            <a href="https://twitter.com/ben_hoov"><i class="fab fa-twitter icon" style="color: #1da1f2" /></a>
+            <a target="_blank" href="https://twitter.com/ben_hoov"><i class="fab fa-twitter icon" style="color: #1da1f2" /></a>
           </div>
-          <div class="cv-social-link-text-wrapper"><a href="https://twitter.com/ben_hoov">@ben_hoov</a></div>
+          <div class="cv-social-link-text-wrapper"><a target="_blank" href="https://twitter.com/ben_hoov">@ben_hoov</a></div>
         </div>
 
         <div class="cv-social-link">
           <div class="cv-social-link-icon-wrapper">
-            <a href="https://github.com/bhoov"><i class="fab fa-github icon" style="color: #6e5494" /></a>
+            <a target="_blank" href="https://github.com/bhoov"><i class="fab fa-github icon" style="color: #6e5494" /></a>
           </div>
-          <div class="cv-social-link-text-wrapper"><a href="https://github.com/bhoov">@bhoov</a></div>
+          <div class="cv-social-link-text-wrapper"><a target="_blank" href="https://github.com/bhoov">@bhoov</a></div>
         </div>
       </div>
     </div>
@@ -377,7 +366,7 @@
 
     <div class="cv-content">
       <b>{school.degree}</b>
-      <div><a href={school.institutionUrl}>{school.institution}</a>, {school.location}</div>
+      <div><a target="_blank" href={school.institutionUrl}>{school.institution}</a>, {school.location}</div>
 
       <div class="cv-description">
         <div>{school.description}</div>
@@ -393,12 +382,12 @@
     <div class="cv-date-info">{work.end ? `${work.start} - ${work.end}` : work.start}</div>
 
     <div class="cv-content">
-      <div><a href={work.institutionUrl}><b>{work.institution}</b></a>, {work.location}</div>
-      <div><i>{work.role}, <a href={work.teamUrl}>{work.team}</a></i></div>
+      <div><a target="_blank" href={work.institutionUrl}><b>{work.institution}</b></a>, {work.location}</div>
+      <div><i>{work.role}, <a target="_blank" href={work.teamUrl}>{work.team}</a></i></div>
       <div class="cv-description">
         <span class="font-semibold">Mentors:</span>
         {#each work.mentors as mentor, i}
-          <a href={people[mentor].url} class="hover:border-b-2">{mentor}</a>{i != work.mentors.length - 1 ? ', ' : ''}
+          <a target="_blank" href={people[mentor].url} class="hover:border-b-2">{mentor}</a>{i != work.mentors.length - 1 ? ', ' : ''}
         {/each}
       </div>
     </div>
@@ -411,28 +400,28 @@
   {#each data.db.publications as pub}
     <div class="cv-date-info">{formatPubDate(pub)}</div>
     <div class="cv-content">
-      <div><a href={pub.title}><b>{pub.title}</b></a></div>
+      <div><a target="_blank" href={pub.title}><b>{pub.title}</b></a></div>
       <div>
         {#each pub.authors as author, i}
-          <a href={people[author].url}><span class:my-name={people[author].me}>{author}</span>{i != pub.authors.length - 1 ? ', ' : ''}</a>
+          <a target="_blank" href={people[author].url}><span class:my-name={people[author].me}>{author}</span>{i != pub.authors.length - 1 ? ', ' : ''}</a>
         {/each}
       </div>
       <div><i>{pub.venue}</i></div>
       <div class="pub-misc">
         {#if pub.url}
-          <a href={pub.url} class="pub-misc-txt"> <i class="fas fa-link" aria-hidden="true" /> Project </a>
+          <a target="_blank" href={pub.url} class="pub-misc-txt"> <i class="fas fa-link" aria-hidden="true" /> Project </a>
         {/if}
         {#if pub.demo}
-          <a href={pub.demo} class="pub-misc-txt"> <i class="fas fa-play" aria-hidden="true" /> Demo </a>
+          <a target="_blank" href={pub.demo} class="pub-misc-txt"> <i class="fas fa-play" aria-hidden="true" /> Demo </a>
         {/if}
         {#if pub.pdf}
-          <a href={pub.pdf} class="pub-misc-txt"> <i class="far fa-file-pdf" aria-hidden="true" /> PDF </a>
+          <a target="_blank" href={pub.pdf} class="pub-misc-txt"> <i class="far fa-file-pdf" aria-hidden="true" /> PDF </a>
         {/if}
         {#if pub.video}
-          <a href={pub.video} class="pub-misc-txt"> <i class="fas fa-film" aria-hidden="true" /> Video </a>
+          <a target="_blank" href={pub.video} class="pub-misc-txt"> <i class="fas fa-film" aria-hidden="true" /> Video </a>
         {/if}
         {#if pub.code}
-          <a href={pub.code} class="pub-misc-txt"> <i class="fas fa-code" aria-hidden="true" /> Code </a>
+          <a target="_blank" href={pub.code} class="pub-misc-txt"> <i class="fas fa-code" aria-hidden="true" /> Code </a>
         {/if}
         {#if pub.bibtex}
           <span style="cursor:pointer;" class="pub-misc-txt" onclick={`toggleBibtex(${stripPunc(pub.title)})`}>
@@ -469,12 +458,12 @@
   {#each data.db.teaching as course}
     <div class="cv-date-info">{course.date}</div>
     <div class="cv-content">
-      <div><a href={course.courseUrl}><b>{course.role}</b></a></div>
-      <div><i><a href={course.institionUrl}>{course.institution}</a>, {course.location}</i></div>
+      <div><a target="_blank" href={course.courseUrl}><b>{course.role}</b></a></div>
+      <div><i><a target="_blank" href={course.institionUrl}>{course.institution}</a>, {course.location}</i></div>
 
       <div>
         {#if course.course}
-          <a href={course.courseUrl}>{course.course}
+          <a target="_blank" href={course.courseUrl}>{course.course}
             {#if course.courseCode}<span class="text-gray-600 text-s">({course.courseCode})</span>{/if}
           </a>
         {/if}
@@ -482,7 +471,7 @@
           {course.instructors.length > 1 ? 'Instructors: ' : 'Instructor: '}
 
           {#each course.instructors as instructor, i}
-            <a href={people[instructor].url} class="mr-0 pr-0">{instructor}</a>
+            <a target="_blank" href={people[instructor].url} class="mr-0 pr-0">{instructor}</a>
             {#if i != course.instructors.length - 1}<span class="ml-0 pl-0">, </span>{/if}
           {/each}
         </div>

@@ -59,12 +59,18 @@
       <div class="social-links gap-x-2 gap-0 md:gap-2">
         {#each data.db.socialLinks as link}
           <div class="social-link-icon-wrapper md:pb-2 md:mb-2">
-            <a href={link.href}><i class={`fa ${link.faIcon} icon`} style={`color: ${link.color || '#515151'}`} /></a>
+            <a target="_blank" href={link.href}><i class={`fa ${link.faIcon} icon`} style={`color: ${link.color || '#515151'}`} /></a>
           </div>
           <div class="social-link-text-wrapper place-self-start">
-            <a href={link.href} class="text-gray-800 hover:text-blue-800">{link.label}</a>
+            <a target="_blank" href={link.href} class="text-gray-800 hover:text-blue-800">{link.label}</a>
           </div>
         {/each}
+        <div class="social-link-icon-wrapper md:pb-2 md:mb-2">
+          <a target="_blank" href="/cv"><i class={`far fa-address-card`} style="color: #515151"/></a>
+        </div>
+        <div class="social-link-text-wrapper place-self-start">
+          <a target="_blank" href="/cv" class="text-gray-800 hover:text-blue-800">My CV</a>
+        </div>
       </div>
     </div>
   </div>
@@ -73,7 +79,7 @@
     <div class="mb-4">
       <h1 class="text-4xl">Welcome</h1>
       <p>
-        I am a Research Engineer at <a href="https://www.research.ibm.com/artificial-intelligence/">IBM Research</a> working
+        I am a Research Engineer at <a target="_blank" href="https://www.research.ibm.com/artificial-intelligence/">IBM Research</a> working
         on AI Interpretability and Interaction through visualization. My goal is to make exploring, editing, and understanding
         models an easy part of the normal development pipeline. I have experience in Natural Language Processing, Chemistry,
         and Biology, though my interests are for any domain that can be construed as a language.
@@ -87,36 +93,36 @@
       {#each projects as project}
         <div class="mb-8 md:grid grid-cols-7 gap-4" >
           <div class="thumbnail-wrapper col-start-1 col-end-2 mb-2">
-            <a href={project.url || project.pdf}><img
+            <a target="_blank" href={project.url || project.pdf}><img
                 src={project.thumbnail}
                 alt={project.name}
                 class="thumbnail shadow-lg rounded-md w-10/12 md:w-full md:h-16 bg-cover bg-center" /></a>
           </div>
           <div class="project-description col-start-2 col-end-8">
             <div class="align-top text-lg font-bold">
-              <a href={project.url || project.pdf} class="text-gray-800 hover:text-blue-800">{project.title}</a>
+              <a target="_blank" href={project.url || project.pdf} class="text-gray-800 hover:text-blue-800">{project.title}</a>
             </div>
             <div class="mb-2">
               {#each project.authors as author, i}
-                <a href={people[author].url} class="text-gray-800" class:me={people[author].me}><span
+                <a target="_blank" href={people[author].url} class="text-gray-800" class:me={people[author].me}><span
                     class:my-name={people[author].me}>{author}</span>{i != project.authors.length - 1 ? ', ' : ''}</a>
               {/each}
             </div>
             <div class="">
               {#if project.url}
-                <a href={project.url} class="pub-misc-txt"> <i class="fas fa-link" aria-hidden="true" /> Project </a>
+                <a target="_blank" href={project.url} class="pub-misc-txt"> <i class="fas fa-link" aria-hidden="true" /> Project </a>
               {/if}
               {#if project.demo}
-                <a href={project.demo} class="pub-misc-txt"> <i class="fas fa-play" aria-hidden="true" /> Demo </a>
+                <a target="_blank" href={project.demo} class="pub-misc-txt"> <i class="fas fa-play" aria-hidden="true" /> Demo </a>
               {/if}
               {#if project.pdf}
-                <a href={project.pdf} class="pub-misc-txt"> <i class="far fa-file-pdf" aria-hidden="true" /> PDF </a>
+                <a target="_blank" href={project.pdf} class="pub-misc-txt"> <i class="far fa-file-pdf" aria-hidden="true" /> PDF </a>
               {/if}
               {#if project.video}
-                <a href={project.video} class="pub-misc-txt"> <i class="fas fa-film" aria-hidden="true" /> Video </a>
+                <a target="_blank" href={project.video} class="pub-misc-txt"> <i class="fas fa-film" aria-hidden="true" /> Video </a>
               {/if}
               {#if project.code}
-                <a href={project.code} class="pub-misc-txt"> <i class="fas fa-code" aria-hidden="true" /> Code </a>
+                <a target="_blank" href={project.code} class="pub-misc-txt"> <i class="fas fa-code" aria-hidden="true" /> Code </a>
               {/if}
             </div>
           </div>
