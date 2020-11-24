@@ -11,6 +11,8 @@
   url: http://difflm.xyz/
   demo: http://difflm.xyz/
   thumbnail: "imgs/thumbnails/diffLM.png"
+  description: >-
+    Demo accepted to Neurips 2020
 
 - title: "CogMol: Target-Specific and Selective Drug Design for COVID-19 Using Deep Generative Models"
   name: CogMol
@@ -33,8 +35,8 @@
   demo: https://covid19-mol.mybluemix.net/new
   pdf: https://papers.nips.cc/paper/2020/file/2d16ad1968844a4300e9a490588ff9f8-Paper.pdf
   thumbnail: "imgs/thumbnails/cogmol.png"
-  # video: https://www.youtube.com/watch?v=e31oyfo_thY&feature=youtu.be
-  # code: https://github.com/bhoov/exbert
+  description: >-
+    Spotlight Poster at Neurips 2020
   bibtex: |-
 
     Neurips citation available soon.
@@ -60,6 +62,8 @@
   url: http://visxai-submission.xyz/index-distill.html
   demo: http://visxai-submission.xyz/
   thumbnail: "imgs/thumbnails/saliencyExplorer.png"
+  description: >-
+    Interactive Article at IEE Vis: VisXAI Workshop
   # pdf: http://visxai-submission.xyz/index-distill.html
 
 
@@ -78,6 +82,8 @@
   video: https://www.youtube.com/watch?v=e31oyfo_thY&feature=youtu.be
   code: https://github.com/bhoov/exbert
   thumbnail: "imgs/thumbnails/exBERT.png"
+  description: >-
+    System Demonstration at ACL 2020. Nominated for <strong>Best Demo</strong> at Neurips 2019.
   bibtex: |-
 
     @inproceedings{hoover-etal-2020-exbert,
@@ -112,6 +118,10 @@
   video: https://vimeo.com/434757113
   code: https://github.com/rxn4chemistry/rxnmapper
   thumbnail: "imgs/thumbnails/rxnmapper.png"
+  description: >-
+    ICML 2020 Workshop: AI for Scientific Discovery. <strong>Best Poster</strong> at 
+    <a target="_blank" href="https://ioppublishing.org/news/announcing-the-winners-of-ioppposter/?utm_source=PR&utm_medium=cpc&utm_campaign=IOPPposter&utm_term=IOPPposterConference">#IOPPoster</a>,
+    In review with Science Advances.
   bibtex: |-
 
     @article{Schwaller2020Unsupervised,
