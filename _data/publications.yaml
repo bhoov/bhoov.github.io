@@ -87,7 +87,7 @@
   bibtex: |-
 
     @inproceedings{hoover-etal-2020-exbert,
-      title = "ex{BERT}: {A} {V}isual {A}nalysis {T}ool to {E}xplore {L}earned {R}epresentations in {T}ransformer {M}odels",
+      title = "{exBERT: A Visual Analysis Tool to Explore Learned Representations in Transformer Models}",
       author = "Hoover, Benjamin  and
         Strobelt, Hendrik  and
         Gehrmann, Sebastian",
