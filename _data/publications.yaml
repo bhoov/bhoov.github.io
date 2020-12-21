@@ -1,3 +1,35 @@
+- title: "RXNMapper: Unsupervised Attention Guided Atom Mapping"
+  name: RXNMapper
+  authors:
+    - Philippe Schwaller
+    - Benjamin Hoover
+    - JL Reymond
+    - Hendrik Strobelt
+    - Teodoro Laino
+  venue: "ChemRxiv Preprint, #IOPPoster, SCS Fall 2020, ICML 2020 Workshop: AI for Scientific Discovery, ACS Fall 2020"
+  year: 2020
+  month: Dec
+  url: http://rxnmapper.ai/
+  demo: http://rxnmapper.ai/demo.html
+  pdf: https://chemrxiv.org/articles/Unsupervised_Attention-Guided_Atom-Mapping/12298559
+  video: https://vimeo.com/434757113
+  code: https://github.com/rxn4chemistry/rxnmapper
+  thumbnail: "imgs/thumbnails/rxnmapper.png"
+  description: >-
+    ICML 2020 Workshop: AI for Scientific Discovery. <strong>Best Poster</strong> at 
+    <a target="_blank" href="https://ioppublishing.org/news/announcing-the-winners-of-ioppposter/?utm_source=PR&utm_medium=cpc&utm_campaign=IOPPposter&utm_term=IOPPposterConference">#IOPPoster</a>,
+    Accepted to Science Advances.
+  bibtex: |-
+
+    @article{Schwaller2020Unsupervised,
+      author = "Philippe Schwaller and Benjamin Hoover and Jean-Louis Reymond and Hendrik Strobelt and Teodoro Laino",
+      title = "{Unsupervised Attention-Guided Atom-Mapping}",
+      year = "2020",
+      month = "5",
+      url = "https://chemrxiv.org/articles/Unsupervised_Attention-Guided_Atom-Mapping/12298559",
+      doi = "10.26434/chemrxiv.12298559.v1"
+    }      
+
 - title: "LMdiff: A Visual Diff Tool to Compare Language Models"
   name: LMdiff
   authors: 
@@ -63,7 +95,7 @@
   demo: http://visxai-submission.xyz/
   thumbnail: "imgs/thumbnails/saliencyExplorer.png"
   description: >-
-    Interactive Article at IEE Vis: VisXAI Workshop
+    Interactive Article at IEE Vis: VisXAI Workshop; Demo at NeurIPS 2020
   # pdf: http://visxai-submission.xyz/index-distill.html
 
 
@@ -100,38 +132,6 @@
       doi = "10.18653/v1/2020.acl-demos.22",
       pages = "187--196",
     }
-
-- title: "RXNMapper: Unsupervised Attention Guided Atom Mapping"
-  name: RXNMapper
-  authors:
-    - Philippe Schwaller
-    - Benjamin Hoover
-    - JL Reymond
-    - Hendrik Strobelt
-    - Teodoro Laino
-  venue: "ChemRxiv Preprint, #IOPPoster, SCS Fall 2020, ICML 2020 Workshop: AI for Scientific Discovery, ACS Fall 2020"
-  year: 2020
-  month: May
-  url: http://rxnmapper.ai/
-  demo: http://rxnmapper.ai/demo.html
-  pdf: https://chemrxiv.org/articles/Unsupervised_Attention-Guided_Atom-Mapping/12298559
-  video: https://vimeo.com/434757113
-  code: https://github.com/rxn4chemistry/rxnmapper
-  thumbnail: "imgs/thumbnails/rxnmapper.png"
-  description: >-
-    ICML 2020 Workshop: AI for Scientific Discovery. <strong>Best Poster</strong> at 
-    <a target="_blank" href="https://ioppublishing.org/news/announcing-the-winners-of-ioppposter/?utm_source=PR&utm_medium=cpc&utm_campaign=IOPPposter&utm_term=IOPPposterConference">#IOPPoster</a>,
-    In review with Science Advances.
-  bibtex: |-
-
-    @article{Schwaller2020Unsupervised,
-      author = "Philippe Schwaller and Benjamin Hoover and Jean-Louis Reymond and Hendrik Strobelt and Teodoro Laino",
-      title = "{Unsupervised Attention-Guided Atom-Mapping}",
-      year = "2020",
-      month = "5",
-      url = "https://chemrxiv.org/articles/Unsupervised_Attention-Guided_Atom-Mapping/12298559",
-      doi = "10.26434/chemrxiv.12298559.v1"
-    }      
 
 - title: >- 
     Managing the SOS Response for Enhanced 
