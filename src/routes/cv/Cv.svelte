@@ -19,7 +19,6 @@
   }
 
   let decodedEmail = decodeEmail(encodedEmail);
-  $: mailtoAddress = decodedEmail == null ? '#' : `mailto:${decodedEmail}`;
 </script>
 
 <style lang="postcss">
@@ -128,111 +127,6 @@
   .pub-misc-txt:hover {
     @apply text-blue-900;
     text-decoration: none;
-  }
-  #venue,
-  #paper-award,
-  #paper-award {
-    color: #ffb700;
-    margin-top: 0.5rem;
-  }
-  .cd-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .cd-link {
-    text-decoration: none !important;
-  }
-  .cd {
-    background: #fff;
-    display: inline-block;
-    height: 130px;
-    width: 130px;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    margin: 0.5rem;
-  }
-  .cd:hover {
-    text-decoration: none;
-    border: 1px solid #111;
-  }
-  .cd-inner {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 130px;
-    border-radius: 50%;
-    margin: 12px;
-    width: 106px;
-    height: 106px !important;
-    background-color: #eee;
-  }
-  .cd-inner-hole {
-    height: 26px;
-    width: 26px;
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    background: #fff;
-    border-radius: 50%;
-  }
-  .cd-label {
-    font-family: 'Gaegu', cursive;
-    font-weight: 700;
-    font-size: 1.15rem;
-    opacity: 0.8;
-    background-color: #fff;
-    border: 1px solid #555;
-    color: #111;
-    height: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .cd-label-year {
-    font-family: 'Gaegu', cursive;
-    font-weight: 300;
-    font-size: 1rem;
-    color: #fff;
-    height: 30px;
-  }
-  .january {
-    background: linear-gradient(135deg, #13f1fc 0%, #0470dc 100%);
-  }
-  .february {
-    background: linear-gradient(135deg, #f5515f 0%, #a1051d 100%);
-  }
-  .march {
-    background: linear-gradient(135deg, #65799b 0%, #5e2563 100%);
-  }
-  .april {
-    background: linear-gradient(135deg, #c56cd6 0%, #3425af 100%);
-  }
-  .may {
-    background: linear-gradient(135deg, #f02fc2 0%, #6094ea 100%);
-  }
-  .june {
-    background: linear-gradient(135deg, #c3ec52 0%, #0ba29d 100%);
-  }
-  .july {
-    background: linear-gradient(135deg, #184e68 0%, #57ca85 100%);
-  }
-  .august {
-    background: linear-gradient(135deg, #f36265 0%, #961276 100%);
-  }
-  .september {
-    background: linear-gradient(135deg, #fcdf8a 0%, #f38381 100%);
-  }
-  .october {
-    background: linear-gradient(135deg, #fad961 0%, #f76b1c 100%);
-  }
-  .november {
-    background: linear-gradient(135deg, #f2d50f 0%, #da0641 100%);
-  }
-  .december {
-    background: linear-gradient(135deg, #5b247a 0%, #1bcedf 100%);
   }
   @media print {
     i {
