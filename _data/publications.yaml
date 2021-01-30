@@ -1,3 +1,72 @@
+- title: "Can a Fruit Fly Learn Word Embeddings?"
+  name: FlyVec
+  authors:
+    - Yuchen Liang
+    - Chaitanya K. Ryali
+    - Benjamin Hoover
+    - Leopold Grinberg
+    - Saket Navlakha
+    - Mohammed J. Zaki
+    - Dmitry Krotov
+  venue: "ICLR 2021"
+  year: 2021
+  month: May
+  # url: http://rxnmapper.ai/
+  # demo: http://rxnmapper.ai/demo.html
+  pdf: https://arxiv.org/abs/2101.06887
+  code: https://github.com/bhooc/flyvec
+  thumbnail: "imgs/thumbnails/flyvec.png"
+  description: >-
+    Poster at ICLR 2021
+  bibtex: |-
+    @misc{liang2021fruit,
+        title={Can a Fruit Fly Learn Word Embeddings?}, 
+        author={Yuchen Liang and Chaitanya K. Ryali and Benjamin Hoover and Leopold Grinberg and Saket Navlakha and Mohammed J. Zaki and Dmitry Krotov},
+        year={2021},
+        eprint={2101.06887},
+        url = "https://arxiv.org/pdf/2101.06887.pdf",
+        archivePrefix={arXiv},
+        primaryClass={cs.CL}
+    }
+
+- title: "Operational response simulation tool for epidemics within refugee and IDP settlements"
+  name: Camp EPI
+  authors:
+    - Joseph Bullock
+    - Carolina Cuesta-Lazaro
+    - Arnau Quera-Bofarull
+    - Anjali Katta
+    - Katherine Hoffmann Pham
+    - Benjamin Hoover
+    - Hendrik Strobelt
+    - Rebeca Moreno Jimenez
+    - Aidan Sedgewick
+    - Egmond Samir Evers
+    - David Kennedy
+    - Sandra Harlass
+    - Allen Gidraf Kahindo Maina
+    - Ahmad Hussien
+    - Miguel Luengo-Oroz
+  venue: "medRxiv"
+  year: 2021
+  month: Jan
+  pdf: https://www.medrxiv.org/content/10.1101/2021.01.27.21250611v1
+  thumbnail: "imgs/thumbnails/junevis.png"
+  description: >-
+    An operational response simulation tool for epidemics within settlements
+  bibtex: |-
+    @article {Bullock2021.01.27.21250611,
+      author = {Bullock, Joseph and Cuesta-Lazaro, Carolina and Quera-Bofarull, Arnau and Katta, Anjali and Hoffmann Pham, Katherine and Hoover, Benjamin and Strobelt, Hendrik and Moreno Jimenez, Rebeca and Sedgewick, Aidan and Samir Evers, Egmond and Kennedy, David and Harlass, Sandra and Gidraf Kahindo Maina, Allen and Hussien, Ahmad and Luengo-Oroz, Miguel},
+      title = {Operational response simulation tool for epidemics within refugee and IDP settlements},
+      elocation-id = {2021.01.27.21250611},
+      year = {2021},
+      doi = {10.1101/2021.01.27.21250611},
+      publisher = {Cold Spring Harbor Laboratory Press},
+      URL = {https://www.medrxiv.org/content/early/2021/01/29/2021.01.27.21250611},
+      eprint = {https://www.medrxiv.org/content/early/2021/01/29/2021.01.27.21250611.full.pdf},
+      journal = {medRxiv}
+    }
+
 - title: "RXNMapper: Unsupervised Attention Guided Atom Mapping"
   name: RXNMapper
   authors:
@@ -6,7 +75,7 @@
     - JL Reymond
     - Hendrik Strobelt
     - Teodoro Laino
-  venue: "ChemRxiv Preprint, #IOPPoster, SCS Fall 2020, ICML 2020 Workshop: AI for Scientific Discovery, ACS Fall 2020"
+  venue: "Science Advances 2021, #IOPPoster, SCS Fall 2020, ICML 2020 Workshop: AI for Scientific Discovery, ACS Fall 2020"
   year: 2020
   month: Dec
   url: http://rxnmapper.ai/
