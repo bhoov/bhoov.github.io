@@ -1,5 +1,5 @@
 <script>
     import KarissaLetter from "../../components/KarissaLetter.svelte";
-</script>;
+</script>
 
 <KarissaLetter hydrate-client={{}}/>
