@@ -11,8 +11,8 @@
   venue: "ICLR 2021"
   year: 2021
   month: May
-  # url: http://rxnmapper.ai/
-  # demo: http://rxnmapper.ai/demo.html
+  url: https://flyvec.org
+  demo: https://flyvec.org
   pdf: https://arxiv.org/abs/2101.06887
   code: https://github.com/bhoov/flyvec
   thumbnail: "imgs/thumbnails/flyvec.png"
