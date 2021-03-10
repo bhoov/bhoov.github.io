@@ -1,3 +1,7 @@
+- title: "Can a Fruit Fly Learn Word Embeddings?"
+  venues:
+    - name: "TransferLearning Event"
+      date: March 2021
 - title: "LMDiff: Comparing Language Models"
   venues:
     - name: "NeurIPS Demo"
