@@ -47,6 +47,7 @@
 <svelte:head>
   <title>Ben Hoover</title>
 </svelte:head>
+
 <div id="main" class="md:grid grid-cols-4 gap-16 w-full mx-6">
   <div class="md:col-start-1 md:col-end-2">
     <div class="face-and-links grid grid-cols-6 md:block">
@@ -151,5 +152,4 @@
     </div>
   </div>
 </div>
-
 <div />
