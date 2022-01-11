@@ -105,14 +105,14 @@
     - Benjamin Hoover
     - Arvind Satyanarayan
     - Sebastian Gehrmann
-  venue: "NeurIPS 2020: Demo"
-  year: 2020
-  month: Dec
-  url: http://difflm.xyz/
-  demo: http://difflm.xyz/
+  venue: "EMNLP 2021: Systems Demo.  NeurIPS 2020: Demo"
+  year: 2021
+  month: Apr
+  url: http://lmdiff.net/
+  demo: http://lmdiff.net/
   thumbnail: "imgs/thumbnails/diffLM.png"
   description: >-
-    <b>Best Demo</b> at Neurips 2020
+    System Demonstration at EMNLP 2021. <b>Best Demo</b> at Neurips 2020
 
 - title: "CogMol: Target-Specific and Selective Drug Design for COVID-19 Using Deep Generative Models"
   name: CogMol
