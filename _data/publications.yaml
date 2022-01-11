@@ -47,25 +47,24 @@
     - Allen Gidraf Kahindo Maina
     - Ahmad Hussien
     - Miguel Luengo-Oroz
-  venue: "medRxiv"
+  venue: "PLOS Computational Biology"
   year: 2021
   month: Jan
-  url: https://www.unglobalpulse.org/microsite/epidemic-modelling-in-settlements/
-  pdf: https://www.medrxiv.org/content/10.1101/2021.01.27.21250611v1
+  url: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009360
+  pdf: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8553081/
   thumbnail: "imgs/thumbnails/junevis.png"
   description: >-
     An operational response simulation tool for epidemics within settlements
   bibtex: |-
-    @article {Bullock2021.01.27.21250611,
-      author = {Bullock, Joseph and Cuesta-Lazaro, Carolina and Quera-Bofarull, Arnau and Katta, Anjali and Hoffmann Pham, Katherine and Hoover, Benjamin and Strobelt, Hendrik and Moreno Jimenez, Rebeca and Sedgewick, Aidan and Samir Evers, Egmond and Kennedy, David and Harlass, Sandra and Gidraf Kahindo Maina, Allen and Hussien, Ahmad and Luengo-Oroz, Miguel},
-      title = {Operational response simulation tool for epidemics within refugee and IDP settlements},
-      elocation-id = {2021.01.27.21250611},
-      year = {2021},
-      doi = {10.1101/2021.01.27.21250611},
-      publisher = {Cold Spring Harbor Laboratory Press},
-      URL = {https://www.medrxiv.org/content/early/2021/01/29/2021.01.27.21250611},
-      eprint = {https://www.medrxiv.org/content/early/2021/01/29/2021.01.27.21250611.full.pdf},
-      journal = {medRxiv}
+    @article{aylett2021operational,
+      title={Operational response simulation tool for epidemics within refugee and IDP settlements: A scenario-based case study of the Cox’s Bazar settlement},
+      author={Aylett-Bullock, Joseph and Cuesta-Lazaro, Carolina and Quera-Bofarull, Arnau and Katta, Anjali and Hoffmann Pham, Katherine and Hoover, Benjamin and Strobelt, Hendrik and Moreno Jimenez, Rebeca and Sedgewick, Aidan and Samir Evers, Egmond and others},
+      journal={PLoS computational biology},
+      volume={17},
+      number={10},
+      pages={e1009360},
+      year={2021},
+      publisher={Public Library of Science San Francisco, CA USA}
     }
 
 - title: "RXNMapper: Unsupervised Attention Guided Atom Mapping"
