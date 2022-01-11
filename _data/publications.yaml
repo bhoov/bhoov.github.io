@@ -88,15 +88,16 @@
     Published in Science Advances 2021; <strong>Best Poster</strong> at 
     <a target="_blank" href="https://ioppublishing.org/news/announcing-the-winners-of-ioppposter/?utm_source=PR&utm_medium=cpc&utm_campaign=IOPPposter&utm_term=IOPPposterConference">#IOPPoster</a>, Poster at ICML 2020 Workshop: AI for Scientific Discovery &amp; ACS Fall 2020
   bibtex: |-
-
-    @article{Schwaller2020Unsupervised,
-      author = "Philippe Schwaller and Benjamin Hoover and Jean-Louis Reymond and Hendrik Strobelt and Teodoro Laino",
-      title = "{Unsupervised Attention-Guided Atom-Mapping}",
-      year = "2020",
-      month = "5",
-      url = "https://chemrxiv.org/articles/Unsupervised_Attention-Guided_Atom-Mapping/12298559",
-      doi = "10.26434/chemrxiv.12298559.v1"
-    }      
+    @article{schwaller2021extraction,
+      title={Extraction of organic chemistry grammar from unsupervised learning of chemical reactions},
+      author={Schwaller, Philippe and Hoover, Benjamin and Reymond, Jean-Louis and Strobelt, Hendrik and Laino, Teodoro},
+      journal={Science Advances},
+      volume={7},
+      number={15},
+      pages={eabe4166},
+      year={2021},
+      publisher={American Association for the Advancement of Science}
+    }
 
 - title: "LMdiff: A Visual Diff Tool to Compare Language Models"
   name: LMdiff
@@ -113,6 +114,23 @@
   thumbnail: "imgs/thumbnails/diffLM.png"
   description: >-
     System Demonstration at EMNLP 2021. <b>Best Demo</b> at Neurips 2020
+  bibtex: |-
+    @inproceedings{strobelt-etal-2021-lmdiff,
+      title = "{LM}diff: A Visual Diff Tool to Compare Language Models",
+      author = "Strobelt, Hendrik  and
+        Hoover, Benjamin  and
+        Satyanaryan, Arvind  and
+        Gehrmann, Sebastian",
+      booktitle = "Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing: System Demonstrations",
+      month = nov,
+      year = "2021",
+      address = "Online and Punta Cana, Dominican Republic",
+      publisher = "Association for Computational Linguistics",
+      url = "https://aclanthology.org/2021.emnlp-demo.12",
+      doi = "10.18653/v1/2021.emnlp-demo.12",
+      pages = "96--105",
+      abstract = "While different language models are ubiquitous in NLP, it is hard to contrast their outputs and identify which contexts one can handle better than the other. To address this question, we introduce LMdiff, a tool that visually compares probability distributions of two models that differ, e.g., through finetuning, distillation, or simply training with different parameter sizes. LMdiff allows the generation of hypotheses about model behavior by investigating text instances token by token and further assists in choosing these interesting text instances by identifying the most interesting phrases from large corpora. We showcase the applicability of LMdiff for hypothesis generation across multiple case studies. A demo is available at http://lmdiff.net .",
+    }
 
 - title: "CogMol: Target-Specific and Selective Drug Design for COVID-19 Using Deep Generative Models"
   name: CogMol
