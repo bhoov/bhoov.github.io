@@ -14,101 +14,29 @@
     <title>Ben Hoover</title>
 </svelte:head>
 
-<!-- <main>
-    <h1>Ben Hoover</h1>
-    <div class="social-links">
-        (twitter, github, linkedin, google scholar, mail)
-    </div>
-    <div class="other-links">(CV, Projects)</div>
-
-    <div class="intro-paragraph">
-        <p>
-            Reinterpreting modern Deep Learning through the lens of dynamical
-            systems in physics using insights exposed by visualization.
-        </p>
-        <p>
-            How do recent breakthroughs in AI help us understand intelligence?
-            How do existing models of intelligence help us better understand
-            Deep Learning? When we look under the hood of the most powerful AI
-            models, why do they look like cold computers instead of living
-            brains?
-        </p>
-        <p>
-            I'm a self-branded "AI re-interpretability engineer" who loves
-            dabbling in the complete unknown. Find me on GA Tech's campus,
-            hacking away with the <a
-                href="https://researcher.watson.ibm.com/researcher/view_group.php?id=5948"
-                >Visual AI Lab</a
-            >
-            in Cambridge, or working from a nearby bubble tea shop.
-        </p>
-    </div>
-
-    <h1>News</h1>
-    {#each data.news as news, i}
-        <div>
-            <span>{news.date}</span> <span>{@html news.HTMLdescription}</span>
-        </div>
-    {/each}
-</main> -->
-
-<div id="main" class="md:grid grid-cols-4 gap-16 w-full mx-6">
-    <div class="md:col-start-1 md:col-end-2">
-        <div class="face-and-links grid grid-cols-6 md:block">
-            <div class="md:my-4 col-start-1 col-end-3">
-                <img
-                    class="rounded-full shadow-lg mx-auto mt-4 w-full md:w-full block"
-                    src="imgs/people/me-headshot-la.png"
-                    alt="My headshot"
-                />
-            </div>
-            <div class="description">
-                <p>AI Researcher with IBM Research;</p>
-                <p>PhD Student at GA Tech</p>
-            </div>
-            <div class="social-links gap-x-2 gap-0 md:gap-2">
-                {#each data.socialLinks as link}
-                    <div class="social-link-icon-wrapper md:pb-2 md:mb-2">
-                        <a target="_blank" href={link.href}
-                            ><i
-                                class={`fa ${link.faIcon} icon`}
-                                style={`color: ${link.color || "#515151"}`}
-                            /></a
-                        >
-                    </div>
-                    <div class="social-link-text-wrapper place-self-start">
-                        <a
-                            target="_blank"
-                            href={link.href}
-                            class="text-gray-800 hover:text-blue-800"
-                            >{link.label}</a
-                        >
-                    </div>
-                {/each}
-                <div class="social-link-icon-wrapper md:pb-2 md:mb-2">
-                    <a target="_blank" href="/cv"
+<main>
+    <div class="intro">
+        <h1>Ben Hoover</h1>
+        <img
+            class="rounded-full shadow-lg"
+            src="imgs/people/me-headshot-la.png"
+            alt="My headshot"
+        />
+        <div class="flex flex-row gap-2">
+            {#each data.socialLinks as link}
+                <div class="flex flex-row gap-2 text-3xl my-4">
+                    <a target="_blank" href={link.href}
                         ><i
-                            class={`far fa-address-card`}
-                            style="color: #515151"
+                            class={`fa ${link.faIcon} icon`}
+                            style={`color: ${link.color || "#515151"}`}
                         /></a
                     >
                 </div>
-                <div class="social-link-text-wrapper place-self-start">
-                    <a
-                        target="_blank"
-                        href="/cv"
-                        class="text-gray-800 hover:text-blue-800">My CV</a
-                    >
-                </div>
-            </div>
+            {/each}
         </div>
-    </div>
 
-    <div class="col-start-2 col-end-5 w-11/12">
-        <div class="mb-4">
-            <h1 class="text-4xl">Welcome</h1>
-
-            <p>
+        <div class="intro-paragraph">
+            <p class="text-gray-400 border-l-2 pl-4">
                 Reinterpreting modern Deep Learning through the lens of
                 dynamical systems in physics using insights exposed by
                 visualization.
@@ -130,8 +58,20 @@
                 in Cambridge, or working from a nearby bubble tea shop.
             </p>
         </div>
-
+    </div>
         <hr />
+
+        <div class="projects">
+            <h1>Projects</h1>
+
+            {#each projects as project}
+
+            {/each}
+        </div>
+</main>
+
+<div id="main" class="md:grid grid-cols-4 gap-16 w-full mx-6">
+    <div class="col-start-2 col-end-5 w-11/12">
 
         <div class="projects">
             <h1>Projects</h1>
@@ -247,6 +187,14 @@
         /* font-size: 2.5rem; */
         margin-top: 1rem;
         margin-bottom: 1.5rem;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    .intro > img {
+        max-width: 150px;
     }
 
     .social-links {
