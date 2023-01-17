@@ -1,0 +1,281 @@
+- title: "A Universal Abstraction for Hierarchical Hopfield Networks"
+  name: HAMUX
+  authors:
+    - Benjamin Hoover
+    - Polo Chau
+    - Hendrik Strobelt
+    - Dmitry Krotov
+  venue: "Neurips DLDE Workshop 2022"
+  year: 2022
+  month: Dec
+  # url: https://flyvec.org
+  # demo: https://flyvec.org
+  # pdf: https://arxiv.org/abs/2101.06887
+  # code: https://github.com/bhoov/flyvec
+  # thumbnail: "imgs/thumbnails/flyvec.png"
+  # description: >-
+  #   Poster at ICLR 2021
+  # bibtex: |-
+  #   @misc{liang2021fruit,
+  #       title={Can a Fruit Fly Learn Word Embeddings?}, 
+  #       author={Yuchen Liang and Chaitanya K. Ryali and Benjamin Hoover and Leopold Grinberg and Saket Navlakha and Mohammed J. Zaki and Dmitry Krotov},
+  #       year={2021},
+  #       eprint={2101.06887},
+  #       url = "https://arxiv.org/pdf/2101.06887.pdf",
+  #       archivePrefix={arXiv},
+  #       primaryClass={cs.CL}
+  #   }
+
+- title: "Can a Fruit Fly Learn Word Embeddings?"
+  name: FlyVec
+  authors:
+    - Yuchen Liang
+    - Chaitanya K. Ryali
+    - Benjamin Hoover
+    - Leopold Grinberg
+    - Saket Navlakha
+    - Mohammed J. Zaki
+    - Dmitry Krotov
+  venue: "ICLR 2021"
+  year: 2021
+  month: May
+  url: https://flyvec.org
+  demo: https://flyvec.org
+  pdf: https://arxiv.org/abs/2101.06887
+  code: https://github.com/bhoov/flyvec
+  thumbnail: "imgs/thumbnails/flyvec.png"
+  description: >-
+    Poster at ICLR 2021
+  bibtex: |-
+    @misc{liang2021fruit,
+        title={Can a Fruit Fly Learn Word Embeddings?}, 
+        author={Yuchen Liang and Chaitanya K. Ryali and Benjamin Hoover and Leopold Grinberg and Saket Navlakha and Mohammed J. Zaki and Dmitry Krotov},
+        year={2021},
+        eprint={2101.06887},
+        url = "https://arxiv.org/pdf/2101.06887.pdf",
+        archivePrefix={arXiv},
+        primaryClass={cs.CL}
+    }
+
+- title: "Operational response simulation tool for epidemics within refugee and IDP settlements"
+  name: Camp EPI
+  authors:
+    - Joseph Bullock
+    - Carolina Cuesta-Lazaro
+    - Arnau Quera-Bofarull
+    - Anjali Katta
+    - Katherine Hoffmann Pham
+    - Benjamin Hoover
+    - Hendrik Strobelt
+    - Rebeca Moreno Jimenez
+    - Aidan Sedgewick
+    - Egmond Samir Evers
+    - David Kennedy
+    - Sandra Harlass
+    - Allen Gidraf Kahindo Maina
+    - Ahmad Hussien
+    - Miguel Luengo-Oroz
+  venue: "PLOS Computational Biology"
+  year: 2021
+  month: Jan
+  url: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009360
+  pdf: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8553081/
+  thumbnail: "imgs/thumbnails/junevis.png"
+  description: >-
+    An operational response simulation tool for epidemics within settlements
+  bibtex: |-
+    @article{aylett2021operational,
+      title={Operational response simulation tool for epidemics within refugee and IDP settlements: A scenario-based case study of the Cox’s Bazar settlement},
+      author={Aylett-Bullock, Joseph and Cuesta-Lazaro, Carolina and Quera-Bofarull, Arnau and Katta, Anjali and Hoffmann Pham, Katherine and Hoover, Benjamin and Strobelt, Hendrik and Moreno Jimenez, Rebeca and Sedgewick, Aidan and Samir Evers, Egmond and others},
+      journal={PLoS computational biology},
+      volume={17},
+      number={10},
+      pages={e1009360},
+      year={2021},
+      publisher={Public Library of Science San Francisco, CA USA}
+    }
+
+- title: "RXNMapper: Unsupervised Attention Guided Atom Mapping"
+  name: RXNMapper
+  authors:
+    - Philippe Schwaller
+    - Benjamin Hoover
+    - JL Reymond
+    - Hendrik Strobelt
+    - Teodoro Laino
+  venue: "Science Advances 2021, #IOPPoster, SCS Fall 2020, ICML 2020 Workshop: AI for Scientific Discovery, ACS Fall 2020"
+  year: 2020
+  month: Dec
+  url: http://rxnmapper.ai/
+  demo: http://rxnmapper.ai/demo.html
+  pdf: https://advances.sciencemag.org/content/7/15/eabe4166
+  video: https://vimeo.com/434757113
+  code: https://github.com/rxn4chemistry/rxnmapper
+  thumbnail: "imgs/thumbnails/rxnmapper.png"
+  description: >-
+    Published in Science Advances 2021; <strong>Best Poster</strong> at 
+    <a target="_blank" href="https://ioppublishing.org/news/announcing-the-winners-of-ioppposter/?utm_source=PR&utm_medium=cpc&utm_campaign=IOPPposter&utm_term=IOPPposterConference">#IOPPoster</a>, Poster at ICML 2020 Workshop: AI for Scientific Discovery &amp; ACS Fall 2020
+  bibtex: |-
+    @article{schwaller2021extraction,
+      title={Extraction of organic chemistry grammar from unsupervised learning of chemical reactions},
+      author={Schwaller, Philippe and Hoover, Benjamin and Reymond, Jean-Louis and Strobelt, Hendrik and Laino, Teodoro},
+      journal={Science Advances},
+      volume={7},
+      number={15},
+      pages={eabe4166},
+      year={2021},
+      publisher={American Association for the Advancement of Science}
+    }
+
+- title: "LMdiff: A Visual Diff Tool to Compare Language Models"
+  name: LMdiff
+  authors: 
+    - Hendrik Strobelt
+    - Benjamin Hoover
+    - Arvind Satyanarayan
+    - Sebastian Gehrmann
+  venue: "EMNLP 2021: Systems Demo.  NeurIPS 2020: Demo"
+  year: 2021
+  month: Apr
+  url: http://lmdiff.net/
+  demo: http://lmdiff.net/
+  thumbnail: "imgs/thumbnails/diffLM.png"
+  description: >-
+    System Demonstration at EMNLP 2021. <b>Best Demo</b> at Neurips 2020
+  bibtex: |-
+    @inproceedings{strobelt-etal-2021-lmdiff,
+      title = "{LM}diff: A Visual Diff Tool to Compare Language Models",
+      author = "Strobelt, Hendrik  and
+        Hoover, Benjamin  and
+        Satyanaryan, Arvind  and
+        Gehrmann, Sebastian",
+      booktitle = "Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing: System Demonstrations",
+      month = nov,
+      year = "2021",
+      address = "Online and Punta Cana, Dominican Republic",
+      publisher = "Association for Computational Linguistics",
+      url = "https://aclanthology.org/2021.emnlp-demo.12",
+      doi = "10.18653/v1/2021.emnlp-demo.12",
+      pages = "96--105",
+      abstract = "While different language models are ubiquitous in NLP, it is hard to contrast their outputs and identify which contexts one can handle better than the other. To address this question, we introduce LMdiff, a tool that visually compares probability distributions of two models that differ, e.g., through finetuning, distillation, or simply training with different parameter sizes. LMdiff allows the generation of hypotheses about model behavior by investigating text instances token by token and further assists in choosing these interesting text instances by identifying the most interesting phrases from large corpora. We showcase the applicability of LMdiff for hypothesis generation across multiple case studies. A demo is available at http://lmdiff.net .",
+    }
+
+- title: "CogMol: Target-Specific and Selective Drug Design for COVID-19 Using Deep Generative Models"
+  name: CogMol
+  authors:
+    - Enara Vijil
+    - Payel Das
+    - Samuel Hoffman
+    - Hendrik Strobelt
+    - Inkit Padhi
+    - Kar Wai Lim
+    - Benjamin Hoover
+    - Matteo Manica
+    - Jannis Born
+    - Teodoro Laino
+    - Aleksandra Mojsilovic
+  venue: "NeurIPS 2020, Spotlight Poster"
+  year: 2020
+  month: Dec
+  url: https://covid19-mol.mybluemix.net/
+  demo: https://covid19-mol.mybluemix.net/new
+  pdf: https://papers.nips.cc/paper/2020/file/2d16ad1968844a4300e9a490588ff9f8-Paper.pdf
+  thumbnail: "imgs/thumbnails/cogmol.png"
+  description: >-
+    <strong>Spotlight Poster</strong> at Neurips 2020
+  bibtex: |-
+
+    Neurips citation available soon.
+    @misc{chenthamarakshan2020cogmol,
+        title={CogMol: Target-Specific and Selective Drug Design for COVID-19 Using Deep Generative Models}, 
+        author={Vijil Chenthamarakshan and Payel Das and Samuel C. Hoffman and Hendrik Strobelt and Inkit Padhi and Kar Wai Lim and Benjamin Hoover and Matteo Manica and Jannis Born and Teodoro Laino and Aleksandra Mojsilovic},
+        year={2020},
+        eprint={2004.01215},
+        archivePrefix={arXiv},
+        primaryClass={cs.LG}
+    }
+
+- title: "Shared Interest: Human Annotations vs. AI Saliency"
+  name: Shared Interest
+  authors: 
+    - Angie Boggust
+    - Benjamin Hoover
+    - Arvind Satyanarayan
+    - Hendrik Strobelt
+  venue: "IEEE Vis: VisXAI Workshop"
+  year: 2020
+  month: Oct
+  url: http://visxai-submission.xyz/index-distill.html
+  demo: http://visxai-submission.xyz/
+  thumbnail: "imgs/thumbnails/saliencyExplorer.png"
+  description: >-
+    Interactive Article at IEE Vis: VisXAI Workshop; Demo at NeurIPS 2020
+  # pdf: http://visxai-submission.xyz/index-distill.html
+
+
+- title: "exBERT: A Visual Analysis of Transformer Models"
+  name: exBERT
+  authors:
+    - Benjamin Hoover
+    - Hendrik Strobelt
+    - Sebastian Gehrmann
+  venue: "ACL 2020: System Demonstrations"
+  year: 2020
+  month: Jul
+  url: https://exbert.net/
+  demo: https://exbert.net/exBERT.html
+  pdf: https://www.aclweb.org/anthology/2020.acl-demos.22/
+  video: https://www.youtube.com/watch?v=e31oyfo_thY&feature=youtu.be
+  code: https://github.com/bhoov/exbert
+  thumbnail: "imgs/thumbnails/exBERT.png"
+  description: >-
+    System Demonstration at ACL 2020. Nominated for <strong>Best Demo</strong> at Neurips 2019.
+  bibtex: |-
+
+    @inproceedings{hoover-etal-2020-exbert,
+      title = "{exBERT: A Visual Analysis Tool to Explore Learned Representations in Transformer Models}",
+      author = "Hoover, Benjamin  and
+        Strobelt, Hendrik  and
+        Gehrmann, Sebastian",
+      booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations",
+      month = jul,
+      year = "2020",
+      address = "Online",
+      publisher = "Association for Computational Linguistics",
+      url = "https://www.aclweb.org/anthology/2020.acl-demos.22",
+      doi = "10.18653/v1/2020.acl-demos.22",
+      pages = "187--196",
+    }
+
+- title: >- 
+    Managing the SOS Response for Enhanced 
+    CRISPR-Cas-Based Recombineering in E. coli 
+    through Transient Inhibition of Host RecA Activity
+  name: Cas9 RecA Inhibition
+  authors:
+    - Eirik Adim Moreb
+    - Benjamin Hoover
+    - Adam Yaseen
+    - Nisakorn Valyasevi
+    - Zoe Roecker
+    - Romel Menacho-Melgar
+    - Michael D. Lynch
+  venue: "American Chemical Society (ACS): Synthetic Biology"
+  year: 2017
+  pdf: https://pubs.acs.org/doi/pdf/10.1021/acssynbio.7b00174
+  thumbnail: "imgs/thumbnails/sos.png"
+  bibtex: |-
+
+    @article{doi:10.1021/acssynbio.7b00174,
+      author = {Moreb, Eirik Adim and Hoover, Benjamin and Yaseen, Adam and Valyasevi, Nisakorn and Roecker, Zoe and Menacho-Melgar, Romel and Lynch, Michael D.},
+      title = {Managing the SOS Response for Enhanced CRISPR-Cas-Based Recombineering in E. coli through Transient Inhibition of Host RecA Activity},
+      journal = {ACS Synthetic Biology},
+      volume = {6},
+      number = {12},
+      pages = {2209-2218},
+      year = {2017},
+      doi = {10.1021/acssynbio.7b00174}, 
+      note = {PMID: 28915012},
+      URL = { https://doi.org/10.1021/acssynbio.7b00174 },
+      eprint = { https://doi.org/10.1021/acssynbio.7b00174 }
+    }

@@ -1,0 +1,26 @@
+- name: Google Scholar
+  group: 1
+  href: https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en
+  faIcon: fa-graduation-cap
+  label: Google Scholar
+  # color: "#515151"
+
+- name: LinkedIn
+  group: 1
+  href: https://www.linkedin.com/in/benhoov/
+  faIcon: fa-linkedin
+  label: LinkedIn
+
+- name: Twitter
+  group: 1
+  href: https://twitter.com/ben_hoov
+  faIcon: fa-twitter
+  label: "@ben_hoov"
+  # color: "#1da1f2"
+
+- name: Github
+  group: 1
+  href: https://github.com/bhoov
+  faIcon: fa-github
+  label: "@bhoov"
+  # color: "#1da1f2"
