@@ -1,7 +1,14 @@
 <script>
-	import Header from '../lib/components/Header.svelte';
-	import './styles.css';
+	import Header from "../lib/components/Header.svelte";
+	import "./styles.css";
 </script>
+
+<svelte:head>
+	<script
+		src="https://kit.fontawesome.com/a854646d2f.js"
+		crossorigin="anonymous"
+	></script>
+</svelte:head>
 
 <div class="app">
 	<!-- <Header /> -->

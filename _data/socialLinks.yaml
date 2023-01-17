@@ -24,3 +24,10 @@
   faIcon: fa-github
   label: "@bhoov"
   # color: "#1da1f2"
+
+- name: cv
+  group: 1
+  href: /cv
+  faIcon: fa-address-card
+  label: "My CV"
+  # color: "#1da1f2"
