@@ -1,13 +1,10 @@
 <script>
 	import Header from "../lib/components/Header.svelte";
-	import "./styles.css";
+	import "./app.css";
 </script>
 
 <svelte:head>
-	<script
-		src="https://kit.fontawesome.com/a854646d2f.js"
-		crossorigin="anonymous"
-	></script>
+	<script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
 </svelte:head>
 
 <div class="app">
