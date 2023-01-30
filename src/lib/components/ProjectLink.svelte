@@ -3,9 +3,6 @@
     import { LINKS } from "$lib/config";
 
     let hovered = false;
-    $: {
-        console.log("HOVERED: ", hovered);
-    }
 </script>
 
 <div

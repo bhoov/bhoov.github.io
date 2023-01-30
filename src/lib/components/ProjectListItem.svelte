@@ -21,7 +21,9 @@
             {project.title}
         </div>
         <div class="">
-            <div class="flex flex-row flex-wrap gap-1 text-slate-500 text-sm mb-1 mt-1">
+            <div
+                class="flex flex-row flex-wrap gap-1 text-slate-400 text-sm mb-1 mt-1"
+            >
                 {#each project.authors as author, j}
                     <div
                         class="whitespace-nowrap"
@@ -43,9 +45,11 @@
                 {/each}
             </div>
             <div class="" />
-            <div class="text-slate-400 text-sm pl-2 border-l-2">
-                {@html project.description}
-            </div>
+            {#if project.description}
+                <div class="text-slate-600 text-sm pl-3 border-l-2">
+                    {@html project.description}
+                </div>
+            {/if}
         </div>
         <div class="flex flex-row gap-2 mb-2 mt-2">
             {#each project.links as link, i}
