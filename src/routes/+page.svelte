@@ -2,7 +2,6 @@
     import { onMount } from "svelte";
     import ProjectListItem from "$lib/components/ProjectListItem.svelte";
     export let data;
-    import { LINKS } from "$lib/config";
 
     $: people = data.people;
     $: projects = data.publications;
@@ -16,7 +15,7 @@
     <title>Ben Hoover</title>
 </svelte:head>
 
-<main class=" max-w-md md:grid md:grid-cols-12 md:max-w-3xl md:gap-x-8">
+<main class=" max-w-md md:grid md:grid-cols-12 md:max-w-5xl md:gap-x-8">
     <div class="main-col">
         <div id="header-hero max-w-lg">
             <div class="grid grid-cols-12 gap-10 items-center">
@@ -71,27 +70,43 @@
                 <a
                     href="https://transformer-circuits.pub/2022/mech-interp-essay/index.html"
                     >Mechanistic interpretability</a
-                > from the perspective of Associative Memory.
+                >
+                from the perspective of
+                <a
+                    href="https://en.wikipedia.org/wiki/Associative_memory_(psychology)"
+                    target="_blank"
+                    rel="noreferrer">Associative Memory</a
+                >.
             </p>
-            <div class="text-slate-700 flex flex-col gap-4 leading-6">
+            <div
+                class="text-slate-700 flex flex-col gap-4 leading-6 font-light"
+            >
                 <p class="">
-                    How do recent breakthroughs in AI help us understand
-                    intelligence? How do existing models of intelligence help us
-                    better understand Deep Learning? When we look under the hood
-                    of the most powerful AI models, why do they look like cold
-                    computers instead of living brains? I'm a self-branded "AI
-                    re-interpretability and visualization engineer" looking to
-                    propose answers to these questions by interacting with
-                    dynamical systems.
+                    My research focuses on understanding <a
+                        href="https://research.ibm.com/blog/what-are-foundation-models"
+                        target="_blank"
+                        rel="noreferrer">AI foundation models</a
+                    > from the perspective of dynamical systems. When we look under
+                    the hood of foundation models, do we expect them to look like
+                    a cold computer or a living brain?
+                </p>
+                <p>
+                    I'm a self-branded <span class="font-semibold">
+                        AI re-interpretability and visualization engineer
+                    </span> seeking a coherent theory around the intelligence we
+                    create.
                 </p>
             </div>
         </div>
 
-        <h1 class="mb-4 mt-8">Publications</h1>
+        <!-- <h1 class="">News</h1> -->
     </div>
+    <h1 class="main-col">Publications</h1>
     <div class="flex flex-col md:contents mx-2">
         {#each projects as project, i}
-            <div class="col-start-1 col-end-3 text-xs font-light justify-self-end text-slate-400 mb-1">
+            <div
+                class="col-start-1 col-end-3 text-xs font-light justify-self-end text-slate-400 mb-1"
+            >
                 {project.month}
                 {project.year}
             </div>
@@ -104,13 +119,16 @@
 
 <style lang="postcss">
     :global(h1) {
-        font-family: "Lato", -apple-system, "Segoe UI", Roboto, Oxygen, serif;
-        font-weight: bold;
+        /* font-family: "Lato", -apple-system, "Segoe UI", Roboto, Oxygen, serif; */
+        font-weight: semibold;
         line-height: 2.35rem;
+        font-size: 2.2rem;
 
-        /* font-size: 2.5rem; */
-        margin-top: 1rem;
-        margin-bottom: 1.5rem;
+        @apply mb-6 mt-8;
+    }
+
+    a {
+        border-bottom: 2px solid rgba(96, 165, 250, 0.631);
     }
 
     .main-col {
