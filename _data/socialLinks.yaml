@@ -27,10 +27,9 @@
   dataIcon: mdi-github 
   # color: "#1da1f2"
 
-- name: cv
-  group: 1
-  href: /cv
-  faIcon: fa-address-card
-  dataIcon: mdi-card-account-details
-  label: "My CV"
-  # color: "#1da1f2"
+# - name: cv
+#   group: 1
+#   href: /cv
+#   faIcon: fa-address-card
+#   dataIcon: mdi-card-account-details
+#   label: "My CV"
