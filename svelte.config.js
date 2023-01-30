@@ -6,9 +6,22 @@ const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
+	prerender: {
+		crawl: true,
+		enabled: true,
+		onError: 'continue',
+		default: true
+	},
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter({
+			pages: 'build',
+			assets: 'build',
+			fallback: null
+		}),
+		paths: {
+			base: process.env.NODE_ENV === "production" ? "" : "",
+		},
 	}
 };
 

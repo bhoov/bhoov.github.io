@@ -1,10 +1,11 @@
 {
-  "name": "ham-demo",
+  "name": "bhoov-github-io",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "deploy": "touch build/.nojekyll && gh-pages -d build -t true",
     "preview": "vite preview",
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -20,6 +21,8 @@
     "@types/lodash": "^4.14.188",
     "autoprefixer": "^10.4.13",
     "d3": "^6.7.0",
+    "gh-pages": "^5.0.0",
+    "glob": "^8.0.3",
     "lodash": "^4.17.21",
     "postcss": "^8.4.21",
     "svelte": "^3.54.0",
@@ -33,7 +36,6 @@
   "type": "module",
   "dependencies": {
     "fs-extra": "^11.1.0",
-    "glob": "^8.0.3",
     "js-yaml": "^4.1.0",
     "os": "^0.1.2",
     "path": "^0.12.7"
