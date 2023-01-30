@@ -33,6 +33,8 @@
                         {#if getAuthorUrl(author) != ""}
                             <a
                                 href={getAuthorUrl(author)}
+                                target="_blank"
+                                rel="noreferrer"
                                 class="hover:border-b-2"
                             >
                                 {author}
