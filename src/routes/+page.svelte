@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import ProjectListItem from "$lib/components/ProjectListItem.svelte";
     export let data;
     import { LINKS } from "$lib/config";
 
@@ -14,7 +15,7 @@
         code: "fa-code",
     };
 
-    onMount(()=> {
+    onMount(() => {
         console.log("DATA: ", data);
     });
 </script>
@@ -24,14 +25,18 @@
 </svelte:head>
 
 <main>
-    <div id="header-hero max-w-sm">
-        <div class="flex gap-10 place-content-between">
-            <img
-                class="rounded-full shadow-lg max-h-44 flex-auto"
-                src="imgs/people/me-headshot-la.png"
-                alt="My headshot"
-            />
-            <div class="flex flex-col gap-4 justify-center shrink">
+    <div id="header-hero max-w-lg">
+        <div class="grid grid-cols-12 gap-10 items-center">
+            <div class="col-start-1 col-end-5 justify-self-end">
+                <img
+                    class="rounded-full shadow-lg max-h-44 flex-auto"
+                    src="imgs/people/me-headshot-la.png"
+                    alt="My headshot"
+                />
+            </div>
+            <div
+                class="flex flex-col gap-4 justify-self-start shrink col-start-5 col-end-13"
+            >
                 <div>
                     <p class="text-4xl text-slate-700">Ben Hoover</p>
                     <p class="text-gray-400 text-2xl">
@@ -81,87 +86,13 @@
             </p>
         </div>
     </div>
-    <hr />
 
-    <div class="projects">
-        <h1 class="mb-4">Projects</h1>
+    <h1 class="mb-4 mt-8">Projects</h1>
+    <div class="flex flex-col gap-6">
         {#each projects as project, i}
-            {#if i == 0}
-                <div class="project-item">
-                    <div class="flex flex-row gap-4">
-                        <!-- <div style="max-width:100px">
-                            <img class="" src={project.thumbnail} alt="" />
-                        </div> -->
-                        <div class="flex flex-col">
-                            <div class="text-lg font-medium leading-5">
-                                {project.title}
-                            </div>
-                            <div class="pl-2">
-                                <div class="flex flex-row gap-4 mb-2">
-                                    {#each project.links as link, i}
-                                        <div class="text-sm">
-                                            <a
-                                                href={link.url}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                            >
-                                            <div class="flex gap-1 justify-center align-center">
-                                                <div
-                                                    class="iconify"
-                                                    data-icon={LINKS[link.type]}
-                                                    style={`color: ${
-                                                        link.color || "#515151"
-                                                    }`}
-                                                />
-                                                <span>{link.label}</span>
-                                            </div>
-</a
-                                            >
-                                        </div>
-                                    {/each}
-                                </div>
-                                <div
-                                    class="flex flex-row gap-1 text-slate-600 text-sm mb-1"
-                                >
-                                    {#each project.authors as author, j}
-                                        <span class="whitespace-nowrap"
-                                            >{author}{#if j != project.authors.length - 1};{/if}
-                                        </span>
-                                    {/each}
-                                </div>
-                                <div class="" />
-                                <div
-                                    class="text-slate-400 text-sm pl-2 border-l-2"
-                                >
-                                    {@html project.description}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="my-4">
-                        <div class="flex flex-row gap-2">
-                            {#each project.links as link}
-                                <div>
-                                    <a
-                                        target="_blank"
-                                        href={link.url}
-                                        rel="noreferrer"
-                                        class="pub-misc-txt"
-                                    >
-                                        <i
-                                            class={`fa icon ${
-                                                linkSymbols[link.type]
-                                            }`}
-                                            aria-hidden="true"
-                                        />
-                                    </a>
-                                </div>
-                                <!-- <div class="mx-1">{link.type}</div> -->
-                            {/each}
-                        </div>
-                    </div>
-                </div>
-            {/if}
+            <div class="project-item">
+                <ProjectListItem {project} {people} />
+            </div>
         {/each}
     </div>
 </main>
@@ -181,9 +112,10 @@
 
     main {
         width: 100%;
-        max-width: 450px;
+        max-width: 600px;
         height: 90vh;
         margin: 5vh auto;
+        padding: 0 1rem;
         border-radius: 5px;
         display: flex;
         flex-direction: column;
