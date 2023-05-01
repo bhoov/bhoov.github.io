@@ -12,10 +12,7 @@
     }
 </script>
 
-<div class="flex flex-row gap-4 max-w-xl">
-    <!-- <div style="max-width:100px">
-                            <img class="" src={project.thumbnail} alt="" />
-                        </div> -->
+<div class="li-container">
     <div class="flex flex-col">
         <div class="text-lg font-medium leading-5">
             {project.title}
@@ -42,7 +39,7 @@
                         {:else}
                             {author}
                         {/if}
-                        {#if j != project.authors.length - 1};{/if}
+                        {#if j != project.authors.length - 1}&#x2022;{/if}
                     </div>
                 {/each}
             </div>
@@ -64,5 +61,16 @@
 <style lang="postcss">
     .me {
         @apply font-bold;
+    }
+
+    .li-container {
+        @apply flex flex-row gap-4 max-w-xl;
+    }
+
+    @media print {
+        .li-container {
+            max-width:90%;
+            page-break-inside: avoid;
+        }
     }
 </style>
