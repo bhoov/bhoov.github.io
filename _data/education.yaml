@@ -1,13 +1,22 @@
+- degree: "Machine Learning PhD Student"
+  institution: Georgia Institute of Technology
+  location: "Atlanta, GA"
+  date: Present
+  description: >-
+    PhD Student studying Associative Memory and Foundation Models &#x2022;
+    Advisor: <a target="_blank" referrer="noreferrer" href="https://faculty.cc.gatech.edu/~dchau/" class="hover-link">Polo Chau</a>
+  institutionUrl: https://www.gatech.edu/
+
 - degree: "Master of Engineering: Electrical and Computer Engineering"
   institution: Duke University
   location: "Durham, NC"
   date: May 2018
-  description: "GPA: 4.00/4.00, Emphasis on Big Data and Signal Processing"
+  description: "GPA: 4.00/4.00 &#x2022; Emphasis on Big Data and Signal Processing"
   institutionUrl: https://www.duke.edu/
 
-- degree: "B.S.E. in Biomedical Engineering"
+- degree: "Bachelor of Science in Engineering: Biomedical Engineering"
   institution: Duke University
   location: "Durham, NC"
   date: "May 2017"
-  description: "GPA: 3.91/4.00, Magna Cum Laude, Emphasis on Neurobiology and Imaging"
+  description: "GPA: 3.91/4.00 &#x2022; Magna Cum Laude &#x2022; Emphasis on Neurobiology and Imaging"
   institutionUrl: https://www.duke.edu/
