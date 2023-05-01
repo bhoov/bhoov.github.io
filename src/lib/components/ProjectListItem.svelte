@@ -50,7 +50,7 @@
                 </div>
             {/if}
         </div>
-        <div class="flex flex-row gap-2 mb-2 mt-2">
+        <div class="flex flex-row gap-2 mt-2">
             {#each project.links as link, i}
                 <ProjectLink {link} />
             {/each}
@@ -64,13 +64,14 @@
     }
 
     .li-container {
-        @apply flex flex-row gap-4 max-w-xl;
+        @apply flex flex-row gap-4 max-w-xl mb-2;
     }
 
     @media print {
         .li-container {
-            max-width:90%;
+            max-width:100%;
             page-break-inside: avoid;
+            margin-bottom: 0;
         }
     }
 </style>
