@@ -19,7 +19,7 @@
         </div>
         <div class="">
             <div
-                class="flex flex-row flex-wrap gap-1 text-slate-500 text-sm mb-1 mt-1"
+                class="flex flex-row flex-wrap gap-x-1 text-slate-500 text-sm mb-0.5 mt-0.5"
             >
                 {#each project.authors as author, j}
                     <div
@@ -39,8 +39,8 @@
                         {:else}
                             {author}
                         {/if}
-                        {#if j != project.authors.length - 1}&#x2022;{/if}
                     </div>
+                    {#if j != project.authors.length - 1}&#x2022;{/if}
                 {/each}
             </div>
             <div class="" />
@@ -69,8 +69,8 @@
 
     @media print {
         .li-container {
-            max-width:100%;
-            page-break-inside: avoid;
+            max-width: 100%;
+            /* page-break-inside: avoid; */
             margin-bottom: 0;
         }
     }

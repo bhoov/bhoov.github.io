@@ -39,23 +39,23 @@
 	}
 
 	:global(h1) {
-			/* font-family: "Lato", -apple-system, "Segoe UI", Roboto, Oxygen, serif; */
-			font-weight: semibold;
-			line-height: 2.35rem;
-			font-size: 2.2rem;
+		/* font-family: "Lato", -apple-system, "Segoe UI", Roboto, Oxygen, serif; */
+		font-weight: semibold;
+		line-height: 2.35rem;
+		font-size: 2.2rem;
 
-			@apply mb-6 mt-8;
+		@apply mb-6 mt-8;
 	}
-	
+
 	:global(.main-col) {
-		@apply col-start-3 col-end-11 w-full mx-2;
+		@apply col-start-3 col-end-11 w-full mx-0;
 	}
 
 	:global(.left-bar) {
 		@apply col-start-1 col-end-4;
 	}
 
-  @media print {
+	@media print {
 		:root {
 			font-size: 80%;
 		}
@@ -66,6 +66,17 @@
 			@apply max-w-fit;
 			/* display:grid; */
 		}
+	}
 
-  }
+	:global(.cv-block) {
+		@apply col-start-1 col-span-full w-full md:gap-x-8 md:grid-cols-12 md:grid;
+	}
+
+	@media print {
+		.cv-block {
+			max-width: 100%;
+			page-break-inside: avoid;
+			margin-bottom: 0;
+		}
+	}
 </style>

@@ -4,8 +4,7 @@
   role: Research Engineer
   team: Visual AI Lab
   teamUrl: "https://researcher.watson.ibm.com/researcher/view_group.php?id=5948"
-  start: "Sep '18"
-  end: Present
+  date: "Sep '18 - Present"
   # description: >-
   #   Designed, developed....
   mentors:
@@ -16,8 +15,8 @@
   institutionUrl: https://www.medtronicdiabetes.com/home
   location: "Northridge, CA"
   role: Research Intern
-  team: Algorithms
-  start: "Summer '17"
+  team: Algorithms R&D
+  date: "Summer '17"
   mentors:
     - Peter Ajemba
     - Keith Nogueira
@@ -25,10 +24,12 @@
 - institution: "International Genetically Engineered Machine (iGEM)"
   institutionUrl: http://2016.igem.org/
   location: "Durham, NC"
-  role: Undergraduate Research Assistant
-  team: "Bass Connections & Lynch Lab"
-  start: "Apr '15"
-  end: "May '17"
+  # role: Bass Connections Undergrad Research Assistant
+  role: Undergrad Research Assistant
+  # team: "Bass Connections & Lynch Lab"
+  team: "Lynch Lab"
+  teamUrl: "https://lynchlabduke.com/"
+  date: "Apr '15 - May '17"
   mentors:
     - Eirik Adim Moreb
     - Michael D. Lynch
