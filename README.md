@@ -1,6 +1,6 @@
 # bhoov-github-io
 
-A redesign using SvelteKit and tailwindcss
+A redesign using SvelteKit and tailwindcss. Always evolving.
 
 ## Building & deploying
 
