@@ -1,11 +1,18 @@
+- title: "HAMUX: Hopfield Netowrks 2.0"
+  venues:
+    - name: "GA Tech CSE Hotseat"
+      date: Nov 2022
+
 - title: "Can a Fruit Fly Learn Word Embeddings?"
   venues:
     - name: "TransferLearning Event"
       date: March 2021
+
 - title: "LMDiff: Comparing Language Models"
   venues:
     - name: "NeurIPS Demo"
       date: Dec 2020
+
 - title: "Breaking the Wall of Black Box AI"
   venues:
     - name: "Falling Walls Lab Boston"
