@@ -1,3 +1,27 @@
+- title: "ConceptEvo: Interpreting Concept Evolution in Deep Learning Training"
+  name: ConceptEvo
+  authors:
+    - Haekyu Park
+    - Seongmin Lee
+    - Benjamin Hoover
+    - Austin Wright
+    - Omar Shaikh
+    - Rahul Duggal
+    - Nilaksh Das
+    - Kevin Li
+    - Judy Hoffman
+    - Polo Chau
+
+  venue: "AI & HCI Workshop at ICML 2023"
+  description: >-
+    Accepted to the AI & HCI Workshop at ICML 2023
+  links:
+    - type: pdf
+      url: https://openreview.net/forum?id=NayaT7pLUx
+      label: PDF
+  month: Jul
+  year: 2023
+
 - title: "Diffusion Explainer: Visual Explanation for Text-to-image Stable Diffusion"
   name: Diffusion Explainer
   authors:
