@@ -73,7 +73,8 @@
     - Polo Chau
   venue: "ACL 2023"
   description: >-
-    🏆 Nominated for Best Paper (Top 1.6% of submissions). Oral presentation at ACL 2023
+    🏆 Honorable Mention (Top 1.6% of submissions) and Oral presentation at ACL 2023
+    # https://2023.aclweb.org/program/best_papers/
   links:
     - type: url
       url: https://poloclub.github.io/diffusiondb/
