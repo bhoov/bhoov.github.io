@@ -19,7 +19,7 @@
         </div>
         <div class="">
             <div
-                class="flex flex-row flex-wrap gap-x-1 text-slate-500 text-sm mb-0.5 mt-0.5"
+                class="flex flex-row flex-wrap gap-x-1 text-slate-400 text-sm mb-0.5 mt-0.5"
             >
                 {#each project.authors as author, j}
                     <div

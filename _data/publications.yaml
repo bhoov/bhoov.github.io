@@ -1,3 +1,33 @@
+- title: "Energy-based Attention for Associative Memory"
+  name: Energy Transformer
+  authors:
+    - Benjamin Hoover
+    - Yuchen Liang
+    - Bao Pham
+    - Rameswar Panda
+    - Hendrik Strobelt
+    - Polo Chau
+    - Mohammed J. Zaki
+    - Dmitry Krotov
+  venue: "NeurIPS 2023"
+  description: >-
+    Poster at NeurIPS 2023
+  links:
+    - type: pdf
+      url: https://openreview.net/forum?id=MbwVNEx9KS
+      label: PDF
+  month: Sep
+  year: 2023
+  bibtex: |-
+
+    @inproceedings{hoover2023energybased,
+      title={Energy-based Attention for Associative Memory},
+      author={Hoover, Benjamin and Liang, Yuchen and Pham, Bao and Panda, Rameswar and Strobelt, Hendrik and Chau, Duen Horng and Zaki, Mohammed J. and Krotov, Dmitry},
+      booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+      year={2023},
+      url={https://openreview.net/forum?id=MbwVNEx9KS}
+    }
+
 - title: "Diffusion Explainer: Visual Explanation for Text-to-image Stable Diffusion"
   name: Diffusion Explainer
   authors:
@@ -5,7 +35,7 @@
     - Benjamin Hoover
     - Hendrik Strobelt
     - Zijie J. Wang
-    - SengYun Peng
+    - ShengYun Peng
     - Austin Wright
     - Kevin Li
     - Haekyu Park
@@ -13,7 +43,7 @@
     - Polo Chau
   venue: "CVPR 2023 demo"
   description: >-
-    Demo at CVPR 2023
+    Poster at VIS'23. Demo at CVPR 2023.
   links:
     - type: demo
       url: https://poloclub.github.io/diffusion-explainer/
@@ -121,7 +151,7 @@
     - Benjamin Hoover
     - Johanna Beyer
     - Hanspeter Pfister
-    - Alexander M Rush
+    - Alexander Rush
   venue: "IEEE Transactions on Visualization and Computer Graphics"
   year: 2022
   month: Oct

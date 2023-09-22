@@ -3,6 +3,7 @@
   href: https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en
   dataIcon: mdi-school # Using https://pictogrammers.com/library/mdi/icon/linkedin/ and https://pictogrammers.com/docs/guides/iconify/
   label: Google Scholar
+  shortLabel: Scholar
   # color: "#515151"
 
 - name: LinkedIn
@@ -17,6 +18,7 @@
   faIcon: fa-twitter
   dataIcon: mdi-twitter
   label: "@ben_hoov"
+  shortLabel: "@ben_hoov"
   # color: "#1da1f2"
 
 - name: Github
@@ -24,12 +26,6 @@
   href: https://github.com/bhoov
   faIcon: fa-github
   label: "@bhoov"
+  shortLabel: "@bhoov"
   dataIcon: mdi-github 
   # color: "#1da1f2"
-
-# - name: cv
-#   group: 1
-#   href: /cv
-#   faIcon: fa-address-card
-#   dataIcon: mdi-card-account-details
-#   label: "My CV"
