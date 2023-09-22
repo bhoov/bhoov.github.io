@@ -111,7 +111,7 @@
     </div>
 </div>
 <h1 class="main-col">News</h1>
-<div class="flex flex-col md:contents mx-2 gap-0.5">
+<div class="news-list flex flex-col md:contents mx-2 gap-0.5">
     {#each data.news as blurb}
         <!-- <div class="flex gap-4"> -->
         <div class="col-start-1 col-end-3 justify-self-end font-light text-slate-400 text-xs">{blurb.date}</div>
@@ -129,6 +129,10 @@
 </div>
 
 <style lang="postcss">
+    .news-list :global(a) {
+        border-bottom: 2px solid rgba(96, 165, 250, 0.631);
+    }
+
     a {
         border-bottom: 2px solid rgba(96, 165, 250, 0.631);
     }
