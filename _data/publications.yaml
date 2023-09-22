@@ -15,7 +15,7 @@
     Poster at NeurIPS 2023
   links:
     - type: pdf
-      url: https://openreview.net/forum?id=MbwVNEx9KS
+      url: https://arxiv.org/abs/2302.07253
       label: PDF
   month: Sep
   year: 2023
@@ -26,7 +26,7 @@
       author={Hoover, Benjamin and Liang, Yuchen and Pham, Bao and Panda, Rameswar and Strobelt, Hendrik and Chau, Duen Horng and Zaki, Mohammed J. and Krotov, Dmitry},
       booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
       year={2023},
-      url={https://openreview.net/forum?id=MbwVNEx9KS}
+      url={https://arxiv.org/abs/2302.07253}
     }
 
 - title: "ConceptEvo: Interpreting Concept Evolution in Deep Learning Training"
