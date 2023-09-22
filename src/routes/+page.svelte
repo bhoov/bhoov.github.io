@@ -15,10 +15,12 @@
     <title>Ben Hoover</title>
 </svelte:head>
 
+<base target="_blank" />
+
 <div class="main-col">
     <div id="header-hero max-w-lg">
         <div class="grid grid-cols-12 gap-10 items-center">
-            <div class="col-start-1 col-end-5 justify-self-end">
+            <div class="col-start-1 col-end-4 justify-self-end">
                 <img
                     class="rounded-lg shadow-lg"
                     src="imgs/people/me-headshot-230426.jpg"
@@ -26,34 +28,34 @@
                 />
             </div>
             <div
-                class="flex flex-col gap-4 justify-self-start col-start-5 col-end-13"
+                class="flex flex-col gap-4 justify-self-start col-start-4 col-end-13"
             >
                 <div>
-                    <p class="text-4xl text-slate-700">Ben Hoover</p>
-                    <p class="text-gray-400 text-2xl">
-                        AI Researcher with <a
-                            href="https://researcher.watson.ibm.com/researcher/view_group.php?id=5948"
-                            >IBM Research</a
-                        >
-                        and
-                        <a href="https://poloclub.github.io/">GA Tech</a>
+                    <p class="text-4xl text-slate-700 font-semibold">
+                        Hi, I'm Ben Hoover
                     </p>
+                    <p class="text-2xl text-slate-400 font-light">
+                        I'm an AI Researcher studying <span
+                            class="font-medium text-slate-500">memory</span
+                        >
+                    </p>
+                    <!-- <p class="text-4xl text-slate-700">Ben Hoover</p> -->
                 </div>
                 <div class="flex flex-row gap-2 text-xl">
                     <div
-                        class="bg-slate-100 p-2 rounded-full hover:bg-slate-300 text-gray-600"
+                        class="bg-slate-100 p-2 rounded-full hover:bg-slate-300 text-gray-600 text-sm"
                     >
                         <a
                             target="_blank"
                             href={"/cv"}
                             rel="noreferrer"
                             class="no-border"
-                            >My CV
+                            >CV
                         </a>
                     </div>
                     {#each data.socialLinks as link}
                         <div
-                            class="bg-slate-100 p-2 rounded-full hover:bg-slate-300"
+                            class="bg-slate-100 p-2 rounded-full hover:bg-slate-300 text-md"
                         >
                             <a
                                 target="_blank"
@@ -75,41 +77,50 @@
 
     <div class="intro-paragraph">
         <p class="text-gray-500 border-l-2 pl-4 text-2xl my-8">
+            Understanding
             <a
-                href="https://transformer-circuits.pub/2022/mech-interp-essay/index.html"
-                >Mechanistic interpretability</a
+                href="https://research.ibm.com/blog/what-are-foundation-models"
+                target="_blank"
+                rel="noreferrer">AI foundation models</a
             >
-            from the perspective of
+            from the perspective of large
             <a
                 href="https://en.wikipedia.org/wiki/Associative_memory_(psychology)"
                 target="_blank"
-                rel="noreferrer">Associative Memory</a
+                rel="noreferrer">Associative Memories</a
             >.
         </p>
         <div class="text-slate-700 flex flex-col gap-4 leading-6 font-light">
-            <p class="">
-                My research focuses on understanding <a
-                    href="https://research.ibm.com/blog/what-are-foundation-models"
-                    target="_blank"
-                    rel="noreferrer">AI foundation models</a
+            <p>
+                I am an AI Research Engineer with <a
+                    href="https://researcher.watson.ibm.com/researcher/view_group.php?id=5948"
+                    >IBM Research</a
                 >
-                from the perspective of memory and dynamical systems that look similar
-                to
+                and a (part-time) Machine Learning PhD student at
+                <a href="https://poloclub.github.io/">GA Tech</a> advised by
+                <a href="https://poloclub.github.io/polochau/">Polo Chau</a>. My
+                research focuses on building more interpretable and parameter
+                efficient AI by rethinking the way we train and build deep
+                models, taking inspiration from Associative Memories and
                 <a href="http://www.scholarpedia.org/article/Hopfield_network"
                     >Hopfield Networks</a
-                >. I'm a self-branded
-                <span class="font-semibold">
-                    AI re-interpretability and visualization engineer
-                </span>
-                seeking to better explain the theory and behavior of our best models.
-                <!-- When we look under the hood of foundation models, do we expect them to look like a cold computer or a living brain? -->
+                >.
             </p>
             <p />
         </div>
     </div>
-
-    <!-- <h1 class="">News</h1> -->
 </div>
+<h1 class="main-col">News</h1>
+<div class="flex flex-col md:contents mx-2 gap-0.5">
+    {#each data.news as blurb}
+        <!-- <div class="flex gap-4"> -->
+        <div class="col-start-1 col-end-3 justify-self-end font-light text-slate-400 text-xs">{blurb.date}</div>
+        <div class="col-start-3 col-end-11 mb-2">{@html blurb.HTMLdescription}</div>
+        <!-- </div> -->
+    {/each}
+</div>
+
+<!-- <div class="main-col flex gap-2 flex-col"> -->
 <h1 class="main-col">Publications</h1>
 <div class="flex flex-col md:contents mx-2">
     {#each projects as project, i}
@@ -128,5 +139,10 @@
 
     .me {
         @apply font-bold;
+    }
+
+    .news-grid {
+        display: grid;
+        grid-template-columns: max-content auto;
     }
 </style>
