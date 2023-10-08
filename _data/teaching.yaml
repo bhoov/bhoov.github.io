@@ -1,4 +1,18 @@
 - role: Graduate Teaching Assistant
+  institution: Georgia Institute of Technology
+  institutionUrl: http://gatech.edu
+  location: "Atlanta, GA"
+  course: "Data and Visual Analytics"
+  courseUrl: https://poloclub.github.io/cse6242-2023fall-online/
+  courseCode: CS 6242
+  instructors:
+    - Polo Chau
+    - Mahdi Roozbahani
+  date: Fall '23
+  description: >-
+    Organized project teams, graded projects, and held weekly office hours for an online graduate course with 947 students enrolled.
+
+- role: Graduate Teaching Assistant
   institution: Duke University
   institutionUrl: http://duke.edu
   location: "Durham, NC"

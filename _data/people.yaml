@@ -1,3 +1,8 @@
+# NAME:
+#   url: 
+#   picture: "assets/imgs/people/NAME.png" # optional
+#   me: # only for me
+
 Benjamin Hoover:
   url: "#"
   picture: "assets/imgs/people/me-headshot.png"
@@ -77,43 +82,33 @@ Peter Ajemba:
 
 Keith Nogueira:
   url: https://www.linkedin.com/in/keith-public-profile/
-  # picture: ""
 
 Enara Vijil:
   url: https://researcher.watson.ibm.com/researcher/view.php?person=us-ecvijil
-  # picture: ""
 
 Payel Das:
   url: https://researcher.watson.ibm.com/researcher/view.php?person=us-daspa
-  # picture: ""
 
 Samuel Hoffman:
   url: https://www.linkedin.com/in/shoffman5/
-  # picture: ""
 
 Inkit Padhi:
   url: https://scholar.google.co.in/citations?user=c4yuGSoAAAAJ&hl=en
-  # picture: ""
 
 Kar Wai Lim:
   url: https://karwailim.github.io/
-  # picture: ""
 
 Matteo Manica:
   url: https://researcher.watson.ibm.com/researcher/view.php?person=zurich-TTE
-  # picture: ""
 
 Jannis Born:
   url: https://researcher.watson.ibm.com/researcher/view.php?person=zurich-JAB
-  # picture: ""
 
 Aleksandra Mojsilovic:
   url: https://scholar.google.com/citations?user=jnBZzGwAAAAJ&hl=en
-  # picture: ""
 
 Arvind Satyanarayan:
   url: https://arvindsatya.com/
-  # picture: ""
 
 Angie Boggust:
   url: http://angieboggust.com/
@@ -183,11 +178,9 @@ Miguel Luengo-Oroz:
   
 Polo Chau:
   url: "https://faculty.cc.gatech.edu/~dchau/"
-  # picture: "assets/imgs/people/polo-chau.jpeg"
 
 Zijie J. Wang:
   url: "https://zijie.wang/"
-  # picture: 
 
 Evan Montoya:
   url: "https://www.linkedin.com/in/evan-montoya-b252391b4/"
@@ -239,3 +232,6 @@ Nilaksh Das:
 
 Judy Hoffman:
   url: "https://faculty.cc.gatech.edu/~judy/"
+
+Mahdi Roozbahani:
+  url: https://www.cse.gatech.edu/people/mahdi-roozbahani
