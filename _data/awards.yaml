@@ -1,0 +1,24 @@
+# - name: 
+#   url: #optional
+#   description: 
+#   date: 
+
+# - name: Runner Up for Best Demo at NeurIPS
+#   description: For "exBERT: A Visual Analysis of Transformer Models"
+#   date: Dec 2019
+
+# - name: Best Demo at NeurIPS
+#   description: For "LMdiff: A Visual Diff Tool to Compare Language Models"
+#   date: Dec 2020
+
+# - name: "Dean's List"
+#   description: Achieved at least a 3.5 GPA during a semester with minimum 14 credit hours
+#   date: 2013-2017
+
+# - name: "Raul Buelvas Award"
+#   description: Given to one freshman at Duke University who "best exemplifies honor, optimism, and selflessness"
+#   date: 2014
+
+# - name: "Best Poster at #IOPPoster"
+#   description: For "RXNMapper: Unsupervised Attention Guided Atom Mapping"
+#   date: 2020

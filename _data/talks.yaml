@@ -1,50 +1,67 @@
-- title: "HAMUX: Hopfield Netowrks 2.0"
-  venues:
-    - name: "GA Tech CSE Hotseat"
-      date: Nov 2022
+# - title: 
+#   location: 
+#   date: 
+#   location-url: # optional
+#   talk-url: # optional
+#   invited: true # optional
 
-- title: "Can a Fruit Fly Learn Word Embeddings?"
-  venues:
-    - name: "TransferLearning Event"
-      date: March 2021
+# - title: Future of Software Engineering for Associative Memories
+#   location: "Panelist at the Associative Memory & Hopfield Network (AMHN) Workshop at NeurIPS 2023"
+#   date: Dec 2023
+#   invited: true
 
-- title: "LMDiff: Comparing Language Models"
-  venues:
-    - name: "NeurIPS Demo"
-      date: Dec 2020
+- title: Energy Transformer
+  location: "McMahon Lab at Cornell University"
+  date: Sep 2023
+  location-url: https://mcmahon.aep.cornell.edu/
 
-- title: "Breaking the Wall of Black Box AI"
-  venues:
-    - name: "Falling Walls Lab Boston"
-      date: Oct 2020
+- title: "Comparing Language Models with LMDiff"
+  location: "Demo at NeurIPS 2020"
+  date: Dec 2020
+
+- title: "HAMUX: Inventing Hopfield Networks 2.0"
+  location: "GA Tech CSE Hotseat"
+  date: "Nov 2022"
+
+# - title: "Can a Fruit Fly Learn Word Embeddings?"
+#   location: "TransferLearning Event"
+#   date: March 2021
 
 - title: "exBERT: Exploring Learned Embeddings in Transformer Models"
-  venues:
-    - name: "ACL: System Demonstrations"
-      date: "Jul 2020"
-    - name: "ICLR: IBM Exposition Demo"
-      date: "Apr 2020"
-    - name: "Neurips: System Demonstrations"
-      date: "Dec 2019"
+  location: System Demonstration at ACL 2020
+  date: July 2020
 
-- title: "RXNMapper: Unsupervised Attention Guided Atom Mapping"
-  venues: 
-    - name: "ICML: ML Interpretability for Scientific Discovery Workshop"
-      date: "Jul 2020"
-    - name: "ICML: IBM Exposition Demo"
-      date: "Jul 2020"
+- title: "exBERT: Exploring Learned Embeddings in Transformer Models"
+  location: IBM Exposition Demo at ICLR 2020
+  date: Apr 2020
+
+- title: "exBERT: Exploring Learned Embeddings in Transformer Models"
+  location: System Demonstration at NeurIPS 2019
+  date: Dec 2019
+
+- title: "Unsupervised Attention Guided Atom Mapping with RXNMapper"
+  location: ML Interpretability for Scientific Discovery Workshop at ICML 2020
+  date: July 2020
+
+- title: "Unsupervised Attention Guided Atom Mapping with RXNMapper"
+  location: IBM Exposition Demo at ICML 2020
+  date: July 2020
+
+- title: "Breaking the Wall of Black Box AI"
+  location: Falling Walls Lab Boston"
+  date: Oct 2020
 
 - title: "Using Matlab's PRT to Accelerate Algorithm Development"
-  venues:
-    - name: "Medtronic Diabetes R&D"
-      date: "Jul 2017"
+  location: Medtronic Diabetes R&D
+  date: Jul 2017
 
 - title: "The Inside Story"
-  venues:
-    - name: "Duke University: MEng Graduation"
-      date: "May 2018"
+  location: MEng Graduation elected speaker
+  date: May 2018
+  invited: true
 
 - title: "The Impact of Encouragement"
-  venues:
-    - name: "Cary Christian School Graduation"
-      date: "May 2013"
+  location: "Cary Christian Valedictorian Speech"
+  talk-url: https://myawesomeoliveshoots.com/2013/05/28/what-that-formerly-awkward-asian-guy-said-at-high-school-graduation-part-one/
+  date: May 2013
+  invited: true
