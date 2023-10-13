@@ -1,10 +1,12 @@
 - degree: "Machine Learning PhD Student"
   institution: Georgia Institute of Technology
   location: "Atlanta, GA"
-  date: Present
+  date: Aug 2021 - Present
   description: >-
-    PhD Student studying how to interpret Foundation Models through Associative Memory &#x2022;
-    Advisor: <a target="_blank" rel="noreferrer" href="https://faculty.cc.gatech.edu/~dchau/" class="hover-link">Polo Chau</a>
+    Studying how to interpret AI Foundation Models through the lens of Associative Memory
+  advisors:
+    - name: Duen Horng (Polo) Chau
+      url: https://faculty.cc.gatech.edu/~dchau/
   institutionUrl: https://www.gatech.edu/
 
 - degree: "Master of Engineering: Electrical and Computer Engineering"

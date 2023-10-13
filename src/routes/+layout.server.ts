@@ -2,6 +2,7 @@ import * as path from "path"
 import * as glob from "glob"
 import * as fs from "fs-extra"
 import * as yaml from "js-yaml"
+import * as yamlFront from "yaml-front-matter"
 
 export const prerender = true
 
@@ -19,7 +20,17 @@ export async function load() {
         return yaml.load(fdata)
     }))
 
-    const db = fkeys.reduce((acc, fkey, i) => { return { ...acc, [fkey]: fileData[i] } }, {})
+    const pubFiles = globber.sync(`_data/publication-landing-pages/*.md`).filter(fname => path.basename(fname, ".md")[0] != "_")
+    const pubData = await Promise.all(pubFiles.map(async (fname) => {
+        const fdata = await fser.readFile(fname, 'utf8')
+        return yamlFront.loadFront(fdata)
+    }))
+
+    const db = {}
+    fkeys.forEach((fkey, i) => {
+        db[fkey] = fileData[i]
+    })
+    db["publicationData"] = pubData
 
     return db
 }

@@ -3,22 +3,34 @@
 #   description: 
 #   date: 
 
-# - name: Runner Up for Best Demo at NeurIPS
-#   description: For "exBERT: A Visual Analysis of Transformer Models"
-#   date: Dec 2019
+- name: "Best Paper Award, Honorable Mention"
+  description: "DiffusionDB receives a Best Paper, Honorable Mention Award at ACL 2023"
+  date: July 2023
 
-# - name: Best Demo at NeurIPS
-#   description: For "LMdiff: A Visual Diff Tool to Compare Language Models"
-#   date: Dec 2020
+- name: "Spotlight Paper"
+  description: "HAMUX is spotlighted (top 5 submissions) at the Deep Learning and Differential Equation Workshop at NeurIPS 2022"
+  date: Dec. 2022
 
-# - name: "Dean's List"
-#   description: Achieved at least a 3.5 GPA during a semester with minimum 14 credit hours
-#   date: 2013-2017
+- name: "Highlighted Reviewer"
+  description: "ICLR 2022"
+  date: Apr. 2022
 
-# - name: "Raul Buelvas Award"
-#   description: Given to one freshman at Duke University who "best exemplifies honor, optimism, and selflessness"
-#   date: 2014
+- name: "Best Poster"
+  description: "RXNMapper wins Best Poster award at #IOPPoster 2020"
+  date: July 2020
 
-# - name: "Best Poster at #IOPPoster"
-#   description: For "RXNMapper: Unsupervised Attention Guided Atom Mapping"
-#   date: 2020
+- name: Best Demo
+  description: "LMdiff is Best Demo at NeurIPS 2020"
+  date: Dec. 2020
+
+- name: (Runner Up) Best Demo
+  description: "exBERT is runner up for Best Demo at NeurIPS 2019"
+  date: Dec. 2019
+
+- name: "Dean's List"
+  description: In the highest one third of engineering class by GPA
+  date: 2013-2017
+
+- name: "Raul Buelvas Award"
+  description: 'Given to one freshman at Duke University who "best exemplifies honor, optimism, and selflessness"'
+  date: Apr. 2014
