@@ -15,7 +15,8 @@
 </script>
 
 <div class="flex main-col items-center flex-col">
-  <h1 class="font-semibold mb-4 text-4xl">Ben Hoover</h1>
+  <h1 class="font-semibold mb-1 text-4xl">Ben Hoover</h1>
+  <h2 class="text-2xl font-light text-gray-400 mb-4">AI Researcher, Engineer, Student</h2>
   <div class="flex flex-row gap-5">
     <a href="https://bhoov.com">https://bhoov.com</a>
     <a href="mailto:bhoov@gatech.edu">bhoov@gatech.edu</a>
@@ -51,7 +52,7 @@
   {/each}
 </div>
 
-<h1 class="main-col">Work Experience</h1>
+<h1 class="main-col">Research Experience</h1>
 <div class="cv-flow">
   {#each experiences as experience, i}
     <div class="cv-block">
@@ -152,8 +153,8 @@
             <div class="text-slate-600 font-light">
               <span class="text-slate-400">
                 {course.instructors.length > 1
-                  ? "Main Instructors: "
-                  : "Main Instructor: "}
+                  ? "Instructors: "
+                  : "Instructor: "}
               </span>
               {#each course.instructors as instructor, i}
                 <a

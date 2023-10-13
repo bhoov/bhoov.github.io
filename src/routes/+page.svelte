@@ -47,6 +47,17 @@
                     >
                         <a
                             target="_blank"
+                            href={"/cv2"}
+                            rel="noreferrer"
+                            class="no-border"
+                            >CV2
+                        </a>
+                    </div>
+                    <div
+                        class="bg-slate-100 p-2 rounded-full hover:bg-slate-300 text-gray-600 text-sm"
+                    >
+                        <a
+                            target="_blank"
                             href={"/cv"}
                             rel="noreferrer"
                             class="no-border"
