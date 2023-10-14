@@ -10,9 +10,10 @@
 <!-- <Header /> -->
 
 <div id="svelte">
-	<main class="max-w-md md:grid md:grid-cols-12 md:max-w-5xl md:gap-x-8">
+	<!-- <main class="max-w-md md:grid md:grid-cols-12 md:max-w-5xl md:gap-x-8"> -->
+	<div class="layout">
 		<slot />
-	</main>
+	</div>
 
 	<footer>
 		<!-- <p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p> -->
@@ -31,6 +32,20 @@
 	footer a {
 		font-weight: bold;
 	}
+
+	.layout {
+		max-width: 1100px;
+		width: 93%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	/* .layout > * >  div {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 600px;
+	} */
+
 	main {
 		width: 1200px;
 		padding: 0 1rem;

@@ -1,9 +1,9 @@
 ---
 id: EnergyTransformer
-title: Energy Transformer
+title: Energy-based Attention for Associative Memory
+short-title: Energy Transformer
 authors:
   - Benjamin Hoover
-  - Polo Chau
 venue: Neural Information Processing Systems
 venue-shorthand: NeurIPS
 location: New Orleans, LA, USA
