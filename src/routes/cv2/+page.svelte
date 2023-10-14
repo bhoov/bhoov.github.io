@@ -12,15 +12,14 @@
     console.log("DATA: ", data);
   });
 
-  let school = data.education[0]
+  let school = data.education[0];
 </script>
 
 <div class="layout">
   <div class="header">
     <h1>Benjamin Hoover</h1>
     <h2>AI Researcher, Engineer, Student</h2>
-
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-2 w-max">
       <div>
         <a href="https://bhoov.com">https://bhoov.com</a>
       </div>
@@ -29,9 +28,7 @@
       </div>
     </div>
   </div>
-
   <h1>Education</h1>
-
   <div>
     <div>
       {school.date}
@@ -40,19 +37,14 @@
       {school.degree}
     </div>
     <div>
-      <a
-        target="_blank"
-        rel="noreferrer"
-        href={school.institutionUrl}
-        class="">{school.institution}</a
+      <a target="_blank" rel="noreferrer" href={school.institutionUrl} class=""
+        >{school.institution}</a
       >, {school.location}
     </div>
     <div class="cv-entry-description">
       {school.description}
     </div>
   </div>
-
-
 </div>
 
 <style>
