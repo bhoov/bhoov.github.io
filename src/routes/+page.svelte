@@ -1,13 +1,20 @@
 <script lang="ts">
+  import LandingPageCard from './LandingPageCard.svelte';
+
     import { onMount } from "svelte";
     import ProjectEntry from "$lib/components/ProjectEntry.svelte";
+    import ProjectLink from "$lib/components/ProjectLink.svelte";
     export let data;
 
     $: people = data.people;
-    $: projects = data.publications;
+    $: publications = data.publications;
+
+    $: featuredMemory = data.publications.filter((x) => (x.featured && x.category == "memory"));
+    $: featuredVis = data.publications.filter((x) => (x.featured && x.category == "vis"));
 
     onMount(() => {
         console.log("DATA: ", data);
+        console.log(featuredMemory);
     });
 </script>
 
@@ -96,7 +103,7 @@
                     href="https://researcher.watson.ibm.com/researcher/view_group.php?id=5948"
                     >IBM Research</a
                 >
-                and a (part-time) Machine Learning PhD student at
+                and a part-time Machine Learning PhD student at
                 <a href="https://poloclub.github.io/">GA Tech</a> advised by
                 <a href="https://poloclub.github.io/polochau/">Polo Chau</a>. My
                 research focuses on building more interpretable and parameter
@@ -104,7 +111,7 @@
                 models, taking inspiration from Associative Memories and
                 <a href="http://www.scholarpedia.org/article/Hopfield_network"
                     >Hopfield Networks</a
-                >.
+                >. I like to visualize what happens inside AI models.
             </p>
             <p />
         </div>
@@ -125,8 +132,24 @@
         {/each}
     </div>
 
-    <h1 class="main-col" id="selected-publications">Highlighted Work</h1>
-    <div class="main-col flex gap-2" />
+    <h1 class="main-col mt-12 text-center" id="selected-memory">Memory Research Highlights</h1>
+    <div
+        class="col-start-3 col-end-11 flex flex-wrap gap-4 md:col-start-2 md:col-end-12"
+    >
+        {#each featuredMemory as project, i}
+            <LandingPageCard {project}></LandingPageCard>
+        {/each}
+    </div>
+
+
+    <h1 class="main-col mt-12 text-center" id="selected-memory">Visualization Research Highlights</h1>
+    <div
+        class="col-start-3 col-end-11 flex flex-wrap gap-4 md:col-start-2 md:col-end-12"
+    >
+        {#each featuredVis as project, i}
+            <LandingPageCard {project}></LandingPageCard>
+        {/each}
+    </div>
 </div>
 
 <!-- <div class="main-col flex gap-2 flex-col"> -->
@@ -168,5 +191,9 @@
 
     .main-col {
         @apply col-start-3 col-end-11;
+    }
+
+    .full-col {
+        @apply col-start-1 col-end-13;
     }
 </style>

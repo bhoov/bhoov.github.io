@@ -1,6 +1,7 @@
 - id: PlainSight
   title: "Memory in Plain Sight: A Survey of the Uncanny Resemblances between Diffusion Models and Associative Memories"
-  short-title: Memory in Plain Sight
+  shortTitle: Memory in Plain Sight
+  category: memory
   authors:
     - Benjamin Hoover
     - Hendrik Strobelt
@@ -9,9 +10,11 @@
     - Zsolt Kira
     - Polo Chau
   venue: ArXiv preprint
-  venue-shorthand: ArXiv
+  venueShorthand: ArXiv
   # location: New Orleans, LA, USA
+  thumbnail: "imgs/thumbnails/PlainSight.png"
   type: preprint
+  defaultUrl: https://arxiv.org/abs/2309.16750
   links:
     - type: pdf
       url: https://arxiv.org/abs/2309.16750
@@ -19,6 +22,8 @@
   month: Oct
   year: 2023
   featured: true
+  featureDescription: >-
+    We are the first work to discover that diffusion models perform memory retrieval in their denoising dynamics.
   selected: true
   bibtex: |-
 
@@ -33,7 +38,8 @@
 
 - id: EnergyTransformer
   title: "Energy-based Attention for Associative Memory"
-  short-title: Energy Transformer
+  shortTitle: Energy Transformer
+  category: memory
   authors:
     - Benjamin Hoover
     - Yuchen Liang
@@ -44,8 +50,9 @@
     - Mohammed J. Zaki
     - Dmitry Krotov
   venue: Conference on Neural Information Processing Systems
-  venue-shorthand: NeurIPS
+  venueShorthand: NeurIPS
   location: New Orleans, LA, USA
+  defaultUrl: https://arxiv.org/abs/2302.07253
   links:
     - type: pdf
       url: https://arxiv.org/abs/2302.07253
@@ -54,7 +61,10 @@
   year: 2023
   featured: true
   selected: true
+  thumbnail: "imgs/thumbnails/energy-transformer.png"
   type: conference
+  featureDescription: >-
+    We derive an Associative Memory inspired by the famous Transformer architecture, where the forward pass through the model is memory retrieval by energy descent.
   bibtex: |-
 
     @inproceedings{
@@ -66,10 +76,10 @@
       url={https://arxiv.org/abs/2302.07253}
     }
 
-
 - id: ConceptEvo
   title: "ConceptEvo: Interpreting Concept Evolution in Deep Learning Training"
-  short-title: ConceptEvo
+  shortTitle: ConceptEvo
+  category: vis
   authors:
     - Haekyu Park
     - Seongmin Lee
@@ -82,11 +92,12 @@
     - Judy Hoffman
     - Polo Chau
   venue: "ACM International Conference on Information and Knowledge Management"
-  venue-shorthand: "CIKM"
+  venueShorthand: "CIKM"
   type: conference
   location: Birmingham, UK
   month: July
   year: 2023
+  defaultUrl: https://openreview.net/forum?id=NayaT7pLUx
   links:
     - type: pdf
       url: https://openreview.net/forum?id=NayaT7pLUx
@@ -94,7 +105,7 @@
   description: >-
     Accepted to CIKM 2023. Also presented at AI & HCI Workshop at ICML 2023
   bibtex: |
-  
+
     @inproceedings{park2022conceptevo,
       title={ConceptEvo: Interpreting Concept Evolution in Deep Learning Training},
       author={Park, Haekyu and Lee, Seongmin and Hoover, Benjamin and Wright, Austin and Shaikh, Omar and Duggal, Rahul and Das, Nilaksh and Hoffman, Judy and Chau, Duen Horng},
@@ -104,7 +115,8 @@
 
 - id: DiffusionExplainer
   title: "Diffusion Explainer: Visual Explanation for Text-to-image Stable Diffusion"
-  short-title: Diffusion Explainer
+  shortTitle: Diffusion Explainer
+  category: vis
   authors:
     - Seongmin Lee
     - Benjamin Hoover
@@ -117,11 +129,15 @@
     - Haoyang Yang
     - Polo Chau
   venue: Conference on Computer Vision and Pattern Recognition
-  venue-shorthand: CVPR
+  venueShorthand: CVPR
   location: Vancouver BC, CA
   type: conference
   featured: true
-  selected: true
+  selected: false
+  featureDescription: >-
+    Diffusion models are complicated. We break down Stable Diffusion and explain each component of the model visually.
+  thumbnail: "imgs/thumbnails/diffusion-explainer.png"
+  defaultUrl: https://poloclub.github.io/diffusion-explainer/
   links:
     - type: demo
       url: https://poloclub.github.io/diffusion-explainer/
@@ -150,7 +166,8 @@
 
 - id: DiffusionDB
   title: "DiffusionDB: A Large-scale Prompt Gallery Dataset for Text-to-Image Generative Models"
-  short-title: DiffusionDB
+  shortTitle: DiffusionDB
+  category: dataset
   authors:
     - Zijie J. Wang
     - Evan Montoya
@@ -159,9 +176,10 @@
     - Benjamin Hoover
     - Polo Chau
   venue: Association for Computational Linguistics
-  venue-shorthand: ACL
+  venueShorthand: ACL
   type: conference
   location: Toronto, CA
+  defaultUrl: https://poloclub.github.io/diffusiondb/
   links:
     - type: url
       url: https://poloclub.github.io/diffusiondb/
@@ -193,16 +211,18 @@
 
 - id: HAMUX
   title: "HAMUX: A Universal Abstraction for Hierarchical Hopfield Networks"
-  short-title: HAMUX
+  shortTitle: HAMUX
+  category: memory
   authors:
     - Benjamin Hoover
     - Polo Chau
     - Hendrik Strobelt
     - Dmitry Krotov
   venue: "Symbiosis of Deep Learning and Differential Equations II Workshop at NeurIPS"
-  venue-shorthand: "DLDE"
+  venueShorthand: "DLDE"
   type: workshop
   location: "New Orleans, LA, USA"
+  defaultUrl: https://bhoov.github.io/hamux/
   links:
     - type: code
       url: https://github.com/bhoov/hamux
@@ -221,6 +241,8 @@
   year: 2022
   featured: true
   selected: true
+  featureDescription: >-
+    We invent a software abstraction around "synapses" and "neurons" to assemble energy functions of complicated Associative Memories, where memory retrieval is performed through autograd.
   description: >-
     <strong>🏆Spotlight Poster</strong> at <a href="https://dlde-2022.github.io/" target="_blank">DLDE Workshop</a>, 
     Poster at <a href="https://memari-workshop.github.io/" target="_blank">MemARI Workshop</a>,
@@ -236,6 +258,7 @@
 - id: PromptIDE
   title: Interactive and Visual Prompt Engineering for Ad-hoc Task Adaptation with Large Language Models
   name: PromptIDE
+  category: vis
   authors:
     - Hendrik Strobelt
     - Albert Webson
@@ -245,11 +268,12 @@
     - Hanspeter Pfister
     - Alexander Rush
   venue: "IEEE Transactions on Visualization and Computer Graphics"
-  venue-shorthand: "VIS"
+  venueShorthand: "VIS"
   type: conference
   location: Oklahoma City, OK, USA
   year: 2022
   month: Oct.
+  defaultUrl: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9908590
   links:
     - type: pdf
       url: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9908590
@@ -257,6 +281,7 @@
     - type: demo
       url: http://promptide.vizhub.ai/
       label: Demo
+  featured: false
   description: >-
     Published at IEEE Vis 2022
   bibtex: |-
@@ -274,7 +299,8 @@
 
 - id: SharedInterest
   title: "Shared Interest: Measuring Human-AI Alignment to Identify Recurring Patterns in Model Behavior"
-  short-title: Shared Interest
+  shortTitle: Shared Interest
+  category: vis
   authors:
     - Angie Boggust
     - Benjamin Hoover
@@ -283,9 +309,10 @@
   year: 2022
   month: Apr.
   venue: "ACM Conference on Human Factors in Computing Systems"
-  venue-shorthand: "CHI"
+  venueShorthand: "CHI"
   type: conference
   location: "New Orleans, LA, USA"
+  defaultUrl: http://shared-interest.csail.mit.edu/
   links:
     - type: url
       url: http://shared-interest.csail.mit.edu/
@@ -303,6 +330,9 @@
       url: https://www.youtube.com/watch?v=1SSgr96nBDc
       label: Code
   thumbnail: "imgs/thumbnails/saliencyExplorer.png"
+  featured: true
+  featureDescription: >-
+    Do humans and AI models agree on what features are important for model prediction? How much do they differ?
   description: >-
     <strong>🏅Best Paper Honorable Mention</strong> CHI 2022; IEE Vis: VisXAI Workshop; Demo at NeurIPS 2020
   bibtex: |-
@@ -318,15 +348,17 @@
 
 - id: 60years
   title: Interactive Exploration for 60 Years of AI Research
-  short-title: VisAnthology
+  shortTitle: VisAnthology
+  category: vis
   authors:
     - Hendrik Strobelt
     - Benjamin Hoover
   venue: "Conference on Neural Information Processing Systems: Demo"
-  venue-shorthand: "NeurIPS"
+  venueShorthand: "NeurIPS"
   year: 2021
   month: Dec
   type: demo
+  defaultUrl: https://neuripsav.vizhub.ai/
   links:
     - type: demo
       url: https://neuripsav.vizhub.ai/
@@ -348,17 +380,19 @@
 
 - id: Fairytailor
   title: "Fairytailor: A multimodal generative framework for storytelling"
-  short-title: Fairytailor
+  shortTitle: Fairytailor
+  category: vis
   authors:
     - Eden Bensaid
     - Mauro Martino
     - Benjamin Hoover
     - Hendrik Strobelt
   venue: "ArXiv preprint"
-  venue-shorthand: ArXiv
+  venueShorthand: ArXiv
   year: 2021
   month: Jul
   type: preprint
+  defaultUrl: https://arxiv.org/pdf/2108.04324.pdf
   links:
     - type: pdf
       url: https://arxiv.org/pdf/2108.04324.pdf
@@ -366,6 +400,7 @@
     - type: demo
       url: https://fairytailor.vizhub.ai/
       label: Demo
+  featured: false
   description: >-
     An AI co-authoring tool to interactively write text and images into a story resembling a child's fairytale.
   bibtex: |-
@@ -380,7 +415,8 @@
 
 - id: FlyVec
   title: "Can a Fruit Fly Learn Word Embeddings?"
-  short-title: FlyVec
+  shortTitle: FlyVec
+  category: memory
   authors:
     - Yuchen Liang
     - Chaitanya K. Ryali
@@ -390,16 +426,17 @@
     - Mohammed J. Zaki
     - Dmitry Krotov
   venue: International Conference for Learning Representations
-  venue-shorthand: "ICLR"
+  venueShorthand: "ICLR"
   year: 2021
   month: May
+  defaultUrl: https://flyvec.vizhub.ai
   links:
     - type: url
       url: https://flyvec.vizhub.ai
       label: Project
     - type: pdf
       url: https://arxiv.org/abs/2101.06887
-      label: PDF 
+      label: PDF
     - type: poster
       url: https://iclr.cc/virtual/2021/poster/3085
       label: Poster
@@ -423,17 +460,19 @@
 
 - id: LMdiff
   title: "LMdiff: A Visual Diff Tool to Compare Language Models"
-  short-title: LMdiff
+  shortTitle: LMdiff
+  category: vis
   authors:
     - Hendrik Strobelt
     - Benjamin Hoover
     - Arvind Satyanarayan
     - Sebastian Gehrmann
   venue: "Empirical Methods in Natural Language Processing: Systems Demo"
-  venue-shorthand: EMNLP
+  venueShorthand: EMNLP
   location: Punta Cana, Dominican Republic
   month: Apr
   year: 2021
+  defualtUrl: http://lmdiff.net/
   links:
     - type: url
       url: http://lmdiff.net/
@@ -452,6 +491,9 @@
       label: Code
   thumbnail: "imgs/thumbnails/diffLM.png"
   type: demo
+  featured: false
+  featureDescription: >-
+    We visually compare large, complex language models. How do different models interpret the same text?
   description: >-
     System Demo at EMNLP 2021. <b>Best Demo</b> at Neurips 2020
   bibtex: |-
@@ -475,7 +517,8 @@
 - id: Poisoning
   title: >-
     The Design and Development of a Game to Study Backdoor Poisoning Attacks: The Backdoor Game
-  short-title: The Backdoor Game
+  shortTitle: The Backdoor Game
+  category: vis
   authors:
     - Zahra Ashktorab
     - Casey Dugan
@@ -490,11 +533,12 @@
     - Werner Geyer
     - Qian Pan
   venue: "International Conference on Intelligent User Interfaces"
-  venue-shorthand: IUI
+  venueShorthand: IUI
   location: (online)
   type: conference
   year: 2021
   month: Apr
+  defaultUrl: http://zahraashktorab.com/iui21-13.pdf
   links:
     - type: pdf
       url: http://zahraashktorab.com/iui21-13.pdf
@@ -521,6 +565,7 @@
 - id: CampEPI
   title: "Operational response simulation tool for epidemics within refugee and IDP settlements"
   name: Refugee Camp Epidemic Simulation
+  category: vis
   authors:
     - Joseph Bullock
     - Carolina Cuesta-Lazaro
@@ -538,14 +583,15 @@
     - Ahmad Hussien
     - Miguel Luengo-Oroz
   venue: "Public Library of Science: Computational Biology"
-  venue-shorthand: "PLOS"
+  venueShorthand: "PLOS"
   type: journal
   year: 2021
   month: Jan
+  defaultUrl: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009360
   links:
     - type: pdf
       url: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009360
-    #   url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8553081/
+      #   url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8553081/
       label: PDF
   thumbnail: "imgs/thumbnails/junevis.png"
   description: >-
@@ -564,7 +610,8 @@
 
 - id: RXNMapper
   title: "RXNMapper: Unsupervised Attention Guided Atom Mapping"
-  short-title: RXNMapper
+  shortTitle: RXNMapper
+  category: vis
   authors:
     - Philippe Schwaller
     - Benjamin Hoover
@@ -572,12 +619,15 @@
     - Hendrik Strobelt
     - Teodoro Laino
   venue: Science Advances
-  venue-shorthand: "AAAS"
+  venueShorthand: "AAAS"
   year: 2020
   month: Dec
   type: journal
   featured: true
-  selected: true
+  selected: false
+  featureDescription: >- 
+    We discover that Transformers trained on chemical reactions learn, on their own, how atoms physically rearrange.
+  defaultUrl: http://rxnmapper.ai/
   links:
     - type: url
       url: http://rxnmapper.ai/
@@ -614,6 +664,7 @@
 - id: CogMol
   title: "CogMol: Target-Specific and Selective Drug Design for COVID-19 Using Deep Generative Models"
   name: "CogMol: COVID-19 Drug Design"
+  category: vis
   authors:
     - Enara Vijil
     - Payel Das
@@ -627,10 +678,11 @@
     - Teodoro Laino
     - Aleksandra Mojsilovic
   venu: "Neural Information Processing Systems"
-  venue-shorthand: "NeurIPS"
+  venueShorthand: "NeurIPS"
   type: conference
   year: 2020
   month: Dec
+  defaultUrl:  https://papers.nips.cc/paper/2020/file/2d16ad1968844a4300e9a490588ff9f8-Paper.pdf
   links:
     - type: url
       url: https://covid19-mol.mybluemix.net/
@@ -658,16 +710,18 @@
 
 - id: exBERT
   title: "exBERT: A Visual Analysis of Transformer Models"
-  short-title: exBERT
+  shortTitle: exBERT
+  category: vis
   authors:
     - Benjamin Hoover
     - Hendrik Strobelt
     - Sebastian Gehrmann
   venue: "Association for Computational Linguistics: System Demonstrations"
-  venue-shorthand: "ACL"
+  venueShorthand: "ACL"
   location: (online)
   year: 2020
   month: Jul
+  defaultUrl: https://exbert.vizhub.ai
   links:
     - type: url
       url: https://exbert.vizhub.ai
@@ -684,6 +738,8 @@
     - type: code
       url: https://github.com/bhoov/exbert
       label: Code
+  featured: false
+  featureDescription: Transformers are giant black boxes. We break open BERT and GPT-like models and visualize attentions, discovering meaningful semantic information stored in the learned embeddings.
   thumbnail: "imgs/thumbnails/exBERT.png"
   type: demo
   description: >-
@@ -705,11 +761,12 @@
       pages = "187--196",
     }
 
-- title: >-
+- id: SOS
+  title: >-
     Managing the SOS Response for Enhanced 
     CRISPR-Cas-Based Recombineering in E. coli 
     through Transient Inhibition of Host RecA Activity
-  name: Cas9 RecA Inhibition
+  shortTitle: Cas9 RecA Inhibition
   authors:
     - Eirik Adim Moreb
     - Benjamin Hoover
@@ -719,10 +776,11 @@
     - Romel Menacho-Melgar
     - Michael D. Lynch
   venue: "American Chemical Society: Synthetic Biology"
-  venue-shorthand: ACS
+  venueShorthand: ACS
   year: 2017
   month: Sep
   type: journal
+  defaultUrl: https://pubs.acs.org/doi/pdf/10.1021/acssynbio.7b00174
   links:
     - type: pdf
       url: https://pubs.acs.org/doi/pdf/10.1021/acssynbio.7b00174
