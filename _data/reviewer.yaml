@@ -1,12 +1,12 @@
   # - venue: 
-  #   venue-shorthand: # optional
+  #   venueShorthand: # optional
   #   venue-at: # optional
   #   years:
   #     - year: 
   #       url: 
   
   - venue: International Conference for Learning Representations
-    venue-shorthand: ICLR
+    venueShorthand: ICLR
     years:
       - year: 2024
         url: https://iclr.cc/Conferences/2024
@@ -16,28 +16,27 @@
         url: https://iclr.cc/Conferences/2022
 
   - venue: International Conference for Machine Learning
-    venue-shorthand: ICML
+    venueShorthand: ICML
     years:
       - year: 2023
         url: https://icml.cc/Conferences/2023
       - year: 2022
         url: https://icml.cc/Conferences/2022
 
-  - venue: Blogpost Track
-    venue-at: ICML
+  - venue: Blogpost Track at ICLR
+    venueShorthand: BP@ICLR
     years:
       - year: 2023
         url: https://iclr-blogposts.github.io/2023/about
 
-  - venue: The Symbiosis of Deep Learning and Differential Equations Workshop
-    venue-shorthand: DLDE
-    venue-at: NeurIPS
+  - venue: Workshop on the Symbiosis of Deep Learning and Differential Equations at NeurIPS
+    venueShorthand: DLDE
     years:
       - year: 2022
         url: https://dlde-2022.github.io/
 
   - venue: Neural Information Processing Systems
-    venue-shorthand: NeurIPS
+    venueShorthand: NeurIPS
     years:
       - year: 2021
         url: https://nips.cc/Conferences/2021
@@ -45,7 +44,7 @@
         url: https://nips.cc/Conferences/2023
 
   - venue: ACM Conference on Human Factors in Computing Systems
-    venue-shorthand: CHI
+    venueShorthand: CHI
     years:
       - year: 2023
         url: https://chi2023.acm.org/

@@ -1,214 +1,167 @@
 <script lang="ts">
+  import CVReviewerEntry from "./CVReviewerEntry.svelte";
+
+  import CVTeachingEntry from "./CVTeachingEntry.svelte";
+
+  import CVTalkEntry from "./CVTalkEntry.svelte";
+
+  import CVPublicationEntry from "./CVPublicationEntry.svelte";
+  import CVAwardEntry from "./CVAwardEntry.svelte";
+  import CVResearchExperienceEntry from "./CVResearchExperienceEntry.svelte";
+  import CVEducationEntry from "./CVEducationEntry.svelte";
+  import CVHeader from "./CVHeader.svelte";
+  import CVHeaderLevel2 from "./CVHeaderLevel2.svelte";
+
   import { onMount } from "svelte";
-  import ProjectEntry from "$lib/components/ProjectEntry.svelte";
   export let data;
 
   $: people = data.people;
-  $: projects = data.publications;
+  $: publications = data.publications;
   $: education = data.education;
   $: experiences = data.experiences;
+  $: awards = data.awards;
+  $: talks = data.talks;
   $: teaching = data.teaching;
+  $: reviewer = data.reviewer;
+  $: social = data.socialLinkInfo;
+
+  $: workshopPublications = publications.filter((p) => p.type == "workshop");
+  $: preprintPublications = publications.filter((p) => p.type == "preprint");
+  $: conferencePublications = publications.filter(
+    (p) => p.type == "conference"
+  );
+  $: journalPublications = publications.filter((p) => p.type == "journal");
 
   onMount(() => {
     console.log("DATA: ", data);
   });
 </script>
 
-<div class="flex main-col items-center flex-col">
-  <h1 class="font-semibold mb-1 text-4xl">Ben Hoover</h1>
-  <h2 class="text-2xl font-light text-gray-400 mb-4">AI Researcher, Engineer, Student</h2>
-  <div class="flex flex-row gap-5">
-    <a href="https://bhoov.com">https://bhoov.com</a>
-    <a href="mailto:bhoov@gatech.edu">bhoov@gatech.edu</a>
+<div class="layout">
+  <div class="header mb-8">
+    <h1 class="mb-1">Benjamin Hoover</h1>
+    <h2 class="text-2xl text-gray-400 font-light mb-2">
+      AI Researcher, Engineer, Student
+    </h2>
+    <div class="">
+      <div class="xs:grid w-full xs:w-5/6 grid-cols-2 text-gray-600">
+        {#each ["email", "homepage", "twitter", "github", "linkedin", "scholar"] as link}
+          <div class="flex flex-row gap-2">
+            <div class="svg-icon self-center">
+              <img src={social[link].icon} alt="" class="opacity-100" />
+            </div>
+            <a href={social[link].href} target="_blank" rel="noreferrer"
+              >{social[link].label}</a
+            >
+          </div>
+        {/each}
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="bg-slate-100 p-2 rounded-full hover:bg-slate-300 text-md">
+    <a target="_blank" href={link.href} rel="noreferrer">
+      <span
+        class="iconify"
+        data-icon={link.dataIcon}
+        style={`color: ${link.color || "#515151"}`}
+      />
+    </a>
+  </div> -->
+
+  <CVHeader title="Education" />
+  <div class="flex flex-col gap-3">
+    {#each education as school}
+      <div>
+        <CVEducationEntry {school} />
+      </div>
+    {/each}
+  </div>
+
+  <CVHeader title="Research Experience" />
+  <div class="flex flex-col gap-3">
+    {#each experiences as experience}
+      <CVResearchExperienceEntry {experience} {people} showDetails={true} />
+    {/each}
+  </div>
+
+  <CVHeader title="Awards and Honors" />
+  <div class="flex flex-col gap-3">
+    {#each awards as award}
+      <CVAwardEntry {award} />
+    {/each}
+  </div>
+
+  <CVHeader title="Publications" />
+  <CVHeaderLevel2 title="Conference" />
+  <div class="flex flex-col gap-4">
+    {#each conferencePublications as publication}
+      <CVPublicationEntry {publication} {people} />
+    {/each}
+  </div>
+
+  <CVHeaderLevel2 title="Journal" />
+  <div class="flex flex-col gap-4">
+    {#each journalPublications as publication}
+      <CVPublicationEntry {publication} {people} />
+    {/each}
+  </div>
+
+  <CVHeaderLevel2 title="Workshop" />
+  <div class="flex flex-col gap-4">
+    {#each workshopPublications as publication}
+      <CVPublicationEntry {publication} {people} />
+    {/each}
+  </div>
+
+  <CVHeaderLevel2 title="Preprints" />
+  <div class="flex flex-col gap-4">
+    {#each preprintPublications as publication}
+      <CVPublicationEntry {publication} {people} />
+    {/each}
+  </div>
+
+  <CVHeader title="Talks" />
+  <div class="flex flex-col gap-3">
+    {#each talks as talk}
+      <CVTalkEntry {talk} />
+    {/each}
+  </div>
+
+  <CVHeader title="Teaching" />
+  <div class="flex flex-col gap-3">
+    {#each teaching as ta}
+      <CVTeachingEntry {ta} {people} />
+    {/each}
+  </div>
+
+  <CVHeader title="Service" />
+  <div class="font-bold text-lg">Reviewer</div>
+  <div class="flex flex-col gap-y-1 sm:gap-y-0">
+    {#each reviewer as venue}
+      <CVReviewerEntry {venue} />
+    {/each}
+  </div>
+  <div class="text-gray-400 font-light my-8 hidden fixed bottom-[0] print:block">
+    Last rendered: {new Date().toDateString()}
   </div>
 </div>
 
-<h1 class="main-col">Education</h1>
-<div class="cv-flow">
-  {#each education as school, i}
-    <div class="cv-block">
-      <div class="cv-date">
-        {school.date}
-      </div>
-      <div class="cv-entry">
-        <div class="cv-entry-title">
-          {school.degree}
-        </div>
-        <div class="cv-entry-subtitle">
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href={school.institutionUrl}
-            class="">{school.institution}</a
-          >, {school.location}
-        </div>
-
-        <div class="cv-entry-description">
-          {@html school.description}
-        </div>
-      </div>
-    </div>
-    <div class="cv-spacer" />
-  {/each}
-</div>
-
-<h1 class="main-col">Research Experience</h1>
-<div class="cv-flow">
-  {#each experiences as experience, i}
-    <div class="cv-block">
-      <div class="cv-date">
-        {experience.date}
-      </div>
-      <div class="cv-entry">
-        <div class="cv-entry-title">
-          <a href={experience.institutionUrl} target="_blank" rel="noreferrer"
-            >{experience.institution}</a
-          >
-        </div>
-
-        <div class="cv-entry-subtitle">
-          {experience.role}
-          &#x2022;
-          {#if experience.teamUrl}
-            <a href={experience.teamUrl}>
-              {experience.team}
-            </a>
-          {:else}
-            {experience.team}
-          {/if}
-          &#x2022;
-          {experience.location}
-        </div>
-
-        <div class="cv-entry-subtitle text-sm">
-          Mentors:
-          {#each experience.mentors as mentor, i}
-            <span>
-              <a href={people[mentor].url}> {mentor} </a>
-            </span>
-            {#if i + 1 != experience.mentors.length}
-              &#x2022;
-              <!-- <span class="mr-1 ml-1">&#x2022;</span> -->
-            {/if}
-          {/each}
-        </div>
-        <!-- <div class="cv-entry-description">
-        {@html school.description}
-      </div> -->
-      </div>
-    </div>
-    <div class="cv-spacer" />
-  {/each}
-</div>
-
-<h1 class="main-col">Publications</h1>
-<div class="cv-flow">
-  {#each projects as project, i}
-    <ProjectEntry {project} {people} />
-  {/each}
-</div>
-
-<h1 class="main-col">Teaching</h1>
-<div class="cv-flow">
-  {#each teaching as course, i}
-    <div class="cv-block">
-      <div class="cv-date">
-        {course.date}
-      </div>
-      <div class="cv-entry">
-        <div class="cv-entry-title">
-          <a target="_blank" rel="noreferrer" href={course.courseUrl}
-            >{course.role}</a
-          >
-        </div>
-        <div>
-          <span class="font-md">
-            {#if course.course}
-              {#if course.courseUrl}
-                <a href={course.courseUrl}
-                  >{course.course}<span class="whitespace-nowrap ml-1"
-                    >({course.courseCode}).</span
-                  >
-                </a>
-              {:else}
-                <span>
-                  {course.course}
-                  <span class="whitespace-nowrap ml-1"
-                    >({course.courseCode}).</span
-                  >
-                </span>
-              {/if}
-            {/if}
-            <span
-              class="
-          font-light"
-            >
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href={course.institionUrl}
-                class="hover:border-b-2">{course.institution}</a
-              >, {course.location}
-            </span>
-            <div class="text-slate-600 font-light">
-              <span class="text-slate-400">
-                {course.instructors.length > 1
-                  ? "Instructors: "
-                  : "Instructor: "}
-              </span>
-              {#each course.instructors as instructor, i}
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={people[instructor].url}
-                  class="mr-0 pr-0">{instructor}</a
-                >
-                {#if i != course.instructors.length - 1}<span class="ml-0 pl-0"
-                    >&#x2022;
-                  </span>{/if}
-              {/each}
-            </div></span
-          >
-        </div>
-        <div />
-        <div class="cv-entry-description">
-          {@html course.description}
-        </div>
-      </div>
-    </div>
-  {/each}
-</div>
+<!-- <div class="h-16"></div> -->
 
 <style lang="postcss">
-  :global(.hover-link) {
-    @apply hover:border-b-2;
+  .me {
+    @apply font-semibold text-gray-800;
+  }
+  .layout {
+    max-width: 900px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .cv-flow {
-    @apply flex flex-col md:contents mx-2;
-  }
-
-  .cv-date {
-    @apply col-start-1 col-end-3 text-xs font-light justify-self-end text-slate-400 mb-1;
-  }
-
-  .cv-entry {
-    @apply col-start-3 col-end-11 mb-5;
-  }
-
-  .cv-entry-title {
-    @apply text-lg font-medium leading-5;
-  }
-
-  .cv-entry-description {
-    @apply text-slate-600 text-sm pl-3 border-l-2;
-  }
-
-  a {
-    @apply hover:border-b-2;
-  }
-
-  .cv-entry-subtitle {
-    @apply text-slate-500;
+  :global(.svg-icon > img) {
+    -webkit-filter: brightness(0) invert(30%);
+    filter: brightness(0) invert(30%);
   }
 </style>

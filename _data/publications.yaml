@@ -183,7 +183,7 @@
   links:
     - type: url
       url: https://poloclub.github.io/diffusiondb/
-      label: Homepage
+      label: Home
     - type: code
       url: https://github.com/poloclub/diffusiondb
       label: Github
@@ -677,7 +677,7 @@
     - Jannis Born
     - Teodoro Laino
     - Aleksandra Mojsilovic
-  venu: "Neural Information Processing Systems"
+  venue: "Neural Information Processing Systems"
   venueShorthand: "NeurIPS"
   type: conference
   year: 2020

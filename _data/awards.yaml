@@ -7,7 +7,7 @@
   description: "DiffusionDB receives a Best Paper, Honorable Mention Award at ACL 2023"
   date: July 2023
 
-- name: "Spotlight Paper"
+- name: "Spotlight Paper Award"
   description: "HAMUX is spotlighted (top 5 submissions) at the Deep Learning and Differential Equation Workshop at NeurIPS 2022"
   date: Dec. 2022
 
@@ -15,11 +15,11 @@
   description: "ICLR 2022"
   date: Apr. 2022
 
-- name: "Best Poster"
+- name: "Best Poster Award"
   description: "RXNMapper wins Best Poster award at #IOPPoster 2020"
   date: July 2020
 
-- name: Best Demo
+- name: Best Demo Award
   description: "LMdiff is Best Demo at NeurIPS 2020"
   date: Dec. 2020
 
@@ -28,7 +28,7 @@
   date: Dec. 2019
 
 - name: "Dean's List"
-  description: In the highest one third of engineering class by GPA
+  description: In the highest one third of engineering class by GPA at Duke
   date: 2013-2017
 
 - name: "Raul Buelvas Award"

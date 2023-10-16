@@ -4,81 +4,81 @@
 #   me: # only for me
 
 Benjamin Hoover:
-  url: "#"
-  picture: "assets/imgs/people/me-headshot.png"
+  url: "/"
+  picture: "imgs/people/me-headshot.png"
   me: True
 
 Hendrik Strobelt:
   url: http://hendrik.strobelt.com/
-  picture: "assets/imgs/people/hendrik-strobelt.png"
+  picture: "imgs/people/hendrik-strobelt.png"
 
 Mauro Martino:
   url: http://www.mamartino.com
-  picture: "assets/imgs/people/mauro-martino.png"
+  picture: "imgs/people/mauro-martino.png"
 
 Patrick Wang:
   url: https://ece.duke.edu/faculty/patrick-wang
-  picture: "assets/imgs/people/patrick-wang.png"
+  picture: "imgs/people/patrick-wang.png"
 
 Stacy Tantum:
   url: https://ece.duke.edu/faculty/stacy-tantum
-  picture: "assets/imgs/people/stacy-tantum.png"
+  picture: "imgs/people/stacy-tantum.png"
 
 Jonathan Viventi:
   url: https://bme.duke.edu/faculty/jonathan-viventi
-  picture: "assets/imgs/people/jonathan-viventi.png"
+  picture: "imgs/people/jonathan-viventi.png"
 
 Paul Bendich:
   url: https://math.duke.edu/people/paul-l-bendich
-  picture: "assets/imgs/people/paul-bendich.png"
+  picture: "imgs/people/paul-bendich.png"
 
 Carmen Rawls:
   url: https://boeingfellows.pratt.duke.edu/member/rawls
-  picture: "assets/imgs/people/carmen-rawls.png"
+  picture: "imgs/people/carmen-rawls.png"
 
 Eirik Adim Moreb:
   url: https://lynchlab.pratt.duke.edu/people/e-adim-moreb
-  picture: "assets/imgs/people/adim-moreb.png"
+  picture: "imgs/people/adim-moreb.png"
 
 Adam Yaseen:
   url: https://yin.hms.harvard.edu/cv/cv.yaseen.adam.pdf
-  picture: "assets/imgs/people/adam-yaseen.png"
+  picture: "imgs/people/adam-yaseen.png"
 
 Nisakorn Valyasevi:
   url: https://www.linkedin.com/in/nisavalyasevi/
-  picture: "assets/imgs/people/nisa-valyasevi.png"
+  picture: "imgs/people/nisa-valyasevi.png"
 
 Zoe Roecker:
   url: https://www.linkedin.com/in/zoe-roecker-5a417b104/
-  picture: "assets/imgs/people/zoe-roecker.png"
+  picture: "imgs/people/zoe-roecker.png"
 
 Romel Menacho-Melgar:
   url: https://www.linkedin.com/in/romel-menacho-melgar-0881b4a8/
-  picture: "assets/imgs/people/romel-menacho-melgar.png"
+  picture: "imgs/people/romel-menacho-melgar.png"
   
 Michael D. Lynch:
   url: https://lynchlab.pratt.duke.edu/people/michael-lynch
-  picture: "assets/imgs/people/mike-lynch.png"
+  picture: "imgs/people/mike-lynch.png"
 
 Sebastian Gehrmann:
   url: https://sebastiangehrmann.com/
-  picture: "assets/imgs/people/sebastian-gehrmann.png"
+  picture: "imgs/people/sebastian-gehrmann.png"
 
 Philippe Schwaller:
   url: https://pschwllr.github.io/#
-  picture: "assets/imgs/people/philippe-schwaller.png"
+  picture: "imgs/people/philippe-schwaller.png"
 
 JL Reymond:
   url: http://www.gdb.unibe.ch/
-  picture: "assets/imgs/people/jl-reymond.png"
+  picture: "imgs/people/jl-reymond.png"
 
 Teodoro Laino:
   url: https://researcher.watson.ibm.com/researcher/view.php?person=zurich-teo
-  picture: "assets/imgs/people/teo-laino.png"
+  picture: "imgs/people/teo-laino.png"
 
 Peter Ajemba:
   url: https://www.linkedin.com/in/peter-ajemba/
-  picture: "assets/imgs/people/peter-ajemba.png"
+  picture: "imgs/people/peter-ajemba.png"
 
 Keith Nogueira:
   url: https://www.linkedin.com/in/keith-public-profile/
@@ -238,3 +238,39 @@ Zsolt Kira:
 
 Mahdi Roozbahani:
   url: https://www.cse.gatech.edu/people/mahdi-roozbahani
+
+Eden Bensaid:
+  url: https://www.linkedin.com/in/eden-b-03397b136/
+
+Zahra Ashktorab:
+  url: http://zahraashktorab.com/
+
+Casey Dugan:
+  url: https://www.linkedin.com/in/casey-dugan1/
+
+James Johnson:
+  url: https://research.ibm.com/people/j-johnson
+
+Aabhas Sharma:
+  url: https://www.linkedin.com/in/sharmaaabhas/
+
+Dustin Ramsey Torres:
+  url: https://dblp.org/pid/290/4172.html
+
+Ingrid Lange:
+  url: https://ingridlange.com/
+
+Heiko Ludwig:
+  url: https://www.linkedin.com/in/heikoludwig/
+
+Bryant Chen:
+  url: https://www.linkedin.com/in/bryant-chen-b372457/
+
+Nathalie Baracaldo:
+  url: https://researcher.watson.ibm.com/researcher/view.php?person=us-baracald
+
+Werner Geyer:
+  url: https://research.ibm.com/people/werner-geyer
+
+Qian Pan:
+  url: https://www.linkedin.com/in/qian-pan-design/

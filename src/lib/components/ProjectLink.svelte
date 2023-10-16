@@ -3,10 +3,11 @@
     import { LINKS } from "$lib/config";
 
     let hovered = false;
+    let styleColor = `color: #515151`
 </script>
 
 <div
-    class="text-xs font-medium bg-blue-100 py-0.5 px-1.5 rounded-2xl hover:bg-blue-500 hover:text-white hover:svg-invert"
+    class="text-xs font-medium bg-blue-100 py-0.5 px-1.5 rounded-2xl hover:bg-blue-400 hover:text-white hover:svg-invert hover:no-underline"
     on:mouseover={() => (hovered = true)}
     on:focus={() => (hovered = true)}
     on:mouseout={() => (hovered = false)}
@@ -18,11 +19,11 @@
             class:svg-container-hovered={hovered}
         >
             <div
-                class="iconify"
+                class="iconify social-link-tag"
                 data-icon={LINKS[link.type]}
-                style={`color: ${link.color || "#515151"}`}
+                style={styleColor}
             />
-            <span>{link.label}</span>
+            <span class="">{link.label}</span>
         </div>
     </a>
 </div>
@@ -32,4 +33,9 @@
         -webkit-filter: brightness(0) invert(100%);
         filter: brightness(0) invert(100%);
     }
+
+    a {
+        text-decoration: none !important;
+    }
+
 </style>
