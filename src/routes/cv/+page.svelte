@@ -45,7 +45,7 @@
     </h2>
     <div class="">
       <div class="xs:grid w-full xs:w-5/6 grid-cols-2 text-gray-600">
-        {#each ["email", "homepage", "twitter", "github", "linkedin", "scholar"] as link}
+        {#each ["email", "homepage", "twitter", "github", "linkedin", "scholar", "cvpdf"] as link}
           <div class="flex flex-row gap-2">
             <div class="svg-icon self-center">
               <img src={social[link].icon} alt="" class="opacity-100" />
