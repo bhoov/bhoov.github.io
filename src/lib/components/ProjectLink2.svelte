@@ -7,7 +7,7 @@
 </script>
 
 <div
-    class="text-xs font-medium bg-blue-100 py-0.5 px-1.5 rounded-2xl hover:bg-blue-400 hover:text-white hover:svg-invert hover:no-underline"
+    class="text-sm font-medium py-0 px-1 text-gray-600 hover:text-rose-600"
     on:mouseover={() => (hovered = true)}
     on:focus={() => (hovered = true)}
     on:mouseout={() => (hovered = false)}
@@ -29,13 +29,12 @@
 </div>
 
 <style lang="postcss">
-    :global(.svg-container-hovered > svg) {
-        -webkit-filter: brightness(0) invert(100%);
-        filter: brightness(0) invert(100%);
-    }
-
     a {
         text-decoration: none !important;
     }
-
+    :global(.svg-container-hovered > svg) {
+        fill: rgb(225, 29, 72)
+        /* -webkit-filter: brightness(0) invert(100%);
+        filter: brightness(0) invert(100%); */
+    }
 </style>

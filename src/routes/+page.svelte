@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LandingPageCard from './LandingPageCard.svelte';
+    import LandingPageCard from "./LandingPageCard.svelte";
 
     import { onMount } from "svelte";
     import ProjectEntry from "$lib/components/ProjectEntry.svelte";
@@ -9,8 +9,12 @@
     $: people = data.people;
     $: publications = data.publications;
 
-    $: featuredMemory = data.publications.filter((x) => (x.featured && x.category == "memory"));
-    $: featuredVis = data.publications.filter((x) => (x.featured && x.category == "vis"));
+    $: featuredMemory = data.publications.filter(
+        (x) => x.featured && x.category == "memory"
+    );
+    $: featuredVis = data.publications.filter(
+        (x) => x.featured && x.category == "vis"
+    );
 
     onMount(() => {
         console.log("DATA: ", data);
@@ -98,7 +102,7 @@
         <div
             class="text-slate-700 flex flex-col gap-4 leading-6 font-light main-col"
         >
-            <p>
+            <!-- <p>
                 I am an AI Research Engineer with <a
                     href="https://researcher.watson.ibm.com/researcher/view_group.php?id=5948"
                     >IBM Research</a
@@ -112,8 +116,22 @@
                 <a href="http://www.scholarpedia.org/article/Hopfield_network"
                     >Hopfield Networks</a
                 >. I like to visualize what happens inside AI models.
+            </p> -->
+            <p>
+                I am a Machine Learning PhD student at
+                <a href="https://poloclub.github.io/">GA Tech</a> advised by
+                <a href="https://poloclub.github.io/polochau/">Polo Chau</a> and
+                an AI Research Engineer with
+                <a
+                    href="https://researcher.watson.ibm.com/researcher/view_group.php?id=5948"
+                    >IBM Research</a
+                >. My research focuses on building more interpretable and
+                parameter efficient AI by rethinking the way we train and build
+                deep models, taking inspiration from Associative Memories and
+                <a href="http://www.scholarpedia.org/article/Hopfield_network"
+                    >Hopfield Networks</a
+                >. I like to visualize what happens inside AI models.
             </p>
-            <p />
         </div>
     </div>
     <h1 class="main-col mt-8">News</h1>
@@ -132,22 +150,25 @@
         {/each}
     </div>
 
-    <h1 class="main-col mt-12 text-center" id="selected-memory">Memory Research Highlights</h1>
+    <h1 class="main-col mt-12 text-center" id="selected-memory">
+        Memory Research Highlights
+    </h1>
     <div
         class="col-start-3 col-end-11 flex flex-wrap gap-4 md:col-start-2 md:col-end-12"
     >
         {#each featuredMemory as project, i}
-            <LandingPageCard {project}></LandingPageCard>
+            <LandingPageCard {project} />
         {/each}
     </div>
 
-
-    <h1 class="main-col mt-12 text-center" id="selected-memory">Visualization Research Highlights</h1>
+    <h1 class="main-col mt-12 text-center" id="selected-memory">
+        Visualization Research Highlights
+    </h1>
     <div
         class="col-start-3 col-end-11 flex flex-wrap gap-4 md:col-start-2 md:col-end-12"
     >
         {#each featuredVis as project, i}
-            <LandingPageCard {project}></LandingPageCard>
+            <LandingPageCard {project} />
         {/each}
     </div>
 </div>

@@ -1,0 +1,44 @@
+scholar:
+  name: Google Scholar
+  href: https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en
+  dataIcon: mdi-school
+  icon: "icons/scholar.svg"
+  label: Google Scholar
+
+linkedin:
+  name: LinkedIn
+  href: https://www.linkedin.com/in/benhoov/
+  dataIcon: mdi-linkedin 
+  icon: "icons/linkedin.svg"
+  label: benhoov
+
+twitter:
+  name: Twitter
+  href: https://twitter.com/ben_hoov
+  faIcon: fa-twitter
+  dataIcon: mdi-twitter
+  icon: "icons/twitter.svg"
+  label: "@ben_hoov"
+  # color: "#1da1f2"
+
+github:
+  name: Github
+  group: 1
+  href: https://github.com/bhoov
+  faIcon: fa-github
+  label: "@bhoov"
+  icon: "icons/github-alt.svg"
+  dataIcon: mdi-github 
+
+homepage:
+  name: Homepage
+  href: https://bhoov.com
+  faIcon: fa-house
+  icon: "icons/home.svg"
+  label: "bhoov.com"
+
+email:
+  name: Email
+  href: mailto://bhoov@gatech.edu
+  icon: "icons/email.svg"
+  label: "bhoov@gatech.edu"
