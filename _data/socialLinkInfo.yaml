@@ -42,3 +42,9 @@ email:
   href: mailto://bhoov@gatech.edu
   icon: "icons/email.svg"
   label: "bhoov@gatech.edu"
+
+cvpdf:
+  name: CV
+  href: cv-pdfs/231016-cv.pdf
+  icon: "icons/pdf.svg"
+  label: CV PDF
