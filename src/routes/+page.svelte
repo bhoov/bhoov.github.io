@@ -61,7 +61,7 @@
                 >
                     <a
                         target="_blank"
-                        href={"/cv2"}
+                        href={"/cv"}
                         rel="noreferrer"
                         class="no-border"
                         >CV
