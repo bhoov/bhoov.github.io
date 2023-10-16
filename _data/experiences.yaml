@@ -5,6 +5,7 @@
   team: Visual AI Lab
   teamUrl: "https://researcher.watson.ibm.com/researcher/view_group.php?id=5948"
   date: "Sep '18 - Present"
+  type: industry
   description: >-
     Member of the <a href="https://researcher.ibm.com/researcher/view_group.php?id=5948">Visual AI Lab</a> where we use visualization to breathe insight and interactivity into powerful AI systems.
   mentors:
@@ -18,11 +19,27 @@
   role: Research Intern
   team: Algorithms R&D
   date: "Summer '17"
+  type: industry
   description: >-
     Analyze trends in patient blood glucose levels for the sensor R&D team, developing algorithms that were incorporated into product by the end of the summer.
   mentors:
     - Peter Ajemba
     - Keith Nogueira
+
+- institution: "Georgia Institute of Technology"
+  institutionUrl: http://gatech.edu/
+  location: "Atlanta, GA"
+  # role: Bass Connections Undergrad Research Assistant
+  role: Ph.D. Researcher
+  # team: "Bass Connections & Lynch Lab"
+  team: "Poloclub at School of Computational Science and Engineering"
+  teamUrl: "https://poloclub.github.io/"
+  date: "Aug '21 - present"
+  type: academic
+  description: >-
+    Member of the Polo Club of Data Science where we innovate scalable, interactive, and interpretable tools that amplify human's ability to understand and interact with billion-scale data and machine learning models.
+  mentors:
+    - Polo Chau
 
 - institution: "International Genetically Engineered Machine (iGEM)"
   institutionUrl: http://2016.igem.org/
@@ -33,6 +50,7 @@
   team: "Lynch Lab"
   teamUrl: "https://lynchlabduke.com/"
   date: "Apr '15 - May '17"
+  type: academic
   description: >-
     Designed experiments to analyze CRISPR-Cas9 binding effects in bacteria, using machine learning to discover patterns in the data.
   mentors:

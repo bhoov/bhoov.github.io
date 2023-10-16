@@ -78,9 +78,16 @@
     {/each}
   </div>
 
-  <CVHeader title="Research Experience" />
+  <CVHeader title="Industry Research Experience" />
   <div class="flex flex-col gap-3">
-    {#each experiences as experience}
+    {#each experiences.filter(e => e.type == "industry") as experience}
+      <CVResearchExperienceEntry {experience} {people} showDetails={true} />
+    {/each}
+  </div>
+
+  <CVHeader title="Academic Research Experience" />
+  <div class="flex flex-col gap-3">
+    {#each experiences.filter(e => e.type == "academic") as experience}
       <CVResearchExperienceEntry {experience} {people} showDetails={true} />
     {/each}
   </div>
