@@ -4,7 +4,19 @@ A redesign using SvelteKit and tailwindcss. Always evolving.
 
 ## Building & deploying
 
+**WARNING: Never commit directly to the `gh-pages` branch!!**
+
+Manually
+
 ```bash
 npm run build
 npm run deploy
+```
+
+Github workflow
+
+1. Commit changes to `deploy` branch and push
+
+```bash
+git comm
 ```
