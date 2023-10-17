@@ -15,6 +15,9 @@ dependencies:
   path:
     specifier: ^0.12.7
     version: 0.12.7
+  svelte-inview:
+    specifier: ^4.0.1
+    version: 4.0.1(svelte@3.55.0)
   yaml-front-matter:
     specifier: ^4.1.1
     version: 4.1.1
@@ -2560,6 +2563,14 @@ packages:
       svelte: 3.55.0
     dev: true
 
+  /svelte-inview@4.0.1(svelte@3.55.0):
+    resolution: {integrity: sha512-8NuT/DKFiZAccDw1Z16cIsdZ7K6/BGxrUfDaFaWTCEdn3YqMj1TUAkfmQ08FQ1+INl1G+TQS+ImXIBiiISgXog==}
+    peerDependencies:
+      svelte: ^3.0.0 || ^4.0.0
+    dependencies:
+      svelte: 3.55.0
+    dev: false
+
   /svelte-preprocess@4.10.7(postcss@8.4.21)(svelte@3.55.0)(typescript@4.9.4):
     resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
     engines: {node: '>= 9.11.2'}
@@ -2615,7 +2626,6 @@ packages:
   /svelte@3.55.0:
     resolution: {integrity: sha512-uGu2FVMlOuey4JoKHKrpZFkoYyj0VLjJdz47zX5+gVK5odxHM40RVhar9/iK2YFRVxvfg9FkhfVlR0sjeIrOiA==}
     engines: {node: '>= 8'}
-    dev: true
 
   /tailwindcss@3.3.3:
     resolution: {integrity: sha512-A0KgSkef7eE4Mf+nKJ83i75TMyq8HqY3qmFIJSWy8bNt0v1lG7jUcpGpoTFxAwYcWOphcTBLPPJg+bDfhDf52w==}
