@@ -32,14 +32,14 @@ github:
 
 homepage:
   name: Homepage
-  href: https://bhoov.com
+  href: /
   faIcon: fa-house
   icon: "icons/home.svg"
   label: "bhoov.com"
 
 email:
   name: Email
-  href: mailto://bhoov@gatech.edu
+  href: mailto:bhoov@gatech.edu
   icon: "icons/email.svg"
   label: "bhoov@gatech.edu"
 
