@@ -11,7 +11,7 @@
 
 <div id="svelte">
 	<!-- <main class="max-w-md md:grid md:grid-cols-12 md:max-w-5xl md:gap-x-8"> -->
-	<div class="layout">
+	<div class="layout w-[90%] sm:w-[93%]">
 		<slot />
 	</div>
 
@@ -35,7 +35,7 @@
 
 	.layout {
 		max-width: 1100px;
-		width: 93%;
+		/* width: 93%; */
 		margin-left: auto;
 		margin-right: auto;
 	}

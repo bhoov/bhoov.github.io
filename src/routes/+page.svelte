@@ -55,7 +55,7 @@
                 </h2>
             </div>
 
-            <div class="flex text-xl gap-4">
+            <div class="flex text-xl gap-2 xs:gap-4">
                 <div
                     class="bg-slate-100 p-2 rounded-full hover:bg-slate-300 text-gray-600 text-sm"
                 >
