@@ -2,7 +2,7 @@
   export let title: string;
 
   let id = title.toLowerCase();
-  let href = `/cv2#${id}`;
+  let href = `/cv#${id}`;
 </script>
 
 <div class="flex gap-1 items-end mb-6 mt-8">

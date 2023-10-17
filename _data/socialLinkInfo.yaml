@@ -45,6 +45,6 @@ email:
 
 cvpdf:
   name: CV
-  href: cv-pdfs/231016-cv.pdf
+  href: cv-pdfs/cv.pdf
   icon: "icons/pdf.svg"
   label: CV PDF

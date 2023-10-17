@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
-    "deploy": "touch build/.nojekyll && gh-pages -d build -t true",
+    "build": "vite build && node src/serverScripts/printCV.js",
+    "deploy": "touch build/.nojekyll && node src/serverScripts/printCV.js && gh-pages -d build -t true",
     "preview": "vite preview",
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -25,6 +25,7 @@
     "glob": "^8.0.3",
     "lodash": "^4.17.21",
     "postcss": "^8.4.21",
+    "puppeteer": "^21.3.8",
     "svelte": "^3.54.0",
     "svelte-check": "^2.9.2",
     "tailwindcss": "^3.3.3",
