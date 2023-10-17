@@ -55,12 +55,17 @@
       <div class="">
         <div class="xs:grid w-full xs:w-5/6 grid-cols-2 text-gray-600">
           {#each ["email", "homepage", "twitter", "github", "linkedin", "scholar", "cvpdf"] as link}
-            <div class={getLinkClassList(link)}>
-              <div class="svg-icon self-center">
-                <img src={social[link].icon} alt="" class="opacity-100" />
-              </div>
-              <a href={social[link].href} target="_blank" rel="noreferrer"
-                >{social[link].label}</a
+            <div class="">
+              <a
+                class={getLinkClassList(link)}
+                href={social[link].href}
+                target={link == "homepage" ? "" : "_blank"}
+                rel="noreferrer"
+              >
+                <div class="svg-icon self-center">
+                  <img src={social[link].icon} alt="" class="opacity-100" />
+                </div>
+                {social[link].label}</a
               >
             </div>
           {/each}
