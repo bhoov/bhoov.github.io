@@ -11,7 +11,7 @@ console.log(__dirname);
   const browser = await puppeteer.launch({headless: "new"});
   const page = await browser.newPage();
   const filename = `file://${__dirname}/../../build/cv.html`;
-  const outFilename = `${__dirname}/../../static/cv-pdfs/cv.pdf`;
+  const outFilename = `${__dirname}/../../static/cv-pdfs/benjamin-hoover-cv.pdf`;
   await page.goto(filename);
   await page.pdf({
     path: outFilename,
