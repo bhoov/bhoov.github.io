@@ -13,10 +13,7 @@ npm run build
 npm run deploy
 ```
 
-Github workflow
+Github Workflow:
 
-1. Commit changes to `deploy` branch and push
-
-```bash
-git comm
-```
+1. Commit changes to `deploy` branch
+2. Push
