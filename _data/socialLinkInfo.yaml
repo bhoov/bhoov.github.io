@@ -45,6 +45,6 @@ email:
 
 cvpdf:
   name: CV
-  href: cv-pdfs/cv.pdf
+  href: cv-pdfs/benjamin-hoover-cv.pdf
   icon: "icons/pdf.svg"
   label: CV PDF

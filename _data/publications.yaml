@@ -37,7 +37,7 @@
     }
 
 - id: EnergyTransformer
-  title: "Energy-based Attention for Associative Memory"
+  title: "Energy Transformer"
   shortTitle: Energy Transformer
   category: memory
   authors:
@@ -69,7 +69,7 @@
 
     @inproceedings{
       hoover2023energybased,
-      title={Energy-based Attention for Associative Memory},
+      title={Energy Transformer},
       author={Hoover, Benjamin and Liang, Yuchen and Pham, Bao and Panda, Rameswar and Strobelt, Hendrik and Chau, Duen Horng and Zaki, Mohammed J. and Krotov, Dmitry},
       booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
       year={2023},
