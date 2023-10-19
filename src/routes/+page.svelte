@@ -33,11 +33,13 @@
         class="grid grid-cols-[90px_1fr] gap-4 md:grid-cols-[150px_1fr] md:gap-8 main-col"
     >
         <div class="self-center">
-            <img
-                class="rounded-lg shadow-lg"
-                src="imgs/people/me-headshot-230426.jpg"
-                alt="Ben's headshot"
-            />
+            <a href="imgs/people/me-headshot.jpg" target="_blank" rel="noreferrer">
+                <img
+                    class="rounded-lg shadow-lg"
+                    src="imgs/people/me-headshot-small.jpg"
+                    alt="Ben's headshot"
+                />
+            </a>
         </div>
         <div
             class="flex flex-col gap-2 justify-items-start align-items-start md:gap-8"
@@ -102,21 +104,6 @@
         <div
             class="text-slate-700 flex flex-col gap-4 leading-6 font-light main-col"
         >
-            <!-- <p>
-                I am an AI Research Engineer with <a
-                    href="https://researcher.watson.ibm.com/researcher/view_group.php?id=5948"
-                    >IBM Research</a
-                >
-                and a part-time Machine Learning PhD student at
-                <a href="https://poloclub.github.io/">GA Tech</a> advised by
-                <a href="https://poloclub.github.io/polochau/">Polo Chau</a>. My
-                research focuses on building more interpretable and parameter
-                efficient AI by rethinking the way we train and build deep
-                models, taking inspiration from Associative Memories and
-                <a href="http://www.scholarpedia.org/article/Hopfield_network"
-                    >Hopfield Networks</a
-                >. I like to visualize what happens inside AI models.
-            </p> -->
             <p>
                 I am a Machine Learning PhD student at 
                 <a href="https://poloclub.github.io/">Georgia Tech</a> advised by
