@@ -9,7 +9,6 @@ A redesign using SvelteKit and tailwindcss. Always evolving.
 Manually
 
 ```bash
-npm run build
 npm run deploy
 ```
 

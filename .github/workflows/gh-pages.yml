@@ -36,6 +36,6 @@ jobs:
           cache: 'pnpm'
       - run: pnpm i
       - run: pnpm run build
-      - run: pnpm run deploy
+      - run: pnpm run deploy-actions
         env: 
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

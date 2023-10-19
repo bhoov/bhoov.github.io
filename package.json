@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && node node_modules/puppeteer/install.mjs && node src/serverScripts/printCV.js",
-    "deploy": " vite build && touch build/.nojekyll && node node_modules/puppeteer/install.mjs && node src/serverScripts/printCV.js && gh-pages -d build -t true",
+    "deploy": "vite build && touch build/.nojekyll && node node_modules/puppeteer/install.mjs && node src/serverScripts/printCV.js && gh-pages -d build -t true",
     "deploy-actions": "touch build/.nojekyll && gh-pages -d build -t true -r https://bhoov:${GITHUB_TOKEN}@github.com/bhoov/bhoov.github.io -u 'Ben Hoover <benhoover34@gmail.com>'",
     "preview": "vite preview",
     "test": "playwright test",
