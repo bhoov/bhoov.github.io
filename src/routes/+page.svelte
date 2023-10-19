@@ -118,8 +118,8 @@
                 >. I like to visualize what happens inside AI models.
             </p> -->
             <p>
-                I am a Machine Learning PhD student at
-                <a href="https://poloclub.github.io/">GA Tech</a> advised by
+                I am a Machine Learning PhD student at 
+                <a href="https://poloclub.github.io/">Georgia Tech</a> advised by
                 <a href="https://poloclub.github.io/polochau/">Polo Chau</a> and
                 an AI Research Engineer with
                 <a
