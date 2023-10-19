@@ -63,7 +63,12 @@
                 rel="noreferrer"
               >
                 <div class="svg-icon self-center">
-                  <img src={social[link].icon} alt="" class="opacity-100" />
+                  <object
+                    type="image/svg+xml"
+                    data={social[link].icon}
+                    class="opacity-100"
+                    >
+                  </object> 
                 </div>
                 {social[link].label}</a
               >
