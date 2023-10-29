@@ -23,6 +23,7 @@
   $: talks = data.talks;
   $: teaching = data.teaching;
   $: reviewer = data.reviewer;
+  $: committee = data.committee;
   $: social = data.socialLinkInfo;
 
   $: workshopPublications = publications.filter((p) => p.type == "workshop");
@@ -67,8 +68,7 @@
                     type="image/svg+xml"
                     data={social[link].icon}
                     class="opacity-100"
-                    >
-                  </object> 
+                  />
                 </div>
                 {social[link].label}</a
               >
@@ -141,11 +141,24 @@
       {/each}
     </div>
     <CVHeader title="Service" />
-    <div class="font-bold text-lg">Reviewer</div>
-    <div class="flex flex-col gap-y-1 sm:gap-y-0">
-      {#each reviewer as venue}
-        <CVReviewerEntry {venue} />
-      {/each}
+    <div class="flex flex-col gap-y-3">
+      <div>
+        <div class="font-bold text-lg">Reviewer</div>
+        <div class="flex flex-col gap-y-1 sm:gap-y-0">
+          {#each reviewer as venue}
+            <CVReviewerEntry {venue} />
+          {/each}
+        </div>
+      </div>
+
+      <div>
+        <div class="font-bold text-lg">Committee</div>
+        <div class="flex flex-col gap-y-1 sm:gap-y-0">
+          {#each committee as venue}
+            <CVReviewerEntry {venue} />
+          {/each}
+        </div>
+      </div>
     </div>
   </div>
   <div
