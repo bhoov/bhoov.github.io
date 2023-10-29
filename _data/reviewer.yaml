@@ -4,6 +4,12 @@
   #   years:
   #     - year: 
   #       url: 
+
+  - venue: Workshop on Associative Memory & Hopfield Networks at NeurIPS
+    venueShorthand: AMHN@NeurIPS
+    years:
+      - year: 2023
+        url: https://amhn.vizhub.ai/2023
   
   - venue: International Conference for Learning Representations
     venueShorthand: ICLR
@@ -30,7 +36,7 @@
         url: https://iclr-blogposts.github.io/2023/about
 
   - venue: Workshop on the Symbiosis of Deep Learning and Differential Equations at NeurIPS
-    venueShorthand: DLDE
+    venueShorthand: DLDE@NeurIPS
     years:
       - year: 2022
         url: https://dlde-2022.github.io/
