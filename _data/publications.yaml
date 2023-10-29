@@ -9,11 +9,11 @@
     - Judy Hoffman
     - Zsolt Kira
     - Polo Chau
-  venue: ArXiv preprint
-  venueShorthand: ArXiv
+  venue: NeurIPS Workshop on Associative Memory and Hopfield Networks
+  venueShorthand: AMHN@NeurIPS
   # location: New Orleans, LA, USA
   thumbnail: "imgs/thumbnails/PlainSight.png"
-  type: preprint
+  type: workshop
   defaultUrl: https://arxiv.org/abs/2309.16750
   links:
     - type: pdf
@@ -28,12 +28,12 @@
   bibtex: |-
 
     @misc{hoover2023memory,
-          title={Memory in Plain Sight: A Survey of the Uncanny Resemblances between Diffusion Models and Associative Memories}, 
-          author={Benjamin Hoover and Hendrik Strobelt and Dmitry Krotov and Judy Hoffman and Zsolt Kira and Duen Horng Chau},
-          year={2023},
-          eprint={2309.16750},
-          archivePrefix={arXiv},
-          primaryClass={cs.LG}
+      title={Memory in Plain Sight: A Survey of the Uncanny Resemblances between Diffusion Models and Associative Memories}, 
+      author={Benjamin Hoover and Hendrik Strobelt and Dmitry Krotov and Judy Hoffman and Zsolt Kira and Duen Horng Chau},
+      year={2023},
+      eprint={2309.16750},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
     }
 
 - id: EnergyTransformer
