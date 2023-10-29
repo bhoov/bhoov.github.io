@@ -12,7 +12,7 @@ Manually
 npm run deploy
 ```
 
-Github Workflow:
+Github Workflow: *(will not automatically update CV)*
 
 1. Commit changes to `deploy` branch
 2. Push
