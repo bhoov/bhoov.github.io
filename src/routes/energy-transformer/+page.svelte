@@ -43,6 +43,10 @@
       <a href="https://recorder-v3.slideslive.com/#/share?share=88188&s=6a61b5bf-c59b-4ef5-b71f-be4156c92dd5" target="_blank" rel="noreferrer">Ben presents for NeurIPS 2023 (5 min)</a>
     </li>
     <li>
+      <a href="https://twitter.com/Ben_Hoov/status/1730570603210404236" target="_blank" rel="noreferrer">Initial Twitter Announcement</a>
+    </li>
+
+    <li>
       <a href="https://online.kitp.ucsb.edu/online/deeplearning23/krotov/rm/jwvideo.html" target="_blank" rel="noreferrer">Dima presents at KITP 2023 (45 min)</a>
     </li>
   </ul>
