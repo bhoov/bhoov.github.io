@@ -13,7 +13,7 @@
     on:mouseout={() => (hovered = false)}
     on:blur={() => (hovered = false)}
 >
-    <a href={link.url} target="_blank" rel="noreferrer">
+    <a href={link.url} target="_blank" rel="noreferrer" on:click={(e) => e.stopPropagation()}>
         <div
             class="flex gap-1 justify-items-center items-center"
             class:svg-container-hovered={hovered}
