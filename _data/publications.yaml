@@ -19,6 +19,13 @@
     - type: pdf
       url: https://arxiv.org/abs/2309.16750
       label: PDF
+    - type: pdf
+      url: /posters/memory-in-plain-sight.pdf
+      label: Poster
+    - type: url
+      url: /memory-in-plain-sight
+      label: Home
+
   month: Oct
   year: 2023
   featured: true
@@ -57,6 +64,21 @@
     - type: pdf
       url: https://arxiv.org/abs/2302.07253
       label: PDF
+    - type: pdf
+      url: /posters/energy-transformer-24x36.pdf
+      label: Poster
+    - type: url
+      url: /energy-transformer
+      label: Home
+    - type: code
+      url: https://github.com/bhoov/energy-transformer-jax
+      label: Code
+    - type: video
+      url: https://recorder-v3.slideslive.com/#/share?share=88188&s=6a61b5bf-c59b-4ef5-b71f-be4156c92dd5
+      label: Video (5m)
+    - type: video
+      url: https://online.kitp.ucsb.edu/online/deeplearning23/krotov/rm/jwvideo.html
+      label: Video (45m)
   month: Dec.
   year: 2023
   featured: true
