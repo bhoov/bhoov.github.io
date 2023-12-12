@@ -20,7 +20,7 @@
       url: https://arxiv.org/abs/2309.16750
       label: PDF
     - type: pdf
-      url: /posters/memory-in-plain-sight.pdf
+      url: /posters/memory-in-plain-sight-24x36.pdf
       label: Poster
     - type: url
       url: /memory-in-plain-sight
@@ -59,7 +59,7 @@
   venue: Conference on Neural Information Processing Systems
   venueShorthand: NeurIPS
   location: New Orleans, LA, USA
-  defaultUrl: https://arxiv.org/abs/2302.07253
+  defaultUrl: /energy-transformer
   links:
     - type: pdf
       url: https://arxiv.org/abs/2302.07253
