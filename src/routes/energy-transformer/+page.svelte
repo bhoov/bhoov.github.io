@@ -31,23 +31,56 @@
   <h2>Links</h2>
   <ul>
     <li>
-      <a href="https://arxiv.org/abs/2302.07253" target="_blank" rel="noreferrer">Paper on ArXiv</a>
+      <a
+        href="https://arxiv.org/abs/2302.07253"
+        target="_blank"
+        rel="noreferrer">Paper on ArXiv</a
+      >
     </li>
     <li>
-      <a href="https://neurips.cc/virtual/2023/poster/71901" target="_blank" rel="noreferrer">NeurIPS 2023 virtual page</a>
+      <a
+        href="https://neurips.cc/virtual/2023/poster/71901"
+        target="_blank"
+        rel="noreferrer">NeurIPS 2023 virtual page</a
+      >
     </li>
     <li>
-      <a href="https://github.com/bhoov/energy-transformer-jax" target="_blank" rel="noreferrer">JAX code for Energy Transformer</a>
-    </li>
-    <li>
-      <a href="https://recorder-v3.slideslive.com/#/share?share=88188&s=6a61b5bf-c59b-4ef5-b71f-be4156c92dd5" target="_blank" rel="noreferrer">Ben presents for NeurIPS 2023 (5 min)</a>
-    </li>
-    <li>
-      <a href="https://twitter.com/Ben_Hoov/status/1730570603210404236" target="_blank" rel="noreferrer">Initial Twitter Announcement</a>
+      <a
+        href="https://github.com/bhoov/energy-transformer-jax"
+        target="_blank"
+        rel="noreferrer">JAX code for Energy Transformer</a
+      >
     </li>
 
     <li>
-      <a href="https://online.kitp.ucsb.edu/online/deeplearning23/krotov/rm/jwvideo.html" target="_blank" rel="noreferrer">Dima presents at KITP 2023 (45 min)</a>
+      <a
+        href="https://github.com/Lemon-cmd/energy-transformer-torch"
+        target="_blank"
+        rel="noreferrer">PyTorch code for Energy Transformer</a
+      >
+    </li>
+
+    <li>
+      <a
+        href="https://recorder-v3.slideslive.com/#/share?share=88188&s=6a61b5bf-c59b-4ef5-b71f-be4156c92dd5"
+        target="_blank"
+        rel="noreferrer">Ben presents for NeurIPS 2023 (5 min)</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://twitter.com/Ben_Hoov/status/1730570603210404236"
+        target="_blank"
+        rel="noreferrer">Initial Twitter Announcement</a
+      >
+    </li>
+
+    <li>
+      <a
+        href="https://online.kitp.ucsb.edu/online/deeplearning23/krotov/rm/jwvideo.html"
+        target="_blank"
+        rel="noreferrer">Dima presents at KITP 2023 (45 min)</a
+      >
     </li>
   </ul>
 </main>
@@ -58,8 +91,8 @@
   }
 
   a {
-        border-bottom: 2px solid rgba(96, 165, 250, 0.631);
-    }
+    border-bottom: 2px solid rgba(96, 165, 250, 0.631);
+  }
 
   /* Add your custom styles here */
 </style>
