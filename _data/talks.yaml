@@ -5,15 +5,15 @@
       locationUrl: https://mcmahon.aep.cornell.edu/
       invited: true
 
-- title: "Comparing Language Models with LMDiff"
-  venues:
-    - location: "Demo at NeurIPS 2020"
-      date: Dec 2020
-
 - title: "HAMUX: Inventing Hopfield Networks 2.0"
   venues:
     - location: "Georgia Tech CSE Hotseat"
       date: "Nov 2022"
+
+- title: "Comparing Language Models with LMDiff"
+  venues:
+    - location: "Demo at NeurIPS 2020"
+      date: Dec 2020
 
 - title: "exBERT: Exploring Learned Embeddings in Transformer Models"
   venues:
