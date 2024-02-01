@@ -346,10 +346,10 @@
       url: https://www.youtube.com/watch?v=1SSgr96nBDc
       label: Video
     - type: pdf
-      url: http://shared-interest.csail.mit.edu/computer-vision/client/index.html
+      url: https://dl.acm.org/doi/pdf/10.1145/3491102.3501965
       label: PDF
     - type: code
-      url: https://www.youtube.com/watch?v=1SSgr96nBDc
+      url: https://github.com/mitvis/shared-interest
       label: Code
   thumbnail: "imgs/thumbnails/saliencyExplorer.png"
   featured: true
