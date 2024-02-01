@@ -298,7 +298,7 @@
   defaultUrl: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9908590
   links:
     - type: pdf
-      url: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9908590
+      url: https://arxiv.org/abs/2208.07852
       label: PDF
     - type: demo
       url: http://promptide.vizhub.ai/
