@@ -1,44 +1,7 @@
-# - title: "Manufacturing, Finance Among Industries to Benefit from What's Next in AI for 2023"
-#   date: "Jan 2023"
-#   url: https://www.cc.gatech.edu/news/manufacturing-finance-among-industries-benefit-whats-next-ai-2023
-#   publisher: "GA Tech College of Computing"
-
-# - title: "Machine learning maps atoms"
-#   date: "June 2022"
-#   url: https://cen.acs.org/acs-news/acs-meeting-news/Machine-learning-maps-atoms/99/web/2021/04
-#   publisher: "ACS Chemical & Engineering News"
-
-
-# - title: "Fruit Fly Brain Hacked For Language Processing"
-#   date: "Jan 2021"
-#   url: https://www.discovermagazine.com/the-sciences/fruit-fly-brain-network-hacked-for-language-processing
-#   publisher: "Discover Magazine"
-
-# - title: "ML News"
-#   date: "Aug 2021"
-#   url: https://www.youtube.com/watch?v=gFkBqD2hbnU&t=1485s
-#   publisher: "Yannic Kilcher's Vlog"
-
-# - title: "Do Humans and AI Think Alike?"
-#   date: "Apr 2022"
-#   url: https://scitechdaily.com/do-humans-and-ai-think-alike/
-#   publisher: "SciTechDaily"
-
-# - title: "How to tell if you can trust an AI"
-#   date: "Apr 2022"
-#   url: https://www.freethink.com/hard-tech/trustworthy-ai
-#   publisher: "FreeThink"
-
-# - title: "How to tell if you can trust an AI"
-#   date: "Apr 2022"
-#   url: https://www.freethink.com/hard-tech/trustworthy-ai
-#   publisher: "FreeThink"
-
-# - title: "IBM shares AI tools to better understand and treat COVID-19"
-#   date: "Apr 2020"
-#   url: https://www.engadget.com/ibm-coronavirus-ai-research-tools-162123059.html
-#   publisher: "Engadget"
-
+- name: Engadget
+  year: 2020
+  month: April
+  url: https://www.engadget.com/ibm-coronavirus-ai-research-tools-162123059.html
 
 - name: ACS
   year: 2021
@@ -64,3 +27,14 @@
   year: 2022
   month: April
   url: https://www.freethink.com/hard-tech/trustworthy-ai
+
+- name: "GA Tech College of Computing: What's Next in AI"
+  year: 2023
+  month: April
+  url: https://www.cc.gatech.edu/news/manufacturing-finance-among-industries-benefit-whats-next-ai-2023
+
+# - name: Generative Memory Lab
+#   year: 2024
+#   month: March
+#   url: https://www.youtube.com/watch?v=hK_L9Typ8PM
+#   description: Rylan Schaeffer presents the link between Associative Memory and Probabilistic Modeling
