@@ -253,6 +253,9 @@
     - type: pdf
       url: https://dl.acm.org/doi/full/10.1145/3544548.3581227
       label: PDF
+#     - type: demo
+#       url: "http://fairbert.sl.cloud9.ibm.com/" # IBM VPN ONLY
+#       label: Demo
   thumbnail: "imgs/thumbnails/fairbert.jpeg"
   month: Apr
   year: 2023
