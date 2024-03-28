@@ -231,6 +231,47 @@
       url = {https://aclanthology.org/2023.acl-long.51}
     }
 
+- id: FairBERT
+  title: >-
+    Fairness Evaluation in Text Classification: Machine Learning Practitioner Perspectives of Individual and Group Fairness
+  shortTitle: Fairness Evaluation in Text Classification
+  category: vis
+  authors:
+    - Zahra Ashktorab
+    - Benjamin Hoover
+    - Mayank Agarwal
+    - Casey Dugan
+    - Werner Geyer
+    - Hao Bang Yang
+    - Mikhail Yurochkin
+  venue: "Conference on Human Factors in Computing Systems"
+  venueShorthand: "CHI"
+  type: conference
+  location: "Hamburg, Germany"
+  defaultUrl: https://dl.acm.org/doi/full/10.1145/3544548.3581227
+  links:
+    - type: pdf
+      url: https://dl.acm.org/doi/full/10.1145/3544548.3581227
+      label: PDF
+  thumbnail: "imgs/thumbnails/fairbert.jpeg"
+  month: Apr
+  year: 2023
+  featured: false
+  selected: false
+  featureDescription: >-
+    We evaluate how different machine learning practitioners perceive "fairness" in language models.
+  description: >-
+    Poster at CHI 2023
+  bibtex: |-
+
+    @inproceedings{ashktorab2023fairness,
+      title={Fairness Evaluation in Text Classification: Machine Learning Practitioner Perspectives of Individual and Group Fairness},
+      author={Ashktorab, Zahra and Hoover, Benjamin and Agarwal, Mayank and Dugan, Casey and Geyer, Werner and Yang, Hao Bang and Yurochkin, Mikhail},
+      booktitle={Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems},
+      pages={1--20},
+      year={2023}
+    }
+
 - id: HAMUX
   title: "HAMUX: A Universal Abstraction for Hierarchical Hopfield Networks"
   shortTitle: HAMUX

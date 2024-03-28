@@ -1,180 +1,175 @@
-# NAME:
-#   url: 
-#   picture: "assets/imgs/people/NAME.png" # optional
-#   me: # only for me
-
 Benjamin Hoover:
   url: "/"
   picture: "imgs/people/me-headshot.png"
   me: True
 
 Hendrik Strobelt:
-  url: http://hendrik.strobelt.com/
+  url: "http://hendrik.strobelt.com/"
   picture: "imgs/people/hendrik-strobelt.png"
 
 Mauro Martino:
-  url: http://www.mamartino.com
+  url: "http://www.mamartino.com"
   picture: "imgs/people/mauro-martino.png"
 
 Patrick Wang:
-  url: https://ece.duke.edu/faculty/patrick-wang
+  url: "https://ece.duke.edu/faculty/patrick-wang"
   picture: "imgs/people/patrick-wang.png"
 
 Stacy Tantum:
-  url: https://ece.duke.edu/faculty/stacy-tantum
+  url: "https://ece.duke.edu/faculty/stacy-tantum"
   picture: "imgs/people/stacy-tantum.png"
 
 Jonathan Viventi:
-  url: https://bme.duke.edu/faculty/jonathan-viventi
+  url: "https://bme.duke.edu/faculty/jonathan-viventi"
   picture: "imgs/people/jonathan-viventi.png"
 
 Paul Bendich:
-  url: https://math.duke.edu/people/paul-l-bendich
+  url: "https://math.duke.edu/people/paul-l-bendich"
   picture: "imgs/people/paul-bendich.png"
 
 Carmen Rawls:
-  url: https://boeingfellows.pratt.duke.edu/member/rawls
+  url: "https://boeingfellows.pratt.duke.edu/member/rawls"
   picture: "imgs/people/carmen-rawls.png"
 
 Eirik Adim Moreb:
-  url: https://lynchlab.pratt.duke.edu/people/e-adim-moreb
+  url: "https://lynchlab.pratt.duke.edu/people/e-adim-moreb"
   picture: "imgs/people/adim-moreb.png"
 
 Adam Yaseen:
-  url: https://yin.hms.harvard.edu/cv/cv.yaseen.adam.pdf
+  url: "https://yin.hms.harvard.edu/cv/cv.yaseen.adam.pdf"
   picture: "imgs/people/adam-yaseen.png"
 
 Nisakorn Valyasevi:
-  url: https://www.linkedin.com/in/nisavalyasevi/
+  url: "https://www.linkedin.com/in/nisavalyasevi/"
   picture: "imgs/people/nisa-valyasevi.png"
 
 Zoe Roecker:
-  url: https://www.linkedin.com/in/zoe-roecker-5a417b104/
+  url: "https://www.linkedin.com/in/zoe-roecker-5a417b104/"
   picture: "imgs/people/zoe-roecker.png"
 
 Romel Menacho-Melgar:
-  url: https://www.linkedin.com/in/romel-menacho-melgar-0881b4a8/
+  url: "https://www.linkedin.com/in/romel-menacho-melgar-0881b4a8/"
   picture: "imgs/people/romel-menacho-melgar.png"
   
 Michael D. Lynch:
-  url: https://lynchlab.pratt.duke.edu/people/michael-lynch
+  url: "https://lynchlab.pratt.duke.edu/people/michael-lynch"
   picture: "imgs/people/mike-lynch.png"
 
 Sebastian Gehrmann:
-  url: https://sebastiangehrmann.com/
+  url: "https://sebastiangehrmann.com/"
   picture: "imgs/people/sebastian-gehrmann.png"
 
 Philippe Schwaller:
-  url: https://pschwllr.github.io/#
+  url: "https://pschwllr.github.io/#"
   picture: "imgs/people/philippe-schwaller.png"
 
 JL Reymond:
-  url: http://www.gdb.unibe.ch/
+  url: "http://www.gdb.unibe.ch/"
   picture: "imgs/people/jl-reymond.png"
 
 Teodoro Laino:
-  url: https://researcher.watson.ibm.com/researcher/view.php?person=zurich-teo
+  url: "https://researcher.watson.ibm.com/researcher/view.php?person=zurich-teo"
   picture: "imgs/people/teo-laino.png"
 
 Peter Ajemba:
-  url: https://www.linkedin.com/in/peter-ajemba/
+  url: "https://www.linkedin.com/in/peter-ajemba/"
   picture: "imgs/people/peter-ajemba.png"
 
 Keith Nogueira:
-  url: https://www.linkedin.com/in/keith-public-profile/
+  url: "https://www.linkedin.com/in/keith-public-profile/"
 
 Enara Vijil:
-  url: https://researcher.watson.ibm.com/researcher/view.php?person=us-ecvijil
+  url: "https://researcher.watson.ibm.com/researcher/view.php?person=us-ecvijil"
 
 Payel Das:
-  url: https://researcher.watson.ibm.com/researcher/view.php?person=us-daspa
+  url: "https://researcher.watson.ibm.com/researcher/view.php?person=us-daspa"
 
 Samuel Hoffman:
-  url: https://www.linkedin.com/in/shoffman5/
+  url: "https://www.linkedin.com/in/shoffman5/"
 
 Inkit Padhi:
-  url: https://scholar.google.co.in/citations?user=c4yuGSoAAAAJ&hl=en
+  url: "https://scholar.google.co.in/citations?user=c4yuGSoAAAAJ&hl=en"
 
 Kar Wai Lim:
-  url: https://karwailim.github.io/
+  url: "https://karwailim.github.io/"
 
 Matteo Manica:
-  url: https://researcher.watson.ibm.com/researcher/view.php?person=zurich-TTE
+  url: "https://researcher.watson.ibm.com/researcher/view.php?person=zurich-TTE"
 
 Jannis Born:
-  url: https://researcher.watson.ibm.com/researcher/view.php?person=zurich-JAB
+  url: "https://researcher.watson.ibm.com/researcher/view.php?person=zurich-JAB"
 
 Aleksandra Mojsilovic:
-  url: https://scholar.google.com/citations?user=jnBZzGwAAAAJ&hl=en
+  url: "https://scholar.google.com/citations?user=jnBZzGwAAAAJ&hl=en"
 
 Arvind Satyanarayan:
-  url: https://arvindsatya.com/
+  url: "https://arvindsatya.com/"
 
 Angie Boggust:
-  url: http://angieboggust.com/
+  url: "http://angieboggust.com/"
 
 Yuchen Liang:
-  url: https://airc.rpi.edu/people/staff/yuchen-liang
+  url: "https://airc.rpi.edu/people/staff/yuchen-liang"
 
 Chaitanya K. Ryali:
-  url: https://scholar.google.com/citations?user=4LWx24UAAAAJ&hl=en
+  url: "https://scholar.google.com/citations?user=4LWx24UAAAAJ&hl=en"
 
 Leopold Grinberg:
-  url: http://www.dam.brown.edu/people/lgrinb/
+  url: "http://www.dam.brown.edu/people/lgrinb/"
 
 Saket Navlakha:
-  url: https://navlakhalab.net/
+  url: "https://navlakhalab.net/"
 
 Mohammed J. Zaki:
-  url: http://www.cs.rpi.edu/~zaki/
+  url: "http://www.cs.rpi.edu/~zaki/"
 
 Dmitry Krotov:
-  url: https://mitibmwatsonailab.mit.edu/people/dmitry-krotov/
+  url: "https://mitibmwatsonailab.mit.edu/people/dmitry-krotov/"
 
 Bao Pham:
-  url: https://lemon-cmd.github.io/
+  url: "https://lemon-cmd.github.io/"
 
 Rameswar Panda:
-  url: https://rpand002.github.io/
+  url: "https://rpand002.github.io/"
 
 Joseph Bullock:
-  url: https://josephpb.github.io/
+  url: "https://josephpb.github.io/"
 
 Carolina Cuesta-Lazaro:
-  url: https://www.dur.ac.uk/research/directory/staff/?mode=staff&id=16714
+  url: "https://www.dur.ac.uk/research/directory/staff/?mode=staff&id=16714"
 
 Arnau Quera-Bofarull:
-  url: https://scholar.google.com/citations?user=8VGz9BIAAAAJ&hl=en
+  url: "https://scholar.google.com/citations?user=8VGz9BIAAAAJ&hl=en"
 
 Anjali Katta:
-  url: https://www.humanityinaction.org/person/anjali-katta/
+  url: "https://www.humanityinaction.org/person/anjali-katta/"
 
 Katherine Hoffmann Pham:
-  url: https://katherinehoffmannpham.com/
+  url: "https://katherinehoffmannpham.com/"
 
 Rebeca Moreno Jimenez:
-  url: https://scholar.google.com/citations?user=v7qrOMQAAAAJ&hl=en
+  url: "https://scholar.google.com/citations?user=v7qrOMQAAAAJ&hl=en"
 
 Aidan Sedgewick:
-  url: https://www.dur.ac.uk/research/directory/staff/?mode=staff&id=16797
+  url: "https://www.dur.ac.uk/research/directory/staff/?mode=staff&id=16797"
 
 Egmond Samir Evers:
-  url: https://www.linkedin.com/in/egmondevers/?originalSubdomain=bd
+  url: "https://www.linkedin.com/in/egmondevers/?originalSubdomain=bd"
 
 David Kennedy:
-  url: https://www.lshtm.ac.uk/aboutus/people/kennedy.david
+  url: "https://www.lshtm.ac.uk/aboutus/people/kennedy.david"
 
 Sandra Harlass:
-  url: https://www.linkedin.com/in/sandra-harlass-88b7b490/?originalSubdomain=de
+  url: "https://www.linkedin.com/in/sandra-harlass-88b7b490/?originalSubdomain=de"
 
 Allen Gidraf Kahindo Maina:
-  url: https://www.linkedin.com/in/allen-g-k-maina-5b4807b1/?originalSubdomain=ch
+  url: "https://www.linkedin.com/in/allen-g-k-maina-5b4807b1/?originalSubdomain=ch"
 
 Ahmad Hussien:
-  url: https://www.linkedin.com/in/hussienahmad/?originalSubdomain=tn
+  url: "https://www.linkedin.com/in/hussienahmad/?originalSubdomain=tn"
 
 Miguel Luengo-Oroz:
-  url: https://scholar.google.com/citations?user=MGU5C6MAAAAJ&hl=en
+  url: "https://scholar.google.com/citations?user=MGU5C6MAAAAJ&hl=en"
   
 Polo Chau:
   url: "https://faculty.cc.gatech.edu/~dchau/"
@@ -237,40 +232,49 @@ Zsolt Kira:
   url: "https://faculty.cc.gatech.edu/~zk15/"
 
 Mahdi Roozbahani:
-  url: https://www.cse.gatech.edu/people/mahdi-roozbahani
+  url: "https://www.cse.gatech.edu/people/mahdi-roozbahani"
 
 Eden Bensaid:
-  url: https://www.linkedin.com/in/eden-b-03397b136/
+  url: "https://www.linkedin.com/in/eden-b-03397b136/"
 
 Zahra Ashktorab:
-  url: http://zahraashktorab.com/
+  url: "http://zahraashktorab.com/"
 
 Casey Dugan:
-  url: https://www.linkedin.com/in/casey-dugan1/
+  url: "https://www.linkedin.com/in/casey-dugan1/"
 
 James Johnson:
-  url: https://research.ibm.com/people/j-johnson
+  url: "https://research.ibm.com/people/j-johnson"
 
 Aabhas Sharma:
-  url: https://www.linkedin.com/in/sharmaaabhas/
+  url: "https://www.linkedin.com/in/sharmaaabhas/"
 
 Dustin Ramsey Torres:
-  url: https://dblp.org/pid/290/4172.html
+  url: "https://dblp.org/pid/290/4172.html"
 
 Ingrid Lange:
-  url: https://ingridlange.com/
+  url: "https://ingridlange.com/"
 
 Heiko Ludwig:
-  url: https://www.linkedin.com/in/heikoludwig/
+  url: "https://www.linkedin.com/in/heikoludwig/"
 
 Bryant Chen:
-  url: https://www.linkedin.com/in/bryant-chen-b372457/
+  url: "https://www.linkedin.com/in/bryant-chen-b372457/"
 
 Nathalie Baracaldo:
-  url: https://researcher.watson.ibm.com/researcher/view.php?person=us-baracald
+  url: "https://researcher.watson.ibm.com/researcher/view.php?person=us-baracald"
 
 Werner Geyer:
-  url: https://research.ibm.com/people/werner-geyer
+  url: "https://research.ibm.com/people/werner-geyer"
+
+Mikhail Yurochkin:
+  url: "https://moonfolk.github.io/"
+
+Hao Bang Yang:
+  url: "https://www.linkedin.com/in/hbyang"
 
 Qian Pan:
-  url: https://www.linkedin.com/in/qian-pan-design/
+  url: "https://www.linkedin.com/in/qian-pan-design/"
+
+Mayank Agarwal:
+  url: "https://research.ibm.com/people/mayank-agarwal"
