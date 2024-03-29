@@ -1,7 +1,11 @@
 # - name: 
 #   url: #optional
 #   description: 
-#   date: 
+#   date:
+#
+- name: "Best Poster Award"
+  description: "Energy Transformer receives 2nd place🥈 in GATech's annual Graduate Poster Symposium"
+  date: Mar. 2024
 
 - name: "Best Paper Award, Honorable Mention"
   description: "DiffusionDB receives a Best Paper, Honorable Mention Award at ACL 2023"
