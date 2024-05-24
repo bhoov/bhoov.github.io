@@ -2,8 +2,6 @@
     import LandingPageCard from "./LandingPageCard.svelte";
 
     import { onMount } from "svelte";
-    import ProjectEntry from "$lib/components/ProjectEntry.svelte";
-    import ProjectLink from "$lib/components/ProjectLink.svelte";
     export let data;
 
     $: people = data.people;
@@ -15,6 +13,9 @@
     $: featuredVis = data.publications.filter(
         (x) => x.featured && x.category == "vis"
     );
+
+    let defaultMaxNews = 6
+    let maxNews = defaultMaxNews
 
     onMount(() => {
         console.log("DATA: ", data);
@@ -122,8 +123,8 @@
         </div>
     </div>
     <h1 class="main-col mt-8">News</h1>
-    <div class="news-list flex flex-col sm:contents mx-2 gap-0.5">
-        {#each data.news as blurb}
+    <div class="news-list flex flex-col sm:contents mx-2 gap-0.5 overflow-y-auto">
+        {#each data.news.slice(0,maxNews) as blurb}
             <!-- <div class="flex gap-4"> -->
             <div
                 class="left-gutter justify-self-end font-light text-slate-400 text-xs"
@@ -135,6 +136,11 @@
             </div>
             <!-- </div> -->
         {/each}
+            {#if data.news.length > maxNews}
+                <div class="w-full justify-self-end main-col text-slate-400 hover:cursor-pointer hover:text-slate-700" on:click={() => {maxNews = data.news.length}}>See more...</div>
+            {:else}
+                <div class="w-full justify-self-end main-col text-slate-400 hover:cursor-pointer hover:text-slate-700" on:click={() => {maxNews = defaultMaxNews}}>Collapse...</div>
+            {/if}
     </div>
 
     <h1 class="main-col mt-12 text-center" id="selected-memory">
@@ -204,4 +210,6 @@
     .full-col {
         @apply col-start-1 col-end-13;
     }
+
+
 </style>
