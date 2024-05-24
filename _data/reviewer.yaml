@@ -44,10 +44,12 @@
   - venue: Neural Information Processing Systems
     venueShorthand: NeurIPS
     years:
+      - year: 2024
+        url: https://nips.cc/Conferences/2023
+      - year: 2023
+        url: https://nips.cc/Conferences/2024
       - year: 2021
         url: https://nips.cc/Conferences/2021
-      - year: 2023
-        url: https://nips.cc/Conferences/2023
 
   - venue: ACM Conference on Human Factors in Computing Systems
     venueShorthand: CHI
