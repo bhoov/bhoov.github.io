@@ -7,10 +7,10 @@
 
 - title: Energy Transformer
   venues:
-    - location: "Shlizerman Group at UW"
-      date: May 2024
-      locationUrl: https://faculty.washington.edu/shlizee/
-      invited: true
+    # - location: "Shlizerman Group at UW"
+    #   date: May 2024
+    #   locationUrl: https://faculty.washington.edu/shlizee/
+    #   invited: true
     - location: "McMahon Lab at Cornell University"
       date: Sep 2023
       locationUrl: https://mcmahon.aep.cornell.edu/

@@ -26,7 +26,7 @@ Github Workflow: *(BUG: currently does not automatically update CV)*
 1. Commit changes to `deploy` branch
 2. Push
 
-You can also run the deploy script manually.
+You can also run the deploy script manually (necessary to update CV).
 
 ```bash
 npm run deploy
