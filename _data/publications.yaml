@@ -150,9 +150,9 @@
     - Haekyu Park
     - Haoyang Yang
     - Polo Chau
-  venue: Conference on Computer Vision and Pattern Recognition
-  venueShorthand: CVPR
-  location: Vancouver BC, CA
+  venue: IEEE VIS
+  venueShorthand: VIS
+  location: Florida, USA
   type: conference
   featured: true
   selected: false
@@ -173,10 +173,12 @@
     - type: code
       url: https://github.com/poloclub/diffusion-explainer
       label: Code
-  month: Apr.
-  year: 2023
+  month: Oct.
+  year: 2024
+  # description: >-
+  #   Also, Demo at CVPR 2023; Demo at IJCAI 2024, Poster at VIS'23.
   description: >-
-    Poster at VIS'23; Demo at CVPR 2023; Demo at IJCAI 2024; Taught at graduate computer vision course
+    Short Paper at VIS'24. Taught at graduate computer vision course
   bibtex: |-
 
     @article{lee2023diffusion,
