@@ -2,7 +2,8 @@
   venues:
     - location: "Plectics Lab Colloquium"
       date: May 2024
-      locationUrl: https://twitter.com/plecticslab
+      # locationUrl: https://x.com/plecticslab/status/1794064616164847627
+      locationUrl: https://www.youtube.com/watch?v=8LGRQfaG3ro
       invited: true
 
 - title: Energy Transformer
