@@ -1,3 +1,15 @@
+- date: Aug 2024
+  HTMLdescription: >-
+    <span style="display: flex; justify-content: start; align-items: center; gap: 0.2rem;"> 
+    <span style="margin-right: 0.5rem">🚀 <a href="https://poloclub.github.io/transformer-explainer/">Transformer Explainer</a> is going viral! </span>
+    (
+      <a href="https://star-history.com/#poloclub/transformer-explainer&Date"> <span class="iconify" data-icon="mdi-github"/> </a> 
+      <a href="https://x.com/omarsar0/status/1821986172215742716"><span class="iconify" data-icon="pajamas-twitter"/></a> 
+      <a href="https://huggingface.co/papers/2408.04619"><span class="iconify" data-icon="logos-hugging-face-icon"/></a> 
+      <a href="https://www.linkedin.com/feed/update/urn:li:activity:7227528635111354368/"><span class="iconify" data-icon="mdi-linkedin"/></a>
+      )
+    </span>
+
 - date: Jul 2024
   HTMLdescription: >-
     🎉 <a href="https://poloclub.github.io/transformer-explainer/">Transformer Explainer</a> accepted as a <a href="https://ieeevis.org/year/2024/welcome">VIS'24 Poster</a>!

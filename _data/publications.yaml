@@ -24,9 +24,15 @@
     - type: code
       url: https://github.com/poloclub/transformer-explainer
       label: Code
+      showStars: true
     - type: demo
       url: https://poloclub.github.io/transformer-explainer/
       label: Demo
+  awards:
+    - name: 'Went Viral on X (❤ 1.9k️+)'
+      url: "https://twitter.com/omarsar0/status/1821986172215742716"
+    - name: "#1 paper of the day🤗"
+      url: "https://huggingface.co/papers/2408.04619"
   month: Oct
   year: 2024
 
@@ -104,6 +110,7 @@
     - type: code
       url: https://github.com/bhoov/energy-transformer-jax
       label: Code
+      showStars: true
     - type: video
       url: https://recorder-v3.slideslive.com/#/share?share=88188&s=6a61b5bf-c59b-4ef5-b71f-be4156c92dd5
       label: Video (5m)
@@ -204,6 +211,7 @@
     - type: code
       url: https://github.com/poloclub/diffusion-explainer
       label: Code
+      showStars: true
   month: Oct.
   year: 2024
   # description: >-
@@ -241,7 +249,8 @@
       label: Home
     - type: code
       url: https://github.com/poloclub/diffusiondb
-      label: Github
+      label: Code
+      showStars: true
     - type: code
       url: https://huggingface.co/datasets/poloclub/diffusiondb
       label: Dataset
@@ -249,6 +258,13 @@
       url: https://arxiv.org/abs/2210.14896
       label: PDF
   # thumbnail: "imgs/thumbnails/diffusiondb.gif"
+  awards:
+    - name: "Best Paper Award, Honorable Mention"
+      url: "https://2023.aclweb.org/program/best_papers/"
+    - name: "Went Viral"
+      url: "https://twitter.com/jay4w/status/1592922807998218241"
+    - name: "Oral Presentation"
+      url: "https://aclanthology.org/2023.acl-long.51/"
   month: July
   year: 2023
   description: >-
@@ -326,6 +342,7 @@
     - type: code
       url: https://github.com/bhoov/hamux
       label: Code
+      showStars: true
     - type: url
       url: https://bhoov.github.io/hamux/
       label: Project
@@ -542,6 +559,7 @@
     - type: code
       url: https://github.com/bhoov/flyvec
       label: Code
+      showStars: true
   thumbnail: "imgs/thumbnails/flyvec.png"
   type: conference
   description: >-
@@ -743,6 +761,7 @@
     - type: code
       url: https://github.com/rxn4chemistry/rxnmapper
       label: Code
+      showStars: true
   thumbnail: "imgs/thumbnails/rxnmapper.png"
   # description: "Science Advances 2021, #IOPPoster, SCS Fall 2020, ICML 2020 Workshop: AI for Scientific Discovery, ACS Fall 2020"
   description: >-
@@ -837,10 +856,11 @@
     - type: code
       url: https://github.com/bhoov/exbert
       label: Code
+      showStars: true
   featured: false
   featureDescription: Transformers are giant black boxes. We break open BERT and GPT-like models and visualize attentions, discovering meaningful semantic information stored in the learned embeddings.
   thumbnail: "imgs/thumbnails/exBERT.png"
-  type: demo
+  type: conference
   description: >-
     System Demo at ACL 2020. Nominated for <strong>Best Demo</strong> at Neurips 2019.
   bibtex: |-

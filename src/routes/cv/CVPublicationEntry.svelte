@@ -48,10 +48,20 @@
     <div class="italic font-light text-sm text-gray-700">
       {publication.venue} ({publication.venueShorthand}). {publication.year}.
     </div>
-    <div class="flex flex-row gap-2 mt-0.5">
+    <div class="flex flex-row gap-2 mt-0.5 flex-wrap">
       {#each publication.links as link}
         <ProjectLink {link} />
       {/each}
+      {#if publication.awards}
+        <div class="flex gap-4 justify-center text-sm font-semibold">
+          {#each publication.awards as award}
+            <div class="flex gap-1 items-center">
+              <a href={award.url} target="_blank"><img src="./icons/award.svg" class="h-4 award-img" /></a>
+              <a href={award.url} target="_blank" class="text-rose-500">{award.name}</a>
+            </div>
+          {/each}
+        </div>
+      {/if}
     </div>
   </div>
 </div>
@@ -59,6 +69,11 @@
 <style lang="postcss">
   .me {
     @apply font-semibold text-gray-800;
+  }
+
+  :global(.award-img) {
+    filter: invert(31%) sepia(84%) saturate(1916%) hue-rotate(329deg)
+      brightness(100%) contrast(92%);
   }
 
   :global(a) {
