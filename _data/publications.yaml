@@ -18,16 +18,19 @@
   type: conference
   defaultUrl: https://poloclub.github.io/transformer-explainer/
   links:
-    - type: video
-      url: https://www.youtube.com/watch?v=ECR4oAwocjs
-      label: Video
+    - type: demo
+      url: https://poloclub.github.io/transformer-explainer/
+      label: Demo
+    - type: pdf
+      url: https://arxiv.org/abs/2408.04619
+      label: PDF
     - type: code
       url: https://github.com/poloclub/transformer-explainer
       label: Code
       showStars: true
-    - type: demo
-      url: https://poloclub.github.io/transformer-explainer/
-      label: Demo
+    - type: video
+      url: https://www.youtube.com/watch?v=ECR4oAwocjs
+      label: Video
   awards:
     - name: 'Went Viral on X (❤ 1.9k️+)'
       url: "https://twitter.com/omarsar0/status/1821986172215742716"
@@ -35,6 +38,11 @@
       url: "https://huggingface.co/papers/2408.04619"
   month: Oct
   year: 2024
+  featured: true
+  featureDescription: >-
+    Transformers are the most powerful AI innovation of the last decade. Learn how they work by interacting with every mechanic from the comfort of your web browser.
+    
+  selected: true
 
 - id: PlainSight
   title: "Memory in Plain Sight: A Survey of the Uncanny Resemblances between Diffusion Models and Associative Memories"
@@ -446,7 +454,7 @@
       url: https://github.com/mitvis/shared-interest
       label: Code
   thumbnail: "imgs/thumbnails/saliencyExplorer.png"
-  featured: true
+  featured: false
   featureDescription: >-
     Do humans and AI models agree on what features are important for model prediction? How much do they differ?
   description: >-
