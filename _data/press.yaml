@@ -33,8 +33,22 @@
   month: April
   url: https://www.cc.gatech.edu/news/manufacturing-finance-among-industries-benefit-whats-next-ai-2023
 
-# - name: Generative Memory Lab
-#   year: 2024
-#   month: March
-#   url: https://www.youtube.com/watch?v=hK_L9Typ8PM
-#   description: Rylan Schaeffer presents the link between Associative Memory and Probabilistic Modeling
+- name: "Cover of Chemical & Engineering News"
+  year: 2021
+  month: April
+  url: https://cen.acs.org/acs-news/acs-meeting-news/Machine-learning-maps-atoms/99/web/2021/04
+
+- name: Breaking down the AI transformer
+  year: 2024
+  month: Aug
+  url: https://research.ibm.com/blog/how-ai-transformers-work
+
+- name: Transformer Explainer: An Innovative Web-Based Tool for Interactive Learning and Visualization of Complex AI Models for Non-Experts
+  year: 2024
+  month: Aug
+  url: https://www.marktechpost.com/2024/08/13/transformer-explainer-an-innovative-web-based-tool-for-interactive-learning-and-visualization-of-complex-ai-models-for-non-experts/
+
+- name: Transformer Explainer: How I visualize the Magic Behind Modern LLMs
+  year: 2024
+  month: Aug
+  url: https://www.topview.ai/blog/detail/transformer-explainer-how-i-visualize-the-magic-behind-modern-llms
