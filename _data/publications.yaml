@@ -40,7 +40,7 @@
   year: 2024
   featured: true
   featureDescription: >-
-    Transformers are the most powerful AI innovation of the last decade. Learn how they work by interacting with every mechanic from the comfort of your web browser.
+    Transformers are the most powerful AI innovation of the last decade. Learn how they work by interacting with every mechanic from the comfort of your web browser. Taught in Georgia Tech CSE6242 Data and Visual Analytics (typically 250-300 students per semester).
     
   selected: true
 
@@ -203,7 +203,7 @@
   featured: true
   selected: false
   featureDescription: >-
-    Diffusion models are complicated. We break down Stable Diffusion and explain each component of the model visually.
+    Diffusion models are complicated. We break down Stable Diffusion and explain each component of the model visually. Taught in Georgia Tech CSE6242 Data and Visual Analytics (typically 250-300 students per semester).
   thumbnail: "imgs/thumbnails/diffusion-explainer.png"
   defaultUrl: https://poloclub.github.io/diffusion-explainer/
   links:
