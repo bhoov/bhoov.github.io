@@ -5,15 +5,21 @@
   #     - year: 
   #       url: 
 
-  - venue: Workshop on Associative Memory & Hopfield Networks at NeurIPS
-    venueShorthand: AMHN@NeurIPS
+  - venue: Neural Information Processing Systems
+    venueShorthand: NeurIPS
     years:
+      - year: 2024
+        url: https://nips.cc/Conferences/2024
       - year: 2023
-        url: https://amhn.vizhub.ai/2023
-  
+        url: https://nips.cc/Conferences/2023
+      - year: 2021
+        url: https://nips.cc/Conferences/2021
+
   - venue: International Conference for Learning Representations
     venueShorthand: ICLR
     years:
+      - year: 2025
+        url: https://iclr.cc/Conferences/2025
       - year: 2024
         url: https://iclr.cc/Conferences/2024
       - year: 2023
@@ -29,6 +35,12 @@
       - year: 2022
         url: https://icml.cc/Conferences/2022
 
+  - venue: Workshop on Associative Memory & Hopfield Networks at NeurIPS
+    venueShorthand: AMHN@NeurIPS
+    years:
+      - year: 2023
+        url: https://amhn.vizhub.ai/2023
+
   - venue: Blogpost Track at ICLR
     venueShorthand: BP@ICLR
     years:
@@ -41,15 +53,6 @@
       - year: 2022
         url: https://dlde-2022.github.io/
 
-  - venue: Neural Information Processing Systems
-    venueShorthand: NeurIPS
-    years:
-      - year: 2024
-        url: https://nips.cc/Conferences/2024
-      - year: 2023
-        url: https://nips.cc/Conferences/2023
-      - year: 2021
-        url: https://nips.cc/Conferences/2021
 
   - venue: ACM Conference on Human Factors in Computing Systems
     venueShorthand: CHI
