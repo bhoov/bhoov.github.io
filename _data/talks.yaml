@@ -1,8 +1,11 @@
 - title: "Hopfield Networks 2.0: Associative Memory for the Modern Era of AI"
   venues:
+    - location: "Physics Informed ML Workshop at Los Alamos National Laboratory"
+      date: Sep 2024
+      locationUrl: https://web.cvent.com/event/8d586843-3607-4101-aee0-61ac8b1cbdd6/websitePage:a9dfad1e-e21c-46b6-bf79-eee883bd1448
+      invited: true
     - location: "Plectics Lab Colloquium"
       date: May 2024
-      # locationUrl: https://x.com/plecticslab/status/1794064616164847627
       locationUrl: https://www.youtube.com/watch?v=8LGRQfaG3ro
       invited: true
 
