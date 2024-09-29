@@ -1,3 +1,40 @@
+- id: DrDAM
+  title: "Dense Associative Memory through the Lens of Random Features"
+  shortTitle: DAMs meet Random Features
+  category: memory
+  authors:
+    - Benjamin Hoover
+    - Polo Chau
+    - Hendrik Strobelt
+    - Parikshit Ram
+    - Dmitry Krotov
+  venue: "Neural Information Processing Systems"
+  venueShorthand: "NeurIPS '24"
+  # location: New Orleans, LA, USA
+  # thumbnail: "imgs/thumbnails/PlainSight.png"
+  type: conference
+  # defaultUrl: https://poloclub.github.io/transformer-explainer/
+  links:
+    - type: pdf
+      url: /
+      label: (coming soon)
+  awards:
+  month: Dec
+  year: 2024
+  featured: false
+  featureDescription: >-
+    Transformers are the most powerful AI innovation of the last decade. Learn how they work by interacting with every mechanic from the comfort of your web browser. Taught in Georgia Tech CSE6242 Data and Visual Analytics (typically 250-300 students per semester).
+  selected: false
+  bibtex: |-
+    @inproceedings{
+      Hoover2024dense,
+      title={Dense Associative Memory Through the Lens of Random Features},
+      author={Benjamin Hoover and Duen Horng Chau and Hendrik Strobelt and Parikshit Ram and Dmitry Krotov},
+      booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems},
+      year={2024},
+      url={https://openreview.net/forum?id=164QnJsYjF}
+    }
+
 - id: TransformerExplainer
   title: "Transformer Explainer: Interactive Learning of Text-Generative Models"
   shortTitle: Transformer Explainer
