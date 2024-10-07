@@ -69,6 +69,8 @@
       url: https://www.youtube.com/watch?v=ECR4oAwocjs
       label: Video
   awards:
+    - name: "Best Poster @VIS '24"
+      url: "https://ieeevis.org/year/2024/program/awards/awards.html"
     - name: 'Went Viral on X (❤ 1.9k️+)'
       url: "https://twitter.com/omarsar0/status/1821986172215742716"
     - name: "#1 paper of the day🤗"
