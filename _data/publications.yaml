@@ -15,9 +15,9 @@
   type: conference
   # defaultUrl: https://poloclub.github.io/transformer-explainer/
   links:
-    - type: pdf
-      url: /
-      label: (coming soon)
+    - type: code
+      url: https://github.com/bhoov/distributed_DAM
+      label: Code
   awards:
   month: Dec
   year: 2024
@@ -27,7 +27,7 @@
   selected: false
   bibtex: |-
     @inproceedings{
-      Hoover2024dense,
+      hoover2024dense,
       title={Dense Associative Memory Through the Lens of Random Features},
       author={Benjamin Hoover and Duen Horng Chau and Hendrik Strobelt and Parikshit Ram and Dmitry Krotov},
       booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems},
