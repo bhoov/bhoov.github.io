@@ -23,7 +23,7 @@
   year: 2024
   featured: false
   featureDescription: >-
-    Transformers are the most powerful AI innovation of the last decade. Learn how they work by interacting with every mechanic from the comfort of your web browser. Taught in Georgia Tech CSE6242 Data and Visual Analytics (typically 250-300 students per semester).
+    Dense Associative Memories are able to store an exponential number of memories, but each memory adds new parameters to the energy function. We propose a Distributed Representation for Dense Associative Memories that allows us to add new memories without increasing the total number of parameters.
   selected: false
   bibtex: |-
     @inproceedings{
@@ -51,7 +51,7 @@
   venue: "IEEE Transactions on Visualization and Computer Graphics"
   venueShorthand: VIS
   # location: New Orleans, LA, USA
-  thumbnail: "imgs/thumbnails/PlainSight.png"
+  thumbnail: "imgs/thumbnails/transformer-explainer.gif"
   type: conference
   defaultUrl: https://poloclub.github.io/transformer-explainer/
   links:
