@@ -18,6 +18,9 @@
     - type: code
       url: https://github.com/bhoov/distributed_DAM
       label: Code
+    - type: pdf
+      url: https://arxiv.org/abs/2410.24153
+      label: PDF
   awards:
   month: Dec
   year: 2024
