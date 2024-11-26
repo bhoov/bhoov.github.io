@@ -6,7 +6,7 @@
 </script>
 
 <main>
-  <ConnectWithMe title="Let's connect!" {data} />
+  <ConnectWithMe title="Let's connect! 🥳" {data} />
   <p class="text-gray-500 text-sm italic my-4">
     Barebones page to important links to this work
   </p>

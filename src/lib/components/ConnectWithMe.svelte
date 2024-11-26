@@ -6,11 +6,11 @@
 </script>
 
 <div
-    class="flex flex-col items-start justify-center bg-blue-100 p-4 p-3 w-max rounded-xl mt-6"
+    class="flex flex-col items-start justify-center bg-blue-100 p-4 p-3 w-full rounded-xl mt-6"
 >
-    <h1 class="text-4xl italic my-2">{title}</h1>
-    <div class="flex flex-row items-center justify-center gap-4">
-        <div>Find Ben on:</div>
+    <h1 class="text-4xl my-2">{title}</h1>
+        <div class="whitespace-nowrap mb-2">Find Ben on:</div>
+    <div class="flex flex-row items-center justify-start gap-4 flex-wrap">
         {#each ["email", "twitter", "github", "linkedin", "scholar", "cvpdf", "homepage"] as link}
         <a target="_blank" href={socialInfo[link].href} rel="noreferrer">
             <div
