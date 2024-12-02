@@ -21,6 +21,9 @@
     - type: pdf
       url: https://arxiv.org/abs/2410.24153
       label: PDF
+    - type: video
+      label: Video
+      url: https://recorder-v3.slideslive.com/#/share?share=97038&s=3c7ede33-220c-4c28-a72e-86835e88c4db
   awards:
   month: Dec
   year: 2024
