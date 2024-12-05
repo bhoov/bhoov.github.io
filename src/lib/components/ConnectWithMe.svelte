@@ -43,6 +43,42 @@
             ],
         },
         {
+            name: "Hendrik",
+            img: "imgs/people/hendrik-strobelt.png",
+            links: [
+                {
+                    name: "homepage",
+                    icon: "icons/home.svg",
+                    href: "http://hendrik.strobelt.com",
+                },
+                {
+                    name: "linkedin",
+                    icon: "icons/linkedin.svg",
+                    href: "https://www.linkedin.com/in/hendrik-strobelt-5951a021/",
+                },
+                {
+                    name: "email",
+                    icon: "icons/email.svg",
+                    href: "mailto:hendrik.strobelt@ibm.com",
+                },
+                {
+                    name: "bluesky",
+                    icon: "icons/bluesky.svg",
+                    href: "https://bsky.app/profile/henstr.bsky.social",
+                },
+                {
+                    name: "github",
+                    icon: "icons/github-alt.svg",
+                    href: "https://github.com/HendrikStrobelt",
+                },
+                {
+                    name: "scholar",
+                    icon: "icons/scholar.svg",
+                    href: "https://scholar.google.com/citations?user=H4vEe_oAAAAJ&hl=en",
+                },
+            ],
+        },
+        {
             name: "Pari",
             img: "imgs/people/pari.webp",
             links: [
@@ -124,49 +160,18 @@
                 },
             ],
         },
-        {
-            name: "Hendrik",
-            img: "imgs/people/hendrik-strobelt.png",
-            links: [
-                {
-                    name: "homepage",
-                    icon: "icons/home.svg",
-                    href: "http://hendrik.strobelt.com",
-                },
-                {
-                    name: "linkedin",
-                    icon: "icons/linkedin.svg",
-                    href: "https://www.linkedin.com/in/hendrik-strobelt-5951a021/",
-                },
-                {
-                    name: "email",
-                    icon: "icons/email.svg",
-                    href: "mailto:hendrik.strobelt@ibm.com",
-                },
-                {
-                    name: "bluesky",
-                    icon: "icons/bluesky.svg",
-                    href: "https://bsky.app/profile/henstr.bsky.social",
-                },
-                {
-                    name: "github",
-                    icon: "icons/github-alt.svg",
-                    href: "https://github.com/HendrikStrobelt",
-                },
-                {
-                    name: "scholar",
-                    icon: "icons/scholar.svg",
-                    href: "https://scholar.google.com/citations?user=H4vEe_oAAAAJ&hl=en",
-                },
-            ],
-        },
     ];
+
+    $: allMailList = connectSocialInfo.map((person) => person.links.find((link) => link.name === "email")?.href.replace("mailto:", ""));
 </script>
 
 <div
     class="flex flex-col items-start justify-center bg-blue-100 p-4 p-3 w-full rounded-xl mt-6"
 >
-    <h1 class="text-4xl my-2">{title}</h1>
+    <h1 class="text-4xl my-2">Let's connect! 🥳</h1>
+    <div class="text-md italic">
+        Feel free to <a href={`mailto:${allMailList.join(",")}`} class="underline hover:text-blue-500">send us a group email</a>
+    </div>
     {#each connectSocialInfo as person}
         <div class="flex flex-row gap-8 my-4">
             <img
