@@ -173,18 +173,19 @@
         Feel free to <a href={`mailto:${allMailList.join(",")}`} class="underline hover:text-blue-500">send us a group email</a>
     </div>
     {#each connectSocialInfo as person}
-        <div class="flex flex-row gap-8 my-4">
+        <div class="flex flex-row gap-6 md:gap-8 my-4">
             <img
                 src={person.img}
                 alt={person.name}
-                class="rounded-3xl self-center w-20 h-20 object-contain"
+                class="rounded-3xl self-center object-contain justify-self-center"
+                style="width: 80px;"
             />
             <div class="self-center">
                 <div class="whitespace-nowrap mb-2 text-xl font-light">
                     Find <span class="font-bold">{person.name}</span> on:
                 </div>
                 <div
-                    class="flex flex-row items-center justify-start gap-4 flex-wrap"
+                    class="flex flex-row items-center justify-start gap-3 md:gap-4 flex-wrap"
                 >
                     {#each person.links as link}
                         <a target="_blank" href={link.href} rel="noreferrer">
@@ -196,8 +197,8 @@
                                 >
                                     <object
                                         type="image/svg+xml"
-                                        width="24px"
-                                        height="24px"
+                                        width="20px"
+                                        height="20px"
                                         data={link.icon}
                                         class="opacity-100"
                                     /></span
