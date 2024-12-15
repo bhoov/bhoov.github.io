@@ -1,0 +1,125 @@
+---
+bibliography: bibliography.bib
+---
+# [HAMUX](https://bhoov.com/hamux/) is a probabilistic factor graph
+
+In this work we equate the mathematics of [HAMUX](https://bhoov.com/hamux/) to that of a factor graph, the most general kind of Probabilistic Graphical Model (PGM).
+
+## Expressing joint probabilities as Probabilistic Graphical Models (PGMs)
+
+*Overview adapted from [@coughlan2009Tutorial]*
+
+We can express many kinds of "decomposed joint probability distributions" graphically. For example, consider the Bayesian network described by the simple equation
+
+$$
+P(w,x,y,z) = P(w)P(x)P(y|w)P(z|w,x)
+$$
+
+This can be expressed in the following diagram
+
+```{mermaid}
+flowchart TD
+    W((w)) --> Z((z))
+    W((w)) --> Y((y))
+    X((x)) --> Z((z))
+```
+
+Of course, this is not the only way the joint probability can be decomposed. Decomposing this joint probability is the structure of the problem and a choice of the researcher.
+
+Instead of conditional probabilities, we can also model a joint distribution by decomposing it into pairwise, undirected potentials normalized by $Z$. This form is called the **Markov Random Field**. 
+
+$$
+P(w,x,y,z) = \frac1Z f_{wx}(w,x) f_{xz}(x,z) f_{yz}(y,z) f_{wy}(w,y).
+$$
+
+This can be expressed as an undirected graph where information is passed along nodes both ways.
+
+```{mermaid}
+flowchart LR
+    W((w)) --- X((x))
+    W((w)) --- Y((y))
+    X((x)) --- Z((z))
+    Y((y)) --- Z((z))
+```
+
+Expressing more complex factorizations, i.e., those where the factors are functions of more than two variables, is best accomplished by a form of hypergraph, where the edges become hyperedges, a special type of nodes themselves.
+
+Consider the factorization
+$$
+P(w,x,y,z) = \frac1Z f(w,x,y) g(y,z) h(z).
+$$
+
+This can be drawn as the "factor graph", where square nodes are the factors (hyperedges) that connect multiple nodes.
+
+```{mermaid}
+flowchart TD
+    w((w)) --- f[f]
+    x((x)) --- f[f]
+    y((y)) --- f[f]
+    y((y)) --- g[g]
+    z((z)) --- g[g]
+    z((z)) --- h[h]
+```
+
+## Inference in PGMs
+
+*Summarized/adapted from [@jordanProbabilistic]*
+
+Now let us consider the general case of expressing joint probabilities as a graph. Let $U$ denote a set of nodes of a graph, and let $X_i$ denote the random variable associated with node $i$, for $i \in U$. Let $X_C$ denote the subset of random  variables associated with a subset of nodes $C$, for any $C \subseteq U$, and let $X = X_U$ denote the collection of random variables associated with the graph. In the current work, we consider only the family of undirected graphs, where we describe the basic subsets as "cliques" of the graph -- subsets of nodes that are *completely connected*. We can describe the potential of a given clique $C$ as $\psi_C (x_C)$, which is a general function assigning a positive real number to each configuration $x_C$;
+
+$$
+p(x) = \frac1Z \prod_{C\in \mathcal{C}} \psi_C(x_C) \prod_{i \in U} \pi_i(x_i).
+$$
+
+Here $\mathcal{C}$ is the set of cliques associated with the graph, $Z$ is the explicit normalizing factor ensuring that $\sum_x p(x) = 1$, and $\pi_i(x_i)$ is some prior assigned to node $i$.
+
+**Inference**
+
+Let $(E, F)$ be a partitioning of the node indices of a graphical model into disjoint subsets, such that $(X_E, X_F)$ is a partitioning of the random variables.
+
+We generally care about 2 kinds of inference:
+
+- *Marginal Probabilities*:
+  
+  $$
+  p(x_E) = \sum_{x_F} p(x_E, x_F)
+  $$
+
+- *Maximum a Posteriori (MAP) probabilities*
+
+  $$
+  p^\star(x_E) = \max_{x_F} p(x_E, x_F)
+  $$
+
+With these basic computations, we can compute other quantities of interest e.g., the conditional probability of latent variables $F$ given evidence $E$
+
+$$
+p(x_F | x_E) = \frac{p(x_E, x_F)}{\sum_{x_F} p(x_E, x_F)}
+$$
+
+
+*(how do these operations relate to memory retrieval?)*
+
+## From PGMs to [HAMUX](https://bhoov.com/hamux/)
+
+Converting a joint probability is a joint energy is possible through the Boltzmann distribution:
+
+\begin{align}
+p(x) &= \frac{ \exp (- E(x))}{Z} \\
+\implies E(x) &= - \log p(x) - \log Z \\
+&= - \sum_{C \in \mathcal{C}} \log \psi_C(x_C) - \sum_{i \in U} \log \tilde{\pi}_i(x_i) - \log Z
+\end{align}
+
+We will drop the constant shift $\log Z$ and use the energy potential $\phi_C(x_C) := -\log \psi_C(x_C)$ to denote the new "energy factors" and $\tilde{\pi}_i(x_i) := -\log \pi_i(x_i)$. Thus,
+
+$$
+E(x) = \sum_{C \in \mathcal{C}} \phi_C(x_C) + \sum_{i} \tilde{\pi}_i(x_i),
+$$
+
+which is the general form of the energy hypergraph used in **HAMUX**. We call the energy factor $\phi_C(x_C)$ an "interaction" (or "synaptic") energy and $\tilde{\pi}_i(x_i)$ the "neuron" energy.
+
+If the neuron energies (i.e., the neg. log. of prior probilities) are defined through the Legendre Transform of a convex "Lagrangian" function...
+
+### Factor Graph Example
+
+
