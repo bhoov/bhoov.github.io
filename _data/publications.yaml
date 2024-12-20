@@ -76,9 +76,10 @@
       label: Video
   awards:
     - name: "Best Poster @VIS '24"
-      url: "https://ieeevis.org/year/2024/program/awards/awards.html"
+      url: "https://ieeevis.org/year/2023/info/awards/best-paper-awards"
     - name: 'Went Viral on X (❤ 1.9k️+)'
       url: "https://twitter.com/omarsar0/status/1821986172215742716"
+      # url: "https://x.com/rohanpaul_ai/status/1854321963876974775"
     - name: "#1 paper of the day🤗"
       url: "https://huggingface.co/papers/2408.04619"
   month: Oct
