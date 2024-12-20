@@ -98,17 +98,28 @@ window.Quarto = {
 
 
 
-<section id="hamux-is-a-probabilistic-factor-graph" class="level1">
-<h1><a href="https://bhoov.com/hamux/">HAMUX</a> is a probabilistic factor graph</h1>
-<p>In this work we equate the mathematics of <a href="https://bhoov.com/hamux/">HAMUX</a> to that of a factor graph, the most general kind of Probabilistic Graphical Model (PGM).</p>
-<section id="expressing-joint-probabilities-as-probabilistic-graphical-models-pgms" class="level2">
-<h2 class="anchored" data-anchor-id="expressing-joint-probabilities-as-probabilistic-graphical-models-pgms">Expressing joint probabilities as Probabilistic Graphical Models (PGMs)</h2>
+<section id="hamux-as-probabilistic-inference" class="level1">
+<h1><a href="https://bhoov.com/hamux/">HAMUX</a> as probabilistic inference</h1>
+<blockquote class="blockquote">
+<p>These notes record my first attempt at understanding Associative Memory (specifically, the Hierarchical Associative Memories formed by using the rules of <a href="https://bhoov.com/hamux/">HAMUX</a>) through the lens of Probabilistic Graphical Models and established techniques for probabilistic inference. Many paragraphs and examples are taken verbatim from the cited sources; I found it very helpful in places to manually transcribe the original reference notes.</p>
+<p>With the exception of <span class="citation" data-cites="coughlan2009Tutorial">Coughlan (<a href="#ref-coughlan2009Tutorial" role="doc-biblioref">2009</a>)</span>, which was used only to introduce factor graphs, I found the sources referenced in this work to be <strong>extremely</strong> relevant to our exploration. Indeed, it seems that my instinct that AM energy minimization as probabilistic inference has relevance even to exploring codes that approach the Shannon Limit. I do not yet know much about these potential applications, but I expect this to be a continually rewarding intellectual exploration that I hope unlocks future research directions for us.</p>
+</blockquote>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<section id="factor-graphs" class="level3">
+<h3 class="anchored" data-anchor-id="factor-graphs">Factor Graphs</h3>
 <p><em>Overview adapted from <span class="citation" data-cites="coughlan2009Tutorial">(<a href="#ref-coughlan2009Tutorial" role="doc-biblioref">Coughlan 2009</a>)</span></em></p>
 <p>We can express many kinds of “decomposed joint probability distributions” graphically. For example, consider the Bayesian network described by the simple equation</p>
 <p><span class="math display">\[
 P(w,x,y,z) = P(w)P(x)P(y|w)P(z|w,x)
 \]</span></p>
 <p>This can be expressed in the following diagram</p>
+<div id="lst-bayes-graph" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-bayes-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;1: Example bayesian graph
+</figcaption>
+<div aria-describedby="lst-bayes-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -123,6 +134,9 @@ P(w,x,y,z) = P(w)P(x)P(y|w)P(z|w,x)
 <p></p></figure><p></p>
 </div>
 </div>
+</div>
+</div>
+</figure>
 </div>
 <p>Of course, this is not the only way the joint probability can be decomposed. Decomposing this joint probability is the structure of the problem and a choice of the researcher.</p>
 <p>Instead of conditional probabilities, we can also model a joint distribution by decomposing it into pairwise, undirected potentials normalized by <span class="math inline">\(Z\)</span>. This form is called the <strong>Markov Random Field</strong>.</p>
@@ -150,7 +164,13 @@ P(w,x,y,z) = \frac1Z f_{wx}(w,x) f_{xz}(x,z) f_{yz}(y,z) f_{wy}(w,y).
 <p>Consider the factorization <span class="math display">\[
 P(w,x,y,z) = \frac1Z f(w,x,y) g(y,z) h(z).
 \]</span></p>
-<p>This can be drawn as the “factor graph”, where square nodes are the factors (hyperedges) that connect multiple nodes.</p>
+<p>This can be drawn as the <strong>factor graph</strong>, where square nodes are the factors (hyperedges) that connect multiple nodes.</p>
+<div id="lst-factor-graph" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-factor-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;2: Example factor graph
+</figcaption>
+<div aria-describedby="lst-factor-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -169,14 +189,19 @@ P(w,x,y,z) = \frac1Z f(w,x,y) g(y,z) h(z).
 </div>
 </div>
 </div>
+</div>
+</figure>
+</div>
+<p>We live in the realm of undirected factor graphs (<a href="#lst-factor-graph" class="quarto-xref">Listing&nbsp;2</a>) for the remainder of these notes, but know that there are likely strong connections to the conditional, Bayesian, directed graph of <a href="#lst-bayes-graph" class="quarto-xref">Listing&nbsp;1</a>.</p>
 </section>
-<section id="inference-in-pgms" class="level2">
-<h2 class="anchored" data-anchor-id="inference-in-pgms">Inference in PGMs</h2>
-<p><em>Summarized/adapted from <span class="citation" data-cites="jordanProbabilistic">(<a href="#ref-jordanProbabilistic" role="doc-biblioref">Jordan, n.d.</a>)</span></em></p>
+</section>
+<section id="inference-in-general-pgms" class="level2">
+<h2 class="anchored" data-anchor-id="inference-in-general-pgms">Inference in General PGMs</h2>
+<p><em>Summarized/adapted from <span class="citation" data-cites="jordanProbabilistic">(<a href="#ref-jordanProbabilistic" role="doc-biblioref">Jordan 2003</a>)</span></em></p>
 <p>Now let us consider the general case of expressing joint probabilities as a graph. Let <span class="math inline">\(U\)</span> denote a set of nodes of a graph, and let <span class="math inline">\(X_i\)</span> denote the random variable associated with node <span class="math inline">\(i\)</span>, for <span class="math inline">\(i \in U\)</span>. Let <span class="math inline">\(X_C\)</span> denote the subset of random variables associated with a subset of nodes <span class="math inline">\(C\)</span>, for any <span class="math inline">\(C \subseteq U\)</span>, and let <span class="math inline">\(X = X_U\)</span> denote the collection of random variables associated with the graph. In the current work, we consider only the family of undirected graphs, where we describe the basic subsets as “cliques” of the graph – subsets of nodes that are <em>completely connected</em>. We can describe the potential of a given clique <span class="math inline">\(C\)</span> as <span class="math inline">\(\psi_C (x_C)\)</span>, which is a general function assigning a positive real number to each configuration <span class="math inline">\(x_C\)</span>;</p>
-<p><span class="math display">\[
+<p><span id="eq-joint-prob"><span class="math display">\[
 p(x) = \frac1Z \prod_{C\in \mathcal{C}} \psi_C(x_C) \prod_{i \in U} \pi_i(x_i).
-\]</span></p>
+\tag{1}\]</span></span></p>
 <p>Here <span class="math inline">\(\mathcal{C}\)</span> is the set of cliques associated with the graph, <span class="math inline">\(Z\)</span> is the explicit normalizing factor ensuring that <span class="math inline">\(\sum_x p(x) = 1\)</span>, and <span class="math inline">\(\pi_i(x_i)\)</span> is some prior assigned to node <span class="math inline">\(i\)</span>.</p>
 <p><strong>Inference</strong></p>
 <p>Let <span class="math inline">\((E, F)\)</span> be a partitioning of the node indices of a graphical model into disjoint subsets, such that <span class="math inline">\((X_E, X_F)\)</span> is a partitioning of the random variables.</p>
@@ -191,39 +216,225 @@ p(x_E) = \sum_{x_F} p(x_E, x_F)
 p^\star(x_E) = \max_{x_F} p(x_E, x_F)
 \]</span></p></li>
 </ul>
-<p>With these basic computations, we can compute other quantities of interest e.g., the conditional probability of latent variables <span class="math inline">\(F\)</span> given evidence <span class="math inline">\(E\)</span></p>
+<p>With these basic computations, we can compute other quantities of interest e.g., the conditional probability of latent variables <span class="math inline">\(F\)</span> given evidence <span class="math inline">\(E\)</span>:</p>
 <p><span class="math display">\[
-p(x_F | x_E) = \frac{p(x_E, x_F)}{\sum_{x_F} p(x_E, x_F)}
+p(x_F | x_E) = \frac{p(x_E, x_F)}{\sum_{x_F} p(x_E, x_F)}.
 \]</span></p>
-<p><em>(how do these operations relate to memory retrieval?)</em></p>
+<p><strong>QUESTIONS</strong></p>
+<ul>
+<li><em>How do these operations relate to memory retrieval?</em></li>
+<li><em>Where do “beliefs” come into the computation? Not at all?</em></li>
+</ul>
+<section id="loopy-belief-propagation" class="level3">
+<h3 class="anchored" data-anchor-id="loopy-belief-propagation">(Loopy) Belief Propagation</h3>
+<p>The goal of Belief Propagation (BP) (a.k.a., the “sum-product” algorithm) is to perform inference on our joint probability distribution. Consider the following simple joint probability:</p>
+<p><span class="math display">\[
+p(x) = \frac1Z \psi_{12}(x_1, x_2) \psi_{23}(x_2, x_3) \psi_{34}(x_3, x_4) \psi_{35}(x_3, x_5)
+\]</span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    x1((x1)) --- psi12[Ψ_12]
+    x2((x2)) --- psi12[Ψ_12]
+    x2((x2)) --- psi23[Ψ_23]
+    x3((x3)) --- psi23[Ψ_23]
+    x3((x3)) --- psi34[Ψ_34]
+    x3((x3)) --- psi35[Ψ_35]
+    x4((x4)) --- psi34[Ψ_34]
+    x5((x5)) --- psi34[Ψ_35]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Say our goal is to perform inference to compute the marginal <span class="math inline">\(p(x_5)\)</span> (also called the “belief” of <span class="math inline">\(x_5\)</span>). We assume that an oracle can tell us the optimal <em>elimination order</em> in which we compute the marginals:</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(x_5) &amp;= \frac1Z \sum_{x_3} \psi_{35}(x_3, x_5) \sum_{x_4} \psi_{34}(x_3, x_4) \sum_{x_2} \psi_{23}(x_2, x_3) \sum_{x_1} \psi_{12}(x_1, x_2)\\
+&amp;= \frac1Z \sum_{x_3} \psi_{35}(x_3, x_5) \sum_{x_4} \psi_{34}(x_3, x_4) \sum_{x_2} \psi_{23}(x_2, x_3) m_{12}(x_2)\\
+&amp;= \frac1Z \sum_{x_3} \psi_{35}(x_3, x_5) \sum_{x_4} \psi_{34}(x_3, x_4) m_{23}(x_3)\\
+&amp;= \frac1Z \sum_{x_3} \psi_{35}(x_3, x_5) m_{34}(x_3)\\
+&amp;= \frac1Z m_{35}(x_5)\\
+\end{aligned}
+\]</span></p>
+<p><strong>Note that this is a “tree-like” factor graph where the marginal can be computed exactly using a simple elimination ordering.</strong> For arbitrary graphs, it can be NP-hard to compute the best elimination ordering.</p>
+<p>We describe the marginal</p>
+<p><span id="eq-msg"><span class="math display">\[
+m_{ij}(x_j) := \sum_{x_i} \psi_{ij}(x_i, x_j) \prod_{k \in N(i) \setminus j} m_{ki}(x_i)
+\tag{2}\]</span></span></p>
+<p>to be the “message” passed from node <span class="math inline">\(i\)</span> to node <span class="math inline">\(j\)</span>, where <span class="math inline">\(N(i)\)</span> is the set of neighbors of node <span class="math inline">\(i\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I don’t love interpreting the notation <span class="math inline">\(m_{ij}(x_j)\)</span> by looking at the order of indices in the subscript to represent a message from node <span class="math inline">\(i\)</span> to node <span class="math inline">\(j\)</span>. There are cases where a message is a function of more than just the variable at the receiving node. It would be better to think of a message using the defintion of <a href="#eq-msg" class="quarto-xref">Equation&nbsp;2</a>, and know that all arguments to a message indicate a node that has not yet been summed over. For the computer scientist, we can use the convention that the first argument to the message indicates the intended “receiving node”; in the case of multiple arguments, this convention implies that our graph ordering should eliminate the first argument last.</p>
+</div>
+</div>
+<p>An elegant view of the elimination process described above is that of <em>local computation</em> and <em>message routing</em>, where messages arriving at leaf nodes are necessarily marginal probabilities. However, in general we can think of a “message” as an unnormalized marginal probability</p>
+<p><span class="math display">\[
+p(x_i) \propto \prod \prod_{k \in N(i)} m_{ki} (x_i).
+\]</span></p>
+<p>The above is a way that a marginal probability can be computed using BP. The same computation can be done to compute the MAP; we simply replace “sum” with “max” throughout in both cases, where the underlying justification is that “max” commutes with products just as “sum” does.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The reference paper makes the following note about the similarities between message passing and neural networks:</p>
+<blockquote class="blockquote">
+<p>Neural network[s] also involve message-passing algorithms and local numerical operations. An important difference, however, is that in the neural network setting each node generally has a single “activation” value that it passes to all of its neighbors. In the sum-product algorithm, on the other hand, individual messages are prepared for each neighbor. Moreover, the message <span class="math inline">\(m_{ij}(x_j)\)</span> from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> is not included in the product that node <span class="math inline">\(j\)</span> forms in computing a message to send back to node <span class="math inline">\(i\)</span>. The sum-product algorithm avoids “double-counting.”</p>
+</blockquote>
+<p>This indeed holds for traditional feed-forward networks which are not recurrent in their activations. The activations in AMs represent a form of recurrent message passing as is used in <a href="#sec-variational-inf"><em>variational inference</em></a>, which will be explained later.</p>
+</div>
+</div>
+<p>Exact marginal computation via elimination is described excellently in <span class="citation" data-cites="jordanProbabilistic">(<a href="#ref-jordanProbabilistic" role="doc-biblioref">Jordan 2003</a>)</span>, wherein the exact marginal probability for any node in an <em>arbitrary graph</em> can be computed using junction trees and the perfect ordering in which to eliminate the nodes.</p>
+</section>
+<section id="variational-inference-in-pgms" class="level3">
+<h3 class="anchored" data-anchor-id="variational-inference-in-pgms">Variational Inference in PGMs</h3>
+<p>Because exact inference is intractable for many factor graphs, we often prefer some approximation. <span class="citation" data-cites="jordanProbabilistic">Jordan (<a href="#ref-jordanProbabilistic" role="doc-biblioref">2003</a>)</span> excellently summarizes common choices for approximation e.g., Gibbs sampling and Metropolis-Hastings (forms of MCMC used often in e.g., Boltzmann machines) and importance sampling. Please refer to the reference for details on these methods.</p>
+<p>However, <span class="citation" data-cites="jordanProbabilistic">Jordan (<a href="#ref-jordanProbabilistic" role="doc-biblioref">2003</a>)</span> describes one particular form of approximate inference in PGMs called “Variational Methods” that converts the problem of “probabilistic inference” into a problem of optimization. The difference between this method and importance sampling is that, instead of choosing a single <em>guess distribution</em> <span class="math inline">\(q(x)\)</span> a priori, a family of approximating distributions <span class="math inline">\(\{q(x)\}\)</span> is used instead. The optimization machinery chooses a particular member from this family.</p>
+<p>We begin by noting that the joint probability <span class="math inline">\(p(x)\)</span> can be viewed as a solution to an optimization problem. In particular, define the energy of configuration <span class="math inline">\(x\)</span> by <span class="math inline">\(E(x) = - \log p(x) - \log Z\)</span>, and define the <em>variational free energy</em> as</p>
+<p><span id="eq-var-free-energy"><span class="math display">\[
+\begin{aligned}
+F({q(x)}) &amp;= \sum_x q(x) E(x) + \sum_x q(x) \log q(x)\\
+&amp;= -\sum_x q(x) \log p(x) + \sum_x q(x) \log q(x) - \log Z
+\end{aligned}
+\tag{3}\]</span></span></p>
+<p><a href="#eq-var-free-energy" class="quarto-xref">Equation&nbsp;3</a> is equal (up to an additive constant) to the KL-divergence between <span class="math inline">\(q(x)\)</span> and <span class="math inline">\(p(x)\)</span>, is minimized at <span class="math inline">\(q(x) = p(x)\)</span>, and attains value <span class="math inline">\(-\log Z\)</span> at the minimum.</p>
+<blockquote class="blockquote">
+<p><strong>Minimizing an arbitrary <span class="math inline">\(F\)</span> is as difficult as doing exact inference</strong>, and much effort has been invested into finding approximate forms of <span class="math inline">\(F\)</span> that are easier to minimize.</p>
+</blockquote>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is my belief that the form of all Associative Memories (i.e., constraining activations <span class="math inline">\(q_i(x_i)\)</span> to be the derivative of some convex Lagrangian whose energy is described by the Legendre Transform) is one of these “approximate forms” that is much easier to minimize. I will try to defend this stance using my shaky math below.</p>
+</div>
+</div>
+<section id="example-the-mean-field-approximation" class="level4">
+<h4 class="anchored" data-anchor-id="example-the-mean-field-approximation">Example: the Mean-Field approximation</h4>
+<p>The simplest variational algorithm is the <em>mean field</em> approximation, in which <span class="math inline">\(\{q(x)\}\)</span> is restricted to the family of factorized distributions: <span class="math inline">\(q(x) = \prod_i q_i(x_i)\)</span> (i.e., a world where all variables are independent). In this case, <span class="math inline">\(F\)</span> from <a href="#eq-var-free-energy" class="quarto-xref">Equation&nbsp;3</a> simplifies to</p>
+<p><span class="math display">\[
+F_{MF}(\{q(x)\}) = -\sum_C \sum_{x_C} \log \psi_C(x_C) \prod_{i \in C} q_i(x_i)
+   + \sum_i \sum_{x_i} q_i (x_i) \log q_i (x_i),
+\]</span></p>
+<p>subject to the constraint <span class="math inline">\(\sum_{x_i} q_i(x_i) = 1\)</span>. In this particular case, we can solve for the optimal distribution <span class="math inline">\(q_i^\star(x_i)\)</span> by setting the derivative of <span class="math inline">\(F_{MF}\)</span> w.r.t. <span class="math inline">\(q_i (x_i)\)</span> equal to zero:</p>
+<p><span id="eq-mf-inference"><span class="math display">\[
+q_i^\star (x_i) = \alpha \exp \left(\sum_C \sum_{x_C \setminus i} \log \psi_C (x_C) \prod_{j \in C, j \neq i} q_j (x_j) \right),
+\tag{4}\]</span></span></p>
+<p>where <span class="math inline">\(\alpha\)</span> is a normalization constant chosen so that <span class="math inline">\(\sum_{x_i} q_i (x_i) = 1\)</span>. The sum over cliques <span class="math inline">\(C\)</span> is over all cliques that node <span class="math inline">\(i\)</span> belongs to.</p>
+<p><a href="#eq-mf-inference" class="quarto-xref">Equation&nbsp;4</a> is an <em>approximate inference algorithm</em>. We initialize approximate marginals <span class="math inline">\(q_i(x_i)\)</span> for all nodes in the graph and then update the approximate marginal at one node based on those at neighboring nodes (note that RHS of <a href="#eq-mf-inference" class="quarto-xref">Equation&nbsp;4</a> depends only on cliques that node <span class="math inline">\(i\)</span> belongs to). This yields a message passing algorithm similar to neural networks; in particular, the value <span class="math inline">\(q_i(x_i)\)</span> can be viewed as the <em>activation</em> of node <span class="math inline">\(i\)</span>.</p>
+</section>
+<section id="example-the-bethe-approximation" class="level4">
+<h4 class="anchored" data-anchor-id="example-the-bethe-approximation">Example: the Bethe approximation</h4>
+<p>The mean-field energy depends only on approximate marginals at single nodes, the <em>Bethe free energy</em> depends on approximate marginals at single nodes <span class="math inline">\(q_i(x_i)\)</span> as well as approximate marginals on cliques <span class="math inline">\(q_C(x_C)\)</span>. This allows for more elaborate approximations to the free energy (<a href="#eq-var-free-energy" class="quarto-xref">Equation&nbsp;3</a>) with better approximate marginal probabilities:</p>
+<p><span id="eq-f-bethe"><span class="math display">\[
+F_\beta (\{q_i, q_C\}) = \sum_C \sum_{x_C} q_C(x_C) \log \frac{q_C (x_C)}{\psi_C(x_C)} - \sum_i (d_i - 1) \sum_{x_i} q_i (x_i) \log q_i (x_i),
+\tag{5}\]</span></span></p>
+<p>where <span class="math inline">\(d_i - 1\)</span> is the number of cliques that node <span class="math inline">\(i\)</span> belongs to.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is unclear to me which terms in <a href="#eq-f-bethe" class="quarto-xref">Equation&nbsp;5</a> are included in the sum over the cliques? I believe there should be two distinct terms in the RHS.</p>
+</div>
+</div>
+<p>The approximate clique marginals and the approximate singleton marginals must satisfy a simple marginalization constraint: <span class="math inline">\(\sum_{x_C \setminus i} q_C(x_C) = q_i (x_i)\)</span>. <strong>When we add Lagrange multipliers and differentiate the Lagrangian we obtain a set of fixed point equations.</strong> Surprisingly, these equations end up being equivalent to the “sum-product” algorithm for trees (<a href="#eq-msg" class="quarto-xref">Equation&nbsp;2</a>). The messages $m_{ij}(x_j) are simply exponentiated Lagrange multipliers. Thus, the Bethe approximation is equivalent to applying the local message passing scheme developed for trees to graphs that have loops (see <span class="citation" data-cites="yedidiaBethe">Yedidia, Freeman, and Weiss (<a href="#ref-yedidiaBethe" role="doc-biblioref">2001</a>)</span>). This approach to approximate inference algorithms has been very successful in the domain of error-control coding, allowing practical codes based on graphical models to nearly reach the Shannon Limit.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I believe this last statement</p>
+<blockquote class="blockquote">
+<p>… allowing practical codes based on graphical models to nearly reach the Shannon Limit.</p>
+</blockquote>
+<p>refers to the connection between approximate probabilistic inference using Loopy Belief Propagation and Turbocodes , see <a href="https://arxiv.org/abs/1301.6725">this paper</a> written by the authors of my reference notes in collaboration with Kevin Murphy.</p>
+</div>
+</div>
+</section>
+</section>
 </section>
 <section id="from-pgms-to-hamux" class="level2">
 <h2 class="anchored" data-anchor-id="from-pgms-to-hamux">From PGMs to <a href="https://bhoov.com/hamux/">HAMUX</a></h2>
-<p>Converting a joint probability is a joint energy is possible through the Boltzmann distribution:</p>
+<p><strong>Turning probabilities into energy</strong></p>
+<p>Converting a joint probability (<a href="#eq-joint-prob" class="quarto-xref">Equation&nbsp;1</a>) to a joint energy is possible through the Boltzmann distribution:</p>
 <p><span class="math display">\[\begin{align}
 p(x) &amp;= \frac{ \exp (- E(x))}{Z} \\
 \implies E(x) &amp;= - \log p(x) - \log Z \\
 &amp;= - \sum_{C \in \mathcal{C}} \log \psi_C(x_C) - \sum_{i \in U} \log \tilde{\pi}_i(x_i) - \log Z
 \end{align}\]</span></p>
-<p>We will drop the constant shift <span class="math inline">\(\log Z\)</span> and use the energy potential <span class="math inline">\(\phi_C(x_C) := -\log \psi_C(x_C)\)</span> to denote the new “energy factors” and <span class="math inline">\(\tilde{\pi}_i(x_i) := -\log \pi_i(x_i)\)</span>. Thus,</p>
-<p><span class="math display">\[
+<p>We will drop the constant shift <span class="math inline">\(\log Z\)</span> and use the energy potential <span class="math inline">\(\phi_C(x_C) := -\log \psi_C(x_C)\)</span> to denote the new “energy factors” and <span class="math inline">\(\tilde{\pi}_i(x_i) := -\log \pi_i(x_i)\)</span> to denote the “energy priors”. Thus,</p>
+<p><span id="eq-joint-energy"><span class="math display">\[
 E(x) = \sum_{C \in \mathcal{C}} \phi_C(x_C) + \sum_{i} \tilde{\pi}_i(x_i),
-\]</span></p>
-<p>which is the general form of the energy hypergraph used in <strong>HAMUX</strong>. We call the energy factor <span class="math inline">\(\phi_C(x_C)\)</span> an “interaction” (or “synaptic”) energy and <span class="math inline">\(\tilde{\pi}_i(x_i)\)</span> the “neuron” energy.</p>
-<p>If the neuron energies (i.e., the neg. log. of prior probilities) are defined through the Legendre Transform of a convex “Lagrangian” function…</p>
-<section id="factor-graph-example" class="level3 unnumbered">
-
+\tag{6}\]</span></span></p>
+<p>which is the general form of the energy hypergraph used in <strong>HAMUX</strong>. We call the energy factor <span class="math inline">\(\phi_C(x_C)\)</span> an interaction or <em>synaptic energy</em> and <span class="math inline">\(\tilde{\pi}_i(x_i)\)</span> the <em>neuron energy</em>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I am unsure if the specification of priors <span class="math inline">\(\tilde{\pi}\)</span> is correct to show equivalence. The above could be written only in terms of factors <span class="math inline">\(\phi_C(x_C)\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="sec-variational-inf" class="level2">
+<h2 class="anchored" data-anchor-id="sec-variational-inf">Energy Minimization of AMs is variational inference in PGMs</h2>
+<p>If the neuron energies (i.e., the neg. log. of prior probilities) are defined through the Legendre Transform of a convex “Lagrangian” function, we some nice guarantees on inference by energy minimization.</p>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p><em>Unless otherwise cited, this section represents my own original words</em></p>
 
 </section>
 </section>
-</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Factor Graph Example</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-coughlan2009Tutorial" class="csl-entry" role="listitem">
 Coughlan, James. 2009. <span>“A <span>Tutorial Introduction</span> to <span>Belief Propagation</span>.”</span> <a href="https://www.ski.org/sites/default/files/publications/bptutorial.pdf">https://www.ski.org/sites/default/files/publications/bptutorial.pdf</a>.
 </div>
 <div id="ref-jordanProbabilistic" class="csl-entry" role="listitem">
-Jordan, Michael I. n.d. <span>“Probabilistic Inference in Graphical Models.”</span>
+Jordan, Michael I. 2003. <span>“Probabilistic Inference in Graphical Models.”</span> <a href="https://mlg.eng.cam.ac.uk/zoubin/course04/hbtnn2e-I.pdf">https://mlg.eng.cam.ac.uk/zoubin/course04/hbtnn2e-I.pdf</a>.
+</div>
+<div id="ref-yedidiaBethe" class="csl-entry" role="listitem">
+Yedidia, Jonathan S, William T Freeman, and Yair Weiss. 2001. <span>“Bethe Free Energy, <span>Kikuchi</span> Approximations, and Belief Propagation Algorithms.”</span> <a href="https://www.merl.com/publications/docs/TR2001-16.pdf">https://www.merl.com/publications/docs/TR2001-16.pdf</a>.
 </div>
 </div></section></div></main>
 <!-- /main column -->

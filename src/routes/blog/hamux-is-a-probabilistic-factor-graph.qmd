@@ -1,11 +1,14 @@
 ---
 bibliography: bibliography.bib
 ---
-# [HAMUX](https://bhoov.com/hamux/) is a probabilistic factor graph
+# [HAMUX](https://bhoov.com/hamux/) as probabilistic inference
 
-In this work we equate the mathematics of [HAMUX](https://bhoov.com/hamux/) to that of a factor graph, the most general kind of Probabilistic Graphical Model (PGM).
+> These notes record my first attempt at understanding Associative Memory (specifically, the Hierarchical Associative Memories formed by using the rules of [HAMUX](https://bhoov.com/hamux/)) through the lens of Probabilistic Graphical Models and established techniques for probabilistic inference. Many paragraphs and examples are taken verbatim from the cited sources; I found it very helpful in places to manually transcribe the original reference notes.
+>
+> With the exception of @coughlan2009Tutorial, which was used only to introduce factor graphs, I found the sources referenced in this work to be **extremely** relevant to our exploration. Indeed, it seems that my instinct that AM energy minimization as probabilistic inference has relevance even to exploring codes that approach the Shannon Limit. I do not yet know much about these potential applications, but I expect this to be a continually rewarding intellectual exploration that I hope unlocks future research directions for us.
 
-## Expressing joint probabilities as Probabilistic Graphical Models (PGMs)
+## Background
+### Factor Graphs
 
 *Overview adapted from [@coughlan2009Tutorial]*
 
@@ -17,12 +20,14 @@ $$
 
 This can be expressed in the following diagram
 
+:::{#lst-bayes-graph lst-cap='Example bayesian graph'}
 ```{mermaid}
 flowchart TD
     W((w)) --> Z((z))
     W((w)) --> Y((y))
     X((x)) --> Z((z))
 ```
+:::
 
 Of course, this is not the only way the joint probability can be decomposed. Decomposing this joint probability is the structure of the problem and a choice of the researcher.
 
@@ -49,8 +54,9 @@ $$
 P(w,x,y,z) = \frac1Z f(w,x,y) g(y,z) h(z).
 $$
 
-This can be drawn as the "factor graph", where square nodes are the factors (hyperedges) that connect multiple nodes.
+This can be drawn as the **factor graph**, where square nodes are the factors (hyperedges) that connect multiple nodes.
 
+:::{#lst-factor-graph lst-cap='Example factor graph'}
 ```{mermaid}
 flowchart TD
     w((w)) --- f[f]
@@ -60,8 +66,11 @@ flowchart TD
     z((z)) --- g[g]
     z((z)) --- h[h]
 ```
+:::
 
-## Inference in PGMs
+We live in the realm of undirected factor graphs (@lst-factor-graph) for the remainder of these notes, but know that there are likely strong connections to the conditional, Bayesian, directed graph of @lst-bayes-graph.
+
+## Inference in General PGMs
 
 *Summarized/adapted from [@jordanProbabilistic]*
 
@@ -69,7 +78,7 @@ Now let us consider the general case of expressing joint probabilities as a grap
 
 $$
 p(x) = \frac1Z \prod_{C\in \mathcal{C}} \psi_C(x_C) \prod_{i \in U} \pi_i(x_i).
-$$
+$${#eq-joint-prob}
 
 Here $\mathcal{C}$ is the set of cliques associated with the graph, $Z$ is the explicit normalizing factor ensuring that $\sum_x p(x) = 1$, and $\pi_i(x_i)$ is some prior assigned to node $i$.
 
@@ -91,18 +100,155 @@ We generally care about 2 kinds of inference:
   p^\star(x_E) = \max_{x_F} p(x_E, x_F)
   $$
 
-With these basic computations, we can compute other quantities of interest e.g., the conditional probability of latent variables $F$ given evidence $E$
+With these basic computations, we can compute other quantities of interest e.g., the conditional probability of latent variables $F$ given evidence $E$:
 
 $$
-p(x_F | x_E) = \frac{p(x_E, x_F)}{\sum_{x_F} p(x_E, x_F)}
+p(x_F | x_E) = \frac{p(x_E, x_F)}{\sum_{x_F} p(x_E, x_F)}.
 $$
 
+**QUESTIONS**
 
-*(how do these operations relate to memory retrieval?)*
+- *How do these operations relate to memory retrieval?*
+- *Where do "beliefs" come into the computation? Not at all?*
+
+### (Loopy) Belief Propagation
+
+The goal of Belief Propagation (BP) (a.k.a., the "sum-product" algorithm) is to perform inference on our joint probability distribution. Consider the following simple joint probability:
+
+$$
+p(x) = \frac1Z \psi_{12}(x_1, x_2) \psi_{23}(x_2, x_3) \psi_{34}(x_3, x_4) \psi_{35}(x_3, x_5)
+$$
+
+```{mermaid}
+flowchart TD
+    x1((x1)) --- psi12[Ψ_12]
+    x2((x2)) --- psi12[Ψ_12]
+    x2((x2)) --- psi23[Ψ_23]
+    x3((x3)) --- psi23[Ψ_23]
+    x3((x3)) --- psi34[Ψ_34]
+    x3((x3)) --- psi35[Ψ_35]
+    x4((x4)) --- psi34[Ψ_34]
+    x5((x5)) --- psi34[Ψ_35]
+```
+
+Say our goal is to perform inference to compute the marginal $p(x_5)$ (also called the "belief" of $x_5$). We assume that an oracle can tell us the optimal *elimination order* in which we compute the marginals:
+
+$$
+\begin{aligned}
+p(x_5) &= \frac1Z \sum_{x_3} \psi_{35}(x_3, x_5) \sum_{x_4} \psi_{34}(x_3, x_4) \sum_{x_2} \psi_{23}(x_2, x_3) \sum_{x_1} \psi_{12}(x_1, x_2)\\
+&= \frac1Z \sum_{x_3} \psi_{35}(x_3, x_5) \sum_{x_4} \psi_{34}(x_3, x_4) \sum_{x_2} \psi_{23}(x_2, x_3) m_{12}(x_2)\\
+&= \frac1Z \sum_{x_3} \psi_{35}(x_3, x_5) \sum_{x_4} \psi_{34}(x_3, x_4) m_{23}(x_3)\\
+&= \frac1Z \sum_{x_3} \psi_{35}(x_3, x_5) m_{34}(x_3)\\
+&= \frac1Z m_{35}(x_5)\\
+\end{aligned}
+$$
+
+**Note that this is a "tree-like" factor graph where the marginal can be computed exactly using a simple elimination ordering.** For arbitrary graphs, it can be NP-hard to compute the best elimination ordering.
+
+We describe the marginal 
+
+$$
+m_{ij}(x_j) := \sum_{x_i} \psi_{ij}(x_i, x_j) \prod_{k \in N(i) \setminus j} m_{ki}(x_i)
+$${#eq-msg}
+
+to be the "message" passed from node $i$ to node $j$, where $N(i)$ is the set of neighbors of node $i$.
+
+:::{.callout-note}
+I don't love interpreting the notation $m_{ij}(x_j)$ by looking at the order of indices in the subscript to represent a message from node $i$ to node $j$. There are cases where a message is a function of more than just the variable at the receiving node. It would be better to think of a message using the defintion of @eq-msg, and know that all arguments to a message indicate a node that has not yet been summed over. For the computer scientist, we can use the convention that the first argument to the message indicates the intended "receiving node"; in the case of multiple arguments, this convention implies that our graph ordering should eliminate the first argument last.
+:::
+
+An elegant view of the elimination process described above is that of *local computation* and *message routing*, where messages arriving at leaf nodes are necessarily marginal probabilities. However, in general we can think of a "message" as an unnormalized marginal probability
+
+$$
+p(x_i) \propto \prod \prod_{k \in N(i)} m_{ki} (x_i).
+$$
+
+The above is a way that a marginal probability can be computed using BP. The same computation can be done to compute the MAP; we simply replace “sum” with “max” throughout in both cases, where the underlying justification is that "max" commutes with products just as "sum" does.
+
+:::{.callout-note}
+The reference paper makes the following note about the similarities between message passing and neural networks:
+
+> Neural network[s] also involve message-passing algorithms and local numerical operations. An important difference, however, is that in the neural network setting each node generally has a single “activation” value that it passes to all of its neighbors. In the sum-product  algorithm, on the other hand, individual messages are prepared for each neighbor. Moreover, the message $m_{ij}(x_j)$ from $i$ to $j$ is not included in the product that node $j$ forms in computing a message to send back to node $i$. The sum-product algorithm avoids “double-counting.”
+
+This indeed holds for traditional feed-forward networks which are not recurrent in their activations. The activations in AMs represent a form of recurrent message passing as is used in [*variational inference*](#sec-variational-inf), which will be explained later.
+:::
+
+
+Exact marginal computation via elimination is described excellently in [@jordanProbabilistic], wherein the exact marginal probability for any node in an *arbitrary graph* can be computed using junction trees and the perfect ordering in which to eliminate the nodes.
+
+### Variational Inference in PGMs
+
+Because exact inference is intractable for many factor graphs, we often prefer some approximation. @jordanProbabilistic excellently summarizes common choices for approximation e.g., Gibbs sampling and Metropolis-Hastings (forms of MCMC used often in e.g., Boltzmann machines) and importance sampling. Please refer to the reference for details on these methods.
+
+However, @jordanProbabilistic describes one particular form of approximate inference in PGMs called "Variational Methods" that converts the problem of "probabilistic inference" into a problem of optimization. The difference between this method and importance sampling is that, instead of choosing a single *guess distribution* $q(x)$ a priori, a family of approximating distributions $\{q(x)\}$ is used instead. The optimization machinery chooses a particular member from this family.
+
+We begin by noting that the joint probability $p(x)$ can be viewed as a solution to an optimization problem. In particular, define the energy of configuration $x$ by $E(x) = - \log p(x) - \log Z$, and define the *variational free energy* as 
+
+$$
+\begin{aligned}
+F({q(x)}) &= \sum_x q(x) E(x) + \sum_x q(x) \log q(x)\\
+ &= -\sum_x q(x) \log p(x) + \sum_x q(x) \log q(x) - \log Z
+\end{aligned}
+$${#eq-var-free-energy}
+
+@eq-var-free-energy is equal (up to an additive constant) to the KL-divergence between $q(x)$ and $p(x)$, is minimized at $q(x) = p(x)$, and attains value $-\log Z$ at the minimum.
+
+> **Minimizing an arbitrary $F$ is as difficult as doing exact inference**, and much effort has been invested into finding approximate forms of $F$ that are easier to minimize.
+
+:::{.callout-note}
+It is my belief that the form of all Associative Memories (i.e., constraining activations $q_i(x_i)$ to be the derivative of some convex Lagrangian whose energy is described by the Legendre Transform) is one of these "approximate forms" that is much easier to minimize. I will try to defend this stance using my shaky math below.
+:::
+
+#### Example: the Mean-Field approximation
+
+The simplest variational algorithm is the *mean field* approximation, in which $\{q(x)\}$ is restricted to the family of factorized distributions: $q(x) = \prod_i q_i(x_i)$ (i.e., a world where all variables are independent). In this case, $F$ from @eq-var-free-energy simplifies to
+
+$$
+F_{MF}(\{q(x)\}) = -\sum_C \sum_{x_C} \log \psi_C(x_C) \prod_{i \in C} q_i(x_i) 
+   + \sum_i \sum_{x_i} q_i (x_i) \log q_i (x_i),
+$$
+
+subject to the constraint $\sum_{x_i} q_i(x_i) = 1$. In this particular case, we can solve for the optimal distribution $q_i^\star(x_i)$ by setting the derivative of $F_{MF}$ w.r.t. $q_i (x_i)$ equal to zero:
+
+$$
+q_i^\star (x_i) = \alpha \exp \left(\sum_C \sum_{x_C \setminus i} \log \psi_C (x_C) \prod_{j \in C, j \neq i} q_j (x_j) \right),
+$${#eq-mf-inference}
+
+where $\alpha$ is a normalization constant chosen so that $\sum_{x_i} q_i (x_i) = 1$. The sum over cliques $C$ is over all cliques that node $i$ belongs to.
+
+@eq-mf-inference is an *approximate inference algorithm*. We initialize approximate marginals $q_i(x_i)$ for all nodes in the graph and then update the approximate marginal at one node based on those at neighboring nodes (note that RHS of @eq-mf-inference depends only on cliques that node $i$ belongs to). This yields a message passing algorithm similar to neural networks; in particular, the value $q_i(x_i)$ can be viewed as the *activation* of node $i$.
+
+#### Example: the Bethe approximation
+
+The mean-field energy depends only on approximate marginals at single nodes, the *Bethe free energy* depends on approximate marginals at single nodes $q_i(x_i)$ as well as approximate marginals on cliques $q_C(x_C)$. This allows for more elaborate approximations to the free energy (@eq-var-free-energy) with better approximate marginal probabilities:
+
+$$
+F_\beta (\{q_i, q_C\}) = \sum_C \sum_{x_C} q_C(x_C) \log \frac{q_C (x_C)}{\psi_C(x_C)} - \sum_i (d_i - 1) \sum_{x_i} q_i (x_i) \log q_i (x_i),
+$${#eq-f-bethe}
+
+where $d_i - 1$ is the number of cliques that node $i$ belongs to.
+
+:::{.callout-note}
+It is unclear to me which terms in @eq-f-bethe are included in the sum over the cliques? I believe there should be two distinct terms in the RHS.
+:::
+
+The approximate clique marginals and the approximate singleton marginals must satisfy a simple marginalization constraint: $\sum_{x_C \setminus i} q_C(x_C) = q_i (x_i)$. **When we add Lagrange multipliers and differentiate the Lagrangian we obtain a set of fixed point equations.** Surprisingly, these equations end up being equivalent to the "sum-product" algorithm for trees (@eq-msg). The messages $m_{ij}(x_j) are simply exponentiated Lagrange multipliers. Thus, the Bethe approximation is equivalent to applying the local message passing scheme developed for trees to graphs that have loops (see @yedidiaBethe). This approach to approximate inference algorithms has been very successful in the domain of error-control coding, allowing practical codes based on graphical models to nearly reach the Shannon Limit.
+
+:::{.callout-note}
+I believe this last statement
+
+> ... allowing practical codes based on graphical models to nearly reach the Shannon Limit.
+
+refers to the connection between approximate probabilistic inference using Loopy Belief Propagation and Turbocodes , see [this paper](https://arxiv.org/abs/1301.6725) written by the authors of my reference notes in collaboration with Kevin Murphy.
+:::
+
 
 ## From PGMs to [HAMUX](https://bhoov.com/hamux/)
 
-Converting a joint probability is a joint energy is possible through the Boltzmann distribution:
+
+**Turning probabilities into energy**
+
+Converting a joint probability (@eq-joint-prob) to a joint energy is possible through the Boltzmann distribution:
 
 \begin{align}
 p(x) &= \frac{ \exp (- E(x))}{Z} \\
@@ -110,16 +256,22 @@ p(x) &= \frac{ \exp (- E(x))}{Z} \\
 &= - \sum_{C \in \mathcal{C}} \log \psi_C(x_C) - \sum_{i \in U} \log \tilde{\pi}_i(x_i) - \log Z
 \end{align}
 
-We will drop the constant shift $\log Z$ and use the energy potential $\phi_C(x_C) := -\log \psi_C(x_C)$ to denote the new "energy factors" and $\tilde{\pi}_i(x_i) := -\log \pi_i(x_i)$. Thus,
+We will drop the constant shift $\log Z$ and use the energy potential $\phi_C(x_C) := -\log \psi_C(x_C)$ to denote the new "energy factors" and $\tilde{\pi}_i(x_i) := -\log \pi_i(x_i)$ to denote the "energy priors". Thus,
 
 $$
 E(x) = \sum_{C \in \mathcal{C}} \phi_C(x_C) + \sum_{i} \tilde{\pi}_i(x_i),
-$$
+$${#eq-joint-energy}
 
-which is the general form of the energy hypergraph used in **HAMUX**. We call the energy factor $\phi_C(x_C)$ an "interaction" (or "synaptic") energy and $\tilde{\pi}_i(x_i)$ the "neuron" energy.
+which is the general form of the energy hypergraph used in **HAMUX**. We call the energy factor $\phi_C(x_C)$ an interaction or *synaptic energy* and $\tilde{\pi}_i(x_i)$ the *neuron energy*.
 
-If the neuron energies (i.e., the neg. log. of prior probilities) are defined through the Legendre Transform of a convex "Lagrangian" function...
+:::{.callout-note}
+I am unsure if the specification of priors $\tilde{\pi}$ is correct to show equivalence. The above could be written only in terms of factors $\phi_C(x_C)$.
+:::
 
-### Factor Graph Example
 
+## Energy Minimization of AMs is variational inference in PGMs {#sec-variational-inf}
 
+If the neuron energies (i.e., the neg. log. of prior probilities) are defined through the Legendre Transform of a convex "Lagrangian" function, we some nice guarantees on inference by energy minimization.
+
+## 
+*Unless otherwise cited, this section represents my own original words*
