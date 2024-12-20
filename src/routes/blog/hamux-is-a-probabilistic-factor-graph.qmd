@@ -1,6 +1,9 @@
 ---
 bibliography: bibliography.bib
 ---
+
+A Probabilistic Inference perspective of Memory Retrieval in Modern Associative Memories
+
 # [HAMUX](https://bhoov.com/hamux/) as probabilistic inference
 
 > These notes record my first attempt at understanding Associative Memory (specifically, the Hierarchical Associative Memories formed by using the rules of [HAMUX](https://bhoov.com/hamux/)) through the lens of Probabilistic Graphical Models and established techniques for probabilistic inference. Many paragraphs and examples are taken verbatim from the cited sources; I found it very helpful in places to manually transcribe the original reference notes.
@@ -182,6 +185,26 @@ Because exact inference is intractable for many factor graphs, we often prefer s
 
 However, @jordanProbabilistic describes one particular form of approximate inference in PGMs called "Variational Methods" that converts the problem of "probabilistic inference" into a problem of optimization. The difference between this method and importance sampling is that, instead of choosing a single *guess distribution* $q(x)$ a priori, a family of approximating distributions $\{q(x)\}$ is used instead. The optimization machinery chooses a particular member from this family.
 
+:::{.callout-note}
+@liu2019Stein have a modern technique for variation inference called "Stein Variational Gradient Descent", in which they explain variational inference as:
+
+> Variational inference instead frames the Bayesian inference problem into a deterministic optimization that approximates the target distribution with a simpler distribution by minimizing their KL divergence
+> ...
+> both the accuracy and computational cost of variational inference critically depend on the set of distributions in which the approximation is defined. Simple approximation sets, such as these used in the traditional mean field methods, are too restrictive to resemble the true posterior distributions, while more advanced choices cast more difficulties on the subsequent optimization tasks
+> ...
+
+TODO FIX ME
+
+> Variational inference approximates the target distribution p(x) using a simpler distribution q∗(x) found in a predefined set Q = {q(x)} of distributions by minimizing the KL divergence, that is,  q∗ = arg min  q∈Q  {KL(q || p) ≡ Eq[log q(x)] − Eq[log p ̄(x)] + log Z}, (4)  where we do not need to calculate the constant log Z for solving the optimization. The choice of set Q is critical and defines different types of variational inference methods. The best set Q should strike a balance between i) accuracy, broad enough to closely approximate a large class of target distributions, ii) tractability, consisting of simple distributions that are easy for inference, and iii) solvability so that the subsequent KL minimization problem can be efficiently solved.
+
+It is my belief that Associative Memory is concerned with an expressive class of set $\mathcal{Q}_{AM}$ that easily solve the KL minimization problem.
+
+The fundamental realization is that the $q^\star$ can be computed as 
+
+
+
+:::
+
 We begin by noting that the joint probability $p(x)$ can be viewed as a solution to an optimization problem. In particular, define the energy of configuration $x$ by $E(x) = - \log p(x) - \log Z$, and define the *variational free energy* as 
 
 $$
@@ -198,6 +221,8 @@ $${#eq-var-free-energy}
 :::{.callout-note}
 It is my belief that the form of all Associative Memories (i.e., constraining activations $q_i(x_i)$ to be the derivative of some convex Lagrangian whose energy is described by the Legendre Transform) is one of these "approximate forms" that is much easier to minimize. I will try to defend this stance using my shaky math below.
 :::
+
+Case study: Learning Parameters via energy minimization is MLE  for a 2-layer Dense AM.
 
 #### Example: the Mean-Field approximation
 

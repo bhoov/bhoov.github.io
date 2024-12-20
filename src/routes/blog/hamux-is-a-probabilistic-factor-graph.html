@@ -98,6 +98,7 @@ window.Quarto = {
 
 
 
+<p>A Probabilistic Inference perspective of Memory Retrieval in Modern Associative Memories</p>
 <section id="hamux-as-probabilistic-inference" class="level1">
 <h1><a href="https://bhoov.com/hamux/">HAMUX</a> as probabilistic inference</h1>
 <blockquote class="blockquote">
@@ -308,6 +309,28 @@ Note
 <h3 class="anchored" data-anchor-id="variational-inference-in-pgms">Variational Inference in PGMs</h3>
 <p>Because exact inference is intractable for many factor graphs, we often prefer some approximation. <span class="citation" data-cites="jordanProbabilistic">Jordan (<a href="#ref-jordanProbabilistic" role="doc-biblioref">2003</a>)</span> excellently summarizes common choices for approximation e.g., Gibbs sampling and Metropolis-Hastings (forms of MCMC used often in e.g., Boltzmann machines) and importance sampling. Please refer to the reference for details on these methods.</p>
 <p>However, <span class="citation" data-cites="jordanProbabilistic">Jordan (<a href="#ref-jordanProbabilistic" role="doc-biblioref">2003</a>)</span> describes one particular form of approximate inference in PGMs called “Variational Methods” that converts the problem of “probabilistic inference” into a problem of optimization. The difference between this method and importance sampling is that, instead of choosing a single <em>guess distribution</em> <span class="math inline">\(q(x)\)</span> a priori, a family of approximating distributions <span class="math inline">\(\{q(x)\}\)</span> is used instead. The optimization machinery chooses a particular member from this family.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="citation" data-cites="liu2019Stein">Liu and Wang (<a href="#ref-liu2019Stein" role="doc-biblioref">2019</a>)</span> have a modern technique for variation inference called “Stein Variational Gradient Descent”, in which they explain variational inference as:</p>
+<blockquote class="blockquote">
+<p>Variational inference instead frames the Bayesian inference problem into a deterministic optimization that approximates the target distribution with a simpler distribution by minimizing their KL divergence … both the accuracy and computational cost of variational inference critically depend on the set of distributions in which the approximation is defined. Simple approximation sets, such as these used in the traditional mean field methods, are too restrictive to resemble the true posterior distributions, while more advanced choices cast more difficulties on the subsequent optimization tasks …</p>
+</blockquote>
+<p>TODO FIX ME</p>
+<blockquote class="blockquote">
+<p>Variational inference approximates the target distribution p(x) using a simpler distribution q∗(x) found in a predefined set Q = {q(x)} of distributions by minimizing the KL divergence, that is, q∗ = arg min q∈Q {KL(q || p) ≡ Eq[log q(x)] − Eq[log p ̄(x)] + log Z}, (4) where we do not need to calculate the constant log Z for solving the optimization. The choice of set Q is critical and defines different types of variational inference methods. The best set Q should strike a balance between i) accuracy, broad enough to closely approximate a large class of target distributions, ii) tractability, consisting of simple distributions that are easy for inference, and iii) solvability so that the subsequent KL minimization problem can be efficiently solved.</p>
+</blockquote>
+<p>It is my belief that Associative Memory is concerned with an expressive class of set <span class="math inline">\(\mathcal{Q}_{AM}\)</span> that easily solve the KL minimization problem.</p>
+<p>The fundamental realization is that the <span class="math inline">\(q^\star\)</span> can be computed as</p>
+</div>
+</div>
 <p>We begin by noting that the joint probability <span class="math inline">\(p(x)\)</span> can be viewed as a solution to an optimization problem. In particular, define the energy of configuration <span class="math inline">\(x\)</span> by <span class="math inline">\(E(x) = - \log p(x) - \log Z\)</span>, and define the <em>variational free energy</em> as</p>
 <p><span id="eq-var-free-energy"><span class="math display">\[
 \begin{aligned}
@@ -332,6 +355,7 @@ Note
 <p>It is my belief that the form of all Associative Memories (i.e., constraining activations <span class="math inline">\(q_i(x_i)\)</span> to be the derivative of some convex Lagrangian whose energy is described by the Legendre Transform) is one of these “approximate forms” that is much easier to minimize. I will try to defend this stance using my shaky math below.</p>
 </div>
 </div>
+<p>Case study: Learning Parameters via energy minimization is MLE for a 2-layer Dense AM.</p>
 <section id="example-the-mean-field-approximation" class="level4">
 <h4 class="anchored" data-anchor-id="example-the-mean-field-approximation">Example: the Mean-Field approximation</h4>
 <p>The simplest variational algorithm is the <em>mean field</em> approximation, in which <span class="math inline">\(\{q(x)\}\)</span> is restricted to the family of factorized distributions: <span class="math inline">\(q(x) = \prod_i q_i(x_i)\)</span> (i.e., a world where all variables are independent). In this case, <span class="math inline">\(F\)</span> from <a href="#eq-var-free-energy" class="quarto-xref">Equation&nbsp;3</a> simplifies to</p>
@@ -432,6 +456,9 @@ Coughlan, James. 2009. <span>“A <span>Tutorial Introduction</span> to <span>Be
 </div>
 <div id="ref-jordanProbabilistic" class="csl-entry" role="listitem">
 Jordan, Michael I. 2003. <span>“Probabilistic Inference in Graphical Models.”</span> <a href="https://mlg.eng.cam.ac.uk/zoubin/course04/hbtnn2e-I.pdf">https://mlg.eng.cam.ac.uk/zoubin/course04/hbtnn2e-I.pdf</a>.
+</div>
+<div id="ref-liu2019Stein" class="csl-entry" role="listitem">
+Liu, Qiang, and Dilin Wang. 2019. <span>“Stein <span>Variational Gradient Descent</span>: <span>A General Purpose Bayesian Inference Algorithm</span>.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.1608.04471">https://doi.org/10.48550/arXiv.1608.04471</a>.
 </div>
 <div id="ref-yedidiaBethe" class="csl-entry" role="listitem">
 Yedidia, Jonathan S, William T Freeman, and Yair Weiss. 2001. <span>“Bethe Free Energy, <span>Kikuchi</span> Approximations, and Belief Propagation Algorithms.”</span> <a href="https://www.merl.com/publications/docs/TR2001-16.pdf">https://www.merl.com/publications/docs/TR2001-16.pdf</a>.
