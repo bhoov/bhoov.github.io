@@ -390,7 +390,7 @@ Note
 <p>It is unclear to me which terms in <a href="#eq-f-bethe" class="quarto-xref">Equation&nbsp;5</a> are included in the sum over the cliques? I believe there should be two distinct terms in the RHS.</p>
 </div>
 </div>
-<p>The approximate clique marginals and the approximate singleton marginals must satisfy a simple marginalization constraint: <span class="math inline">\(\sum_{x_C \setminus i} q_C(x_C) = q_i (x_i)\)</span>. <strong>When we add Lagrange multipliers and differentiate the Lagrangian we obtain a set of fixed point equations.</strong> Surprisingly, these equations end up being equivalent to the “sum-product” algorithm for trees (<a href="#eq-msg" class="quarto-xref">Equation&nbsp;2</a>). The messages $m_{ij}(x_j) are simply exponentiated Lagrange multipliers. Thus, the Bethe approximation is equivalent to applying the local message passing scheme developed for trees to graphs that have loops (see <span class="citation" data-cites="yedidiaBethe">Yedidia, Freeman, and Weiss (<a href="#ref-yedidiaBethe" role="doc-biblioref">2001</a>)</span>). This approach to approximate inference algorithms has been very successful in the domain of error-control coding, allowing practical codes based on graphical models to nearly reach the Shannon Limit.</p>
+<p>The approximate clique marginals and the approximate singleton marginals must satisfy a simple marginalization constraint: <span class="math inline">\(\sum_{x_C \setminus i} q_C(x_C) = q_i (x_i)\)</span>. <strong>When we add Lagrange multipliers and differentiate the Lagrangian we obtain a set of fixed point equations.</strong> Surprisingly, these equations end up being equivalent to the “sum-product” algorithm for trees (<a href="#eq-msg" class="quarto-xref">Equation&nbsp;2</a>). The messages $m_{ij}(x_j) are simply exponentiated Lagrange multipliers. Thus, the Bethe approximation is equivalent to applying the local message passing scheme developed for trees to graphs that have loops (see <span class="citation" data-cites="yedidiaBethe">Jonathan S. Yedidia, Freeman, and Weiss (<a href="#ref-yedidiaBethe" role="doc-biblioref">2001</a>)</span>). This approach to approximate inference algorithms has been very successful in the domain of error-control coding, allowing practical codes based on graphical models to nearly reach the Shannon Limit.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -443,10 +443,130 @@ Note
 <h2 class="anchored" data-anchor-id="sec-variational-inf">Energy Minimization of AMs is variational inference in PGMs</h2>
 <p>If the neuron energies (i.e., the neg. log. of prior probilities) are defined through the Legendre Transform of a convex “Lagrangian” function, we some nice guarantees on inference by energy minimization.</p>
 </section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
-<p><em>Unless otherwise cited, this section represents my own original words</em></p>
+</section>
+<section id="hopfield-memory-retrieval-from-the-perspective-of-probabilistic-inference" class="level1">
+<h1>Hopfield Memory Retrieval from the perspective of Probabilistic Inference</h1>
+<section id="message-passing" class="level2">
+<h2 class="anchored" data-anchor-id="message-passing">Message Passing</h2>
+<blockquote class="blockquote">
+<p>BP’s Sum-product Algorithm and Max-product algorithm on factor graphs. Notes from <span class="citation" data-cites="yedidia2005Constructing">J. S. Yedidia, Freeman, and Weiss (<a href="#ref-yedidia2005Constructing" role="doc-biblioref">2005</a>)</span> and <a href="https://github.com/krashkov/Belief-Propagation/blob/master/1-SummaryPGMandBP.ipynb">these lecture notes</a>.</p>
+</blockquote>
+<p><em>The sum-product algorithm (SPA) computes <strong>marginals</strong></em></p>
+<p>The sum-product algorithm is used to compute marginal probabilities of a node given evidence from other nodes. Here we are consider a factorization of the joint probability consisting of exclusively pairwise potentials that allow us to show the graph as an MRF for simplicity, but it is easily be extended to a factor graph by making each edge a factor node. The graph</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    x1((x1)) ---|Ψa| x4((x4))
+    x2((x2)) ---|Ψb| x4
+    x3((x3)) ---|Ψc| x4
+    x4 ---|Ψd| x5((x5))
+    x5 ---|Ψe| x6((x6))
+    x5 ---|Ψf| x7((x7))
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>has total probability</p>
+<p><span class="math display">\[
+P(x_1, x_2, x_3, x_4, x_5, x_6, x_7) = Z^{-1} \psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\psi_d(x_4,x_5)\psi_e(x_5,x_6)\psi_f(x_5,x_7),
+\]</span></p>
+<p>where <span class="math inline">\(Z\)</span> is the normalizing constant.</p>
+<p>Arbitrary marginals can be computed by exploiting the underlying graph structure. For example, to compute the marginal for node <span class="math inline">\(x_4\)</span>, we can collect summations over certain variables to only the factors that depend on that variable.</p>
+<p><span class="math display">\[
+    \begin{aligned}
+    P(x_4)&amp;=Z^{-1}\sum_{x_1,x_2,x_3,x_5,x_6, x_7} P(x_1, x_2, x_3, x_4, x_5, x_6, x_7) = \\
+    &amp;=Z^{-1}\sum_{x_1,x_2,x_3,x_5,x_6, x_7} \psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\psi_d(x_4,x_5)\psi_e(x_5,x_6)\psi_f(x_5,x_7)= \\
+    &amp;=Z^{-1}\sum_{x_1,x_2,x_3,x_5,x_6}\psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\psi_d(x_4,x_5)\psi_e(x_5,x_6)\left[\sum_{x_7}\psi_f(x_5,x_7)\right]= \\
+    &amp;=Z^{-1}\sum_{x_1,x_2,x_3,x_5,x_6}\psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\psi_d(x_4,x_5)\psi_e(x_5,x_6)\mu_{7\to5}(x_5)=\\
+    &amp;=Z^{-1}\sum_{x_1,x_2,x_3,x_5}\psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\psi_d(x_4,x_5)\left[\sum_{x_6}\psi_e(x_5,x_6)\right]\mu_{7\to5}(x_5)=\\
+    &amp;=Z^{-1}\sum_{x_1,x_2,x_3,x_5}\psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\psi_d(x_4,x_5)\mu_{6\to5}(x_5)\mu_{7\to5}(x_5)=\\
+    &amp;=Z^{-1}\sum_{x_1,x_2,x_3}\psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\left[\sum_{x_5}\psi_d(x_4,x_5)\mu_{6\to5}(x_5)\mu_{7\to5}(x_5)\right]=\\
+    &amp;=Z^{-1}\sum_{x_1,x_2,x_3}\psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\mu_{5\to4}(x_4)=\\
+    &amp;=Z^{-1}\left[\sum_{x_1}\psi_a(x_1,x_4)\right]\left[\sum_{x_2}\psi_b(x_2,x_4)\right]\left[\sum_{x_3}\psi_3(x_3,x_4)\right]\mu_{5\to4}(x_4)=\\
+    &amp;=Z^{-1}\mu_{1\to4}(x_4)\mu_{2\to4}(x_4)\mu_{3\to4}(x_4)\mu_{5\to4}(x_4)
+    \end{aligned}
+\]</span></p>
+<p>The normalization constant can be computed by multiplying all the incoming messages</p>
+<p><span class="math display">\[
+  Z=\sum_{x_4}\mu_{1\to4}(x_4)\mu_{2\to4}(x_4)\mu_{3\to4}(x_4)\mu_{5\to4}(x_4)
+\]</span></p>
+<section id="sec-spa" class="level3">
+<h3 class="anchored" data-anchor-id="sec-spa">General Sum-Product Algorithm (on factor graphs)</h3>
+<p>The example computation-of-the-marginal exercise above can be extended to arbitrary factor graphs exactly when the graphs have no loops in an algorithm called the <strong>Sum-Product Algorithm</strong> (SPA). Let indices <span class="math inline">\(\{a, b, c, \ldots\}\)</span> index the factor nodes <span class="math inline">\(\mathcal{M}\)</span> and <span class="math inline">\(\{i, j, k, \ldots\}\)</span> index the variable nodes <span class="math inline">\(\mathcal{S}\)</span>. Additionally, each factor <span class="math inline">\(\psi_a\)</span> can take an arbitary number of variables <span class="math inline">\(\geq 1\)</span> as arguments, which we shorthand write using using the notation <span class="math inline">\(\psi_a(\mathbf{x}_a)\)</span>, where</p>
+<p><span class="math display">\[
+\mathbf{x}_a := \{x_k \mid \text{$k \in \mathcal{S}$ and variable $x_k$ is an argument to factor $a$}\}.
+\]</span></p>
+<p>The goal of SPA is to compute marginal probabilities</p>
+<p><span id="eq-marginal"><span class="math display">\[
+b_i(x_i) = \sum_{\substack{\text{all values of $\mathbf{x}_J$}\\J := S \setminus i}} p(x_i, \mathbf{x}_J).
+\tag{7}\]</span></span></p>
+<p>As will be explained later, these marginal probabilities are called the <em>beliefs</em>.</p>
+<p>We need to consider two kinds of messages: messages from factors to nodes <span class="math inline">\(m_{a \to i} (x_i)\)</span> and messages from nodes to factors <span class="math inline">\(n_{j \to a} (x_j)\)</span>:</p>
+<p><span id="eq-message-update-rules"><span class="math display">\[
+\begin{aligned}
+n_{j \to a} (x_j) &amp;= \prod_{b \in N(j) \setminus a} m_{b \to j} (x_j) \\
+m_{a \to i} (x_i) &amp;= \sum_{\mathbf{x}_a \setminus x_i} \psi_a (x_i, \mathbf{x}_a) \prod_{j \in N(a) \setminus i} n_{j \to a} (x_j).
+\end{aligned}
+\tag{8}\]</span></span></p>
+<p>The notations are explained below:</p>
+<ul>
+<li><span class="math inline">\(\mathbf{x}_a \setminus x_i\)</span> denotes all <span class="math inline">\(x_k\)</span> that are arguments of <span class="math inline">\(f_a\)</span> except <span class="math inline">\(x_i\)</span>.</li>
+<li><span class="math inline">\(N(a) \setminus i\)</span> denotes all variable nodes that are <strong>neighbors</strong> of factor <span class="math inline">\(a\)</span> except variable node <span class="math inline">\(i\)</span>.</li>
+<li><span class="math inline">\(N(j) \setminus a\)</span> denotes all factor nodes that are <strong>neighbors</strong> of variable node <span class="math inline">\(j\)</span> except for factor <span class="math inline">\(a\)</span>.</li>
+</ul>
+<p>At any point in the BP algorithm, we can compute the <em>belief</em> <span class="math inline">\(b_i(x_i)\)</span> for a variable node <span class="math inline">\(i\)</span>, which represents the current BP approximation to the exact marginal probability function <span class="math inline">\(p_i(x_i)\)</span>. <span class="math inline">\(b_i(x_i)\)</span> can be computed from the equation</p>
+<p><span id="eq-belief"><span class="math display">\[
+b_i(x_i) \propto \prod_{a \in N(i)} m_{a \to i}(x_i),
+\tag{9}\]</span></span></p>
+<p>which will need to be normalized to sum to one to be a true “belief” or marginal probability. The BP message-update equations are iterated until they (hopefully) converge, at which point the beliefs can be read off from <a href="#eq-belief" class="quarto-xref">Equation&nbsp;9</a>.</p>
+<p>BP can be used to compute joint beliefs <span class="math inline">\(b_S(x_S)\)</span> over sets of variable nodes <span class="math inline">\(S\)</span> that may contain more than one node. Consider computing the joint belief for all nodes connected to factor <span class="math inline">\(a\)</span>. Then,</p>
+<p><span id="eq-joint-belief"><span class="math display">\[
+b_a(\mathbf{x}_a) \propto \;\; \psi_a(\mathbf{x}_a) \prod_{i \in N(a)} n_{i \to a}(x_i) \;\; \propto \;\; \psi_a(\mathbf{x}_a) \prod_{i \in N(a)} \prod_{b \in N(i) \setminus a} m_{b \to i}(x_i).
+\tag{10}\]</span></span></p>
+<p>The BP algorithm is simply a dynamic programming algorithm that organizes the computations necessary to compute marginal probability distributions in such a way that they become tractable.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Interestingly, we can directly derive the message update rules in <a href="#eq-message-update-rules" class="quarto-xref">Equation&nbsp;8</a> from <a href="#eq-belief" class="quarto-xref">Equation&nbsp;9</a> and <a href="#eq-joint-belief" class="quarto-xref">Equation&nbsp;10</a> if we use the fact that</p>
+<p><span class="math display">\[
+b_i(x_i) = \sum_{\mathbf{x}_a \setminus x_i} b_a(\mathbf{x}_a).
+\]</span></p>
+<p>(TODO)</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-mpa" class="level2">
+<h2 class="anchored" data-anchor-id="sec-mpa">General Max-Product Algorithms (on factor graphs)</h2>
+<p>The SPA algorithm in <a href="#sec-spa" class="quarto-xref">Section&nbsp;2.1.1</a> is one form of inference when the goal is to compute marginal probabilities. However, we may prefer to compute the <em>max-marginal</em> at each node, also called the maximum-a-posteriori (MAP) of an unknown quantity (where MAP can be viewed as a regularized version of maximum-likelihood estimatation (MLE)).</p>
+<p>The max-marginal of each node is defined by</p>
+<p><span id="eq-max-marginal"><span class="math display">\[
+\bar{b}_i(x_i) = \max_{\substack{\text{all values of $\mathbf{x}_J$}\\J := S \setminus i}} p(x_i, \mathbf{x}_J).
+\tag{11}\]</span></span></p>
+<p>If there are no “ties” at a given node, the unique global MAP assignment is</p>
+<p><span class="math display">\[
+x_i^\star = \mathop{\mathrm{argmax}}_{x_i} \;\bar{b}_i(x_i).
+\]</span></p>
+<section id="differences-between-spa-and-hopfield-memory-retrieval" class="level4">
+<h4 class="anchored">Differences between SPA and Hopfield Memory Retrieval</h4>
+<ul>
+<li>SPA is defined in terms of probabilities. Memory retrieval in terms of energies</li>
+<li><h3 id="general-sum-product-algorithm-on-factor-graphs" class="anchored" data-anchor-id="differences-between-spa-and-hopfield-memory-retrieval">General sum-product algorithm on factor graphs</h3></li>
+</ul>
 
+</section>
 </section>
 </section>
 
@@ -459,6 +579,9 @@ Jordan, Michael I. 2003. <span>“Probabilistic Inference in Graphical Models.�
 </div>
 <div id="ref-liu2019Stein" class="csl-entry" role="listitem">
 Liu, Qiang, and Dilin Wang. 2019. <span>“Stein <span>Variational Gradient Descent</span>: <span>A General Purpose Bayesian Inference Algorithm</span>.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.1608.04471">https://doi.org/10.48550/arXiv.1608.04471</a>.
+</div>
+<div id="ref-yedidia2005Constructing" class="csl-entry" role="listitem">
+Yedidia, J. S., W. T. Freeman, and Y. Weiss. 2005. <span>“Constructing <span>Free-Energy Approximations</span> and <span>Generalized Belief Propagation Algorithms</span>.”</span> <em>IEEE Transactions on Information Theory</em> 51 (7): 2282–312. <a href="https://doi.org/10.1109/TIT.2005.850085">https://doi.org/10.1109/TIT.2005.850085</a>.
 </div>
 <div id="ref-yedidiaBethe" class="csl-entry" role="listitem">
 Yedidia, Jonathan S, William T Freeman, and Yair Weiss. 2001. <span>“Bethe Free Energy, <span>Kikuchi</span> Approximations, and Belief Propagation Algorithms.”</span> <a href="https://www.merl.com/publications/docs/TR2001-16.pdf">https://www.merl.com/publications/docs/TR2001-16.pdf</a>.

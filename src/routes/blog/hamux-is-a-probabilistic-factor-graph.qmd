@@ -298,5 +298,132 @@ I am unsure if the specification of priors $\tilde{\pi}$ is correct to show equi
 
 If the neuron energies (i.e., the neg. log. of prior probilities) are defined through the Legendre Transform of a convex "Lagrangian" function, we some nice guarantees on inference by energy minimization.
 
-## 
-*Unless otherwise cited, this section represents my own original words*
+# Hopfield Memory Retrieval from the perspective of Probabilistic Inference
+
+## Message Passing
+
+> BP's Sum-product Algorithm and Max-product algorithm on factor graphs. Notes from @yedidia2005Constructing and [these lecture notes](https://github.com/krashkov/Belief-Propagation/blob/master/1-SummaryPGMandBP.ipynb).
+
+*The sum-product algorithm (SPA) computes **marginals***
+
+The sum-product algorithm is used to compute marginal probabilities of a node given evidence from other nodes. Here we are consider a factorization of the joint probability consisting of exclusively pairwise potentials that allow us to show the graph as an MRF for simplicity, but it is easily be extended to a factor graph by making each edge a factor node. The graph
+
+```{mermaid}
+flowchart LR
+    x1((x1)) ---|Ψa| x4((x4))
+    x2((x2)) ---|Ψb| x4
+    x3((x3)) ---|Ψc| x4
+    x4 ---|Ψd| x5((x5))
+    x5 ---|Ψe| x6((x6))
+    x5 ---|Ψf| x7((x7))
+```
+
+has total probability
+
+$$
+P(x_1, x_2, x_3, x_4, x_5, x_6, x_7) = Z^{-1} \psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\psi_d(x_4,x_5)\psi_e(x_5,x_6)\psi_f(x_5,x_7),
+$$
+
+where $Z$ is the normalizing constant.
+
+Arbitrary marginals can be computed by exploiting the underlying graph structure. For example, to compute the marginal for node $x_4$, we can collect summations over certain variables to only the factors that depend on that variable.
+
+$$
+    \begin{aligned}
+    P(x_4)&=Z^{-1}\sum_{x_1,x_2,x_3,x_5,x_6, x_7} P(x_1, x_2, x_3, x_4, x_5, x_6, x_7) = \\
+    &=Z^{-1}\sum_{x_1,x_2,x_3,x_5,x_6, x_7} \psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\psi_d(x_4,x_5)\psi_e(x_5,x_6)\psi_f(x_5,x_7)= \\
+    &=Z^{-1}\sum_{x_1,x_2,x_3,x_5,x_6}\psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\psi_d(x_4,x_5)\psi_e(x_5,x_6)\left[\sum_{x_7}\psi_f(x_5,x_7)\right]= \\
+    &=Z^{-1}\sum_{x_1,x_2,x_3,x_5,x_6}\psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\psi_d(x_4,x_5)\psi_e(x_5,x_6)\mu_{7\to5}(x_5)=\\
+    &=Z^{-1}\sum_{x_1,x_2,x_3,x_5}\psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\psi_d(x_4,x_5)\left[\sum_{x_6}\psi_e(x_5,x_6)\right]\mu_{7\to5}(x_5)=\\
+    &=Z^{-1}\sum_{x_1,x_2,x_3,x_5}\psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\psi_d(x_4,x_5)\mu_{6\to5}(x_5)\mu_{7\to5}(x_5)=\\
+    &=Z^{-1}\sum_{x_1,x_2,x_3}\psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\left[\sum_{x_5}\psi_d(x_4,x_5)\mu_{6\to5}(x_5)\mu_{7\to5}(x_5)\right]=\\
+    &=Z^{-1}\sum_{x_1,x_2,x_3}\psi_a(x_1,x_4)\psi_b(x_2,x_4)\psi_c(x_3,x_4)\mu_{5\to4}(x_4)=\\
+    &=Z^{-1}\left[\sum_{x_1}\psi_a(x_1,x_4)\right]\left[\sum_{x_2}\psi_b(x_2,x_4)\right]\left[\sum_{x_3}\psi_3(x_3,x_4)\right]\mu_{5\to4}(x_4)=\\
+    &=Z^{-1}\mu_{1\to4}(x_4)\mu_{2\to4}(x_4)\mu_{3\to4}(x_4)\mu_{5\to4}(x_4)
+    \end{aligned}
+$$
+
+The normalization constant can be computed by multiplying all the incoming messages
+
+$$
+  Z=\sum_{x_4}\mu_{1\to4}(x_4)\mu_{2\to4}(x_4)\mu_{3\to4}(x_4)\mu_{5\to4}(x_4)
+$$
+
+### General Sum-Product Algorithm (on factor graphs) {#sec-spa}
+
+The example computation-of-the-marginal exercise above can be extended to arbitrary factor graphs exactly when the graphs have no loops in an algorithm called the **Sum-Product Algorithm** (SPA). Let indices $\{a, b, c, \ldots\}$ index the factor nodes $\mathcal{M}$ and $\{i, j, k, \ldots\}$ index the variable nodes $\mathcal{S}$. Additionally, each factor $\psi_a$ can take an arbitary number of variables $\geq 1$ as arguments, which we shorthand write using using the notation $\psi_a(\mathbf{x}_a)$, where 
+
+$$
+\mathbf{x}_a := \{x_k \mid \text{$k \in \mathcal{S}$ and variable $x_k$ is an argument to factor $a$}\}.
+$$
+
+The goal of SPA is to compute marginal probabilities
+
+$$
+b_i(x_i) = \sum_{\substack{\text{all values of $\mathbf{x}_J$}\\J := S \setminus i}} p(x_i, \mathbf{x}_J).
+$${#eq-marginal}
+
+As will be explained later, these marginal probabilities are called the *beliefs*.
+
+We need to consider two kinds of messages: messages from factors to nodes $m_{a \to i} (x_i)$ and messages from nodes to factors $n_{j \to a} (x_j)$:
+
+$$
+\begin{aligned}
+n_{j \to a} (x_j) &= \prod_{b \in N(j) \setminus a} m_{b \to j} (x_j) \\
+m_{a \to i} (x_i) &= \sum_{\mathbf{x}_a \setminus x_i} \psi_a (x_i, \mathbf{x}_a) \prod_{j \in N(a) \setminus i} n_{j \to a} (x_j).
+\end{aligned}
+$${#eq-message-update-rules}
+
+The notations are explained below:
+
+- $\mathbf{x}_a \setminus x_i$ denotes all $x_k$ that are arguments of $f_a$ except $x_i$.
+- $N(a) \setminus i$ denotes all variable nodes that are **neighbors** of factor $a$ except variable node $i$.
+- $N(j) \setminus a$ denotes all factor nodes that are **neighbors** of variable node $j$ except for factor $a$.
+
+At any point in the BP algorithm, we can compute the *belief* $b_i(x_i)$ for a variable node $i$, which represents the current BP approximation to the exact marginal probability function $p_i(x_i)$. $b_i(x_i)$ can be computed from the equation
+
+$$
+b_i(x_i) \propto \prod_{a \in N(i)} m_{a \to i}(x_i),
+$${#eq-belief}
+
+which will need to be normalized to sum to one to be a true "belief" or marginal probability. The BP message-update equations are iterated until they (hopefully) converge, at which point the beliefs can be read off from @eq-belief.
+
+BP can be used to compute joint beliefs $b_S(x_S)$ over sets of variable nodes $S$ that may contain more than one node. Consider computing the joint belief for all nodes connected to factor $a$. Then,
+
+$$
+b_a(\mathbf{x}_a) \propto \;\; \psi_a(\mathbf{x}_a) \prod_{i \in N(a)} n_{i \to a}(x_i) \;\; \propto \;\; \psi_a(\mathbf{x}_a) \prod_{i \in N(a)} \prod_{b \in N(i) \setminus a} m_{b \to i}(x_i).
+$${#eq-joint-belief}
+
+The BP algorithm is simply a dynamic programming algorithm that organizes the computations necessary to compute marginal probability distributions in such a way that they become tractable.
+
+:::{.callout-note}
+Interestingly, we can directly derive the message update rules in @eq-message-update-rules from @eq-belief and @eq-joint-belief if we use the fact that
+
+$$
+b_i(x_i) = \sum_{\mathbf{x}_a \setminus x_i} b_a(\mathbf{x}_a).
+$$
+
+(TODO)
+:::
+
+## General Max-Product Algorithms (on factor graphs) {#sec-mpa}
+
+The SPA algorithm in @sec-spa is one form of inference when the goal is to compute marginal probabilities. However, we may prefer to compute the *max-marginal* at each node, also called the maximum-a-posteriori (MAP) of an unknown quantity (where MAP can be viewed as a regularized version of maximum-likelihood estimatation (MLE)).
+
+The max-marginal of each node is defined by 
+
+$$
+\bar{b}_i(x_i) = \max_{\substack{\text{all values of $\mathbf{x}_J$}\\J := S \setminus i}} p(x_i, \mathbf{x}_J).
+$${#eq-max-marginal}
+
+If there are no "ties" at a given node, the unique global MAP assignment is
+
+$$
+x_i^\star = \mathop{\mathrm{argmax}}_{x_i} \;\bar{b}_i(x_i).
+$$
+
+#### Differences between SPA and Hopfield Memory Retrieval
+- SPA is defined in terms of probabilities. Memory retrieval in terms of energies
+- 
+### General sum-product algorithm on factor graphs
+
