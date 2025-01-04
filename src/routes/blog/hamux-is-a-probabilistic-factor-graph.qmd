@@ -5,6 +5,7 @@ bibliography: bibliography.bib
 :::{.content-hidden}
 \newcommand{\ppartial}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\iset}[1]{\llbracket #1 \rrbracket}
+\newcommand{\f}[1]{\underline{#1}}
 <style>
     .side {
         color: gray;
@@ -499,14 +500,19 @@ $${#eq-message-update-rules-mpa}
 
 ## From message passing to memory retrieval
 
-Associative Memory in the language of [HAMUX](https://bhoov.com/hamux/) is also represented as a factor graph called a *Hierarchical Associative Memory* (HAM), though each HAM is defined in terms of energies and not probabilities. As above, we consider a general HAM described by a set of *variable* nodes (described by the collection of hidden variables $\mathbf{x}$ and a corresponding collection of non-linear activations $\mathbf{g}$, indexed by $\mathcal{S}$), and a set of *interaction* or *factor* nodes (indexed by $\mathcal{M}$). Assume the variable nodes are split into $N$ non-overlapping regions $\mathcal{R} := \{\mathcal{R}_1, \mathcal{R}_2, \ldots, \mathcal{R}_N\}$ s.t. $\bigcup_{i=1}^N \mathcal{R}_i = \mathcal{S}$, then each set of activations $\mathbf{g}_{\mathcal{R}_i} = \sigma_i \left( \mathbf{x}_{\mathcal{R}_i} \right)$ is constrained such that the non-linearity $\sigma_i := \partial_0 \mathcal{L}_i$ is the derivative of some convex Lagrangian function defined on that node region. Let $\mathbf{x}_i$ indexed starting with $i \in \{1, \ldots, N\}$ be a shorthand for $\mathbf{x}_{\mathcal{R}_i}$, then each $(\mathbf{x}_i, \mathbf{g}_i)$ pair are conjugate variables under the Legendre Transform of the region's Lagrangian defined as
+Associative Memory in the language of [HAMUX](https://bhoov.com/hamux/) is also represented as a factor graph called a *Hierarchical Associative Memory* (HAM), though each HAM is defined in terms of energies and not probabilities. As above, we consider a general HAM described by a set of *variable* nodes (described by the collection of hidden variables $\mathbf{x}$ and a corresponding collection of non-linear activations $\mathbf{g}$, indexed by $\mathcal{S}$), and a set of *interaction* or *factor* nodes (indexed by $\mathcal{M}$). Assume the variable nodes are split into $N$ non-overlapping regions $\mathcal{R} := \{\mathcal{R}_1, \mathcal{R}_2, \ldots, \mathcal{R}_N\}$ s.t. $\bigcup_{i=1}^N \mathcal{R}_i = \mathcal{S}$, then each set of activations $\mathbf{g}_{\mathcal{R}_i} = \f{\mathbf{g}_{\mathcal{R}_i}} \left( \mathbf{x}_{\mathcal{R}_i} \right)$ is constrained such that the non-linearity $\f{\mathbf{g_{\mathcal{R}_i}}} := \partial_0 \mathcal{L}_i$ is the derivative function of some convex Lagrangian function $\mathcal{L}_i$ defined on node region $i$. Simplifying notation, let $\mathbf{x}_i$ indexed starting with $i \in \{1, \ldots, N\}$ be a shorthand for $\mathbf{x}_{\mathcal{R}_i}$, then each $(\mathbf{x}_i, \mathbf{g}_i)$ pair are conjugate variables under the Legendre Transform of the region's Lagrangian defined as
 
 $$
 \hat{\mathcal{L}}_i(\mathbf{g}_i) = \mathbf{g}_i \cdot \mathbf{x}_i - \mathcal{L}_i (\mathbf{x}_i).
 $${#eq-legendre-transform}
 
+:::{.callout-note}
+Whenever there is a clash of notation between the output of a function and the function itself I will use underscores to denote the function. I.e., I often want to manipulate the output $f := \f{f}(x)$ as a normal variable, but I want to refer to the original function $\f{f}$ for functional transformations e.g., the partial gradient $\partial_0 \f{f}$.
 
-Interaction energies $J_a(\mathbf{g}_a)$ serve as the factors, where indices starting with $a \in \mathcal{M}$ and $\mathbf{g}_a$ indicate the subset of activations in the neighborhood of factor $a$.
+In this manner I can continue to keep all normal annotations e.g., denoting vector-valued functions in **bold**.
+:::
+
+Interaction energies $J_a(\mathbf{g}_a)$ serve as the factors, with indices starting with $a \in \mathcal{M}$, and $\mathbf{g}_a$ indicate the subset of activations in the neighborhood of factor $a$.
 
 The total energy describing a HAM is the sum of all interaction energies, plus regularizing terms that result from the Legendre Transform of the Lagrangian on each region:
 
@@ -534,7 +540,7 @@ $${#eq-ham-discrete-update-gamma-1}
 
 **TODO: The notation clashes below and is not clear. Fix the indices**
 
-Indeed, this update rule looks eerily similar (though not exact) to @eq-belief, written in log-space. First, note that the Legendre Transform has a very nice property relating conjugate variables $(\mathbf{x}_i, \mathbf{g}_i)$: each is a function of the other. That is, $\mathbf{g}_i = \sigma_i(\mathbf{x}_i)$ can be written as a function $\mathbf{g}_i(\mathbf{x}_i)$, and $\mathbf{x}_i = \hat{\sigma}_i(\mathbf{g}_i)$ can be written as a function $\mathbf{x}_i(\mathbf{g}_i)$, where $\hat{\sigma}_i := \partial_0 \hat{\mathcal{L}}_i$ from @eq-legendre-transform.
+Indeed, this update rule looks eerily similar (though not exact) to @eq-belief, written in log-space. First, note that the Legendre Transform has a very nice property relating conjugate variables $(\mathbf{x}_i, \mathbf{g}_i)$: each is a function of the other. That is, $\mathbf{g}_i = \f{\mathbf{g}_i}(\mathbf{x}_i)$ can be written as a function of $\mathbf{x}_i$, and $\mathbf{x}_i = \f{\mathbf{x}_i}(\mathbf{g}_i)$ can be written as a function of $\mathbf{g}_i$, where $\f{\mathbf{x}_i} := \partial_0 \hat{\mathcal{L}}_i$ from @eq-legendre-transform.
 
 Thus, we are tempted to define $\mathbf{x}_i^{(t)}(\mathbf{g}_i) := \log b_i^{(t)} (\mathbf{g}_i)$ to be an unnormalized **log-belief**, and define a new kind of **log-message** $\tilde{m}_{a \to i}(\mathbf{g}_a^{(t)}) := - \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a^{(t)})$ from the update rule in @eq-ham-discrete-update-gamma-1. The handwavy similarity is as follows:
 
