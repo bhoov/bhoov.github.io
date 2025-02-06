@@ -6,6 +6,8 @@ bibliography: bibliography.bib
 \newcommand{\ppartial}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\iset}[1]{\llbracket #1 \rrbracket}
 \newcommand{\f}[1]{\underline{#1}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bg}{\mathbf{x}}
 <style>
     .side {
         color: gray;
@@ -19,7 +21,9 @@ A Probabilistic Inference perspective of Memory Retrieval in Modern Associative 
 
 > These notes record my first attempt at understanding Associative Memory (specifically, the Hierarchical Associative Memories formed by using the rules of [HAMUX](https://bhoov.com/hamux/)) through the lens of Probabilistic Graphical Models and established techniques for probabilistic inference. Many paragraphs and examples are taken verbatim from the cited sources; I found it very helpful in places to manually transcribe the original reference notes.
 >
-> With the exception of @coughlan2009Tutorial, which was used only to introduce factor graphs, I found the sources referenced in this work to be **extremely** relevant to our exploration. Indeed, it seems that my instinct that AM energy minimization as probabilistic inference has relevance even to exploring codes that approach the Shannon Limit. I do not yet know much about these potential applications, but I expect this to be a continually rewarding intellectual exploration that I hope unlocks future research directions for us.
+> With the exception of @coughlan2009Tutorial, which was used only to introduce factor graphs, I found the sources referenced in this work to be highly relevant to our exploration. Indeed, it seems that my instinct that AM energy minimization as probabilistic inference has relevance even to exploring codes that approach the Shannon Limit. I do not yet know much about these potential applications, but I expect this to be a continually rewarding intellectual exploration that I hope unlocks future research directions for us.
+>
+> Some prior works have discussed Hopfield memory retrieval from the perspective of variational infernece e.g., @mezard2017Meanfielda and @annabi2022relationship, but neither of these discuss the view of Associative Memories as operations on a general factor graph in HAMUX [@hoover2022a].
 
 ## Background
 ### Factor Graphs
@@ -399,17 +403,17 @@ Definitions for the messages $m$ and $n$ are given below in @eq-message-update-r
 
 ### General Sum-Product Algorithm (on factor graphs) {#sec-spa}
 
-The example computation-of-the-marginal exercise above can be extended to arbitrary factor graphs in an algorithm called the **Sum-Product Algorithm** (SPA). SPA is exact when the graphs have no loops, and approximate when loops exist. Let indices $\{a, b, c, \ldots\}$ index the factor nodes $\mathcal{M}$ and $\{i, j, k, \ldots\}$ index the variable nodes $\mathcal{S}$. Additionally, each factor $\psi_a$ can take an arbitary number of variables $\geq 1$ as arguments, which we shorthand write using using the notation $\psi_a(\mathbf{x}_a)$, where 
+The example computation-of-the-marginal exercise above can be extended to arbitrary factor graphs in an algorithm called the **Sum-Product Algorithm** (SPA). SPA is exact when the graphs have no loops, and approximate when loops exist. Let indices $\{a, b, c, \ldots\}$ index the factor nodes $\mathcal{M}$ and $\{i, j, k, \ldots\}$ index the variable nodes $\mathcal{S}$. Additionally, each factor $\psi_a$ can take an arbitary number of variables $\geq 1$ as arguments, which we shorthand write using using the notation $\psi_a(\bx_a)$, where 
 
 $$
-\mathbf{x}_a := \{x_k \mid \text{$k \in \mathcal{S}$ and variable $x_k$ is an argument to factor $a$}\}.
+\bx_a := \{x_k \mid \text{$k \in \mathcal{S}$ and variable $x_k$ is an argument to factor $a$}\}.
 $$
 
 The goal of SPA is to compute marginal probabilities
 
 $$
-% b_i(x_i) := p(x_i) = \sum_{\substack{\text{all values of $\mathbf{x}_J$}\\J := S \setminus i}} p(x_i, \mathbf{x}_J) \equiv \sum_{\mathbf{x}_{S \setminus i}} p(x_i, \mathbf{x}_{S \setminus i}).
-b_i(x_i) := p(x_i) = \sum_{\mathbf{x} \setminus x_i} p(\mathbf{x}).
+% b_i(x_i) := p(x_i) = \sum_{\substack{\text{all values of $\bx_J$}\\J := S \setminus i}} p(x_i, \bx_J) \equiv \sum_{\bx_{S \setminus i}} p(x_i, \bx_{S \setminus i}).
+b_i(x_i) := p(x_i) = \sum_{\bx \setminus x_i} p(\bx).
 $${#eq-marginal}
 
 These marginal probabilities are called the *beliefs*.
@@ -419,16 +423,14 @@ We need to consider two kinds of messages: messages from factors to nodes $m_{a 
 $$
 \begin{aligned}
 n_{j \to a}^{(t+1)} (x_j) &= \prod_{b \in N(j) \setminus a} m_{b \to j}^{(t)} (x_j) \\
-m_{a \to i}^{(t)} (x_i) &= \sum_{\mathbf{x}_a \setminus x_i} \psi_a (\mathbf{x}_a) \prod_{j \in N(a) \setminus i} n_{j \to a}^{(t)} (x_j).
+m_{a \to i}^{(t)} (x_i) &= \sum_{\bx_a \setminus x_i} \psi_a (\bx_a) \prod_{j \in N(a) \setminus i} n_{j \to a}^{(t)} (x_j).
 \end{aligned}
 $${#eq-message-update-rules-spa}
 
-The notations are explained below:
+The notations are explained below, with superscript $t$ indicating one convention for the recurrent updates for these messages (see [these lecture notes](https://web.stanford.edu/~montanar/RESEARCH/BOOK/partD.pdf?fbclid=IwZXh0bgNhZW0CMTEAAR1Vn3MpmqtDHx03JQs_s4WCJEuq87pj2W3zEW2dTD0PLBanksdNQWNbwP4_aem_nKrAsIYbNkjODr0_R0fsSA) for more details):
 
-- $\sum_{\mathbf{x}_a \setminus x_i}$ indicates to sum over all possible values for all arguments of $f_a$, keeping $x_i$ fixed as given.
-- $N(a) \setminus i$ denotes all variable nodes that are **neighbors** of factor $a$ except variable node $i$.
-- $N(j) \setminus a$ denotes all factor nodes that are **neighbors** of variable node $j$ except for factor $a$.
-- Superscript $t$ shows how message update rules are performed iteratively(messages are generally initialized from a uniform distribution). Though convergence cannot be guaranteed in this algorithm, it has proven effective in several error-correction applications e.g., in TurboCodes and LDPC. At each iteration, we choose the convention of parallel update rules, computing first all messages coming into each factor node (though other iteration orders are valid, see [these lecture notes](https://web.stanford.edu/~montanar/RESEARCH/BOOK/partD.pdf?fbclid=IwZXh0bgNhZW0CMTEAAR1Vn3MpmqtDHx03JQs_s4WCJEuq87pj2W3zEW2dTD0PLBanksdNQWNbwP4_aem_nKrAsIYbNkjODr0_R0fsSA)).
+- $\sum_{\bx_a \setminus x_i}$ indicates to sum over all possible values for all arguments of $f_a$, keeping $x_i$ fixed as given.
+- $N(a) \setminus i$ denotes all variable nodes that are **neighbors** of factor $a$ except variable node $i$. Likewise, $N(j) \setminus a$ denotes all factor nodes that are **neighbors** of variable node $j$ except for factor $a$.
 
 At any time $t$ in the BP algorithm, we can compute the *belief* $b_i^{(t)}(x_i)$ for a variable node $i$, which represents the current BP approximation to the exact marginal probability function $p_i(x_i)$. $b_i^{(t)}(x_i)$ can be computed from the equation
 
@@ -438,11 +440,13 @@ $${#eq-belief}
 
 which will need to be normalized to sum to one to be a true "belief" or marginal probability. The BP message-update equations are iterated until they (hopefully) converge, at which point the beliefs can be read off from @eq-belief.
 
-BP can also be used to compute joint beliefs $b_S(x_S)$ over sets of variable nodes $S$ that may contain more than one node. Consider computing the joint belief for all nodes connected to factor $a$. Then,
+BP can also be used to compute joint beliefs $b_S(\bx_S)$ over sets of variable nodes $S$ that may contain more than one node. Consider computing the joint belief for all nodes connected to factor $a$. Then,
 
 $$
-b_a^{(t)}(\mathbf{x}_a) \propto \;\; \psi_a(\mathbf{x}_a) \prod_{i \in N(a)} n_{i \to a}^{(t)}(x_i) \;\; \propto \;\; \psi_a(\mathbf{x}_a) \prod_{i \in N(a)} \prod_{c \in N(i) \setminus a} m_{c \to i}^{(t)}(x_i).
+b_a^{(t)}(\bx_a) \propto \;\; \psi_a(\bx_a) \prod_{i \in N(a)} n_{i \to a}^{(t)}(x_i) \;\; \propto \;\; \psi_a(\bx_a) \prod_{i \in N(a)} \prod_{c \in N(i) \setminus a} m_{c \to i}^{(t)}(x_i).
 $${#eq-joint-belief}
+
+**TODO** discuss how belief would be computed on an arbitrary set of nodes surrounded by arbitrary factors?
 
 The BP algorithm is simply a dynamic programming algorithm that organizes the computations necessary to compute marginal probability distributions in such a way that they become tractable.
 
@@ -450,7 +454,7 @@ The BP algorithm is simply a dynamic programming algorithm that organizes the co
 Interestingly, we can directly derive the message update rules of @eq-message-update-rules-spa from @eq-belief and @eq-joint-belief, in addition to the marginalization condition that
 
 $$
-b_i(x_i) = \sum_{\mathbf{x}_a \setminus x_i} b_a(\mathbf{x}_a).
+b_i(x_i) = \sum_{\bx_a \setminus x_i} b_a(\bx_a).
 $$
 
 Thus, we can alternatively describe BP in terms of recurrent belief update as follows. Given:
@@ -458,16 +462,25 @@ Thus, we can alternatively describe BP in terms of recurrent belief update as fo
 $$
 \begin{aligned}
 b_i(x_i) &\propto \prod_{a \in N(i)} m_{a \to i} (x_i) \\
-m_{a \to i}(x_i) &= \sum_{\mathbf{x}_a \setminus x_i} \psi_a(\mathbf{x}_a) \prod_{j \in N(a) \setminus i} n_{j \to a}(x_j) \\
+m_{a \to i}(x_i) &= \sum_{\bx_a \setminus x_i} \psi_a(\bx_a) \prod_{j \in N(a) \setminus i} n_{j \to a}(x_j) \\
 n_{j \to a}(x_j) &= \prod_{c \in N(j) \setminus a} m_{c \to j} (x_j) = \frac{b_j(x_j)}{m_{a \to j}(x_j)} \\
-b_i(x_i) &= \sum_{\mathbf{x}_a \setminus x_i} \left[ \psi_a(\mathbf{x}_a) \prod_{j \in N(a) \setminus i} \frac{b_j(x_j)}{m_{a \to j}(x_j)} \right],\\
+% b_i(x_i) &= \sum_{\bx_a \setminus x_i} \left[ \psi_a(\bx_a) \prod_{j \in N(a) \setminus i} \frac{b_j(x_j)}{m_{a \to j}(x_j)} \right],\\
 \end{aligned}
 $$
 
 we can compute the iterative belief update as
+
 $$
-b_i^{(t+1)}(x_i) \propto \prod_{a \in N(i)} \sum_{\mathbf{x}_a \setminus x_i} \left[ \psi_a(\mathbf{x}_a) \prod_{j \in N(a) \setminus i} \frac{b_j^{(t)}(x_j)}{m_{a \to j}^{(t)}(x_j)} \right].\\
+\begin{aligned}
+b_i^{(t+1)}(x_i) &\propto \prod_{a \in N(i)} m_{a \to i}^{(t+1)} (x_i) \\
+m_{a \to i}^{(t+1)}(x_i) &= \sum_{\bx_a \setminus x_i} \psi_a(\bx_a) \frac{b_j^{(t)}(x_j)}{m_{a \to j}^{(t)}(x_j)} \\
+\end{aligned}
 $$
+
+
+<!-- $$
+b_i^{(t+1)}(x_i) \propto \prod_{a \in N(i)} \sum_{\bx_a \setminus x_i} \left[ \psi_a(\bx_a) \prod_{j \in N(a) \setminus i} \frac{b_j^{(t)}(x_j)}{m_{a \to j}^{(t)}(x_j)} \right].\\
+$$ -->
 
 Unfortunately, these rules still require you to keep around auxiliary message information in the denominator, hence why the message update rules are generally preferred.
 :::
@@ -479,8 +492,8 @@ The SPA algorithm in @sec-spa is one form of inference when the goal is to compu
 The max-marginal of each node is defined by 
 
 $$
-% \hat{b}_i(x_i) = \max_{\substack{\text{all values of $\mathbf{x}_J$}\\J := S \setminus i}} p(x_i, \mathbf{x}_J) \equiv \max_{\mathbf{x}_{S \setminus i}} p(x_i, \mathbf{x}_{S \setminus i}).
-\hat{b}_i(x_i) = \max_{\mathbf{x} \setminus x_i} p(\mathbf{x}).
+% \hat{b}_i(x_i) = \max_{\substack{\text{all values of $\bx_J$}\\J := S \setminus i}} p(x_i, \bx_J) \equiv \max_{\bx_{S \setminus i}} p(x_i, \bx_{S \setminus i}).
+\hat{b}_i(x_i) = \max_{\bx \setminus x_i} p(\bx).
 $${#eq-max-marginal}
 
 If there are no "ties" at a given node, the unique global MAP assignment is
@@ -494,16 +507,16 @@ Because the 'max' operation distributes the same way as the 'sum' operation, one
 $$
 \begin{aligned}
 n_{j \to a}^{(t+1)} (x_j) &= \prod_{b \in N(j) \setminus a} m_{b \to j}^{(t)} (x_j) \\
-m_{a \to i}^{(t)} (x_i) &= \max_{\mathbf{x}_a \setminus x_i} \psi_a (x_i, \mathbf{x}_a) \prod_{j \in N(a) \setminus i} n_{j \to a}^{(t)} (x_j).
+m_{a \to i}^{(t)} (x_i) &= \max_{\bx_a \setminus x_i} \psi_a (x_i, \bx_a) \prod_{j \in N(a) \setminus i} n_{j \to a}^{(t)} (x_j).
 \end{aligned}
 $${#eq-message-update-rules-mpa}
 
 ## From message passing to memory retrieval
 
-Associative Memory in the language of [HAMUX](https://bhoov.com/hamux/) is also represented as a factor graph called a *Hierarchical Associative Memory* (HAM), though each HAM is defined in terms of energies and not probabilities. As above, we consider a general HAM described by a set of *variable* nodes (described by the collection of hidden variables $\mathbf{x}$ and a corresponding collection of non-linear activations $\mathbf{g}$, indexed by $\mathcal{S}$), and a set of *interaction* or *factor* nodes (indexed by $\mathcal{M}$). Assume the variable nodes are split into $N$ non-overlapping regions $\mathcal{R} := \{\mathcal{R}_1, \mathcal{R}_2, \ldots, \mathcal{R}_N\}$ s.t. $\bigcup_{i=1}^N \mathcal{R}_i = \mathcal{S}$, then each set of activations $\mathbf{g}_{\mathcal{R}_i} = \f{\mathbf{g}_{\mathcal{R}_i}} \left( \mathbf{x}_{\mathcal{R}_i} \right)$ is constrained such that the non-linearity $\f{\mathbf{g_{\mathcal{R}_i}}} := \partial_0 \mathcal{L}_i$ is the derivative function of some convex Lagrangian function $\mathcal{L}_i$ defined on node region $i$. Simplifying notation, let $\mathbf{x}_i$ indexed starting with $i \in \{1, \ldots, N\}$ be a shorthand for $\mathbf{x}_{\mathcal{R}_i}$, then each $(\mathbf{x}_i, \mathbf{g}_i)$ pair are conjugate variables under the Legendre Transform of the region's Lagrangian defined as
+Associative Memory in the language of [HAMUX](https://bhoov.com/hamux/) is also represented as a factor graph called a *Hierarchical Associative Memory* (HAM), though each HAM is defined in terms of energies and not probabilities. As above, we consider a general HAM described by a set of *variable* nodes (described by the collection of hidden variables $\bx$ and a corresponding collection of non-linear activations $\mathbf{g}$, indexed by $\mathcal{S}$), and a set of *interaction* or *factor* nodes (indexed by $\mathcal{M}$). Assume the variable nodes are split into $N$ non-overlapping regions $\mathcal{R} := \{\mathcal{R}_1, \mathcal{R}_2, \ldots, \mathcal{R}_N\}$ s.t. $\bigcup_{i=1}^N \mathcal{R}_i = \mathcal{S}$, then each set of activations $\mathbf{g}_{\mathcal{R}_i} = \f{\mathbf{g}_{\mathcal{R}_i}} \left( \bx_{\mathcal{R}_i} \right)$ is constrained such that the non-linearity $\f{\mathbf{g_{\mathcal{R}_i}}} := \partial_0 \mathcal{L}_i$ is the derivative function of some convex Lagrangian function $\mathcal{L}_i$ defined on node region $i$. Simplifying notation, let $\bx_i$ indexed starting with $i \in \{1, \ldots, N\}$ be a shorthand for $\bx_{\mathcal{R}_i}$, then each $(\bx_i, \mathbf{g}_i)$ pair are conjugate variables under the Legendre Transform of the region's Lagrangian defined as
 
 $$
-\hat{\mathcal{L}}_i(\mathbf{g}_i) = \mathbf{g}_i \cdot \mathbf{x}_i - \mathcal{L}_i (\mathbf{x}_i).
+\hat{\mathcal{L}}_i(\mathbf{g}_i) = \mathbf{g}_i \cdot \bx_i - \mathcal{L}_i (\bx_i).
 $${#eq-legendre-transform}
 
 :::{.callout-note}
@@ -523,26 +536,26 @@ $${#eq-ham-energy}
 The update equations are written as a strict gradient descent of @eq-ham-energy:
 
 $$
-\tau \dot{\mathbf{x}}_i = - \nabla_{\mathbf{g}_i} F(\mathbf{g}) = - \left(\sum_{a \in N(i)} \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a) + \nabla_{\mathbf{g}_i} \hat{\mathcal{L}}_i(\mathbf{g}_i) \right) = - \left(\sum_{a \in N(i)} \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a) + \mathbf{x}_i \right),
+\tau \dot{\bx}_i = - \nabla_{\mathbf{g}_i} F(\mathbf{g}) = - \left(\sum_{a \in N(i)} \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a) + \nabla_{\mathbf{g}_i} \hat{\mathcal{L}}_i(\mathbf{g}_i) \right) = - \left(\sum_{a \in N(i)} \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a) + \bx_i \right),
 $${#eq-ham-update}
 
 where $N(i)$ is the set of all factors neighboring at least one variable node in the set $\mathcal{R}_i$. Discretely, this update rule can be written as
 
 $$
-\mathbf{x}_i^{(t+1)} = -\gamma \left(\sum_{a \in N(i)} \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a^{(t)}) + \mathbf{x}_i^{(t)} \right) + \mathbf{x}_i^{(t)}.
+\bx_i^{(t+1)} = -\gamma \left(\sum_{a \in N(i)} \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a^{(t)}) + \bx_i^{(t)} \right) + \bx_i^{(t)}.
 $${#eq-ham-discrete-update}
 
 At discrete stepsize $\gamma = 1$, the continuous system in @eq-ham-update loses its decay term and becomes
 
 $$
-\mathbf{x}_i^{(t+1)} = - \sum_{a \in N(i)} \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a^{(t)}).
+\bx_i^{(t+1)} = - \sum_{a \in N(i)} \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a^{(t)}).
 $${#eq-ham-discrete-update-gamma-1}
 
 **TODO: The notation clashes below and is not clear. Fix the indices**
 
-Indeed, this update rule looks eerily similar (though not exact) to @eq-belief, written in log-space. First, note that the Legendre Transform has a very nice property relating conjugate variables $(\mathbf{x}_i, \mathbf{g}_i)$: each is a function of the other. That is, $\mathbf{g}_i = \f{\mathbf{g}_i}(\mathbf{x}_i)$ can be written as a function of $\mathbf{x}_i$, and $\mathbf{x}_i = \f{\mathbf{x}_i}(\mathbf{g}_i)$ can be written as a function of $\mathbf{g}_i$, where $\f{\mathbf{x}_i} := \partial_0 \hat{\mathcal{L}}_i$ from @eq-legendre-transform.
+Indeed, this update rule looks eerily similar (though not exact) to @eq-belief, written in log-space. First, note that the Legendre Transform has a very nice property relating conjugate variables $(\bx_i, \mathbf{g}_i)$: each is a function of the other. That is, $\mathbf{g}_i = \f{\mathbf{g}_i}(\bx_i)$ can be written as a function of $\bx_i$, and $\bx_i = \f{\bx_i}(\mathbf{g}_i)$ can be written as a function of $\mathbf{g}_i$, where $\f{\bx_i} := \partial_0 \hat{\mathcal{L}}_i$ from @eq-legendre-transform.
 
-Thus, we are tempted to define $\mathbf{x}_i^{(t)}(\mathbf{g}_i) := \log b_i^{(t)} (\mathbf{g}_i)$ to be an unnormalized **log-belief**, and define a new kind of **log-message** $\tilde{m}_{a \to i}(\mathbf{g}_a^{(t)}) := - \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a^{(t)})$ from the update rule in @eq-ham-discrete-update-gamma-1. The handwavy similarity is as follows:
+Thus, we are tempted to define $\f{\bx_i}^{(t)}(\mathbf{g}_i) := \log b_i^{(t)} (\mathbf{g}_i)$ to be an unnormalized **log-belief**, and define a new kind of **log-message** $\tilde{m}_{a \to i}(\mathbf{g}_a^{(t)}) := - \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a^{(t)})$ from the update rule in @eq-ham-discrete-update-gamma-1. The handwavy similarity is as follows:
 
 
 $$
@@ -553,45 +566,114 @@ $$
 \\
 &b_i^{(t)}(x_i) = \prod_{a \in N(i)} m_{a \to i}^{(t)}(x_i)
 \hspace{0.5cm}&&\Longleftrightarrow \hspace{0.5cm}
-\mathbf{x}_i^{(t+1)}(\mathbf{g}_i) = \sum_{a \in N(i)} \tilde{m}_{a \to i}^{(t)}(\mathbf{g}_a)
+\f{\bx_i}^{(t+1)}(\mathbf{g}_i) = \sum_{a \in N(i)} \tilde{m}_{a \to i}^{(t)}(\mathbf{g}_a).
 \end{alignat}
 $$
 
-Though there are differences regarding the arguments passed to the messages, and I am confused about the interpretation of the dynamic variables $\mathbf{x}_i$ as a function of something else?
+Though the above does not express equivalence between the log-messages of memory retrieval and the standard messages of BP, it does reveal that both approaches use some form of local signal propagation between the variables.
 
-:::{.callout-tip}
-## **TODO** are there any explicit mathematical connections between these two?
+The case made in these notes is that this formulation of the update rule in HAMs is a fully parallel version of the iterative update of BP. Like BP, HAMs perform inference using message passing, but the passed messages are computed directly as the gradient of the interaction energies which leads to strong convergence guarantees for any factor graph, a guarantee that is missing in conventional loopy BP.
 
-What even is a belief in a hopfield network?
+However, we need to understand the variational inference approach to understand the similarities further.
 
-> Specifically, if we generalize the formulation in @eq-joint-belief to be defined on arbitrary region-sets $\mathcal{R}_i$ of variable nodes, ...
+## Hopfield Memory Retrieval from the perspective of Variational Inference
+
+### Background on Variational Inference
+
+Let's begin by describing a *functional of the beliefs* $F_{\text{Bethe}}(b_i, b_a)$. Let's assume a system of $N$ particles, where the state of the $i$-th particle is labeled $x_i$, where for the purpose of these notes we assume $x_i$ is discrete and can take $M_i$ possible values (e.g., $x_i$ is one channel of an RGB pixel and can take 256 possible discrete values). The overall state of the system can then be described by $\bx = \{x_1, x_2, \ldots, x_N \}$, and we denote the set of all possible states as $S$ (e.g., the size of $S$, or the total number of possible states, for CIFAR is $|S| = 256^{3072}$), and each state $\bx \in S$ has a corresponding energy $E(\bx)$. According to the Boltzmann law for given coldness $\beta$ which states
+
+$$
+p(\bx) = Z(\beta)^{-1} e^{-\beta E(\bx)}
+$${#eq-boltzmann}
+
+using partition function
+
+$$
+Z(\beta) = \sum_{\bx \in S} e^{-\beta E(\bx)},
+$$
+
+we can write the factor graph representation of $p(\bx) = Z^{-1} \prod_{a=1}^{M} f_a(\bx_a)$ using its energy (defined through the Boltzmann distribution)
+
+$$
+E(\bx) = - \left(\sum_{a = 1}^M \ln f_a (\bx_a) \right).
+$$
+
+The *Helmholtz Free Energy* of this system is $F_\text{Helmholtz} = -\ln Z(\beta)$, and our goal is to get the best approximation of $F_\text{Helmholtz}$ as possible.
+
+:::{.callout-note}
+At this point, @yedidiaProbabilistic began assuming a coldness of $\beta = 1$, which allowed him to not specify $\beta$ in the subsequent equations. For my own understanding it would be important to know which entities are functions of the temperature and which aren't, but until that is clarified for me I will only reproduce his equations.
 :::
 
-The case made in these notes is that this formulation of the update rule in HAMs is a fully parallel version of the iterative update of BP. Like BP, HAMs perform inference using message passing, but the passed messages are computed directly as the gradient of the interaction energies which leads to strong convergence guarantees an any factor graph that is missing in conventional loopy BP.
+One important technique is based on the variational approach. Suppose that $p(\bx)$ is the true probability distribution of the system which obeys Boltzmann's law (@eq-boltzmann). Even if we know $p(\bx)$ exactly, it is possible that the computation of $F_\text{Helmholtz}$ is difficult. Therefore, let us introduce a "trial" distribution $b(\bx)$ and a corresponding *variational free energy* (a.k.a. the *Gibbs free energy*)
 
-To see similarities further, we need to 
+$$
+F(b) = U(b) - H(b),
+$$
 
-### Step 1: Rewrite message updates in logspace
+(note that this energy is defined on the beliefs, not the states themselves) where 
 
-Associative Memories are described using energies. Let's write down the less-common but still valid forms of message passing in log-probabilities. 
+$$
+U(b) = \sum_{\bx \in S} b(\bx) E(\bx)
+$$
 
-We can write the SPA algorithm in logspace as
+is the *variational average energy*, and 
+
+$$
+H(b) = -\sum_{\bx \in S} b(\bx) \ln b(\bx)
+$$
+
+is the *variational entropy*. Then, it follows from the definitions that 
+
+$$
+F(b) = F_\text{Helmholtz} + D(b || p),
+$${#eq-gibbs}
+
+where 
+
+$$
+D(b || p) := \sum_{\bx \in S} b(\bx) \ln \frac{b(\bx)}{p(\bx)}
+$$
+
+is the KL-Divergence between $b(\bx)$ and $p(\bx)$. Because $D(b || p)$ is non-negative and equal to 0 iff $b(\bx) = p(\bx)$, $F(b) \geq F_\text{Helmholtz}$, with equality precisely when $b(\bx) = p(\bx)$.
+
+**Minimizing $F(b)$ is therefore an exact procedure for computing $F_\text{Helmholtz}$ and recovering $p(\bx)$.** However, as $N$ becomes large, this procedure is intractable because $b(\bx)$ will take exponentially large memory just to store. 
+
+:::{.callout-note}
+discuss why $b(\bx)$ requires exponentially large memory just to store?
+:::
+
+It is better to minimize $F(b)$ over a restricted class of prob. distributions, which is the idea of mean-field distributions where $b_\text{MF}(\bx) = \prod_{i=1}^N x_i$ defines beliefs that are totally independent of one another.
+
+:::{.callout-note}
+The distinction between Gibbs Free Energy and Helmholtz Free Energy is a bit unclear to me. Helmholtz's Free Energy is not a function of anything but the temperature. Meanwhile, Gibbs Free Energy is a function of the beliefs.
+
+I'm also confused by the belief equations of (20) and (21). Do I really sum over all possible states for each belief? That's not at all what associative memory does.
+:::
+
+
+## Background on Variational Inference (from Jordan and Weiss)
+
+- Convert probabilistic inference problem into an optimization problem
+- Similar to importance sampling:
+
+  > While Gibbs sampling and Metropolis-Hastings aim at sampling from p(x), **importance sampling** is a Monte Carlo technique in which samples are chosen from a simpler distribution  $q(x)$, and these samples are reweighted appropriately. In particular, we approximate the expectation of a function $f(x)$ as follows:
+  > 
+  > $E[f(x)] = \sum_x p(x) f(x) = \sum_x q(x) \frac{p(x)}{q(x)} f(x) \approx \frac1N \sum_{i=1}^N \frac{p(x^{(t)})}{q(x^{(t)})} f(x^{(t)})$
+  > 
+  >  The choice of $q(x)$ is in the hands of the designer, and the idea is that $q(x)$ should be chosen to be relatively simple to sample from, while reasonably close to $p(x)$ so that the weight $p(x(t))/q(x(t))$ is reasonably large. In the  graphical model setting, natural choices of q(x) are often provided by simplifying the graph  underlying p(x) in some way, in particular by deleting edges.
+
+  However, instead of instead of choosing a single $q(x)$ a-priori, a family of approximating distributions $\{(q(x)\)$ is used and the optimization machinery chooses a particular member from this family.
+
+**Note 1**: $p(x)$ can be viewed as the solution to an optimization problem. Define *energy* $E(x) = -\log p(x) - \log Z$, and define the *variational free energy* as
 
 $$
 \begin{aligned}
-\tilde{n}_{j \to a}^{(t+1)} (x_j) &= \prod_{b \in N(j) \setminus a} \tilde{m}_{b \to j}^{(t)} (x_j) \\
-\tilde{m}_{a \to i}^{(t)} (x_i) &= \sum_{\mathbf{x}_a \setminus x_i} \psi_a (\mathbf{x}_a) \prod_{j \in N(a) \setminus i} \tilde{n}_{j \to a}^{(t)} (x_j).
+F(\{q(x)\}) &= \sum_x q(x) E(x) + \sum_x q(x) \log q(x) \\
+&= - \sum_x q(x) \log p(x) + \sum_x q(x) \log q(x) - \log Z
 \end{aligned}
 $$
 
+(which is equal to the KL divergence between $q(x)$ and $p(x)$, and is minimized when $q(x) = p(x)$, attaining value of $-\log Z$ at the minimum)
 
 
-
-#### Differences between SPA/MPA and AM Memory Retrieval
-- TODO SPA/MPA are defined in terms of probabilities. Memory retrieval in terms of energies (AM is in logspace)
-- TODO SPA messages are defined using what AMs would call "linear activations". MPA messages are defined using what AMs would call "one-hot activations". The former is bad at storing many distinct memories. The latter is non-differentiable.
-- TODO SPA/MPA is not guaranteed to converge. AM retrieval is guaranteed to converge.
-- TODO Loopy SPA/MPA are defined in terms of message updates. AMs are defined in terms of activations (AM updates defined on beliefs)
-
-### General sum-product algorithm on factor graphs
-
+The variational approach must be converted 

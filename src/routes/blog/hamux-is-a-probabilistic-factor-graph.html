@@ -103,7 +103,8 @@ window.Quarto = {
 <h1><a href="https://bhoov.com/hamux/">HAMUX</a> as probabilistic inference</h1>
 <blockquote class="blockquote">
 <p>These notes record my first attempt at understanding Associative Memory (specifically, the Hierarchical Associative Memories formed by using the rules of <a href="https://bhoov.com/hamux/">HAMUX</a>) through the lens of Probabilistic Graphical Models and established techniques for probabilistic inference. Many paragraphs and examples are taken verbatim from the cited sources; I found it very helpful in places to manually transcribe the original reference notes.</p>
-<p>With the exception of <span class="citation" data-cites="coughlan2009Tutorial">Coughlan (<a href="#ref-coughlan2009Tutorial" role="doc-biblioref">2009</a>)</span>, which was used only to introduce factor graphs, I found the sources referenced in this work to be <strong>extremely</strong> relevant to our exploration. Indeed, it seems that my instinct that AM energy minimization as probabilistic inference has relevance even to exploring codes that approach the Shannon Limit. I do not yet know much about these potential applications, but I expect this to be a continually rewarding intellectual exploration that I hope unlocks future research directions for us.</p>
+<p>With the exception of <span class="citation" data-cites="coughlan2009Tutorial">Coughlan (<a href="#ref-coughlan2009Tutorial" role="doc-biblioref">2009</a>)</span>, which was used only to introduce factor graphs, I found the sources referenced in this work to be highly relevant to our exploration. Indeed, it seems that my instinct that AM energy minimization as probabilistic inference has relevance even to exploring codes that approach the Shannon Limit. I do not yet know much about these potential applications, but I expect this to be a continually rewarding intellectual exploration that I hope unlocks future research directions for us.</p>
+<p>Some prior works have discussed Hopfield memory retrieval from the perspective of variational infernece e.g., <span class="citation" data-cites="mezard2017Meanfielda">Mezard (<a href="#ref-mezard2017Meanfielda" role="doc-biblioref">2017</a>)</span> and <span class="citation" data-cites="annabi2022relationship">Annabi, Pitti, and Quoy (<a href="#ref-annabi2022relationship" role="doc-biblioref">2022</a>)</span>, but neither of these discuss the view of Associative Memories as operations on a general factor graph in HAMUX <span class="citation" data-cites="hoover2022a">(<a href="#ref-hoover2022a" role="doc-biblioref">Hoover et al. 2022</a>)</span>.</p>
 </blockquote>
 <section id="background" class="level2">
 <h2 class="anchored" data-anchor-id="background">Background</h2>
@@ -539,8 +540,8 @@ P(x_1, x_2, x_3, x_4, x_5, x_6, x_7) = Z^{-1} \psi_a(x_1,x_4) \psi_b(x_2,x_4) \p
 \]</span></p>
 <p>The goal of SPA is to compute marginal probabilities</p>
 <p><span id="eq-marginal"><span class="math display">\[
-% b_i(x_i) := p(x_i) = \sum_{\substack{\text{all values of $\mathbf{x}_J$}\\J := S \setminus i}} p(x_i, \mathbf{x}_J) \equiv \sum_{\mathbf{x}_{S \setminus i}} p(x_i, \mathbf{x}_{S \setminus i}).
-b_i(x_i) := p(x_i) = \sum_{\mathbf{x} \setminus x_i} p(\mathbf{x}).
+% b_i(x_i) := p(x_i) = \sum_{\substack{\text{all values of $\bx_J$}\\J := S \setminus i}} p(x_i, \bx_J) \equiv \sum_{\bx_{S \setminus i}} p(x_i, \bx_{S \setminus i}).
+b_i(x_i) := p(x_i) = \sum_{\mathbf{x}\setminus x_i} p(\mathbf{x}).
 \tag{7}\]</span></span></p>
 <p>These marginal probabilities are called the <em>beliefs</em>.</p>
 <p>We need to consider two kinds of messages: messages from factors to nodes <span class="math inline">\(m_{a \to i} (x_i)\)</span> and messages from nodes to factors <span class="math inline">\(n_{j \to a} (x_j)\)</span>:</p>
@@ -550,22 +551,21 @@ n_{j \to a}^{(t+1)} (x_j) &amp;= \prod_{b \in N(j) \setminus a} m_{b \to j}^{(t)
 m_{a \to i}^{(t)} (x_i) &amp;= \sum_{\mathbf{x}_a \setminus x_i} \psi_a (\mathbf{x}_a) \prod_{j \in N(a) \setminus i} n_{j \to a}^{(t)} (x_j).
 \end{aligned}
 \tag{8}\]</span></span></p>
-<p>The notations are explained below:</p>
+<p>The notations are explained below, with superscript <span class="math inline">\(t\)</span> indicating one convention for the recurrent updates for these messages (see <a href="https://web.stanford.edu/~montanar/RESEARCH/BOOK/partD.pdf?fbclid=IwZXh0bgNhZW0CMTEAAR1Vn3MpmqtDHx03JQs_s4WCJEuq87pj2W3zEW2dTD0PLBanksdNQWNbwP4_aem_nKrAsIYbNkjODr0_R0fsSA">these lecture notes</a> for more details):</p>
 <ul>
 <li><span class="math inline">\(\sum_{\mathbf{x}_a \setminus x_i}\)</span> indicates to sum over all possible values for all arguments of <span class="math inline">\(f_a\)</span>, keeping <span class="math inline">\(x_i\)</span> fixed as given.</li>
-<li><span class="math inline">\(N(a) \setminus i\)</span> denotes all variable nodes that are <strong>neighbors</strong> of factor <span class="math inline">\(a\)</span> except variable node <span class="math inline">\(i\)</span>.</li>
-<li><span class="math inline">\(N(j) \setminus a\)</span> denotes all factor nodes that are <strong>neighbors</strong> of variable node <span class="math inline">\(j\)</span> except for factor <span class="math inline">\(a\)</span>.</li>
-<li>Superscript <span class="math inline">\(t\)</span> shows how message update rules are performed iteratively(messages are generally initialized from a uniform distribution). Though convergence cannot be guaranteed in this algorithm, it has proven effective in several error-correction applications e.g., in TurboCodes and LDPC. At each iteration, we choose the convention of parallel update rules, computing first all messages coming into each factor node (though other iteration orders are valid, see <a href="https://web.stanford.edu/~montanar/RESEARCH/BOOK/partD.pdf?fbclid=IwZXh0bgNhZW0CMTEAAR1Vn3MpmqtDHx03JQs_s4WCJEuq87pj2W3zEW2dTD0PLBanksdNQWNbwP4_aem_nKrAsIYbNkjODr0_R0fsSA">these lecture notes</a>).</li>
+<li><span class="math inline">\(N(a) \setminus i\)</span> denotes all variable nodes that are <strong>neighbors</strong> of factor <span class="math inline">\(a\)</span> except variable node <span class="math inline">\(i\)</span>. Likewise, <span class="math inline">\(N(j) \setminus a\)</span> denotes all factor nodes that are <strong>neighbors</strong> of variable node <span class="math inline">\(j\)</span> except for factor <span class="math inline">\(a\)</span>.</li>
 </ul>
 <p>At any time <span class="math inline">\(t\)</span> in the BP algorithm, we can compute the <em>belief</em> <span class="math inline">\(b_i^{(t)}(x_i)\)</span> for a variable node <span class="math inline">\(i\)</span>, which represents the current BP approximation to the exact marginal probability function <span class="math inline">\(p_i(x_i)\)</span>. <span class="math inline">\(b_i^{(t)}(x_i)\)</span> can be computed from the equation</p>
 <p><span id="eq-belief"><span class="math display">\[
 b_i^{(t)}(x_i) \propto \prod_{a \in N(i)} m_{a \to i}^{(t)}(x_i),
 \tag{9}\]</span></span></p>
 <p>which will need to be normalized to sum to one to be a true “belief” or marginal probability. The BP message-update equations are iterated until they (hopefully) converge, at which point the beliefs can be read off from <a href="#eq-belief" class="quarto-xref">Equation&nbsp;9</a>.</p>
-<p>BP can also be used to compute joint beliefs <span class="math inline">\(b_S(x_S)\)</span> over sets of variable nodes <span class="math inline">\(S\)</span> that may contain more than one node. Consider computing the joint belief for all nodes connected to factor <span class="math inline">\(a\)</span>. Then,</p>
+<p>BP can also be used to compute joint beliefs <span class="math inline">\(b_S(\mathbf{x}_S)\)</span> over sets of variable nodes <span class="math inline">\(S\)</span> that may contain more than one node. Consider computing the joint belief for all nodes connected to factor <span class="math inline">\(a\)</span>. Then,</p>
 <p><span id="eq-joint-belief"><span class="math display">\[
 b_a^{(t)}(\mathbf{x}_a) \propto \;\; \psi_a(\mathbf{x}_a) \prod_{i \in N(a)} n_{i \to a}^{(t)}(x_i) \;\; \propto \;\; \psi_a(\mathbf{x}_a) \prod_{i \in N(a)} \prod_{c \in N(i) \setminus a} m_{c \to i}^{(t)}(x_i).
 \tag{10}\]</span></span></p>
+<p><strong>TODO</strong> discuss how belief would be computed on an arbitrary set of nodes surrounded by arbitrary factors?</p>
 <p>The BP algorithm is simply a dynamic programming algorithm that organizes the computations necessary to compute marginal probability distributions in such a way that they become tractable.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -587,12 +587,19 @@ b_i(x_i) = \sum_{\mathbf{x}_a \setminus x_i} b_a(\mathbf{x}_a).
 b_i(x_i) &amp;\propto \prod_{a \in N(i)} m_{a \to i} (x_i) \\
 m_{a \to i}(x_i) &amp;= \sum_{\mathbf{x}_a \setminus x_i} \psi_a(\mathbf{x}_a) \prod_{j \in N(a) \setminus i} n_{j \to a}(x_j) \\
 n_{j \to a}(x_j) &amp;= \prod_{c \in N(j) \setminus a} m_{c \to j} (x_j) = \frac{b_j(x_j)}{m_{a \to j}(x_j)} \\
-b_i(x_i) &amp;= \sum_{\mathbf{x}_a \setminus x_i} \left[ \psi_a(\mathbf{x}_a) \prod_{j \in N(a) \setminus i} \frac{b_j(x_j)}{m_{a \to j}(x_j)} \right],\\
+% b_i(x_i) &amp;= \sum_{\bx_a \setminus x_i} \left[ \psi_a(\bx_a) \prod_{j \in N(a) \setminus i} \frac{b_j(x_j)}{m_{a \to j}(x_j)} \right],\\
 \end{aligned}
 \]</span></p>
-<p>we can compute the iterative belief update as <span class="math display">\[
-b_i^{(t+1)}(x_i) \propto \prod_{a \in N(i)} \sum_{\mathbf{x}_a \setminus x_i} \left[ \psi_a(\mathbf{x}_a) \prod_{j \in N(a) \setminus i} \frac{b_j^{(t)}(x_j)}{m_{a \to j}^{(t)}(x_j)} \right].\\
+<p>we can compute the iterative belief update as</p>
+<p><span class="math display">\[
+\begin{aligned}
+b_i^{(t+1)}(x_i) &amp;\propto \prod_{a \in N(i)} m_{a \to i}^{(t+1)} (x_i) \\
+m_{a \to i}^{(t+1)}(x_i) &amp;= \sum_{\mathbf{x}_a \setminus x_i} \psi_a(\mathbf{x}_a) \frac{b_j^{(t)}(x_j)}{m_{a \to j}^{(t)}(x_j)} \\
+\end{aligned}
 \]</span></p>
+<!-- $$
+b_i^{(t+1)}(x_i) \propto \prod_{a \in N(i)} \sum_{\bx_a \setminus x_i} \left[ \psi_a(\bx_a) \prod_{j \in N(a) \setminus i} \frac{b_j^{(t)}(x_j)}{m_{a \to j}^{(t)}(x_j)} \right].\\
+$$ -->
 <p>Unfortunately, these rules still require you to keep around auxiliary message information in the denominator, hence why the message update rules are generally preferred.</p>
 </div>
 </div>
@@ -603,8 +610,8 @@ b_i^{(t+1)}(x_i) \propto \prod_{a \in N(i)} \sum_{\mathbf{x}_a \setminus x_i} \l
 <p>The SPA algorithm in <a href="#sec-spa" class="quarto-xref">Section&nbsp;2.1.1</a> is one form of inference when the goal is to compute marginal probabilities. However, we may prefer to compute the <em>max-marginal</em> at each node, also called the maximum-a-posteriori (MAP) of an unknown quantity (where MAP can be viewed as a regularized version of maximum-likelihood estimatation (MLE)).</p>
 <p>The max-marginal of each node is defined by</p>
 <p><span id="eq-max-marginal"><span class="math display">\[
-% \hat{b}_i(x_i) = \max_{\substack{\text{all values of $\mathbf{x}_J$}\\J := S \setminus i}} p(x_i, \mathbf{x}_J) \equiv \max_{\mathbf{x}_{S \setminus i}} p(x_i, \mathbf{x}_{S \setminus i}).
-\hat{b}_i(x_i) = \max_{\mathbf{x} \setminus x_i} p(\mathbf{x}).
+% \hat{b}_i(x_i) = \max_{\substack{\text{all values of $\bx_J$}\\J := S \setminus i}} p(x_i, \bx_J) \equiv \max_{\bx_{S \setminus i}} p(x_i, \bx_{S \setminus i}).
+\hat{b}_i(x_i) = \max_{\mathbf{x}\setminus x_i} p(\mathbf{x}).
 \tag{11}\]</span></span></p>
 <p>If there are no “ties” at a given node, the unique global MAP assignment is</p>
 <p><span class="math display">\[
@@ -657,7 +664,7 @@ F(\mathbf{g}) = \sum_{a \in \mathcal{M}} J_a(\mathbf{g}_a) + \sum_{i=1}^N \hat{L
 \tag{17}\]</span></span></p>
 <p><strong>TODO: The notation clashes below and is not clear. Fix the indices</strong></p>
 <p>Indeed, this update rule looks eerily similar (though not exact) to <a href="#eq-belief" class="quarto-xref">Equation&nbsp;9</a>, written in log-space. First, note that the Legendre Transform has a very nice property relating conjugate variables <span class="math inline">\((\mathbf{x}_i, \mathbf{g}_i)\)</span>: each is a function of the other. That is, <span class="math inline">\(\mathbf{g}_i = \underline{\mathbf{g}_i}(\mathbf{x}_i)\)</span> can be written as a function of <span class="math inline">\(\mathbf{x}_i\)</span>, and <span class="math inline">\(\mathbf{x}_i = \underline{\mathbf{x}_i}(\mathbf{g}_i)\)</span> can be written as a function of <span class="math inline">\(\mathbf{g}_i\)</span>, where <span class="math inline">\(\underline{\mathbf{x}_i} := \partial_0 \hat{\mathcal{L}}_i\)</span> from <a href="#eq-legendre-transform" class="quarto-xref">Equation&nbsp;13</a>.</p>
-<p>Thus, we are tempted to define <span class="math inline">\(\mathbf{x}_i^{(t)}(\mathbf{g}_i) := \log b_i^{(t)} (\mathbf{g}_i)\)</span> to be an unnormalized <strong>log-belief</strong>, and define a new kind of <strong>log-message</strong> <span class="math inline">\(\tilde{m}_{a \to i}(\mathbf{g}_a^{(t)}) := - \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a^{(t)})\)</span> from the update rule in <a href="#eq-ham-discrete-update-gamma-1" class="quarto-xref">Equation&nbsp;17</a>. The handwavy similarity is as follows:</p>
+<p>Thus, we are tempted to define <span class="math inline">\(\underline{\mathbf{x}_i}^{(t)}(\mathbf{g}_i) := \log b_i^{(t)} (\mathbf{g}_i)\)</span> to be an unnormalized <strong>log-belief</strong>, and define a new kind of <strong>log-message</strong> <span class="math inline">\(\tilde{m}_{a \to i}(\mathbf{g}_a^{(t)}) := - \nabla_{\mathbf{g}_i} J_a (\mathbf{g}_a^{(t)})\)</span> from the update rule in <a href="#eq-ham-discrete-update-gamma-1" class="quarto-xref">Equation&nbsp;17</a>. The handwavy similarity is as follows:</p>
 <p><span class="math display">\[
 \begin{alignat}{2}
 &amp;\text{BP belief computation}
@@ -666,64 +673,138 @@ F(\mathbf{g}) = \sum_{a \in \mathcal{M}} J_a(\mathbf{g}_a) + \sum_{i=1}^N \hat{L
 \\
 &amp;b_i^{(t)}(x_i) = \prod_{a \in N(i)} m_{a \to i}^{(t)}(x_i)
 \hspace{0.5cm}&amp;&amp;\Longleftrightarrow \hspace{0.5cm}
-\mathbf{x}_i^{(t+1)}(\mathbf{g}_i) = \sum_{a \in N(i)} \tilde{m}_{a \to i}^{(t)}(\mathbf{g}_a)
+\underline{\mathbf{x}_i}^{(t+1)}(\mathbf{g}_i) = \sum_{a \in N(i)} \tilde{m}_{a \to i}^{(t)}(\mathbf{g}_a).
 \end{alignat}
 \]</span></p>
-<p>Though there are differences regarding the arguments passed to the messages, and I am confused about the interpretation of the dynamic variables <span class="math inline">\(\mathbf{x}_i\)</span> as a function of something else?</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<p>Though the above does not express equivalence between the log-messages of memory retrieval and the standard messages of BP, it does reveal that both approaches use some form of local signal propagation between the variables.</p>
+<p>The case made in these notes is that this formulation of the update rule in HAMs is a fully parallel version of the iterative update of BP. Like BP, HAMs perform inference using message passing, but the passed messages are computed directly as the gradient of the interaction energies which leads to strong convergence guarantees for any factor graph, a guarantee that is missing in conventional loopy BP.</p>
+<p>However, we need to understand the variational inference approach to understand the similarities further.</p>
+</section>
+<section id="hopfield-memory-retrieval-from-the-perspective-of-variational-inference" class="level2">
+<h2 class="anchored" data-anchor-id="hopfield-memory-retrieval-from-the-perspective-of-variational-inference">Hopfield Memory Retrieval from the perspective of Variational Inference</h2>
+<section id="background-on-variational-inference" class="level3">
+<h3 class="anchored" data-anchor-id="background-on-variational-inference">Background on Variational Inference</h3>
+<p>Let’s begin by describing a <em>functional of the beliefs</em> <span class="math inline">\(F_{\text{Bethe}}(b_i, b_a)\)</span>. Let’s assume a system of <span class="math inline">\(N\)</span> particles, where the state of the <span class="math inline">\(i\)</span>-th particle is labeled <span class="math inline">\(x_i\)</span>, where for the purpose of these notes we assume <span class="math inline">\(x_i\)</span> is discrete and can take <span class="math inline">\(M_i\)</span> possible values (e.g., <span class="math inline">\(x_i\)</span> is one channel of an RGB pixel and can take 256 possible discrete values). The overall state of the system can then be described by <span class="math inline">\(\mathbf{x}= \{x_1, x_2, \ldots, x_N \}\)</span>, and we denote the set of all possible states as <span class="math inline">\(S\)</span> (e.g., the size of <span class="math inline">\(S\)</span>, or the total number of possible states, for CIFAR is <span class="math inline">\(|S| = 256^{3072}\)</span>), and each state <span class="math inline">\(\mathbf{x}\in S\)</span> has a corresponding energy <span class="math inline">\(E(\mathbf{x})\)</span>. According to the Boltzmann law for given coldness <span class="math inline">\(\beta\)</span> which states</p>
+<p><span id="eq-boltzmann"><span class="math display">\[
+p(\mathbf{x}) = Z(\beta)^{-1} e^{-\beta E(\mathbf{x})}
+\tag{18}\]</span></span></p>
+<p>using partition function</p>
+<p><span class="math display">\[
+Z(\beta) = \sum_{\mathbf{x}\in S} e^{-\beta E(\mathbf{x})},
+\]</span></p>
+<p>we can write the factor graph representation of <span class="math inline">\(p(\mathbf{x}) = Z^{-1} \prod_{a=1}^{M} f_a(\mathbf{x}_a)\)</span> using its energy (defined through the Boltzmann distribution)</p>
+<p><span class="math display">\[
+E(\mathbf{x}) = - \left(\sum_{a = 1}^M \ln f_a (\mathbf{x}_a) \right).
+\]</span></p>
+<p>The <em>Helmholtz Free Energy</em> of this system is <span class="math inline">\(F_\text{Helmholtz} = -\ln Z(\beta)\)</span>, and our goal is to get the best approximation of <span class="math inline">\(F_\text{Helmholtz}\)</span> as possible.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<strong>TODO</strong> are there any explicit mathematical connections between these two?
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>What even is a belief in a hopfield network?</p>
+<p>At this point, <span class="citation" data-cites="yedidiaProbabilistic">(<a href="#ref-yedidiaProbabilistic" role="doc-biblioref"><strong>yedidiaProbabilistic?</strong></a>)</span> began assuming a coldness of <span class="math inline">\(\beta = 1\)</span>, which allowed him to not specify <span class="math inline">\(\beta\)</span> in the subsequent equations. For my own understanding it would be important to know which entities are functions of the temperature and which aren’t, but until that is clarified for me I will only reproduce his equations.</p>
+</div>
+</div>
+<p>One important technique is based on the variational approach. Suppose that <span class="math inline">\(p(\mathbf{x})\)</span> is the true probability distribution of the system which obeys Boltzmann’s law (<a href="#eq-boltzmann" class="quarto-xref">Equation&nbsp;18</a>). Even if we know <span class="math inline">\(p(\mathbf{x})\)</span> exactly, it is possible that the computation of <span class="math inline">\(F_\text{Helmholtz}\)</span> is difficult. Therefore, let us introduce a “trial” distribution <span class="math inline">\(b(\mathbf{x})\)</span> and a corresponding <em>variational free energy</em> (a.k.a. the <em>Gibbs free energy</em>)</p>
+<p><span class="math display">\[
+F(b) = U(b) - H(b),
+\]</span></p>
+<p>(note that this energy is defined on the beliefs, not the states themselves) where</p>
+<p><span class="math display">\[
+U(b) = \sum_{\mathbf{x}\in S} b(\mathbf{x}) E(\mathbf{x})
+\]</span></p>
+<p>is the <em>variational average energy</em>, and</p>
+<p><span class="math display">\[
+H(b) = -\sum_{\mathbf{x}\in S} b(\mathbf{x}) \ln b(\mathbf{x})
+\]</span></p>
+<p>is the <em>variational entropy</em>. Then, it follows from the definitions that</p>
+<p><span id="eq-gibbs"><span class="math display">\[
+F(b) = F_\text{Helmholtz} + D(b || p),
+\tag{19}\]</span></span></p>
+<p>where</p>
+<p><span class="math display">\[
+D(b || p) := \sum_{\mathbf{x}\in S} b(\mathbf{x}) \ln \frac{b(\mathbf{x})}{p(\mathbf{x})}
+\]</span></p>
+<p>is the KL-Divergence between <span class="math inline">\(b(\mathbf{x})\)</span> and <span class="math inline">\(p(\mathbf{x})\)</span>. Because <span class="math inline">\(D(b || p)\)</span> is non-negative and equal to 0 iff <span class="math inline">\(b(\mathbf{x}) = p(\mathbf{x})\)</span>, <span class="math inline">\(F(b) \geq F_\text{Helmholtz}\)</span>, with equality precisely when <span class="math inline">\(b(\mathbf{x}) = p(\mathbf{x})\)</span>.</p>
+<p><strong>Minimizing <span class="math inline">\(F(b)\)</span> is therefore an exact procedure for computing <span class="math inline">\(F_\text{Helmholtz}\)</span> and recovering <span class="math inline">\(p(\mathbf{x})\)</span>.</strong> However, as <span class="math inline">\(N\)</span> becomes large, this procedure is intractable because <span class="math inline">\(b(\mathbf{x})\)</span> will take exponentially large memory just to store.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>discuss why <span class="math inline">\(b(\mathbf{x})\)</span> requires exponentially large memory just to store?</p>
+</div>
+</div>
+<p>It is better to minimize <span class="math inline">\(F(b)\)</span> over a restricted class of prob. distributions, which is the idea of mean-field distributions where <span class="math inline">\(b_\text{MF}(\mathbf{x}) = \prod_{i=1}^N x_i\)</span> defines beliefs that are totally independent of one another.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The distinction between Gibbs Free Energy and Helmholtz Free Energy is a bit unclear to me. Helmholtz’s Free Energy is not a function of anything but the temperature. Meanwhile, Gibbs Free Energy is a function of the beliefs.</p>
+<p>I’m also confused by the belief equations of (20) and (21). Do I really sum over all possible states for each belief? That’s not at all what associative memory does.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="background-on-variational-inference-from-jordan-and-weiss" class="level2">
+<h2 class="anchored" data-anchor-id="background-on-variational-inference-from-jordan-and-weiss">Background on Variational Inference (from Jordan and Weiss)</h2>
+<ul>
+<li><p>Convert probabilistic inference problem into an optimization problem</p></li>
+<li><p>Similar to importance sampling:</p>
 <blockquote class="blockquote">
-<p>Specifically, if we generalize the formulation in <a href="#eq-joint-belief" class="quarto-xref">Equation&nbsp;10</a> to be defined on arbitrary region-sets <span class="math inline">\(\mathcal{R}_i\)</span> of variable nodes, …</p>
+<p>While Gibbs sampling and Metropolis-Hastings aim at sampling from p(x), <strong>importance sampling</strong> is a Monte Carlo technique in which samples are chosen from a simpler distribution <span class="math inline">\(q(x)\)</span>, and these samples are reweighted appropriately. In particular, we approximate the expectation of a function <span class="math inline">\(f(x)\)</span> as follows:</p>
+<p><span class="math inline">\(E[f(x)] = \sum_x p(x) f(x) = \sum_x q(x) \frac{p(x)}{q(x)} f(x) \approx \frac1N \sum_{i=1}^N \frac{p(x^{(t)})}{q(x^{(t)})} f(x^{(t)})\)</span></p>
+<p>The choice of <span class="math inline">\(q(x)\)</span> is in the hands of the designer, and the idea is that <span class="math inline">\(q(x)\)</span> should be chosen to be relatively simple to sample from, while reasonably close to <span class="math inline">\(p(x)\)</span> so that the weight <span class="math inline">\(p(x(t))/q(x(t))\)</span> is reasonably large. In the graphical model setting, natural choices of q(x) are often provided by simplifying the graph underlying p(x) in some way, in particular by deleting edges.</p>
 </blockquote>
-</div>
-</div>
-<p>The case made in these notes is that this formulation of the update rule in HAMs is a fully parallel version of the iterative update of BP. Like BP, HAMs perform inference using message passing, but the passed messages are computed directly as the gradient of the interaction energies which leads to strong convergence guarantees an any factor graph that is missing in conventional loopy BP.</p>
-<p>To see similarities further, we need to</p>
-<section id="step-1-rewrite-message-updates-in-logspace" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-rewrite-message-updates-in-logspace">Step 1: Rewrite message updates in logspace</h3>
-<p>Associative Memories are described using energies. Let’s write down the less-common but still valid forms of message passing in log-probabilities.</p>
-<p>We can write the SPA algorithm in logspace as</p>
+<p>However, instead of instead of choosing a single <span class="math inline">\(q(x)\)</span> a-priori, a family of approximating distributions <span class="math inline">\(\{(q(x)\)\)</span> is used and the optimization machinery chooses a particular member from this family.</p></li>
+</ul>
+<p><strong>Note 1</strong>: <span class="math inline">\(p(x)\)</span> can be viewed as the solution to an optimization problem. Define <em>energy</em> <span class="math inline">\(E(x) = -\log p(x) - \log Z\)</span>, and define the <em>variational free energy</em> as</p>
 <p><span class="math display">\[
 \begin{aligned}
-\tilde{n}_{j \to a}^{(t+1)} (x_j) &amp;= \prod_{b \in N(j) \setminus a} \tilde{m}_{b \to j}^{(t)} (x_j) \\
-\tilde{m}_{a \to i}^{(t)} (x_i) &amp;= \sum_{\mathbf{x}_a \setminus x_i} \psi_a (\mathbf{x}_a) \prod_{j \in N(a) \setminus i} \tilde{n}_{j \to a}^{(t)} (x_j).
+F(\{q(x)\}) &amp;= \sum_x q(x) E(x) + \sum_x q(x) \log q(x) \\
+&amp;= - \sum_x q(x) \log p(x) + \sum_x q(x) \log q(x) - \log Z
 \end{aligned}
 \]</span></p>
-<section id="differences-between-spampa-and-am-memory-retrieval" class="level4">
-<h4 class="anchored" data-anchor-id="differences-between-spampa-and-am-memory-retrieval">Differences between SPA/MPA and AM Memory Retrieval</h4>
-<ul>
-<li>TODO SPA/MPA are defined in terms of probabilities. Memory retrieval in terms of energies (AM is in logspace)</li>
-<li>TODO SPA messages are defined using what AMs would call “linear activations”. MPA messages are defined using what AMs would call “one-hot activations”. The former is bad at storing many distinct memories. The latter is non-differentiable.</li>
-<li>TODO SPA/MPA is not guaranteed to converge. AM retrieval is guaranteed to converge.</li>
-<li>TODO Loopy SPA/MPA are defined in terms of message updates. AMs are defined in terms of activations (AM updates defined on beliefs)</li>
-</ul>
-</section>
-</section>
-<section id="general-sum-product-algorithm-on-factor-graphs" class="level3 unnumbered">
-
+<p>(which is equal to the KL divergence between <span class="math inline">\(q(x)\)</span> and <span class="math inline">\(p(x)\)</span>, and is minimized when <span class="math inline">\(q(x) = p(x)\)</span>, attaining value of <span class="math inline">\(-\log Z\)</span> at the minimum)</p>
+<p>The variational approach must be converted</p>
 
 </section>
 </section>
-</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">General sum-product algorithm on factor graphs</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-annabi2022relationship" class="csl-entry" role="listitem">
+Annabi, Louis, Alexandre Pitti, and Mathias Quoy. 2022. <span>“On the Relationship Between Variational Inference and Auto-Associative Memory.”</span> In <em>Advances in <span>Neural Information Processing Systems</span></em>. <a href="https://openreview.net/forum?id=uCBx_6Hc7cu">https://openreview.net/forum?id=uCBx_6Hc7cu</a>.
+</div>
 <div id="ref-coughlan2009Tutorial" class="csl-entry" role="listitem">
 Coughlan, James. 2009. <span>“A <span>Tutorial Introduction</span> to <span>Belief Propagation</span>.”</span> <a href="https://www.ski.org/sites/default/files/publications/bptutorial.pdf">https://www.ski.org/sites/default/files/publications/bptutorial.pdf</a>.
+</div>
+<div id="ref-hoover2022a" class="csl-entry" role="listitem">
+Hoover, Benjamin, Duen Horng Chau, Hendrik Strobelt, and Dmitry Krotov. 2022. <span>“A Universal Abstraction for Hierarchical Hopfield Networks.”</span> In <em>The Symbiosis of Deep Learning and Differential Equations II</em>. <a href="https://openreview.net/forum?id=SAv3nhzNWhw">https://openreview.net/forum?id=SAv3nhzNWhw</a>.
 </div>
 <div id="ref-jordanProbabilistic" class="csl-entry" role="listitem">
 Jordan, Michael I. 2003. <span>“Probabilistic Inference in Graphical Models.”</span> <a href="https://mlg.eng.cam.ac.uk/zoubin/course04/hbtnn2e-I.pdf">https://mlg.eng.cam.ac.uk/zoubin/course04/hbtnn2e-I.pdf</a>.
 </div>
 <div id="ref-liu2019Stein" class="csl-entry" role="listitem">
 Liu, Qiang, and Dilin Wang. 2019. <span>“Stein <span>Variational Gradient Descent</span>: <span>A General Purpose Bayesian Inference Algorithm</span>.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.1608.04471">https://doi.org/10.48550/arXiv.1608.04471</a>.
+</div>
+<div id="ref-mezard2017Meanfielda" class="csl-entry" role="listitem">
+Mezard, Marc. 2017. <span>“Mean-Field Message-Passing Equations in the <span>Hopfield</span> Model and Its Generalizations.”</span> <em>Physical Review E</em> 95 (2): 022117. <a href="https://doi.org/10.1103/PhysRevE.95.022117">https://doi.org/10.1103/PhysRevE.95.022117</a>.
 </div>
 <div id="ref-yedidia2005Constructing" class="csl-entry" role="listitem">
 Yedidia, J. S., W. T. Freeman, and Y. Weiss. 2005. <span>“Constructing <span>Free-Energy Approximations</span> and <span>Generalized Belief Propagation Algorithms</span>.”</span> <em>IEEE Transactions on Information Theory</em> 51 (7): 2282–312. <a href="https://doi.org/10.1109/TIT.2005.850085">https://doi.org/10.1109/TIT.2005.850085</a>.
