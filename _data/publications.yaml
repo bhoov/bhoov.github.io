@@ -1,3 +1,39 @@
+- id: EpaDAM
+  title: "Dense Associative Memory with Epanechnikov Memory"
+  shortTitle: Emergent memories with optimal KDE kernel
+  category: memory
+  authors:
+    - Benjamin Hoover
+    - Krishna Balasubramanian
+    - Dmitry Krotov
+    - Parikshit Ram
+  venue: "ICLR Workshop on New Frontiers for Associative Memory"
+  venueShorthand: "NFAM@ICLR'25"
+  location: Singapore
+  # thumbnail: "imgs/thumbnails/PlainSight.png"
+  type: workshop
+  # defaultUrl: https://poloclub.github.io/transformer-explainer/
+  links:
+    - type: pdf
+      url: https://openreview.net/forum?id=LOAkHpRSlZ
+      label: PDF
+  awards:
+  month: Apr
+  year: 2025
+  featured: false
+  featureDescription: >-
+    Dense Associative Memories can produce emergent memories when we replace the Gaussian kernel with a KDE-optimal Epanechnikov kernel.
+  selected: false
+  bibtex: |-
+    @inproceedings{
+      hoover2025dense,
+      title={Dense Associative Memory with Epanechnikov energy},
+      author={Benjamin Hoover and Krishna Balasubramanian and Dmitry Krotov and Parikshit Ram},
+      booktitle={New Frontiers in Associative Memories},
+      year={2025},
+      url={https://openreview.net/forum?id=LOAkHpRSlZ}
+    }
+
 - id: DrDAM
   title: "Dense Associative Memory through the Lens of Random Features"
   shortTitle: DAMs meet Random Features
@@ -10,7 +46,7 @@
     - Dmitry Krotov
   venue: "Neural Information Processing Systems"
   venueShorthand: "NeurIPS '24"
-  # location: New Orleans, LA, USA
+  location: Vancouver, BC Canada
   # thumbnail: "imgs/thumbnails/PlainSight.png"
   type: conference
   # defaultUrl: https://poloclub.github.io/transformer-explainer/
