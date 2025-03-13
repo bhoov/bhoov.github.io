@@ -10,7 +10,7 @@
   venue: "ICLR Workshop on New Frontiers for Associative Memory"
   venueShorthand: "NFAM@ICLR'25"
   location: Singapore
-  # thumbnail: "imgs/thumbnails/PlainSight.png"
+  thumbnail: "imgs/thumbnails/epadam.jpg"
   type: workshop
   # defaultUrl: https://poloclub.github.io/transformer-explainer/
   links:
