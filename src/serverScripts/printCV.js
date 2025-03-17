@@ -8,7 +8,7 @@ const __dirname = dirname(__filename);
 console.log(__dirname);
 
 (async () => {
-  const browser = await puppeteer.launch({headless: "new"});
+  const browser = await puppeteer.launch({headless: "new",  args: ['--no-sandbox', '--disable-setuid-sandbox']});
   const page = await browser.newPage();
   const filename = `file://${__dirname}/../../build/cv.html`;
   const outFilename = `${__dirname}/../../static/cv-pdfs/benjamin-hoover-cv.pdf`;
