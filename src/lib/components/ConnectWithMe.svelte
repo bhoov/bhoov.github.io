@@ -1,10 +1,7 @@
 <script lang="ts">
     export let title: string = "Let's connect!";
     export let data;
-
-    $: socialInfo = data.socialLinkInfo;
-
-    let connectSocialInfo = [
+    export let connectSocialInfo = [
         {
             name: "Ben",
             img: "imgs/people/me-headshot-small.jpg",
@@ -43,79 +40,23 @@
             ],
         },
         {
-            name: "Hendrik",
-            img: "imgs/people/hendrik-strobelt.png",
+            name: "Krishna",
+            img: "imgs/people/krishna-balasubramanian.jpg",
             links: [
                 {
                     name: "homepage",
                     icon: "icons/home.svg",
-                    href: "http://hendrik.strobelt.com",
-                },
-                {
-                    name: "linkedin",
-                    icon: "icons/linkedin.svg",
-                    href: "https://www.linkedin.com/in/hendrik-strobelt-5951a021/",
+                    href: "https://sites.google.com/view/kriznakumar/home",
                 },
                 {
                     name: "email",
                     icon: "icons/email.svg",
-                    href: "mailto:hendrik.strobelt@ibm.com",
-                },
-                {
-                    name: "bluesky",
-                    icon: "icons/bluesky.svg",
-                    href: "https://bsky.app/profile/henstr.bsky.social",
-                },
-                {
-                    name: "github",
-                    icon: "icons/github-alt.svg",
-                    href: "https://github.com/HendrikStrobelt",
+                    href: "mailto:kbala@ucdavis.edu",
                 },
                 {
                     name: "scholar",
                     icon: "icons/scholar.svg",
-                    href: "https://scholar.google.com/citations?user=H4vEe_oAAAAJ&hl=en",
-                },
-            ],
-        },
-        {
-            name: "Pari",
-            img: "imgs/people/pari.webp",
-            links: [
-                {
-                    name: "homepage",
-                    icon: "icons/home.svg",
-                    href: "https://rithram.github.io",
-                },
-                {
-                    name: "linkedin",
-                    icon: "icons/linkedin.svg",
-                    href: "https://www.linkedin.com/in/parikshit-ram-4861325/",
-                },
-                {
-                    name: "email",
-                    icon: "icons/email.svg",
-                    href: "mailto:Parikshit.Ram@ibm.com",
-                },
-                {
-                    name: "twitter",
-                    icon: "icons/Xlogo.svg",
-                    href: "https://x.com/p_ram_p?lang=en",
-                },
-                {
-                    name: "bluesky",
-                    icon: "icons/bluesky.svg",
-                    href: "https://bsky.app/profile/p-ram-p.bsky.social",
-                },
-                {
-                    name: "github",
-                    icon: "icons/github-alt.svg",
-                    href: "https://github.com/rithram",
-                },
-                {
-                    name: "scholar",
-                    icon: "icons/scholar.svg",
-                    href: "https://scholar.google.com/citations?user=JaXmmnkAAAAJ&hl=en",
+                    href: "https://scholar.google.com/citations?user=uuts9CAAAAAJ&hl=en",
                 },
             ],
         },
@@ -157,6 +98,47 @@
                     name: "scholar",
                     icon: "icons/scholar.svg",
                     href: "https://scholar.google.com/citations?user=WeD9ll0AAAAJ&hl=en",
+                },
+            ],
+        },
+        {
+            name: "Pari",
+            img: "imgs/people/pari.webp",
+            links: [
+                {
+                    name: "homepage",
+                    icon: "icons/home.svg",
+                    href: "https://rithram.github.io",
+                },
+                {
+                    name: "linkedin",
+                    icon: "icons/linkedin.svg",
+                    href: "https://www.linkedin.com/in/parikshit-ram-4861325/",
+                },
+                {
+                    name: "email",
+                    icon: "icons/email.svg",
+                    href: "mailto:Parikshit.Ram@ibm.com",
+                },
+                {
+                    name: "twitter",
+                    icon: "icons/Xlogo.svg",
+                    href: "https://x.com/p_ram_p?lang=en",
+                },
+                {
+                    name: "bluesky",
+                    icon: "icons/bluesky.svg",
+                    href: "https://bsky.app/profile/p-ram-p.bsky.social",
+                },
+                {
+                    name: "github",
+                    icon: "icons/github-alt.svg",
+                    href: "https://github.com/rithram",
+                },
+                {
+                    name: "scholar",
+                    icon: "icons/scholar.svg",
+                    href: "https://scholar.google.com/citations?user=JaXmmnkAAAAJ&hl=en",
                 },
             ],
         },
