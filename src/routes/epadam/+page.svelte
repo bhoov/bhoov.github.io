@@ -1,7 +1,8 @@
-<script lang="ts">
-    export let title: string = "Let's connect!";
-    export let data;
-    export let connectSocialInfo = [
+<script>
+  import ConnectWithMe from "$lib/components/ConnectWithMe.svelte";
+  export let data;
+  // author info
+    let authorSocialInfo = [
         {
             name: "Ben",
             img: "imgs/people/me-headshot-small.jpg",
@@ -144,52 +145,61 @@
         },
     ];
 
-    $: allMailList = connectSocialInfo.map((person) => person.links.find((link) => link.name === "email")?.href.replace("mailto:", ""));
 </script>
 
-<div
-    class="flex flex-col items-start justify-center bg-blue-100 p-4 p-3 w-full rounded-xl mt-6"
->
-    <h1 class="text-4xl my-2">Let's connect! 🥳</h1>
-    <div class="text-md italic">
-        Feel free to <a href={`mailto:${allMailList.join(",")}`} class="underline hover:text-blue-500">send us a group email</a>
-    </div>
-    {#each connectSocialInfo as person}
-        <div class="flex flex-row gap-6 md:gap-8 my-4">
-            <img
-                src={person.img}
-                alt={person.name}
-                class="rounded-3xl self-center object-contain justify-self-center"
-                style="width: 80px;"
-            />
-            <div class="self-center">
-                <div class="whitespace-nowrap mb-2 text-xl font-light">
-                    Find <span class="font-bold">{person.name}</span> on:
-                </div>
-                <div
-                    class="flex flex-row items-center justify-start gap-3 md:gap-4 flex-wrap"
-                >
-                    {#each person.links as link}
-                        <a target="_blank" href={link.href} rel="noreferrer">
-                            <div
-                                class="bg-slate-100 p-2 rounded-full hover:bg-slate-300 text-md"
-                            >
-                                <span
-                                    class="svg-icon self-center pointer-events-none"
-                                >
-                                    <object
-                                        type="image/svg+xml"
-                                        width="20px"
-                                        height="20px"
-                                        data={link.icon}
-                                        class="opacity-100"
-                                    /></span
-                                >
-                            </div>
-                        </a>
-                    {/each}
-                </div>
-            </div>
-        </div>
-    {/each}
-</div>
+<main>
+  <ConnectWithMe title="Let's connect! 🥳" {data} connectSocialInfo={authorSocialInfo} />
+  <p class="text-gray-500 text-sm italic my-4">
+    Barebones page to important links to this work
+  </p>
+  <h1 class="mt-4 mb-2">Dense Associative Memory with Epanechnikov Energy</h1>
+  <div class="flex flex-row gap-6 mb-6">
+    <div class="text-lg font-medium">Benjamin Hoover</div>
+    <div class="text-lg font-medium">Krishna Balasubramanian</div>
+    <div class="text-lg font-medium">Dmitry Krotov</div>
+    <div class="text-lg font-medium">Parikshit Ram</div>
+  </div>
+  
+  <p class="abstract">
+    We propose a novel energy function for Dense Associative Memory (DenseAM)
+    networks, the log-sum-ReLU (LSR), inspired by optimal kernel density
+    estimation. Unlike the common log-sum-exponential (LSE) function, LSR is
+    based on the Epanechnikov kernel and enables exact memory retrieval with
+    exponential capacity without requiring exponential separation functions.
+    Uniquely, it introduces abundant additional <em>emergent</em> local minima while
+    preserving perfect pattern recovery--a characteristic previously unseen in DenseAM
+    literature. Empirical results show LSR generates significantly more local minima
+    and produces samples with higher log-likelihood than LSE-based models, making
+    it promising for both memory storage and generative tasks.
+  </p>
+
+  <h2>Links</h2>
+  <ul>
+    <li>
+      <a
+        href="https://openreview.net/forum?id=LOAkHpRSlZ"
+        target="_blank"
+        rel="noreferrer">Paper on OpenReview</a
+      >
+    </li>
+    <!-- <li> -->
+    <!--   <a -->
+    <!--     href="https://twitter.com/Ben_Hoov/status/1730570603210404236" -->
+    <!--     target="_blank" -->
+    <!--     rel="noreferrer">Initial Twitter Announcement</a -->
+    <!--   > -->
+    <!-- </li> -->
+  </ul>
+</main>
+
+<style lang="postcss">
+  h2 {
+    @apply font-bold text-lg mb-2 mt-8;
+  }
+
+  a {
+    border-bottom: 2px solid rgba(96, 165, 250, 0.631);
+  }
+
+  /* Add your custom styles here */
+</style>
