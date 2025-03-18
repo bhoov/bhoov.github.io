@@ -153,7 +153,7 @@
     Barebones page to important links to this work
   </p>
   <h1 class="mt-4 mb-2">Dense Associative Memory with Epanechnikov Energy</h1>
-  <div class="flex flex-row gap-6 mb-6">
+  <div class="flex flex-col sm:flex-row gap-6 mb-6">
     <div class="text-lg font-medium">Benjamin Hoover</div>
     <div class="text-lg font-medium">Krishna Balasubramanian</div>
     <div class="text-lg font-medium">Dmitry Krotov</div>
