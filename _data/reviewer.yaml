@@ -30,10 +30,18 @@
   - venue: International Conference for Machine Learning
     venueShorthand: ICML
     years:
+      - year: 2025
+        url: https://icml.cc/Conferences/2025
       - year: 2023
         url: https://icml.cc/Conferences/2023
       - year: 2022
         url: https://icml.cc/Conferences/2022
+
+  - venue: ACM Conference on Human Factors in Computing Systems
+    venueShorthand: CHI
+    years:
+      - year: 2023
+        url: https://chi2023.acm.org/
 
   - venue: Workshop on Associative Memory & Hopfield Networks at NeurIPS
     venueShorthand: AMHN@NeurIPS
@@ -41,11 +49,11 @@
       - year: 2023
         url: https://amhn.vizhub.ai/2023
 
-  - venue: Blogpost Track at ICLR
-    venueShorthand: BP@ICLR
+  - venue: Workshop on New Frontiers in Associative Memories at ICLR
+    venueShorthand: NFAM@ICLR
     years:
-      - year: 2023
-        url: https://iclr-blogposts.github.io/2023/about
+      - year: 2025
+        url: https://nfam.vizhub.ai/
 
   - venue: Workshop on the Symbiosis of Deep Learning and Differential Equations at NeurIPS
     venueShorthand: DLDE@NeurIPS
@@ -53,9 +61,8 @@
       - year: 2022
         url: https://dlde-2022.github.io/
 
-
-  - venue: ACM Conference on Human Factors in Computing Systems
-    venueShorthand: CHI
+  - venue: Blogpost Track at ICLR
+    venueShorthand: BP@ICLR
     years:
       - year: 2023
-        url: https://chi2023.acm.org/
+        url: https://iclr-blogposts.github.io/2023/about

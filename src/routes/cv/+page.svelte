@@ -152,7 +152,7 @@
       </div>
 
       <div>
-        <div class="font-bold text-lg">Committee</div>
+        <div class="font-bold text-lg">Organizing Committee</div>
         <div class="flex flex-col gap-y-1 sm:gap-y-0">
           {#each committee as venue}
             <CVReviewerEntry {venue} />
