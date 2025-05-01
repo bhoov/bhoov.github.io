@@ -1,14 +1,13 @@
-- id: ConceptAttention
-  title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
-  shortTitle: ConceptAttention
-  category: visualization
+- id: EpaDAM
+  title: "Dense Associative Memory with Epanechnikov Memory"
+  shortTitle: Emergent memories with optimal KDE kernel
+  category: memory
   authors:
-    - Alec Helbling
-    - Tuna Meral
     - Benjamin Hoover
-    - Pinar Yanardag
-    - Polo Chau
-  venue: "ICML"
+    - Krishna Balasubramanian
+    - Dmitry Krotov
+    - Parikshit Ram
+  venue: "New Frontiers for Associative Memory Workshop at ICLR"
   venueShorthand: "NFAM@ICLR"
   location: Singapore
   thumbnail: "imgs/thumbnails/epadam.jpg"
@@ -35,15 +34,16 @@
       url={https://openreview.net/forum?id=LOAkHpRSlZ}
     }
 
-- id: EpaDAM
-  title: "Dense Associative Memory with Epanechnikov Memory"
-  shortTitle: Emergent memories with optimal KDE kernel
-  category: memory
+- id: ConceptAttention
+  title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
+  shortTitle: ConceptAttention
+  category: visualization
   authors:
+    - Alec Helbling
+    - Tuna Meral
     - Benjamin Hoover
-    - Krishna Balasubramanian
-    - Dmitry Krotov
-    - Parikshit Ram
+    - Pinar Yanardag
+    - Polo Chau
   venue: "International Conference on Machine Learning"
   venueShorthand: "ICML"
   location: Vancouver
@@ -60,7 +60,13 @@
     - type: video
       url: https://www.youtube.com/watch?v=zXD3oiLT3uE
       label: Video
+    - type: code
+      url: https://github.com/helblazer811/ConceptAttention
+      label: Code
+      showStars: true
   awards:
+    - name: "Spotlight Poster @ICML'25'"
+      url: ""
   month: July
   year: 2025
   featured: false
@@ -68,14 +74,14 @@
     We invent a way to extract concepts and segementation maps from the semantically meaningful latent space of Vision Diffusion Transformers.
   selected: false
   bibtex: |-
-      @misc{helbling2025concept,
-        title={ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features},
-        author={Alec Helbling and Tuna Han Salih Meral and Ben Hoover and Pinar Yanardag and Duen Horng Chau},
-        year={2025},
-        eprint={2502.04320},
-        archivePrefix={arXiv},
-        primaryClass={cs.CV},
-        url={https://arxiv.org/abs/2502.04320},
+    @misc{helbling2025concept,
+      title={ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features},
+      author={Alec Helbling and Tuna Han Salih Meral and Ben Hoover and Pinar Yanardag and Duen Horng Chau},
+      year={2025},
+      eprint={2502.04320},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2502.04320},
     }
 
 - id: DrDAM
