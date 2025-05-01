@@ -1,13 +1,14 @@
-- id: EpaDAM
-  title: "Dense Associative Memory with Epanechnikov Memory"
-  shortTitle: Emergent memories with optimal KDE kernel
-  category: memory
+- id: ConceptAttention
+  title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
+  shortTitle: ConceptAttention
+  category: visualization
   authors:
+    - Alec Helbling
+    - Tuna Meral
     - Benjamin Hoover
-    - Krishna Balasubramanian
-    - Dmitry Krotov
-    - Parikshit Ram
-  venue: "ICLR Workshop on New Frontiers for Associative Memory"
+    - Pinar Yanardag
+    - Polo Chau
+  venue: "ICML"
   venueShorthand: "NFAM@ICLR"
   location: Singapore
   thumbnail: "imgs/thumbnails/epadam.jpg"
@@ -34,6 +35,49 @@
       url={https://openreview.net/forum?id=LOAkHpRSlZ}
     }
 
+- id: EpaDAM
+  title: "Dense Associative Memory with Epanechnikov Memory"
+  shortTitle: Emergent memories with optimal KDE kernel
+  category: memory
+  authors:
+    - Benjamin Hoover
+    - Krishna Balasubramanian
+    - Dmitry Krotov
+    - Parikshit Ram
+  venue: "International Conference on Machine Learning"
+  venueShorthand: "ICML"
+  location: Vancouver
+  thumbnail: "imgs/thumbnails/ConceptAttention.webp"
+  type: conference
+  # defaultUrl: https://poloclub.github.io/transformer-explainer/
+  links:
+    - type: pdf
+      url: https://arxiv.org/abs/2502.04320v1
+      label: PDF
+    - type: demo
+      url: https://huggingface.co/spaces/helblazer811/ConceptAttention
+      label: Demo
+    - type: video
+      url: https://www.youtube.com/watch?v=zXD3oiLT3uE
+      label: Video
+  awards:
+  month: July
+  year: 2025
+  featured: false
+  featureDescription: >-
+    We invent a way to extract concepts and segementation maps from the semantically meaningful latent space of Vision Diffusion Transformers.
+  selected: false
+  bibtex: |-
+      @misc{helbling2025concept,
+        title={ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features},
+        author={Alec Helbling and Tuna Han Salih Meral and Ben Hoover and Pinar Yanardag and Duen Horng Chau},
+        year={2025},
+        eprint={2502.04320},
+        archivePrefix={arXiv},
+        primaryClass={cs.CV},
+        url={https://arxiv.org/abs/2502.04320},
+    }
+
 - id: DrDAM
   title: "Dense Associative Memory through the Lens of Random Features"
   shortTitle: DAMs meet Random Features
@@ -45,7 +89,7 @@
     - Parikshit Ram
     - Dmitry Krotov
   venue: "Neural Information Processing Systems"
-  venueShorthand: "NeurIPS '24"
+  venueShorthand: "NeurIPS"
   location: Vancouver, BC Canada
   # thumbnail: "imgs/thumbnails/PlainSight.png"
   type: conference
