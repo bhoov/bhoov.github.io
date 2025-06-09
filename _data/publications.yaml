@@ -1,3 +1,59 @@
+- id: ConceptAttention
+  title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
+  shortTitle: ConceptAttention: DiTs Learn Highly Interpretable Features
+  category: vis
+  authors:
+    - Alec Helbling
+    - Tuna Han Salih Meral
+    - Benjamin Hoover
+    - Pinar Yanardag
+    - Polo Chau
+  venue: "International Conference on Machine Learning"
+  venueShorthand: "ICML '25"
+  location: Vancouver, BC Canada
+  # thumbnail: "imgs/thumbnails/PlainSight.png"
+  type: conference
+  # defaultUrl: https://poloclub.github.io/transformer-explainer/
+  links:
+    - type: code
+      url: https://github.com/helblazer811/ConceptAttention?tab=readme-ov-file
+      label: Code
+      showStars: true
+    - type: pdf
+      url: https://arxiv.org/abs/2502.04320
+      label: PDF
+    # - type: pdf
+    #   url: /posters/drdam-36x48.pdf
+    #   label: Poster
+    - type: video
+      label: Video
+      url: https://www.youtube.com/watch?v=zXD3oiLT3uE
+    - type: demo
+      url: https://huggingface.co/spaces/helblazer811/ConceptAttention
+      label: Demo
+  awards:
+    - name: "Oral Spotlight, ICML'25 (top 1%)"
+      url: "https://icml.cc/virtual/2025/events/oral"
+    - name: "Oral Spotlight, VisCon Workshop@CVPR'25"
+      url: "https://sites.google.com/stanford.edu/visual-concepts-workshops/home"
+  month: July
+  year: 2025
+  featured: True
+  featureDescription: >-
+    We discover how to extract highly salient features from the learned representations of Diffusion Transformers, using our technique to segment images by semantic concept. We name our technique ConceptAttention, which outperforms all prior methods on single- and multi-class classification.
+  selected: True
+  bibtex: |-
+    @misc{
+      helbling2025conceptattention,
+      title={ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features},
+      author={Alec Helbling and Tuna Han Salih Meral and Ben Hoover and Pinar Yanardag and Duen Horng Chau},
+      year={2025},
+      eprint={2502.04320},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2502.04320},
+    }
+
 - id: EpaDAM
   title: "Dense Associative Memory with Epanechnikov Memory"
   shortTitle: Emergent memories with optimal KDE kernel
