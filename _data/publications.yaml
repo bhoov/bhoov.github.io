@@ -1,6 +1,6 @@
 - id: ConceptAttention
   title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
-  shortTitle: "ConceptAttention: DiTs Learn Highly Interpretable Features"
+  shortTitle: "ConceptAttention"
   category: vis
   authors:
     - Alec Helbling
@@ -53,7 +53,7 @@
 
 - id: EpaDAM
   title: "Dense Associative Memory with Epanechnikov Memory"
-  shortTitle: Emergent memories with optimal KDE kernel
+  shortTitle: Epanechnikov DenseAM
   category: memory
   authors:
     - Benjamin Hoover
@@ -89,7 +89,7 @@
 
 - id: DrDAM
   title: "Dense Associative Memory through the Lens of Random Features"
-  shortTitle: DAMs meet Random Features
+  shortTitle: DenseAMs meet Random Features
   category: memory
   authors:
     - Benjamin Hoover
@@ -100,7 +100,7 @@
   venue: "Neural Information Processing Systems"
   venueShorthand: "NeurIPS"
   location: Vancouver, BC Canada
-  # thumbnail: "imgs/thumbnails/PlainSight.png"
+  thumbnail: "imgs/thumbnails/drdam.png"
   type: conference
   # defaultUrl: https://poloclub.github.io/transformer-explainer/
   links:
@@ -119,9 +119,10 @@
   awards:
   month: Dec
   year: 2024
-  featured: false
+  featured: true
   featureDescription: >-
-    Dense Associative Memories are able to store an exponential number of memories, but each memory adds new parameters to the energy function. We propose a Distributed Representation for Dense Associative Memories that allows us to add new memories without increasing the total number of parameters.
+    DenseAMs can store an exponential number of memories, but each memory adds new parameters to the energy function. 
+    We propose a novel, "Distributed representation for DenseAMs" (DrDAM) that allows us to add new memories without increasing the total number of parameters.
   selected: false
   bibtex: |-
     @inproceedings{
@@ -179,7 +180,6 @@
   featured: true
   featureDescription: >-
     Transformers are the most powerful AI innovation of the last decade. Learn how they work by interacting with every mechanic from the comfort of your web browser. Taught in Georgia Tech CSE6242 Data and Visual Analytics (typically 250-300 students per semester).
-    
   selected: true
 
 - id: PlainSight
