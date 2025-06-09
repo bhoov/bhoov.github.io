@@ -1,6 +1,6 @@
 - id: ConceptAttention
   title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
-  shortTitle: ConceptAttention: DiTs Learn Highly Interpretable Features
+  shortTitle: "ConceptAttention: DiTs Learn Highly Interpretable Features"
   category: vis
   authors:
     - Alec Helbling
@@ -11,7 +11,7 @@
   venue: "International Conference on Machine Learning"
   venueShorthand: "ICML '25"
   location: Vancouver, BC Canada
-  # thumbnail: "imgs/thumbnails/PlainSight.png"
+  thumbnail: "imgs/thumbnails/ConceptAttention.webp"
   type: conference
   # defaultUrl: https://poloclub.github.io/transformer-explainer/
   links:
@@ -22,9 +22,6 @@
     - type: pdf
       url: https://arxiv.org/abs/2502.04320
       label: PDF
-    # - type: pdf
-    #   url: /posters/drdam-36x48.pdf
-    #   label: Poster
     - type: video
       label: Video
       url: https://www.youtube.com/watch?v=zXD3oiLT3uE
@@ -88,56 +85,6 @@
       booktitle={New Frontiers in Associative Memories},
       year={2025},
       url={https://openreview.net/forum?id=LOAkHpRSlZ}
-    }
-
-- id: ConceptAttention
-  title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
-  shortTitle: ConceptAttention
-  category: visualization
-  authors:
-    - Alec Helbling
-    - Tuna Meral
-    - Benjamin Hoover
-    - Pinar Yanardag
-    - Polo Chau
-  venue: "International Conference on Machine Learning"
-  venueShorthand: "ICML"
-  location: Vancouver
-  thumbnail: "imgs/thumbnails/ConceptAttention.webp"
-  type: conference
-  # defaultUrl: https://poloclub.github.io/transformer-explainer/
-  links:
-    - type: pdf
-      url: https://arxiv.org/abs/2502.04320v1
-      label: PDF
-    - type: demo
-      url: https://huggingface.co/spaces/helblazer811/ConceptAttention
-      label: Demo
-    - type: video
-      url: https://www.youtube.com/watch?v=zXD3oiLT3uE
-      label: Video
-    - type: code
-      url: https://github.com/helblazer811/ConceptAttention
-      label: Code
-      showStars: true
-  awards:
-    - name: "Spotlight Poster @ICML'25' (top 2.5%)"
-      url: ""
-  month: July
-  year: 2025
-  featured: false
-  featureDescription: >-
-    We invent a way to extract concepts and segementation maps from the semantically meaningful latent space of Vision Diffusion Transformers.
-  selected: false
-  bibtex: |-
-    @misc{helbling2025concept,
-      title={ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features},
-      author={Alec Helbling and Tuna Han Salih Meral and Ben Hoover and Pinar Yanardag and Duen Horng Chau},
-      year={2025},
-      eprint={2502.04320},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2502.04320},
     }
 
 - id: DrDAM
