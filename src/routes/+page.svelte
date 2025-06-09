@@ -7,6 +7,8 @@
     $: people = data.people;
     $: publications = data.publications;
 
+    $: featured = data.publications.filter(x => x.featured)
+
     $: featuredMemory = data.publications.filter(
         (x) => x.featured && x.category == "memory"
     );
@@ -143,7 +145,18 @@
             {/if}
     </div>
 
-    <h1 class="main-col mt-12 text-center" id="selected-memory">
+    <h1 class="main-col mt-12" id="selected-memory">
+        Research Highlights
+    </h1>
+    <div
+        class="col-start-3 col-end-11 flex flex-wrap gap-4 md:col-start-2 md:col-end-12"
+    >
+        {#each featured as project, i}
+            <LandingPageCard {project} />
+        {/each}
+    </div>
+
+    <!-- <h1 class="main-col mt-12 text-center" id="selected-memory">
         Memory Research Highlights
     </h1>
     <div
@@ -163,7 +176,7 @@
         {#each featuredVis as project, i}
             <LandingPageCard {project} />
         {/each}
-    </div>
+    </div> -->
 </div>
 
 <!-- <div class="main-col flex gap-2 flex-col"> -->
