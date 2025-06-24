@@ -511,10 +511,12 @@
     NeurIPS 2022
   bibtex: |-
 
-    @article{hooverUniversal,
+    @article{hoover2022universal,
       title={A Universal Abstraction for Hierarchical Hopfield Networks},
       author={Hoover, Benjamin and Chau, Duen Horng and Strobelt, Hendrik and Krotov, Dmitry},
       booktitle={The Symbiosis of Deep Learning and Differential Equations II}
+      year=2022
+      url={https://openreview.net/forum?id=SAv3nhzNWhw}
     }
 
 - id: PromptIDE

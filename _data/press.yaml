@@ -33,8 +33,8 @@
   month: Apr
   url: https://www.freethink.com/hard-tech/trustworthy-ai
 
-- name: "GA Tech College of Computing: What's Next in AI"
-  outlet: GT CoC news
+- name: "What's Next in AI"
+  outlet: Georgia Tech College of Computing news
   year: 2023
   month: Apr
   url: https://www.cc.gatech.edu/news/manufacturing-finance-among-industries-benefit-whats-next-ai-2023
@@ -67,3 +67,15 @@
   year: 2025
   month: May
   url: https://www.quantamagazine.org/the-strange-physics-that-gave-birth-to-ai-20250430/
+
+- name: "The Strange Physics That Gave Birth to AI"
+  outlet: Quanta Magazine
+  year: 2025
+  month: May
+  url: https://www.quantamagazine.org/the-strange-physics-that-gave-birth-to-ai-20250430/
+
+- name: "IBM’s Dmitry Krotov wants to crack the ‘physics’ of memory"
+  outlet: IBM Research Blog
+  year: 2025
+  month: Jun
+  url: https://research.ibm.com/blog/dmitry-krotov-ai-physics
