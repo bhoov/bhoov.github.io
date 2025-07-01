@@ -68,14 +68,16 @@
   month: May
   url: https://www.quantamagazine.org/the-strange-physics-that-gave-birth-to-ai-20250430/
 
-- name: "The Strange Physics That Gave Birth to AI"
-  outlet: Quanta Magazine
-  year: 2025
-  month: May
-  url: https://www.quantamagazine.org/the-strange-physics-that-gave-birth-to-ai-20250430/
-
 - name: "IBM’s Dmitry Krotov wants to crack the ‘physics’ of memory"
   outlet: IBM Research Blog
   year: 2025
   month: Jun
   url: https://research.ibm.com/blog/dmitry-krotov-ai-physics
+  # awards: Front page of hacker news https://news.ycombinator.com/item?id=44382367
+
+- name: "Researchers Uncover Hidden Ingredients Behind AI Creativity"
+  outlet: Quanta Magazine
+  year: 2025
+  month: Jun
+  url: https://www.quantamagazine.org/researchers-uncover-hidden-ingredients-behind-ai-creativity-20250630/
+  # awards: Front page of hacker news https://news.ycombinator.com/item?id=44382367
