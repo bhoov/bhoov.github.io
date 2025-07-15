@@ -1,3 +1,46 @@
+- id: AMTutorial
+  title: "Tutorial on Modern Methods in Associative Memory"
+  shortTitle: "Tutorial on Associative Memory"
+  category: memory
+  authors:
+    - Dmitry Krotov
+    - Benjamin Hoover
+    - Parikshit Ram
+    - Bao Pham
+  venue: "International Conference on Machine Learning"
+  venueShorthand: "ICML '25"
+  location: Vancouver, BC Canada
+  thumbnail: "imgs/thumbnails/amtutorial.webp"
+  type: preprint
+  # defaultUrl: https://poloclub.github.io/transformer-explainer/
+  links:
+    - type: code
+      url: "https://github.com/bhoov/amtutorial"
+      label: Code
+      showStars: false
+    - type: pdf
+      url: "https://arxiv.org/abs/2507.06211"
+      label: PDF
+    - type: url
+      url: "https://tutorial.amemory.net/"
+      label: Home
+  month: July
+  year: 2025
+  featured: True
+  featureDescription: >-
+    Energy-based Associative Memory transformed the field of AI, but it is hardly understood. We present a birds eye view of Associative Memory, beginning with the invention of the Hopfield Network and concluding with modern, dense storage versions that have strong connections to Transformers and kernel methods.
+  selected: True
+  bibtex: |-
+    @misc{krotov2025modernmethodsassociativememory,
+      title={Modern Methods in Associative Memory},
+      author={Dmitry Krotov and Benjamin Hoover and Parikshit Ram and Bao Pham},
+      year={2025},
+      eprint={2507.06211},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2507.06211},
+    }
+
 - id: ConceptAttention
   title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
   shortTitle: "ConceptAttention"
@@ -31,7 +74,7 @@
   awards:
     - name: "Oral Spotlight, ICML'25 (top 1%)"
       url: "https://icml.cc/virtual/2025/events/oral"
-    - name: "Oral Spotlight, VisCon Workshop@CVPR'25"
+    - name: "Best Paper, VisCon Workshop@CVPR'25"
       url: "https://sites.google.com/stanford.edu/visual-concepts-workshops/home"
   month: July
   year: 2025

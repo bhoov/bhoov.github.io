@@ -4,6 +4,15 @@
 #   date:
 #
 #
+- name: "Oral Paper Award"
+  description: "Concept Attention is an oral presentation (top 1% of 12k+ submissions) at ICML 2025"
+  date: July 2025
+
+- name: "Best Poster Award"
+  url: "https://icml.cc/virtual/2025/oral/47221"
+  description: "Concept Attention is the Best Poster at the CVPR’25 Workshop on Visual Concepts"
+  date: Jun. 2025
+
 - name: "Best Poster Award"
   description: "Transformer Explainer receives Best Poster at IEEE VIS 2024"
   date: Oct. 2024
