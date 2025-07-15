@@ -1,3 +1,10 @@
+- title: "Modern Methods in Associative Memory"
+  venues:
+    - location: "ICML 2025 Tutorial"
+      date: July 2025
+      locationUrl: https://tutorial.amemory.net/
+      invited: true
+
 - title: "Hopfield Networks 2.0: Associative Memory for the Modern Era of AI"
   venues:
     - location: "Physics Informed ML Workshop at Los Alamos National Laboratory"

@@ -1,6 +1,14 @@
-- date: Jun 2025
+- date: July 2025
+  HTMLdescription: >-
+    ✈️ I will be at ICML in Vancouver presenting our <a href="https://tutorial.amemory.net/">Associative Memory Tutorial</a> and <a href="https://arxiv.org/abs/2502.04320">ConceptAttention</a> (oral 🏆). Feel free to reach out!
+
+- date: June 2025
   HTMLdescription: >-
     ✈️ I will be at CVPR in Nashville (June 12-16) presenting <a href="https://arxiv.org/abs/2502.04320">ConceptAttention</a> and <a href="https://arxiv.org/abs/2506.00280">3D Gaussian Splat Vulnerabilities"</a>to the <a href="https://sites.google.com/stanford.edu/visual-concepts-workshops/home">VisCon Workshop</a> and <a href="https://neural-bcc.github.io/">NeuralBCC Workshop</a>, respectively. Feel free to reach out!
+
+- date: June 2025
+  HTMLdescription: >-
+    📖 Quanta quoted me in an <a href="https://www.quantamagazine.org/researchers-uncover-hidden-ingredients-behind-ai-creativity-20250630/">article on AI creativity</a> regarding my work on <a href="https://arxiv.org/abs/2309.16750">Memory and Diffusion</a> 🤗.
 
 - date: May 2025
   HTMLdescription: >-
