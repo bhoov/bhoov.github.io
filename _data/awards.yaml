@@ -3,47 +3,50 @@
 #   description: 
 #   date:
 #
-#
+- name: "Spotlight Paper Award"
+  description: "Epanechnikov DenseAM is a spotlight presentation (top 3% of 21k+ submissions) at NeurIPS 2025"
+  date: Dec 2025
+
 - name: "Oral Paper Award"
   description: "Concept Attention is an oral presentation (top 1% of 12k+ submissions) at ICML 2025"
-  date: July 2025
+  date: Jul 2025
 
 - name: "Best Poster Award"
   url: "https://icml.cc/virtual/2025/oral/47221"
   description: "Concept Attention is the Best Poster at the CVPR’25 Workshop on Visual Concepts"
-  date: Jun. 2025
+  date: Jun 2025
 
 - name: "Best Poster Award"
   description: "Transformer Explainer receives Best Poster at IEEE VIS 2024"
-  date: Oct. 2024
+  date: Oct 2024
 
 - name: "Best Poster Award"
   description: "Energy Transformer receives 2nd place🥈 in GATech's annual Graduate Poster Symposium"
-  date: Mar. 2024
+  date: Mar 2024
 
 - name: "Best Paper Award, Honorable Mention"
   description: "DiffusionDB receives a Best Paper, Honorable Mention Award at ACL 2023"
-  date: July 2023
+  date: Jul 2023
 
 - name: "Spotlight Paper Award"
   description: "HAMUX is spotlighted (top 5 submissions) at the Deep Learning and Differential Equation Workshop at NeurIPS 2022"
-  date: Dec. 2022
+  date: Dec 2022
 
 - name: "Highlighted Reviewer"
   description: "ICLR 2022"
-  date: Apr. 2022
+  date: Apr 2022
 
 - name: "Best Poster Award"
   description: "RXNMapper wins Best Poster award at #IOPPoster 2020"
-  date: July 2020
+  date: Jul 2020
 
 - name: Best Demo Award
   description: "LMdiff is Best Demo at NeurIPS 2020"
-  date: Dec. 2020
+  date: Dec 2020
 
 - name: "(Runner Up) Best Demo"
   description: "exBERT is runner up for Best Demo at NeurIPS 2019"
-  date: Dec. 2019
+  date: Dec 2019
 
 - name: "Dean's List"
   description: In the highest one third of engineering class by GPA at Duke
@@ -51,4 +54,4 @@
 
 - name: "Raul Buelvas Award"
   description: 'Given to one freshman at Duke University who "best exemplifies honor, optimism, and selflessness" as voted by peers and faculty'
-  date: Apr. 2014
+  date: Apr 2014

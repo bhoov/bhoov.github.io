@@ -1,3 +1,42 @@
+- id: EpaDAM
+  title: "Dense Associative Memory with Epanechnikov Memory"
+  shortTitle: Epanechnikov DenseAM
+  category: memory
+  authors:
+    - Benjamin Hoover
+    - Zhaoyang Shi
+    - Krishna Balasubramanian
+    - Dmitry Krotov
+    - Parikshit Ram
+  venue: "Neural Information Processing Systems"
+  venueShorthand: NeurIPS
+  location: San Diego, CA USA
+  thumbnail: "imgs/thumbnails/epadam.jpg"
+  type: conference
+  # defaultUrl: https://poloclub.github.io/transformer-explainer/
+  links:
+    - type: pdf
+      url: https://arxiv.org/abs/2506.10801
+      label: PDF
+  awards:
+    - name: "Spotlight, NeurIPS'25 (top 3%)"
+      url: 
+  month: Dec
+  year: 2025
+  featured: true
+  featureDescription: >-
+    Dense Associative Memories can produce emergent memories when we replace the Gaussian kernel with a KDE-optimal Epanechnikov kernel.
+  selected: false
+  bibtex: |-
+    @inproceedings{
+      hoover2025dense,
+      title={Dense Associative Memory with Epanechnikov Energy},
+      author={Benjamin Hoover and Zhaoyang Shi and Krishna Balasubramanian and Dmitry Krotov and Parikshit Ram},
+      booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems},
+      year={2025},
+      url={https://openreview.net/forum?id=ZbQ5Zq3zA3}
+    }
+
 - id: AMTutorial
   title: "Tutorial on Modern Methods in Associative Memory"
   shortTitle: "Tutorial on Associative Memory"
@@ -92,42 +131,6 @@
       archivePrefix={arXiv},
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2502.04320},
-    }
-
-- id: EpaDAM
-  title: "Dense Associative Memory with Epanechnikov Memory"
-  shortTitle: Epanechnikov DenseAM
-  category: memory
-  authors:
-    - Benjamin Hoover
-    - Krishna Balasubramanian
-    - Dmitry Krotov
-    - Parikshit Ram
-  venue: "New Frontiers for Associative Memory Workshop at ICLR"
-  venueShorthand: "NFAM@ICLR"
-  location: Singapore
-  thumbnail: "imgs/thumbnails/epadam.jpg"
-  type: workshop
-  # defaultUrl: https://poloclub.github.io/transformer-explainer/
-  links:
-    - type: pdf
-      url: https://openreview.net/forum?id=LOAkHpRSlZ
-      label: PDF
-  awards:
-  month: Apr
-  year: 2025
-  featured: false
-  featureDescription: >-
-    Dense Associative Memories can produce emergent memories when we replace the Gaussian kernel with a KDE-optimal Epanechnikov kernel.
-  selected: false
-  bibtex: |-
-    @inproceedings{
-      hoover2025dense,
-      title={Dense Associative Memory with Epanechnikov energy},
-      author={Benjamin Hoover and Krishna Balasubramanian and Dmitry Krotov and Parikshit Ram},
-      booktitle={New Frontiers in Associative Memories},
-      year={2025},
-      url={https://openreview.net/forum?id=LOAkHpRSlZ}
     }
 
 - id: DrDAM
