@@ -12,6 +12,13 @@ Built from scratch using [SvelteKit](https://kit.svelte.dev/) and [tailwindcss](
     //...
 </script>
 ```
+## Quickstart
+
+```sh
+npm install
+npm run build
+npm run preview
+```
 
 ## Building & deploying
 
