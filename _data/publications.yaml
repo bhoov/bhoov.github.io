@@ -1,11 +1,11 @@
 - id: EpaDAM
-  title: "Dense Associative Memory with Epanechnikov Memory"
+  title: "Dense Associative Memory with Epanechnikov Energy"
   shortTitle: Epanechnikov DenseAM
   category: memory
   authors:
     - Benjamin Hoover
     - Zhaoyang Shi
-    - Krishna Balasubramanian
+    - Krishnakumar Balasubramanian
     - Dmitry Krotov
     - Parikshit Ram
   venue: "Neural Information Processing Systems"
@@ -31,7 +31,7 @@
     @inproceedings{
       hoover2025dense,
       title={Dense Associative Memory with Epanechnikov Energy},
-      author={Benjamin Hoover and Zhaoyang Shi and Krishna Balasubramanian and Dmitry Krotov and Parikshit Ram},
+      author={Benjamin Hoover and Zhaoyang Shi and Krishnakumar Balasubramanian and Dmitry Krotov and Parikshit Ram},
       booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems},
       year={2025},
       url={https://openreview.net/forum?id=ZbQ5Zq3zA3}

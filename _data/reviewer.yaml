@@ -8,6 +8,8 @@
   - venue: Neural Information Processing Systems
     venueShorthand: NeurIPS
     years:
+      - year: 2025
+        url: https://nips.cc/Conferences/2025
       - year: 2024
         url: https://nips.cc/Conferences/2024
       - year: 2023
@@ -43,11 +45,11 @@
       - year: 2023
         url: https://chi2023.acm.org/
 
-  - venue: Workshop on Associative Memory & Hopfield Networks at NeurIPS
-    venueShorthand: AMHN@NeurIPS
+  - venue: Workshop on Memory and Vision at ICCV
+    venueShorthand: MemVis@ICCV
     years:
-      - year: 2023
-        url: https://amhn.vizhub.ai/2023
+      - year: 2025
+        url: https://sites.google.com/view/memvis-iccv2025-workshop/home
 
   - venue: Workshop on New Frontiers in Associative Memories at ICLR
     venueShorthand: NFAM@ICLR
@@ -55,14 +57,20 @@
       - year: 2025
         url: https://nfam.vizhub.ai/
 
-  - venue: Workshop on the Symbiosis of Deep Learning and Differential Equations at NeurIPS
-    venueShorthand: DLDE@NeurIPS
+  - venue: Workshop on Associative Memory & Hopfield Networks at NeurIPS
+    venueShorthand: AMHN@NeurIPS
     years:
-      - year: 2022
-        url: https://dlde-2022.github.io/
+      - year: 2023
+        url: https://amhn.vizhub.ai/2023
 
   - venue: Blogpost Track at ICLR
     venueShorthand: BP@ICLR
     years:
       - year: 2023
         url: https://iclr-blogposts.github.io/2023/about
+
+  - venue: Workshop on the Symbiosis of Deep Learning and Differential Equations at NeurIPS
+    venueShorthand: DLDE@NeurIPS
+    years:
+      - year: 2022
+        url: https://dlde-2022.github.io/
