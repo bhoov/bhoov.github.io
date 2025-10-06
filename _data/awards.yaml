@@ -5,7 +5,12 @@
 #
 - name: "Spotlight Paper Award"
   description: "Epanechnikov DenseAM is a spotlight presentation (top 3% of 21k+ submissions) at NeurIPS 2025"
-  date: Dec 2025
+  date: Sep 2025
+
+- name: "Oral Poster Award"
+  url: "https://sites.google.com/view/memvis-iccv2025-workshop/home"
+  description: "Dense Associative Memory with Epanechnikov energy is an oral poster (top 5 submissions) at ICCV 2025 workshop on Memory and Vision"
+  date: Aug 2025
 
 - name: "Oral Paper Award"
   description: "Concept Attention is an oral presentation (top 1% of 12k+ submissions) at ICML 2025"
