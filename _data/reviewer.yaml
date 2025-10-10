@@ -4,6 +4,11 @@
   #   years:
   #     - year: 
   #       url: 
+  - venue: IEEE Transactions on Network Science and Engineering
+    venueShorthand: TNSE
+    years:
+      - year: 2025
+        url: https://www.comsoc.org/publications/journals/ieee-tnse
 
   - venue: Neural Information Processing Systems
     venueShorthand: NeurIPS
@@ -63,14 +68,14 @@
       - year: 2023
         url: https://amhn.vizhub.ai/2023
 
-  - venue: Blogpost Track at ICLR
-    venueShorthand: BP@ICLR
-    years:
-      - year: 2023
-        url: https://iclr-blogposts.github.io/2023/about
-
   - venue: Workshop on the Symbiosis of Deep Learning and Differential Equations at NeurIPS
     venueShorthand: DLDE@NeurIPS
     years:
       - year: 2022
         url: https://dlde-2022.github.io/
+
+  - venue: Blogpost Track at ICLR
+    venueShorthand: BP@ICLR
+    years:
+      - year: 2023
+        url: https://iclr-blogposts.github.io/2023/about
