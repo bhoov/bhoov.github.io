@@ -1,7 +1,7 @@
 <script>
-  import ConnectWithMe from "$lib/components/ConnectWithMe.svelte";
-  export let data;
-  // author info
+    import ConnectWithMe from "$lib/components/ConnectWithMe.svelte";
+    export let data;
+    // author info
     let authorSocialInfo = [
         {
             name: "Ben",
@@ -37,6 +37,28 @@
                     name: "scholar",
                     icon: "icons/scholar.svg",
                     href: "https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en",
+                },
+            ],
+        },
+        {
+            name: "Zhaoyang",
+            img: "imgs/people/zhaoyang-shi.png",
+            links: [
+                { name: "homepage", icon: "icons/home.svg", href: "https://10mzys.github.io/website/" },
+                {
+                    name: "email",
+                    icon: "icons/email.svg",
+                    href: "mailto:zshi@fas.harvard.edu",
+                },
+                {
+                    name: "github",
+                    icon: "icons/github-alt.svg",
+                    href: "https://github.com/10Mzys",
+                },
+                {
+                    name: "scholar",
+                    icon: "icons/scholar.svg",
+                    href: "https://scholar.google.com/citations?user=DgKVZeYAAAAJ&hl=en",
                 },
             ],
         },
@@ -155,22 +177,14 @@
   <h1 class="mt-4 mb-2">Dense Associative Memory with Epanechnikov Energy</h1>
   <div class="flex flex-col sm:flex-row gap-6 mb-6">
     <div class="text-lg font-medium">Benjamin Hoover</div>
+    <div class="text-lg font-medium">Zhaoyang Shi</div>
     <div class="text-lg font-medium">Krishna Balasubramanian</div>
     <div class="text-lg font-medium">Dmitry Krotov</div>
     <div class="text-lg font-medium">Parikshit Ram</div>
   </div>
   
   <p class="abstract">
-    We propose a novel energy function for Dense Associative Memory (DenseAM)
-    networks, the log-sum-ReLU (LSR), inspired by optimal kernel density
-    estimation. Unlike the common log-sum-exponential (LSE) function, LSR is
-    based on the Epanechnikov kernel and enables exact memory retrieval with
-    exponential capacity without requiring exponential separation functions.
-    Uniquely, it introduces abundant additional <em>emergent</em> local minima while
-    preserving perfect pattern recovery--a characteristic previously unseen in DenseAM
-    literature. Empirical results show LSR generates significantly more local minima
-    and produces samples with higher log-likelihood than LSE-based models, making
-    it promising for both memory storage and generative tasks.
+    We propose a novel energy function for Dense Associative Memory (DenseAM) networks, the log-sum-ReLU (LSR), inspired by optimal kernel density estimation. Unlike the common log-sum-exponential (LSE) function, LSR is based on the Epanechnikov kernel and enables exact memory retrieval with exponential capacity without requiring exponential separation functions. Uniquely, it introduces abundant additional emergent local minima while preserving perfect pattern recovery --- a characteristic previously unseen in DenseAM literature. Empirical results show that LSR energy has significantly more local minima (memories) that have comparable log-likelihood to LSE-based models. Analysis of LSR's emergent memories on image datasets reveals a degree of creativity and novelty, hinting at this method's potential for both large-scale memory storage and generative tasks.
   </p>
 
   <h2>Links</h2>
@@ -182,13 +196,6 @@
         rel="noreferrer">Paper on OpenReview</a
       >
     </li>
-    <!-- <li> -->
-    <!--   <a -->
-    <!--     href="https://twitter.com/Ben_Hoov/status/1730570603210404236" -->
-    <!--     target="_blank" -->
-    <!--     rel="noreferrer">Initial Twitter Announcement</a -->
-    <!--   > -->
-    <!-- </li> -->
   </ul>
 </main>
 
