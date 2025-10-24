@@ -4,7 +4,8 @@
 #   date:
 #
 - name: "NeurIPS Top Reviewer"
-  description: "Selected as a top reviewer for NeurIPS 2025"
+  url: "https://neurips.cc/Conferences/2025/ProgramCommittee"
+  description: "Selected as a top reviewer (top 8% of 24k+ reviewers) for NeurIPS 2025"
   date: Oct 2025
 
 - name: "Spotlight Paper Award"
