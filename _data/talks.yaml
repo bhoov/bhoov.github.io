@@ -1,3 +1,17 @@
+- title: "Emergent Memories in Dense Associative Memories"
+  venues:
+    - location: "Memory & Vision Workshop @ ICCV 2025"
+      date: Oct 2025
+      locationUrl: https://sites.google.com/view/memvis-iccv2025-workshop/home
+      invited: true
+
+- title: "Panelist: Integrating Memory & Vision"
+  venues:
+    - location: "Memory & Vision Workshop @ ICCV 2025"
+      date: Oct 2025
+      locationUrl: https://sites.google.com/view/memvis-iccv2025-workshop/home
+      invited: true
+
 - title: "A New Era for Associative Memories"
   venues:
     - location: "Georgia Tech-IBM TechXchange"
@@ -16,7 +30,15 @@
   venues:
     - location: "CVPR Workshop on Visual Concepts"
       date: June 2025
-      locationUrl: 
+      locationUrl: https://sites.google.com/stanford.edu/visual-concepts-workshops/home
+      invited: true
+
+- title: "Panel Moderator: Improving LLM's with Memory"
+  venues:
+    - location: "New Frontiers in Associative Memory Workshop @ ICLR 2026"
+      date: Apr 2025
+      locationUrl: https://nfam.vizhub.ai/#panelists
+      invited: true
 
 - title: "Hopfield Networks 2.0: Associative Memory for the Modern Era of AI"
   venues:
@@ -31,6 +53,13 @@
       invited: true
     - location: "Georgia Tech CSE Hotseat"
       date: "Nov 2022"
+      
+- title: "Panelist: Future of Software Engineering in Associative Memory"
+  venues:
+    - location: "Associative Memory & Hopfield Networks Workshop @ NeurIPS 2023"
+      date: Dec 2023
+      locationUrl: https://amhn.vizhub.ai/#panelists
+      invited: true
 
 - title: Energy Transformer
   venues:
@@ -66,7 +95,7 @@
 
 - title: "Breaking the Wall of Black Box AI"
   venues:
-    - location: Falling Walls Lab Boston"
+    - location: Falling Walls Lab Boston
       date: Oct 2020
 
 - title: "The Inside Story"
