@@ -18,6 +18,9 @@ Built from scratch using [SvelteKit](https://kit.svelte.dev/) and [tailwindcss](
 npm install
 npm run build
 npm run preview
+
+# For developing
+npm run dev
 ```
 
 ## Building & deploying
@@ -33,9 +36,15 @@ Github Workflow: *(BUG: currently does not automatically update CV)*
 1. Commit changes to `deploy` branch
 2. Push
 
-You can also run the deploy script manually (necessary to update CV).
+<details>
+<summary>Fix for CV rendering</summary>
+    
+`npm run build` will update the CV. Commit and push this to deploy
+    
+</details>
+
+You can also run the deploy script manually:
 
 ```bash
 npm run deploy
 ```
-
