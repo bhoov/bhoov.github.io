@@ -32,7 +32,7 @@ The site is deployed using [`gh-pages`](https://www.npmjs.com/package/gh-pages).
 
 Pushing to the `deploy` branch automatically builds the site and runs `gh-pages`. 
 
-Github Workflow: *(BUG: currently does not automatically update CV)*
+### Github Workflow: *(BUG: currently does not automatically update CV)*
 
 1. Commit changes to `deploy` branch
 2. Push
@@ -49,3 +49,5 @@ You can also run the deploy script manually:
 ```bash
 npm run deploy
 ```
+
+which will build and push to the correct branch for you
