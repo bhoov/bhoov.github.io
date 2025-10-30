@@ -3,15 +3,16 @@
 Built from scratch using [SvelteKit](https://kit.svelte.dev/) and [tailwindcss](https://tailwindcss.com/). Always evolving. As such, it takes a decent amount of HTML+Javascript knowledge to fork and adapt to your own purposes. A few notes:
 
 1. All routes for the site are defined as subfolders in `src/routes/`. The homepage is `src/routes/+page.svelte`
-2. The content for the site is stored as yaml files in `_data/`. We write a function in `src/routes/+layout.server.ts` that turns these yamls into JSON objects that are passed into any page that contains the following lines at the top:
+2. The content for the site is stored as yaml files in `_data/`. We write a function in `src/routes/+layout.server.ts` that turns these yamls into JSON objects that are passed into any page that contains an `export let data;` in the script:
 
-```
+```html
 <script lang="ts">
     //...
     export let data;
     //...
 </script>
 ```
+
 ## Quickstart
 
 ```sh
