@@ -27,6 +27,8 @@
   $: social = data.socialLinkInfo;
 
   $: workshopPublications = publications.filter((p) => p.type == "workshop");
+  $: demoPublications = publications.filter((p) => p.type == "demo");
+  $: tutorialPublications = publications.filter((p) => p.type == "tutorial");
   $: preprintPublications = publications.filter((p) => p.type == "preprint");
   $: conferencePublications = publications.filter(
     (p) => p.type == "conference"
@@ -113,6 +115,18 @@
     <CVHeaderLevel2 title="Journal" />
     <div class="flex flex-col gap-4">
       {#each journalPublications as publication}
+        <CVPublicationEntry {publication} {people} />
+      {/each}
+    </div>
+    <CVHeaderLevel2 title="Tutorial" />
+    <div class="flex flex-col gap-4">
+      {#each tutorialPublications as publication}
+        <CVPublicationEntry {publication} {people} />
+      {/each}
+    </div>
+    <CVHeaderLevel2 title="Demo" />
+    <div class="flex flex-col gap-4">
+      {#each demoPublications as publication}
         <CVPublicationEntry {publication} {people} />
       {/each}
     </div>
