@@ -50,7 +50,7 @@
   venueShorthand: "ICML '25"
   location: Vancouver, BC Canada
   thumbnail: "imgs/thumbnails/amtutorial.webp"
-  type: preprint
+  type: tutorial
   # defaultUrl: https://poloclub.github.io/transformer-explainer/
   links:
     - type: code
