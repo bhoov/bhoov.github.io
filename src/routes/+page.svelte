@@ -108,7 +108,7 @@
             class="text-slate-700 flex flex-col gap-4 leading-6 font-light main-col"
         >
             <p>
-                I am a Machine Learning PhD student at 
+                I am a Machine Learning PhD candidate at 
                 <a href="https://poloclub.github.io/">Georgia Tech</a> advised by
                 <a href="https://poloclub.github.io/polochau/">Polo Chau</a> and
                 an AI Research Engineer with
