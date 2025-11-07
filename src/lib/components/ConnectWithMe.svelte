@@ -148,7 +148,7 @@
 </script>
 
 <div
-    class="flex flex-col items-start justify-center bg-blue-100 p-4 p-3 w-full rounded-xl mt-6"
+    class="flex flex-col items-start justify-center bg-blue-100 p-4 p-3 w-full rounded-xl mt-6 max-w-xl"
 >
     <h1 class="text-4xl my-2">Let's connect! 🥳</h1>
     <div class="text-md italic">
@@ -163,7 +163,7 @@
                 style="width: 80px;"
             />
             <div class="self-center">
-                <div class="whitespace-nowrap mb-2 text-xl font-light">
+                <div class="whitespace-nowrap mb-2 text-lg font-light">
                     Find <span class="font-bold">{person.name}</span> on:
                 </div>
                 <div
@@ -179,8 +179,8 @@
                                 >
                                     <object
                                         type="image/svg+xml"
-                                        width="20px"
-                                        height="20px"
+                                        width="18px"
+                                        height="18px"
                                         data={link.icon}
                                         class="opacity-100"
                                     /></span
