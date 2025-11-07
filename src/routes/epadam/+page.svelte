@@ -187,13 +187,59 @@
     We propose a novel energy function for Dense Associative Memory (DenseAM) networks, the log-sum-ReLU (LSR), inspired by optimal kernel density estimation. Unlike the common log-sum-exponential (LSE) function, LSR is based on the Epanechnikov kernel and enables exact memory retrieval with exponential capacity without requiring exponential separation functions. Uniquely, it introduces abundant additional emergent local minima while preserving perfect pattern recovery --- a characteristic previously unseen in DenseAM literature. Empirical results show that LSR energy has significantly more local minima (memories) that have comparable log-likelihood to LSE-based models. Analysis of LSR's emergent memories on image datasets reveals a degree of creativity and novelty, hinting at this method's potential for both large-scale memory storage and generative tasks.
   </p>
 
+  <h2>Cite this work</h2>
+
+<pre class="ml-8 text-sm"><code>@inproceedings&#123;
+hoover2025dense,
+title=&#123;Dense Associative Memory with Epanechnikov Energy&#125;,
+author=&#123;Benjamin Hoover and Zhaoyang Shi and Krishna Balasubramanian and Dmitry Krotov and Parikshit Ram&#125;,
+booktitle=&#123;The Thirty-ninth Annual Conference on Neural Information Processing Systems&#125;,
+year=&#123;2025&#125;,
+url=&#123;https://openreview.net/forum?id=ZbQ5Zq3zA3&#125;
+&#125;</code></pre>
+
   <h2>Links</h2>
   <ul>
     <li>
       <a
-        href="https://openreview.net/forum?id=LOAkHpRSlZ"
+        href="https://arxiv.org/abs/2506.10801"
         target="_blank"
-        rel="noreferrer">Paper on OpenReview</a
+        rel="noreferrer">ArXiv</a
+      >
+    </li>
+    <li>
+      <a
+        href="/posters/lsrdam.jpg"
+        target="_blank"
+        rel="noreferrer">Poster</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://openreview.net/forum?id=ZbQ5Zq3zA3"
+        target="_blank"
+        rel="noreferrer">OpenReview</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://github.com/bhoov/EpanechnikovDenseAM"
+        target="_blank"
+        rel="noreferrer">Code</a
+      >
+    </li>
+    <li>
+      <a
+        href="/slides/lsrdam-5min.pdf"
+        target="_blank"
+        rel="noreferrer">Slides</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://recorder-v3.slideslive.com/?share=106310&s=f2d9d915-d762-4d40-b2e8-9fbed019f1f6"
+        target="_blank"
+        rel="noreferrer">Slideslive Video</a
       >
     </li>
   </ul>
