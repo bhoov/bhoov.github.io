@@ -1,3 +1,12 @@
+- title: "Memory as Computation: Associative Memories as a Foundation for Modern AI"
+  venues:
+    - location: "Georgia Tech Thesis Proposal"
+      date: Nov 2025
+    - location: "Great Sky AI"
+      date: Nov 2025
+      locationUrl: https://www.greatsky.ai/technology
+      invited: true
+
 - title: "Emergent Memories in Dense Associative Memories"
   venues:
     - location: "Memory & Vision Workshop @ ICCV 2025"
