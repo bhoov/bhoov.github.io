@@ -784,6 +784,9 @@
   month: Apr
   year: 2021
   defualtUrl: http://lmdiff.net/
+  awards:
+    - name: "Best Demo Award, NeurIPS 2020"
+      url: "https://neurips.cc/Conferences/2020/DemonstrationTrack"
   links:
     - type: url
       url: http://lmdiff.net/
