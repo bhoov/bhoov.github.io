@@ -6,6 +6,11 @@
       date: Nov 2025
       locationUrl: https://www.greatsky.ai/technology
       invited: true
+    - location: "Microsoft Research"
+      date: Nov 2025
+      locationUrl: https://www.microsoft.com/en-us/research/
+      invited: true
+
 
 - title: "Emergent Memories in Dense Associative Memories"
   venues:
