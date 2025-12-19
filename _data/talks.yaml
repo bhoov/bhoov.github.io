@@ -38,6 +38,12 @@
     - location: "ICML 2025 Tutorial"
       date: July 2025
       locationUrl: https://tutorial.amemory.net/
+    - location: "AAAI 2026 Tutorial"
+      date: (coming soon) Jan 2026
+      locationUrl: https://tutorial.amemory.net/
+    - location: "ICASSP 2026 Tutorial"
+      date: (coming soon) May 2026
+      locationUrl: https://tutorial.amemory.net/
       # invited: true
 
 - title: "ConceptAttention: Visualize Any Concept in Your Generated Images"
