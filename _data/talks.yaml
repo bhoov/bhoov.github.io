@@ -62,6 +62,10 @@
 
 - title: "Hopfield Networks 2.0: Associative Memory for the Modern Era of AI"
   venues:
+    - location: "Theoretical Physics for Artificial Intelligence Workshop @ Aspen Center for Physics"
+      date: Jan 2026
+      locationUrl: https://sites.google.com/view/aspen2026/schedule
+      invited: true
     - location: "Physics Informed ML Workshop at Los Alamos National Laboratory"
       date: Sep 2024
       locationUrl: https://sites.google.com/view/plectics-calendar/old/idc/annual-coloquium/idc-052024?authuser=0
