@@ -33,13 +33,13 @@
       locationUrl: https://ai.gatech.edu/event/ibm-techxchange-dev-day-open-source-ai-tools-georgia-tech
       invited: true
 
-- title: "Modern Methods in Associative Memory"
+- title: "Tutorial on Modern Methods in Associative Memory"
   venues:
-    - location: "ICML 2025 Tutorial"
+    - location: "ICML 2025"
       date: July 2025
       locationUrl: https://tutorial.amemory.net/
     - location: "AAAI 2026 Tutorial"
-      date: (coming soon) Jan 2026
+      date: Jan 2026
       locationUrl: https://tutorial.amemory.net/
     - location: "ICASSP 2026 Tutorial"
       date: (coming soon) May 2026

@@ -3,6 +3,11 @@
 #   description: 
 #   date:
 #
+- name: "Nominated for Sigma Xi Honor Society"
+  url: "https://www.sigmaxi.org/"
+  description: "Received a nomination for Sigma Xi Honor Society"
+  date: Jan 2026
+
 - name: "NeurIPS Top Reviewer"
   url: "https://neurips.cc/Conferences/2025/ProgramCommittee"
   description: "Selected as a top reviewer (top 8% of 24k+ reviewers) for NeurIPS 2025"
