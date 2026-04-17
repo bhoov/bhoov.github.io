@@ -55,7 +55,7 @@
     - Nima Dehmamy
   venue: "New Frontiers in Associative Memories Workshop at ICLR"
   venueShorthand: "NFAM@ICLR"
-  location: Singapore
+  location: Rio de Janeiro, Brazil
   thumbnail: ""
   type: workshop
   defaultUrl: https://openreview.net/forum?id=PBlxeaUNoN
@@ -87,7 +87,7 @@
     - Yilun Du
   venue: "New Frontiers in Associative Memories Workshop at ICLR"
   venueShorthand: "NFAM@ICLR"
-  location: Singapore
+  location: Rio de Janeiro, Brazil
   thumbnail: ""
   type: workshop
   defaultUrl: https://openreview.net/forum?id=4zjhUaeeVh
@@ -119,7 +119,7 @@
     - Benjamin Hoover
   venue: "New Frontiers in Associative Memories Workshop at ICLR"
   venueShorthand: "NFAM@ICLR"
-  location: Singapore
+  location: Rio de Janeiro, Brazil
   thumbnail: ""
   type: workshop
   defaultUrl: https://openreview.net/forum?id=j54THG4KAY
@@ -145,13 +145,13 @@
   shortTitle: Energy Minimization for DAM
   category: memory
   authors:
-    - Bao Pham
     - Benjamin Hoover
+    - Bao Pham
     - Dmitry Krotov
     - Parikshit Ram
   venue: "New Frontiers in Associative Memories Workshop at ICLR"
   venueShorthand: "NFAM@ICLR"
-  location: Singapore
+  location: Rio de Janeiro, Brazil
   thumbnail: ""
   type: workshop
   defaultUrl: https://openreview.net/forum?id=d7PjRsguov
