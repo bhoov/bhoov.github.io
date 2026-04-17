@@ -124,7 +124,7 @@
             ],
         },
         {
-            name: "JJ",
+            name: "Jean-Jacques",
             img: "imgs/people/jean-jacques-slotine.jpg",
             links: [
                 {
