@@ -5,7 +5,7 @@
     let authorSocialInfo = [
         {
             name: "Nima",
-            img: "",
+            img: "imgs/people/nima-dehmamy.jpg",
             links: [
                 {
                     name: "homepage",
@@ -73,7 +73,7 @@
         },
         {
             name: "Bishwajit",
-            img: "",
+            img: "imgs/people/bishwajit-saha.jpg",
             links: [
                 {
                     name: "linkedin",
@@ -94,7 +94,7 @@
         },
         {
             name: "Leo",
-            img: "",
+            img: "imgs/people/leo-kozachkov.jpg",
             links: [
                 {
                     name: "homepage",
@@ -125,7 +125,7 @@
         },
         {
             name: "JJ",
-            img: "",
+            img: "imgs/people/jean-jacques-slotine.jpg",
             links: [
                 {
                     name: "homepage",
