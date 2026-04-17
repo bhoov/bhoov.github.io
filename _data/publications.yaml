@@ -43,6 +43,135 @@
       url={https://openreview.net/forum?id=B3Muyi2zgo}
     }
 
+- id: BoltzmannRouting
+  title: "Boltzmann Routing for Energy-Compatible Mixture of Experts"
+  shortTitle: Boltzmann Routing
+  category: memory
+  authors:
+    - Bharat Runwal
+    - Bishwajit Saha
+    - Benjamin Hoover
+    - Mauro Martino
+    - Nima Dehmamy
+  venue: "New Frontiers in Associative Memories Workshop at ICLR"
+  venueShorthand: "NFAM@ICLR"
+  location: Singapore
+  thumbnail: ""
+  type: workshop
+  defaultUrl: https://openreview.net/forum?id=PBlxeaUNoN
+  links:
+    - type: pdf
+      url: https://openreview.net/pdf?id=PBlxeaUNoN
+      label: PDF
+  month: Apr
+  year: 2026
+  featured: false
+  selected: false
+  bibtex: |-
+    @inproceedings{runwal2026boltzmann,
+      title={Boltzmann Routing for Energy-Compatible Mixture of Experts},
+      author={Bharat Runwal and Bishwajit Saha and Benjamin Hoover and Mauro Martino and Nima Dehmamy},
+      booktitle={New Frontiers in Associative Memories - Workshop at ICLR 2026},
+      year={2026},
+      url={https://openreview.net/forum?id=PBlxeaUNoN}
+    }
+
+- id: GenAMEquilibrium
+  title: "Generative Associative Memory via Equilibrium Matching"
+  shortTitle: Generative AM via EqM
+  category: memory
+  authors:
+    - Adrian Rodriguez
+    - Benjamin Hoover
+    - Yunhui Guo
+    - Yilun Du
+  venue: "New Frontiers in Associative Memories Workshop at ICLR"
+  venueShorthand: "NFAM@ICLR"
+  location: Singapore
+  thumbnail: ""
+  type: workshop
+  defaultUrl: https://openreview.net/forum?id=4zjhUaeeVh
+  links:
+    - type: pdf
+      url: https://openreview.net/pdf?id=4zjhUaeeVh
+      label: PDF
+  month: Apr
+  year: 2026
+  featured: false
+  selected: false
+  bibtex: |-
+    @inproceedings{rodriguez2026generative,
+      title={Generative Associative Memory via Equilibrium Matching},
+      author={Adrian Rodriguez and Benjamin Hoover and Yunhui Guo and Yilun Du},
+      booktitle={New Frontiers in Associative Memories - Workshop at ICLR 2026},
+      year={2026},
+      url={https://openreview.net/forum?id=4zjhUaeeVh}
+    }
+
+- id: EnergyMap
+  title: "EnergyMap: Unraveling the Data Manifold with Energy-based Dimensionality Reduction"
+  shortTitle: EnergyMap
+  category: vis
+  authors:
+    - Alec Helbling
+    - Parikshit Ram
+    - Polo Chau
+    - Benjamin Hoover
+  venue: "New Frontiers in Associative Memories Workshop at ICLR"
+  venueShorthand: "NFAM@ICLR"
+  location: Singapore
+  thumbnail: ""
+  type: workshop
+  defaultUrl: https://openreview.net/forum?id=j54THG4KAY
+  links:
+    - type: pdf
+      url: https://openreview.net/pdf?id=j54THG4KAY
+      label: PDF
+  month: Apr
+  year: 2026
+  featured: false
+  selected: false
+  bibtex: |-
+    @inproceedings{helbling2026energymap,
+      title={EnergyMap: Unraveling the Data Manifold with Energy-based Dimensionality Reduction},
+      author={Alec Helbling and Parikshit Ram and Duen Horng Chau and Benjamin Hoover},
+      booktitle={New Frontiers in Associative Memories - Workshop at ICLR 2026},
+      year={2026},
+      url={https://openreview.net/forum?id=j54THG4KAY}
+    }
+
+- id: EnergyMinDAM
+  title: "Energy Minimization for Training Dense Associative Memory"
+  shortTitle: Energy Minimization for DAM
+  category: memory
+  authors:
+    - Bao Pham
+    - Benjamin Hoover
+    - Dmitry Krotov
+    - Parikshit Ram
+  venue: "New Frontiers in Associative Memories Workshop at ICLR"
+  venueShorthand: "NFAM@ICLR"
+  location: Singapore
+  thumbnail: ""
+  type: workshop
+  defaultUrl: https://openreview.net/forum?id=d7PjRsguov
+  links:
+    - type: pdf
+      url: https://openreview.net/pdf?id=d7PjRsguov
+      label: PDF
+  month: Apr
+  year: 2026
+  featured: false
+  selected: false
+  bibtex: |-
+    @inproceedings{pham2026energy,
+      title={Energy Minimization for Training Dense Associative Memory},
+      author={Bao Pham and Benjamin Hoover and Dmitry Krotov and Parikshit Ram},
+      booktitle={New Frontiers in Associative Memories - Workshop at ICLR 2026},
+      year={2026},
+      url={https://openreview.net/forum?id=d7PjRsguov}
+    }
+
 - id: EpaDAM
   title: "Dense Associative Memory with Epanechnikov Energy"
   shortTitle: Epanechnikov DenseAM
