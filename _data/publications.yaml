@@ -1,3 +1,48 @@
+- id: NRGPT
+  title: "NRGPT: An Energy-based Alternative for GPT"
+  shortTitle: NRGPT
+  category: memory
+  authors:
+    - Nima Dehmamy
+    - Benjamin Hoover
+    - Bishwajit Saha
+    - Leo Kozachkov
+    - Jean-Jacques Slotine
+    - Dmitry Krotov
+  venue: "International Conference on Learning Representations"
+  venueShorthand: ICLR
+  location: Singapore
+  thumbnail: ""
+  type: conference
+  links:
+    - type: pdf
+      url: https://arxiv.org/abs/2512.16762
+      label: PDF
+    - type: code
+      url: https://github.com/bhoov/nrgpt
+      label: Code
+    - type: url
+      url: /nrgpt
+      label: Home
+    - type: video
+      url: "https://recorder-v3.slideslive.com/#/share?share=109460&s=a5cb5c43-b963-498a-ac2a-cfdb97ffa581"
+      label: Slideslive Video
+  month: Apr
+  year: 2026
+  featured: true
+  featureDescription: >-
+    A minimal modification of GPT unifies it with the energy-based model framework, where inference becomes an exploration of tokens on an energy landscape.
+  selected: false
+  bibtex: |-
+    @inproceedings{
+      dehmamy2026nrgpt,
+      title={{NRGPT}: An Energy-based Alternative for {GPT}},
+      author={Nima Dehmamy and Benjamin Hoover and Bishwajit Saha and Leo Kozachkov and Jean-Jacques Slotine and Dmitry Krotov},
+      booktitle={The Fourteenth International Conference on Learning Representations},
+      year={2026},
+      url={https://openreview.net/forum?id=B3Muyi2zgo}
+    }
+
 - id: EpaDAM
   title: "Dense Associative Memory with Epanechnikov Energy"
   shortTitle: Epanechnikov DenseAM

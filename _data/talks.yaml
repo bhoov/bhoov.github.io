@@ -10,6 +10,9 @@
       date: Nov 2025
       locationUrl: https://www.microsoft.com/en-us/research/
       invited: true
+    - location: "U Pitt ECE Grad Seminar"
+      date: Apr 2026
+      invited: true
 
 
 - title: "Emergent Memories in Dense Associative Memories"
@@ -41,9 +44,9 @@
     - location: "AAAI 2026 Tutorial"
       date: Jan 2026
       locationUrl: https://tutorial.amemory.net/
-    - location: "ICASSP 2026 Tutorial"
-      date: (coming soon) May 2026
-      locationUrl: https://tutorial.amemory.net/
+    # - location: "ICASSP 2026 Tutorial"
+    #   date: (coming soon) May 2026
+    #   locationUrl: https://tutorial.amemory.net/
       # invited: true
 
 - title: "ConceptAttention: Visualize Any Concept in Your Generated Images"
