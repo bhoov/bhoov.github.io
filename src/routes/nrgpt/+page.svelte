@@ -209,7 +209,7 @@
 
   <h2>Cite this work</h2>
 
-<pre class="ml-8 text-sm"><code>@inproceedings&#123;
+<pre class="text-sm overflow-x-auto max-w-full"><code>@inproceedings&#123;
 dehmamy2026nrgpt,
 title=&#123;&#123;NRGPT&#125;: An Energy-based Alternative for &#123;GPT&#125;&#125;,
 author=&#123;Nima Dehmamy and Benjamin Hoover and Bishwajit Saha and Leo Kozachkov and Jean-Jacques Slotine and Dmitry Krotov&#125;,
