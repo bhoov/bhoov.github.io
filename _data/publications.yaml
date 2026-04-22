@@ -91,6 +91,8 @@
   thumbnail: ""
   type: workshop
   defaultUrl: https://openreview.net/forum?id=4zjhUaeeVh
+  awards:
+    - name: "Spotlight"
   links:
     - type: pdf
       url: https://openreview.net/pdf?id=4zjhUaeeVh
