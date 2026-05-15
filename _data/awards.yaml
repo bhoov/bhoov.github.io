@@ -3,6 +3,11 @@
 #   description: 
 #   date:
 #
+- name: "Gold Reviewer (top 25%)"
+  url: "https://icml.cc/Conferences/2026"
+  # description: "Gold reviewer at ICML 2026"
+  date: May 2026
+
 - name: "Nominated for Sigma Xi Honor Society"
   url: "https://www.sigmaxi.org/"
   description: "Received a nomination for Sigma Xi Honor Society"

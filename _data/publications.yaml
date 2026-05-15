@@ -12,8 +12,9 @@
   venue: "International Conference on Learning Representations"
   venueShorthand: ICLR
   location: Singapore
-  thumbnail: ""
+  thumbnail: "imgs/thumbnails/nrgpt-thumbnail.png"
   type: conference
+  defaultUrl: /nrgpt
   links:
     - type: pdf
       url: https://arxiv.org/abs/2512.16762

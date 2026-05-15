@@ -14,6 +14,19 @@
       date: Apr 2026
       invited: true
 
+- title: "Generative Associative Memory via Equilibrium Matching"
+  venues:
+    - location: "New Frontiers in Associative Memories Workshop @ ICLR 2026"
+      date: Apr 2026
+      locationUrl: https://nfam2026.amemory.net/schedule/
+
+- title: "Opening Remarks"
+  venues:
+    - location: "New Frontiers in Associative Memories Workshop @ ICLR 2026"
+      date: Apr 2026
+      locationUrl: https://nfam2026.amemory.net/schedule/
+      invited: true
+
 
 - title: "Emergent Memories in Dense Associative Memories"
   venues:
@@ -58,9 +71,9 @@
 
 - title: "Panel Moderator: Improving LLM's with Memory"
   venues:
-    - location: "New Frontiers in Associative Memory Workshop @ ICLR 2026"
-      date: Apr 2025
-      locationUrl: https://nfam.vizhub.ai/#panelists
+    - location: "New Frontiers in Associative Memories Workshop @ ICLR 2026"
+      date: Apr 2026
+      locationUrl: https://nfam2026.amemory.net/schedule/
       invited: true
 
 - title: "Hopfield Networks 2.0: Associative Memory for the Modern Era of AI"
