@@ -37,6 +37,8 @@
   - venue: International Conference for Machine Learning
     venueShorthand: ICML
     years:
+      - year: 2026
+        url: https://icml.cc/Conferences/2026
       - year: 2025
         url: https://icml.cc/Conferences/2025
       - year: 2023
