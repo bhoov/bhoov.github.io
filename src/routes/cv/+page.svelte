@@ -19,6 +19,7 @@
   $: publications = data.publications;
   $: education = data.education;
   $: experiences = data.experiences;
+  $: funding = data.funding;
   $: awards = data.awards;
   $: talks = data.talks;
   $: teaching = data.teaching;
@@ -96,6 +97,14 @@
       {#each experiences.filter((e) => e.type == "academic") as experience}
         <CVResearchExperienceEntry {experience} {people} showDetails={true} />
       {/each}
+    </div>
+    <div class="break-inside-avoid">
+      <CVHeader title="Grants and Funding" />
+      <div class="flex flex-col gap-3">
+        {#each funding as award}
+          <CVAwardEntry {award} />
+        {/each}
+      </div>
     </div>
     <CVHeader title="Awards and Honors" />
     <div class="flex flex-col gap-3">
