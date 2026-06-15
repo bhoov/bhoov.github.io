@@ -3,10 +3,15 @@
 #   description: 
 #   date:
 #
-- name: "Gold Reviewer (top 25%)"
+- name: "Gold Reviewer"
   url: "https://icml.cc/Conferences/2026"
-  # description: "Gold reviewer at ICML 2026"
+  description: "Gold reviewer (top 25% of 17.7k+ reviewers) at ICML 2026"
   date: May 2026
+
+- name: "Spotlight Paper Award"
+  url: "https://openreview.net/forum?id=4zjhUaeeVh"
+  description: "Generative Associative Memory via Equilibrium Matching is a spotlight paper (top 8 of 50+ submissions) at NFAM@ICLR 2026"
+  date: Apr 2026
 
 - name: "Nominated for Sigma Xi Honor Society"
   url: "https://www.sigmaxi.org/"
@@ -19,12 +24,12 @@
   date: Oct 2025
 
 - name: "Spotlight Paper Award"
-  description: "Epanechnikov DenseAM is a spotlight presentation (top 3% of 21k+ submissions) at NeurIPS 2025"
+  description: "Dense Associative Memory with Epanechnikov Energy is a spotlight paper (top 3% of 21k+ submissions) at NeurIPS 2025"
   date: Sep 2025
 
 - name: "Oral Poster Award"
-  url: "https://sites.google.com/view/memvis-iccv2025-workshop/home"
-  description: "Dense Associative Memory with Epanechnikov energy is an oral poster (top 5 submissions) at ICCV 2025 workshop on Memory and Vision"
+  url: "https://sites.google.com/view/memvis-iccv2025-workshop/accepted-papers"
+  description: "Dense Associative Memory with Epanechnikov Energy is an oral poster (top 5 submissions) at MemVis@ICCV 2025"
   date: Aug 2025
 
 - name: "Oral Paper Award"
@@ -33,7 +38,7 @@
 
 - name: "Best Poster Award"
   url: "https://icml.cc/virtual/2025/oral/47221"
-  description: "Concept Attention is the Best Poster at the CVPR’25 Workshop on Visual Concepts"
+  description: "Concept Attention wins the Best Poster Award at the CVPR’25 Workshop on Visual Concepts"
   date: Jun 2025
 
 - name: "Best Poster Award"
@@ -49,11 +54,12 @@
   date: Jul 2023
 
 - name: "Spotlight Paper Award"
-  description: "HAMUX is spotlighted (top 5 submissions) at the Deep Learning and Differential Equation Workshop at NeurIPS 2022"
+  description: "HAMUX is a spotlight paper (top 5 submissions) at the Deep Learning and Differential Equation Workshop at NeurIPS 2022"
   date: Dec 2022
 
 - name: "Highlighted Reviewer"
-  description: "ICLR 2022"
+  url: "https://iclr.cc/Conferences/2022/Reviewers"
+  description: "ICLR 2022 (top 8.75% of 6200+ listed reviewers)"
   date: Apr 2022
 
 - name: "Best Poster Award"
@@ -64,7 +70,7 @@
   description: "LMdiff is Best Demo at NeurIPS 2020"
   date: Dec 2020
 
-- name: "(Runner Up) Best Demo"
+- name: "Best Demo, Runner Up"
   description: "exBERT is runner up for Best Demo at NeurIPS 2019"
   date: Dec 2019
 

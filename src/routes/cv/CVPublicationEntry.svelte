@@ -10,6 +10,14 @@
     authorOverflow && !showOverflow
       ? publication.authors.slice(0, maxAuthorLength)
       : publication.authors;
+  $: coFirstAuthors = publication.coFirstAuthors ?? [];
+  $: hasCoFirstAuthors = coFirstAuthors.length > 0;
+  $: coFirstAuthorNote =
+    publication.coFirstAuthorNote ?? "* indicates equal contribution";
+
+  function isCoFirstAuthor(author) {
+    return coFirstAuthors.includes(author);
+  }
 </script>
 
 <!-- <div on:mouseleave={() => showOverflow = false}> -->
@@ -36,6 +44,9 @@
           {:else}
             <span class="">{author}</span>
           {/if}
+          {#if isCoFirstAuthor(author)}
+            <sup class="co-first" aria-label="Equal contribution">*</sup>
+          {/if}
           {#if i < authors.length - 1}
             <span class="">,</span>
           {/if}
@@ -45,6 +56,11 @@
         </div>
       {/each}
     </div>
+    {#if hasCoFirstAuthors}
+      <div class="text-gray-400 text-xs font-light leading-4 mt-0.5">
+        {coFirstAuthorNote}
+      </div>
+    {/if}
     <div class="italic font-light text-sm text-gray-700">
       {publication.venue} ({publication.venueShorthand}). {publication.year}.
     </div>
@@ -74,6 +90,10 @@
   :global(.award-img) {
     filter: invert(31%) sepia(84%) saturate(1916%) hue-rotate(329deg)
       brightness(100%) contrast(92%);
+  }
+
+  .co-first {
+    @apply text-gray-500 font-semibold leading-none ml-0.5;
   }
 
   :global(a) {
