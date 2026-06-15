@@ -1,3 +1,7 @@
+# Optional co-first author fields:
+# coFirstAuthors: ["Author A", "Author B"]
+# coFirstAuthorNote: "* indicates equal contribution"
+
 - id: NRGPT
   title: "NRGPT: An Energy-based Alternative for GPT"
   shortTitle: NRGPT
