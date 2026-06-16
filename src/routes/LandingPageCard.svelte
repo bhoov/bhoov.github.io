@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { inview } from "svelte-inview";
   import ProjectLink from "$lib/components/ProjectLink.svelte";
   import { onMount } from "svelte";
   export let project;
@@ -8,29 +7,19 @@
     window.open(project.defaultUrl, "_blank", "noreferrer noopener");
   }
 
-  let innerWidth = 1800;
-
-  $: isMobile = innerWidth < 600;
-
   let hovered = false;
   onMount(() => {
-    console.log(innerWidth);
+    console.log("LandingPageCard mounted");
   });
 </script>
-
-<svelte:window bind:innerWidth />
 <div
   class="card w-full sm:w-72 p-6 rounded-xl bg-gray-100 hover:cursor-pointer"
-  use:inview={{ threshold: 1 }}
-  on:inview_enter={() => isMobile && (hovered = true)}
-  on:inview_leave={() => isMobile && (hovered = false)}
   on:mouseover={() => (hovered = true)}
   on:focus={() => (hovered = true)}
   on:mouseout={() => (hovered = false)}
   on:blur={() => (hovered = false)}
   on:click={openProjectUrl}
   on:keyup={openProjectUrl}
-  on:inview_enter
   class:hovered
 >
   <div class="h-full w-full">

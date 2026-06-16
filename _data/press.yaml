@@ -1,40 +1,94 @@
-- name: Engadget
-  year: 2020
-  month: April
-  url: https://www.engadget.com/ibm-coronavirus-ai-research-tools-162123059.html
+- name: "What counts as plagiarism? AI-generated papers pose new risks"
+  outlet: Nature
+  year: 2025
+  month: Aug
+  url: https://www.nature.com/articles/d41586-025-02616-5
 
-- name: ACS
-  year: 2021
-  month: April
-  url: https://cen.acs.org/acs-news/acs-meeting-news/Machine-learning-maps-atoms/99/web/2021/04
+- name: "How Physics Made Modern AI Possible"
+  outlet: Quanta Magazine
+  year: 2025
+  month: Jul
+  url: https://www.linkedin.com/pulse/how-physics-made-modern-ai-possible-quanta-magazine-pcsqe/?trackingId=4I%2BfnnLKTIaijNzFOnYPRw%3D%3D
 
-- name: Discover Magazine
-  year: 2021
-  month: January
-  url: https://www.discovermagazine.com/the-sciences/fruit-fly-brain-network-hacked-for-language-processing
+- name: "Researchers Uncover Hidden Ingredients Behind AI Creativity"
+  outlet: Quanta Magazine
+  year: 2025
+  month: Jun
+  url: https://www.quantamagazine.org/researchers-uncover-hidden-ingredients-behind-ai-creativity-20250630/
 
-- name: Yannic Kilcher's Vlog
-  year: 2021
-  month: August
-  url: https://www.youtube.com/watch?v=gFkBqD2hbnU&t=1485s
+- name: "IBM’s Dmitry Krotov wants to crack the ‘physics’ of memory"
+  outlet: IBM Research Blog
+  year: 2025
+  month: Jun
+  url: https://research.ibm.com/blog/dmitry-krotov-ai-physics
+  # awards: Front page of hacker news https://news.ycombinator.com/item?id=44382367
 
-- name: SciTechDaily
-  year: 2022
-  month: April
-  url: https://scitechdaily.com/do-humans-and-ai-think-alike/
+- name: "The Strange Physics That Gave Birth to AI"
+  outlet: Quanta Magazine
+  year: 2025
+  month: May
+  url: https://www.quantamagazine.org/the-strange-physics-that-gave-birth-to-ai-20250430/
 
-- name: FreeThink
-  year: 2022
-  month: April
-  url: https://www.freethink.com/hard-tech/trustworthy-ai
+- name: "Transformer Explainer: How I visualize the Magic Behind Modern LLMs"
+  outlet: youtube
+  year: 2024
+  month: Aug
+  url: https://www.youtube.com/watch?v=X8ZCFnEKk5U
 
-- name: "GA Tech College of Computing: What's Next in AI"
+- name: "Transformer Explainer: An Innovative Web-Based Tool for Interactive Learning and Visualization of Complex AI Models for Non-Experts"
+  year: 2024
+  month: Aug
+  url: https://www.marktechpost.com/2024/08/13/transformer-explainer-an-innovative-web-based-tool-for-interactive-learning-and-visualization-of-complex-ai-models-for-non-experts/
+
+- name: "Breaking down the AI transformer"
+  outlet: IBM Blogs
+  year: 2024
+  month: Aug
+  url: https://research.ibm.com/blog/how-ai-transformers-work
+
+- name: "A New Frontier for Hopfield Networks"
+  outlet: Nature Reviews Physics
   year: 2023
-  month: April
+  month: May
+  url: https://www.nature.com/articles/s42254-023-00595-y
+
+- name: "What's Next in AI"
+  outlet: Georgia Tech College of Computing news
+  year: 2023
+  month: Apr
   url: https://www.cc.gatech.edu/news/manufacturing-finance-among-industries-benefit-whats-next-ai-2023
 
-# - name: Generative Memory Lab
-#   year: 2024
-#   month: March
-#   url: https://www.youtube.com/watch?v=hK_L9Typ8PM
-#   description: Rylan Schaeffer presents the link between Associative Memory and Probabilistic Modeling
+- name: "How to tell if you can trust an AI"
+  outlet: FreeThink
+  year: 2022
+  month: Apr
+  url: https://www.freethink.com/hard-tech/trustworthy-ai
+
+- name: "Do Humans and AI Think Alike?"
+  outlet: SciTechDaily
+  year: 2022
+  month: Apr
+  url: https://scitechdaily.com/do-humans-and-ai-think-alike/
+
+- name: "Yannic Kilcher's Vlog"
+  year: 2021
+  month: Aug
+  url: https://www.youtube.com/watch?v=gFkBqD2hbnU&t=1485s
+
+- name: "Machine learning maps atoms"
+  outlet: Chemical & Engineering News
+  year: 2021
+  month: Apr
+  url: https://cen.acs.org/acs-news/acs-meeting-news/Machine-learning-maps-atoms/99/web/2021/04
+
+- name: "Fruit Fly Brain Hacked For Language Processing"
+  outlet: Discover Magazine
+  year: 2021
+  month: Jan
+  url: https://www.discovermagazine.com/the-sciences/fruit-fly-brain-network-hacked-for-language-processing
+
+- name: "IBM shares AI tools to better understand and treat COVID-19"
+  outlet: Engadget
+  year: 2020
+  month: Apr
+  url: https://www.engadget.com/ibm-coronavirus-ai-research-tools-162123059.html

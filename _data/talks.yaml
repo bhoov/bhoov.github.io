@@ -1,14 +1,122 @@
+- title: "Memory as Computation: Associative Memories as a Foundation for Modern AI"
+  venues:
+    - location: "Georgia Tech Thesis Proposal"
+      date: Nov 2025
+    - location: "Great Sky AI"
+      date: Nov 2025
+      locationUrl: https://www.greatsky.ai/technology
+      invited: true
+    - location: "Microsoft Research"
+      date: Nov 2025
+      locationUrl: https://www.microsoft.com/en-us/research/
+      invited: true
+    - location: "U Pitt ECE Grad Seminar"
+      date: Apr 2026
+      invited: true
+    - location: "Prefrontal AI"
+      date: May 2026
+      invited: true
+    - location: "Archer Aviation"
+      date: June 2026
+      invited: true
+
+- title: "Generative Associative Memory via Equilibrium Matching"
+  venues:
+    - location: "New Frontiers in Associative Memories Workshop @ ICLR 2026"
+      date: Apr 2026
+      locationUrl: https://nfam2026.amemory.net/schedule/
+
+- title: "Opening Remarks"
+  venues:
+    - location: "New Frontiers in Associative Memories Workshop @ ICLR 2026"
+      date: Apr 2026
+      locationUrl: https://nfam2026.amemory.net/schedule/
+      invited: true
+
+
+- title: "Emergent Memories in Dense Associative Memories"
+  venues:
+    - location: "Memory & Vision Workshop @ ICCV 2025"
+      date: Oct 2025
+      locationUrl: https://sites.google.com/view/memvis-iccv2025-workshop/home
+      invited: true
+
+- title: "Panelist: Integrating Memory & Vision"
+  venues:
+    - location: "Memory & Vision Workshop @ ICCV 2025"
+      date: Oct 2025
+      locationUrl: https://sites.google.com/view/memvis-iccv2025-workshop/home
+      invited: true
+
+- title: "A New Era for Associative Memories"
+  venues:
+    - location: "Georgia Tech-IBM TechXchange"
+      date: Aug 2025
+      locationUrl: https://ai.gatech.edu/event/ibm-techxchange-dev-day-open-source-ai-tools-georgia-tech
+      invited: true
+
+- title: "Tutorial on Modern Methods in Associative Memory"
+  venues:
+    - location: "ICML 2025"
+      date: July 2025
+      locationUrl: https://tutorial.amemory.net/
+    - location: "AAAI 2026 Tutorial"
+      date: Jan 2026
+      locationUrl: https://tutorial.amemory.net/
+    # - location: "ICASSP 2026 Tutorial"
+    #   date: (coming soon) May 2026
+    #   locationUrl: https://tutorial.amemory.net/
+      # invited: true
+
+- title: "ConceptAttention: Visualize Any Concept in Your Generated Images"
+  venues:
+    - location: "CVPR Workshop on Visual Concepts"
+      date: June 2025
+      locationUrl: https://sites.google.com/stanford.edu/visual-concepts-workshops/home
+      invited: true
+
+- title: "Panel Moderator: Improving LLM's with Memory"
+  venues:
+    - location: "New Frontiers in Associative Memories Workshop @ ICLR 2026"
+      date: Apr 2026
+      locationUrl: https://nfam2026.amemory.net/schedule/
+      invited: true
+
+- title: "Hopfield Networks 2.0: Associative Memory for the Modern Era of AI"
+  venues:
+    - location: "Theoretical Physics for Artificial Intelligence Workshop @ Aspen Center for Physics"
+      date: Jan 2026
+      locationUrl: https://sites.google.com/view/aspen2026/schedule
+      invited: true
+    - location: "Physics Informed ML Workshop at Los Alamos National Laboratory"
+      date: Sep 2024
+      locationUrl: https://sites.google.com/view/plectics-calendar/old/idc/annual-coloquium/idc-052024?authuser=0
+      invited: true
+    - location: "Plectics Lab Colloquium"
+      date: May 2024
+      locationUrl: https://www.youtube.com/watch?v=8LGRQfaG3ro
+      # locationUrl: https://web.cvent.com/event/8d586843-3607-4101-aee0-61ac8b1cbdd6/websitePage:a9dfad1e-e21c-46b6-bf79-eee883bd1448
+      invited: true
+    - location: "Georgia Tech CSE Hotseat"
+      date: "Nov 2022"
+      
+- title: "Panelist: Future of Software Engineering in Associative Memory"
+  venues:
+    - location: "Associative Memory & Hopfield Networks Workshop @ NeurIPS 2023"
+      date: Dec 2023
+      locationUrl: https://amhn.vizhub.ai/#panelists
+      invited: true
+
 - title: Energy Transformer
   venues:
+    # - location: "Shlizerman Group at UW"
+    #   date: May 2024
+    #   locationUrl: https://faculty.washington.edu/shlizee/
+    #   invited: true
     - location: "McMahon Lab at Cornell University"
       date: Sep 2023
       locationUrl: https://mcmahon.aep.cornell.edu/
       invited: true
-
-- title: "HAMUX: Inventing Hopfield Networks 2.0"
-  venues:
-    - location: "Georgia Tech CSE Hotseat"
-      date: "Nov 2022"
 
 - title: "Comparing Language Models with LMDiff"
   venues:
@@ -33,7 +141,7 @@
 
 - title: "Breaking the Wall of Black Box AI"
   venues:
-    - location: Falling Walls Lab Boston"
+    - location: Falling Walls Lab Boston
       date: Oct 2020
 
 - title: "The Inside Story"

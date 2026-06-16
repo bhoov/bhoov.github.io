@@ -2,12 +2,12 @@
     import LandingPageCard from "./LandingPageCard.svelte";
 
     import { onMount } from "svelte";
-    import ProjectEntry from "$lib/components/ProjectEntry.svelte";
-    import ProjectLink from "$lib/components/ProjectLink.svelte";
     export let data;
 
     $: people = data.people;
     $: publications = data.publications;
+
+    $: featured = data.publications.filter(x => x.featured)
 
     $: featuredMemory = data.publications.filter(
         (x) => x.featured && x.category == "memory"
@@ -15,6 +15,9 @@
     $: featuredVis = data.publications.filter(
         (x) => x.featured && x.category == "vis"
     );
+
+    let defaultMaxNews = 6
+    let maxNews = defaultMaxNews
 
     onMount(() => {
         console.log("DATA: ", data);
@@ -105,7 +108,7 @@
             class="text-slate-700 flex flex-col gap-4 leading-6 font-light main-col"
         >
             <p>
-                I am a Machine Learning PhD student at 
+                I am a Machine Learning PhD candidate at 
                 <a href="https://poloclub.github.io/">Georgia Tech</a> advised by
                 <a href="https://poloclub.github.io/polochau/">Polo Chau</a> and
                 an AI Research Engineer with
@@ -122,8 +125,8 @@
         </div>
     </div>
     <h1 class="main-col mt-8">News</h1>
-    <div class="news-list flex flex-col sm:contents mx-2 gap-0.5">
-        {#each data.news as blurb}
+    <div class="news-list flex flex-col sm:contents mx-2 gap-0.5 overflow-y-auto">
+        {#each data.news.slice(0,maxNews) as blurb}
             <!-- <div class="flex gap-4"> -->
             <div
                 class="left-gutter justify-self-end font-light text-slate-400 text-xs"
@@ -135,9 +138,25 @@
             </div>
             <!-- </div> -->
         {/each}
+            {#if data.news.length > maxNews}
+                <div class="w-full justify-self-end main-col text-slate-400 hover:cursor-pointer hover:text-slate-700" on:click={() => {maxNews = data.news.length}}>See more...</div>
+            {:else}
+                <div class="w-full justify-self-end main-col text-slate-400 hover:cursor-pointer hover:text-slate-700" on:click={() => {maxNews = defaultMaxNews}}>Collapse...</div>
+            {/if}
     </div>
 
-    <h1 class="main-col mt-12 text-center" id="selected-memory">
+    <h1 class="main-col mt-12" id="selected-memory">
+        Research Highlights
+    </h1>
+    <div
+        class="col-start-3 col-end-11 flex flex-wrap gap-4 md:col-start-2 md:col-end-12"
+    >
+        {#each featured as project, i}
+            <LandingPageCard {project} />
+        {/each}
+    </div>
+
+    <!-- <h1 class="main-col mt-12 text-center" id="selected-memory">
         Memory Research Highlights
     </h1>
     <div
@@ -157,7 +176,7 @@
         {#each featuredVis as project, i}
             <LandingPageCard {project} />
         {/each}
-    </div>
+    </div> -->
 </div>
 
 <!-- <div class="main-col flex gap-2 flex-col"> -->
@@ -204,4 +223,6 @@
     .full-col {
         @apply col-start-1 col-end-13;
     }
+
+
 </style>
