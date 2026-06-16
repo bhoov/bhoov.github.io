@@ -1,5 +1,13 @@
-- venue: Associative Memory & Hopfield Network Workshop
+- venue: Workshop on Associative Memory & Hopfield Network at NeurIPS
   venueShorthand: AMHN@NeurIPS
   years:
     - year: 2023
       url: https://amhn.vizhub.ai/2023
+
+- venue: Workshop on New Frontiers in Associative Memory at ICLR
+  venueShorthand: NFAM@ICLR
+  years:
+    - year: 2025
+      url: https://nfam.vizhub.ai
+    - year: 2026
+      # url: https://nfam.vizhub.ai

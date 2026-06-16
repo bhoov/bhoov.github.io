@@ -4,5 +4,6 @@
 #   date:
 
 - name: "NVIDIA Academic Grant Program"
-  description: 'Hardware gift (~$52,000) supporting "Associative Memory Foundation Model for Robust Edge Robotics". Includes 2 Jetson AGX Orin Developer Kits and 4 RTX PRO 6000 Max-Q Workstation Edition GPUs.'
+  url: "https://www.nvidia.com/en-us/industries/higher-education-research/academic-grant-program/"
+  description: 'Hardware gift ($57k) supporting "Associative Memory Foundation Model for Robust Edge Robotics". Includes 2 Jetson AGX Orin Developer Kits and 4 RTX PRO 6000 Max-Q Workstation Edition GPUs.'
   date: June 2026

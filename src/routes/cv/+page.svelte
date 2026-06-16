@@ -19,7 +19,7 @@
   $: publications = data.publications;
   $: education = data.education;
   $: experiences = data.experiences;
-  $: funding = data.funding;
+  $: funding = data.funding ?? [];
   $: awards = data.awards;
   $: talks = data.talks;
   $: teaching = data.teaching;
@@ -28,6 +28,8 @@
   $: social = data.socialLinkInfo;
 
   $: workshopPublications = publications.filter((p) => p.type == "workshop");
+  $: demoPublications = publications.filter((p) => p.type == "demo");
+  $: tutorialPublications = publications.filter((p) => p.type == "tutorial");
   $: preprintPublications = publications.filter((p) => p.type == "preprint");
   $: conferencePublications = publications.filter(
     (p) => p.type == "conference"
@@ -125,6 +127,18 @@
         <CVPublicationEntry {publication} {people} />
       {/each}
     </div>
+    <CVHeaderLevel2 title="Tutorial" />
+    <div class="flex flex-col gap-4">
+      {#each tutorialPublications as publication}
+        <CVPublicationEntry {publication} {people} />
+      {/each}
+    </div>
+    <CVHeaderLevel2 title="Demo" />
+    <div class="flex flex-col gap-4">
+      {#each demoPublications as publication}
+        <CVPublicationEntry {publication} {people} />
+      {/each}
+    </div>
     <CVHeaderLevel2 title="Workshop" />
     <div class="flex flex-col gap-4">
       {#each workshopPublications as publication}
@@ -161,7 +175,7 @@
       </div>
 
       <div>
-        <div class="font-bold text-lg">Committee</div>
+        <div class="font-bold text-lg">Organizing Committee</div>
         <div class="flex flex-col gap-y-1 sm:gap-y-0">
           {#each committee as venue}
             <CVReviewerEntry {venue} />
