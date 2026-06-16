@@ -49,6 +49,11 @@
   description: "Energy Transformer receives 2nd place🥈 in GATech's annual Graduate Poster Symposium"
   date: Mar 2024
 
+- name: "Spotlight Paper Award"
+  url: "https://amhn.vizhub.ai/"
+  description: "Energy Transformer is a spotlight paper at the NeurIPS 2023 Workshop on Associative Memory & Hopfield Networks"
+  date: Dec 2023
+
 - name: "Best Paper Award, Honorable Mention"
   description: "DiffusionDB receives a Best Paper, Honorable Mention Award at ACL 2023"
   date: Jul 2023

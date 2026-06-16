@@ -13,6 +13,12 @@
     - location: "U Pitt ECE Grad Seminar"
       date: Apr 2026
       invited: true
+    - location: "Prefrontal AI"
+      date: May 2026
+      invited: true
+    - location: "Archer Aviation"
+      date: June 2026
+      invited: true
 
 - title: "Generative Associative Memory via Equilibrium Matching"
   venues:
