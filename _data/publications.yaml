@@ -492,6 +492,9 @@
       label: Video (45m)
   month: Dec.
   year: 2023
+  awards:
+    - name: "Spotlight, AMHN@NeurIPS'23"
+      url: https://amhn.vizhub.ai/
   featured: true
   selected: true
   thumbnail: "imgs/thumbnails/energy-transformer.png"
