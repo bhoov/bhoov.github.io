@@ -145,6 +145,14 @@
             {/if}
     </div>
 
+    <div class="main-col mt-6 border-l-2 border-slate-200 pl-4 text-sm md:text-base text-slate-500 leading-6">
+        <span class="font-medium text-slate-700">Thesis:</span>
+        <a href="/papers/benjamin-hoover-thesis.pdf" rel="noreferrer">
+            Memory as Computation: Associative Memory as a Foundation for Modern AI
+        </a>
+        <span class="text-slate-400">(PDF)</span>
+    </div>
+
     <h1 class="main-col mt-12" id="selected-memory">
         Research Highlights
     </h1>
