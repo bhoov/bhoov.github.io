@@ -108,14 +108,11 @@
             class="text-slate-700 flex flex-col gap-4 leading-6 font-light main-col"
         >
             <p>
-                I am a Machine Learning PhD candidate at 
+                I am a Machine Learning PhD candidate at
                 <a href="https://poloclub.github.io/">Georgia Tech</a> advised by
-                <a href="https://poloclub.github.io/polochau/">Polo Chau</a> and
-                an AI Research Engineer with
-                <a
-                    href="https://researcher.watson.ibm.com/researcher/view_group.php?id=5948"
-                    >IBM Research</a
-                >. My research focuses on building more interpretable and
+                <a href="https://poloclub.github.io/polochau/">Polo Chau</a>. I
+                successfully defended my PhD thesis on 6 July 2026. My research
+                focuses on building more interpretable and
                 parameter efficient AI by rethinking the way we train and build
                 deep models, taking inspiration from Associative Memories and
                 <a href="http://www.scholarpedia.org/article/Hopfield_network"
@@ -145,13 +142,39 @@
             {/if}
     </div>
 
-    <div class="main-col mt-6 border-l-2 border-slate-200 pl-4 text-sm md:text-base text-slate-500 leading-6">
-        <span class="font-medium text-slate-700">Thesis:</span>
-        <a href="/papers/benjamin-hoover-thesis.pdf" rel="noreferrer">
+    <section
+        id="thesis"
+        class="main-col mt-12 rounded-lg bg-slate-50 px-5 py-5 ring-1 ring-slate-100 md:px-6"
+    >
+        <p
+            class="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400"
+        >
+            PhD Thesis · 2026
+        </p>
+        <a
+            class="thesis-title block text-xl font-semibold leading-snug text-slate-700 transition-colors hover:text-blue-500 md:text-2xl"
+            href="/papers/benjamin-hoover-thesis.pdf"
+            rel="noreferrer"
+        >
             Memory as Computation: Associative Memory as a Foundation for Modern AI
         </a>
-        <span class="text-slate-400">(PDF)</span>
-    </div>
+        <div class="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
+            <a
+                class="border-0 text-blue-500 hover:text-blue-700"
+                href="/papers/benjamin-hoover-thesis.pdf"
+                rel="noreferrer"
+            >
+                Read the thesis (PDF) →
+            </a>
+            <a
+                class="border-0 text-blue-500 hover:text-blue-700"
+                href="https://youtu.be/NoAnSDAQq0k"
+                rel="noreferrer"
+            >
+                Watch the defense (YouTube) →
+            </a>
+        </div>
+    </section>
 
     <h1 class="main-col mt-12" id="selected-memory">
         Research Highlights
@@ -197,6 +220,10 @@
 <style lang="postcss">
     .news-list :global(a) {
         border-bottom: 2px solid rgba(96, 165, 250, 0.631);
+    }
+
+    .thesis-title {
+        border-bottom: 0;
     }
 
     a {
