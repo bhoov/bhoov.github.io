@@ -54,7 +54,7 @@
     <div class="header mb-8">
       <h1 class="mb-1">Benjamin Hoover</h1>
       <h2 class="text-2xl text-gray-400 font-light mb-2">
-        AI Researcher, Engineer, Student
+        AI Researcher &amp; Engineer
       </h2>
       <div class="">
         <div class="xs:grid w-full xs:w-5/6 grid-cols-2 text-gray-600">
@@ -70,7 +70,7 @@
                   <object
                     type="image/svg+xml"
                     data={social[link].icon}
-                    class="opacity-100"
+                    class="opacity-100 pointer-events-none"
                   />
                 </div>
                 {social[link].label}</a
