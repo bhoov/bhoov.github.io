@@ -1,12 +1,16 @@
 - degree: "Machine Learning PhD Candidate"
   institution: Georgia Tech
   location: "Atlanta, GA"
-  date: "Aug 2021 - May 2026 (expected)"
+  date: "Aug 2021 - Dec 2026"
   description: >-
     Studying how to interpret AI Foundation Models through the lens of Associative Memory
   advisors:
     - name: Duen Horng (Polo) Chau
       url: https://faculty.cc.gatech.edu/~dchau/
+  dissertation:
+    title: "Memory as Computation: Associative Memory as a Foundation for Modern AI"
+    pdfUrl: /papers/benjamin-hoover-thesis.pdf
+    defenseUrl: https://youtu.be/NoAnSDAQq0k
   institutionUrl: https://www.gatech.edu/
 
 - degree: "Master of Engineering: Electrical and Computer Engineering"

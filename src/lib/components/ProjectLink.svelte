@@ -4,6 +4,8 @@
     import { countRepoStars } from "$lib/etc/starCounter";
     import { onMount } from "svelte";
 
+    export let inline = false;
+
     let hovered = false;
     let styleColor = `color: #515151`;
     let nStars;
@@ -15,8 +17,10 @@
     });
 </script>
 
-<div
-    class="text-xs font-medium flex items-center gap-x-1 bg-blue-100 py-0.5 px-1.5 rounded-2xl hover:bg-blue-400 hover:text-white hover:svg-invert hover:no-underline"
+<span
+    class="text-xs font-medium items-center gap-x-1 bg-blue-100 py-0.5 px-1.5 rounded-2xl hover:bg-blue-400 hover:text-white hover:svg-invert hover:no-underline"
+    class:flex={!inline}
+    class:inline-flex={inline}
     on:mouseover={() => (hovered = true)}
     on:focus={() => (hovered = true)}
     on:mouseout={() => (hovered = false)}
@@ -53,7 +57,7 @@
             )
         </div>
     {/if}
-</div>
+</span>
 
 <style lang="postcss">
     :global(.svg-container-hovered > svg) {
