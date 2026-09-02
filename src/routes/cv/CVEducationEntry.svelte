@@ -1,8 +1,11 @@
 <script lang="ts">
+  import ProjectLink from "$lib/components/ProjectLink.svelte";
+
   export let school;
   export let showDetails = false;
 
   let hasAdvisors = school.advisors != null;
+  let hasDissertation = school.dissertation != null;
 
   let advisorLabel =
     hasAdvisors && school.advisors.length > 1 ? "Advisors: " : "Advisor:";
@@ -32,6 +35,28 @@
           >
         </div>
       {/each}
+    </div>
+  {/if}
+  {#if hasDissertation}
+    <div class="col-start-1 col-span-2 mt-1 text-sm font-light leading-5">
+      <span class="text-gray-400">Dissertation:</span>
+      <span class="text-gray-700">{school.dissertation.title}</span>{" "}
+      <ProjectLink
+        inline={true}
+        link={{
+          type: "pdf",
+          label: "PDF",
+          url: school.dissertation.pdfUrl,
+        }}
+      />{" "}
+      <ProjectLink
+        inline={true}
+        link={{
+          type: "video",
+          label: "Defense",
+          url: school.dissertation.defenseUrl,
+        }}
+      />
     </div>
   {/if}
   <div
