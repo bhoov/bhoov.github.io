@@ -5,5 +5,6 @@ export const LINKS = {
     pdf: "mdi-file-document-outline",
     video: "mdi-video",
     poster: "mdi-projector-screen",
-    demo: "mdi-play"
+    demo: "mdi-play",
+    x: "mdi-twitter"
 }
