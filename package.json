@@ -13,8 +13,8 @@
     "print-cv": "puppeteer browsers install chrome && node scripts/print-cv.mjs",
     "preview": "astro preview",
     "check": "astro check",
-    "deploy": "astro build && puppeteer browsers install chrome && node scripts/print-cv.mjs && gh-pages -d build -t true",
-    "deploy-actions": "gh-pages -d build -t true -r https://bhoov:${GITHUB_TOKEN}@github.com/bhoov/bhoov.github.io -u 'Ben Hoover <24350185+bhoov@users.noreply.github.com>'"
+    "deploy": "astro build && puppeteer browsers install chrome && node scripts/print-cv.mjs && gh-pages -d build -t",
+    "deploy-actions": "gh-pages -d build -t -r https://bhoov:${GITHUB_TOKEN}@github.com/bhoov/bhoov.github.io -u 'Ben Hoover <24350185+bhoov@users.noreply.github.com>'"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.1.6",
