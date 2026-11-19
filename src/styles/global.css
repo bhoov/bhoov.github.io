@@ -1,0 +1,137 @@
+/*
+ * Site-wide styles: color tokens, a small reset, and base element styles.
+ * Component styles live in each component's <style> block.
+ * Breakpoints used in components: 440px (xs), 640px (sm), 768px (md).
+ */
+
+:root {
+	--font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+	--slate-50: #f8fafc;
+	--slate-100: #f1f5f9;
+	--slate-300: #cbd5e1;
+	--slate-400: #94a3b8;
+	--slate-500: #64748b;
+	--slate-700: #334155;
+
+	--gray-100: #f3f4f6;
+	--gray-200: #e5e7eb;
+	--gray-400: #9ca3af;
+	--gray-500: #6b7280;
+	--gray-600: #4b5563;
+	--gray-700: #374151;
+	--gray-800: #1f2937;
+
+	--blue-100: #dbeafe;
+	--blue-400: #60a5fa;
+	--blue-500: #3b82f6;
+	--blue-700: #1d4ed8;
+
+	--rose-500: #f43f5e;
+	--rose-900: #881337;
+
+	--link-underline: 2px solid rgba(96, 165, 250, 0.631); /* bottom border under links in body text */
+	--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Reset: the parts of Tailwind's Preflight that the pages depend on. */
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: var(--font-body);
+	line-height: 1.5;
+	-webkit-text-size-adjust: 100%;
+	tab-size: 4;
+}
+
+body {
+	margin: 0;
+	line-height: inherit;
+	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: inherit;
+	font-weight: inherit;
+	margin: 0;
+}
+
+p, pre, figure, blockquote {
+	margin: 0;
+}
+
+ul, ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+b, strong {
+	font-weight: bolder;
+}
+
+code, pre {
+	font-family: var(--font-mono);
+	font-size: 1em;
+}
+
+sup {
+	position: relative;
+	top: -0.5em;
+	font-size: 75%;
+	line-height: 0;
+	vertical-align: baseline;
+}
+
+img, svg, object, video {
+	display: block;
+	vertical-align: middle;
+}
+
+img, video {
+	max-width: 100%;
+	height: auto;
+}
+
+button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+/* Base element styles */
+h1 {
+	margin: 2rem 0 1.5rem;
+	font-size: 2.2rem;
+	line-height: 2.35rem;
+}
+
+/* Recolors a black SVG <img> (the award and star icons) to the rose accent. */
+.award-img {
+	filter: invert(31%) sepia(84%) saturate(1916%) hue-rotate(329deg) brightness(100%) contrast(92%);
+}
+
+@media print {
+	:root {
+		font-size: 80%;
+	}
+}

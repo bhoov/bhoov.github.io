@@ -1,0 +1,83 @@
+# Contact cards for the "Let's connect!" box on project pages.
+# A project page lists keys from this file in its `connect:` frontmatter.
+# Each key under `links` selects an icon; the key-to-icon map is `icons` in src/components/ConnectWithMe.astro.
+
+Ben:
+  img: imgs/people/me-headshot-small.jpg
+  links:
+    homepage: /
+    linkedin: https://www.linkedin.com/in/benhoov/
+    email: mailto:bhoov@gatech.edu
+    twitter: https://twitter.com/ben_hoov
+    bluesky: https://bsky.app/profile/bhoov.bsky.social
+    github: https://github.com/bhoov
+    scholar: https://scholar.google.com/citations?user=n10P0tYAAAAJ&hl=en
+
+Zhaoyang:
+  img: imgs/people/zhaoyang-shi.png
+  links:
+    homepage: https://10mzys.github.io/website/
+    email: mailto:zshi@fas.harvard.edu
+    github: https://github.com/10Mzys
+    scholar: https://scholar.google.com/citations?user=DgKVZeYAAAAJ&hl=en
+
+Krishna:
+  img: imgs/people/krishna-balasubramanian.jpg
+  links:
+    homepage: https://sites.google.com/view/kriznakumar/home
+    email: mailto:kbala@ucdavis.edu
+    scholar: https://scholar.google.com/citations?user=uuts9CAAAAAJ&hl=en
+
+Dima:
+  img: imgs/people/dima-krotov.jpg
+  links:
+    homepage: https://research.ibm.com/people/dmitry-krotov
+    linkedin: https://www.linkedin.com/in/krotovdmitry/
+    email: mailto:krotov@ibm.com
+    twitter: https://x.com/DimaKrotov
+    bluesky: https://bsky.app/profile/krotov.bsky.social
+    github: https://github.com/DimaKrotov
+    scholar: https://scholar.google.com/citations?user=WeD9ll0AAAAJ&hl=en
+
+Pari:
+  img: imgs/people/pari.webp
+  links:
+    homepage: https://rithram.github.io
+    linkedin: https://www.linkedin.com/in/parikshit-ram-4861325/
+    email: mailto:Parikshit.Ram@ibm.com
+    twitter: https://x.com/p_ram_p?lang=en
+    bluesky: https://bsky.app/profile/p-ram-p.bsky.social
+    github: https://github.com/rithram
+    scholar: https://scholar.google.com/citations?user=JaXmmnkAAAAJ&hl=en
+
+Nima:
+  img: imgs/people/nima-dehmamy.jpg
+  links:
+    homepage: https://nimadehmamy.github.io/
+    email: mailto:nima.dehmamy@ibm.com
+    twitter: https://x.com/nimatabari
+    github: https://github.com/nimadehmamy
+    scholar: https://scholar.google.com/citations?user=gvHpUtgAAAAJ&hl=en
+
+Bishwajit:
+  img: imgs/people/bishwajit-saha.jpg
+  links:
+    linkedin: https://www.linkedin.com/in/bishwajit-saha-2b5493147/
+    email: mailto:bishwajit.saha@ibm.com
+    scholar: https://scholar.google.com/citations?user=cYMfgbcAAAAJ&hl=en
+
+Leo:
+  img: imgs/people/leo-kozachkov.jpg
+  links:
+    homepage: https://kozleo.github.io/
+    email: mailto:leo_kozachkov@brown.edu
+    twitter: https://x.com/Leokoz8
+    github: https://github.com/kozleo
+    scholar: https://scholar.google.com/citations?user=V5dtdeUAAAAJ&hl=en
+
+Jean-Jacques:
+  img: imgs/people/jean-jacques-slotine.jpg
+  links:
+    homepage: https://web.mit.edu/nsl/www/
+    email: mailto:jjs@mit.edu
+    scholar: https://scholar.google.com/citations?user=TcREpMQAAAAJ&hl=en

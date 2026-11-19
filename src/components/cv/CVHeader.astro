@@ -1,0 +1,56 @@
+---
+interface Props {
+  title: string;
+  level?: 1 | 2; // 1: section header with a rule; 2: lighter sub-header
+}
+const { title, level = 1 } = Astro.props;
+const id = title.toLowerCase();
+---
+
+<div class:list={["cv-header", `level-${level}`]}>
+  <a href={`/cv#${id}`} id={id}>
+    <h1>{title}</h1>
+  </a>
+  {level === 1 && <div class="rule" />}
+</div>
+
+<style>
+  .cv-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.25rem;
+  }
+  .level-1 {
+    margin: 2rem 0 1.5rem;
+  }
+  .level-2 {
+    margin: 1.5rem 0 0.75rem;
+  }
+  a {
+    width: max-content;
+    text-decoration-color: var(--rose-900);
+  }
+  h1 {
+    margin: 0;
+    color: var(--rose-900);
+    font-size: 1.875rem;
+    line-height: 1.5rem;
+  }
+  .level-2 h1 {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+  .rule {
+    display: none;
+    width: 100%;
+    border-bottom: 2px solid var(--rose-900);
+  }
+  @media (min-width: 440px) {
+    h1 {
+      white-space: nowrap;
+    }
+    .rule {
+      display: block;
+    }
+  }
+</style>

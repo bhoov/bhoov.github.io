@@ -1,0 +1,94 @@
+---
+/**
+ * Layout for the MDX project pages in `src/pages/*.mdx`.
+ * Frontmatter fields:
+ *   title    -- page heading and <title>
+ *   note     -- small italic line above the heading (optional)
+ *   banner   -- HTML shown above the heading, e.g. an event announcement (optional)
+ *   authors  -- author names shown under the heading (optional)
+ *   connect  -- keys of `_data/contacts.yaml` for the "Let's connect!" box (optional)
+ * The MDX body (abstract, citation, links) renders below the authors.
+ */
+import Base from "./Base.astro";
+import ConnectWithMe from "../components/ConnectWithMe.astro";
+
+const { frontmatter } = Astro.props;
+const { title, note, banner, authors, connect } = frontmatter;
+---
+
+<Base title={title}>
+  <base slot="head" target="_blank" />
+  <main>
+    {connect && <ConnectWithMe people={connect} />}
+    {note && <p class:list={["note", { "after-connect": connect }]}>{note}</p>}
+    {banner && <p class="banner" set:html={banner} />}
+    <h1 class:list={{ "after-connect": connect, "has-authors": authors }}>{title}</h1>
+    {
+      authors && (
+        <div class="authors">
+          {authors.map((author) => <div>{author}</div>)}
+        </div>
+      )
+    }
+    <div class="project-body">
+      <slot />
+    </div>
+  </main>
+</Base>
+
+<style>
+  .note {
+    margin: 2rem 0;
+    color: var(--gray-500);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-style: italic;
+  }
+  .note.after-connect {
+    margin: 1rem 0;
+  }
+  .banner {
+    color: var(--gray-500);
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  h1.after-connect {
+    margin-top: 1rem;
+  }
+  h1.has-authors {
+    margin-bottom: 0.5rem;
+  }
+  .authors {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+  }
+  @media (min-width: 640px) {
+    .authors {
+      flex-direction: row;
+    }
+  }
+  .banner :global(a),
+  .project-body :global(a) {
+    border-bottom: var(--link-underline);
+  }
+  .project-body :global(h2) {
+    margin: 2rem 0 0.5rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+  }
+  .project-body :global(pre) {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+</style>

@@ -1,53 +1,56 @@
 # bhoov-github-io
 
-Built from scratch using [SvelteKit](https://kit.svelte.dev/) and [tailwindcss](https://tailwindcss.com/). Always evolving. As such, it takes a decent amount of HTML+Javascript knowledge to fork and adapt to your own purposes. A few notes:
+Built with [Astro](https://astro.build/) and [MDX](https://mdxjs.com/), styled with plain CSS.
 
-1. All routes for the site are defined as subfolders in `src/routes/`. The homepage is `src/routes/+page.svelte`
-2. The content for the site is stored as yaml files in `_data/`. We write a function in `src/routes/+layout.server.ts` that turns these yamls into JSON objects that are passed into any page that contains an `export let data;` in the script:
+## Layout
 
-```html
-<script lang="ts">
-    //...
-    export let data;
-    //...
-</script>
-```
+- `_data/*.yaml` holds the site content: publications, news, CV sections and contact cards.
+  `src/data.ts` loads every file into `data.<filename>`, so `_data/news.yaml` becomes `data.news`.
+  Any page or component can `import { data } from "../data"`.
+- `src/pages/` defines the routes.
+  `index.astro` is the homepage and `cv.astro` is the CV.
+  Each project page (for example `epadam.mdx`) is an MDX file that uses `src/layouts/Project.astro`; see that file for its frontmatter fields.
+- `src/components/` holds the components; `src/components/cv/` holds the CV entries.
+- Styles are plain CSS.
+  `src/styles/global.css` has the color tokens (`--slate-400`, `--rose-900`, ...), a small reset and the base `h1` style.
+  `src/styles/cv.css` has the classes shared by the CV entries.
+  Everything else is in the `<style>` block of the component that uses it; Astro scopes those styles to the component.
+- `public/` is copied to the site root unchanged (images, icons, PDFs, `CNAME`).
+- Pages are built as `<name>.html` (`build.format: "file"` in `astro.config.mjs`), so `/cv` is served from `cv.html`.
+
+To add a project page, copy `src/pages/drdam.mdx`, change the frontmatter and write the body in Markdown.
+Add anyone in its `connect:` list to `_data/contacts.yaml`.
+
+Astro removes whitespace that contains a newline next to an element, as JSX does.
+In `.astro` files, keep an inline link on the same line as the text around it.
 
 ## Quickstart
 
+Requires Node 22 or later and pnpm (`corepack enable` provides the version pinned in `package.json`).
+
 ```sh
-npm install
-npm run build
-npm run preview
-
-# For developing
-npm run dev
+pnpm install
+pnpm dev        # dev server with live reload
+pnpm build      # build the site into build/ and print the CV PDF
+pnpm preview    # serve build/
+pnpm check      # type-check .astro files
 ```
 
-## Building & deploying
+`pnpm build` runs `astro build` and then `pnpm print-cv`.
+`print-cv` serves `build/` with Astro's preview server, prints `/cv` with Puppeteer, and writes `cv-pdfs/benjamin-hoover-cv.pdf` into both `build/` and `public/`.
+Commit the updated `public/` copy so the repository holds the current PDF.
+Puppeteer downloads Chrome into `.cache/puppeteer/` (gitignored) on first use.
 
-The site is deployed using [`gh-pages`](https://www.npmjs.com/package/gh-pages). This creates a new `gh-pages` branch that contains the folder structure of the site we want to serve.
+## Building and deploying
 
-**WARNING: Never commit directly to the `gh-pages` branch!!**
+The site is deployed with [`gh-pages`](https://www.npmjs.com/package/gh-pages), which pushes `build/` to the `gh-pages` branch.
 
-Pushing to the `deploy` branch automatically builds the site and runs `gh-pages`. 
+**WARNING: Never commit directly to the `gh-pages` branch.**
 
-### Github Workflow: *(BUG: currently does not automatically update CV)*
+Pushing to the `deploy` branch runs `.github/workflows/gh-pages.yml`, which builds the site (including the CV PDF) and runs `gh-pages`.
 
-1. Commit changes to `deploy` branch
-2. Push
+To build and deploy from your machine instead:
 
-<details>
-<summary>Fix for CV rendering</summary>
-    
-`npm run build` will update the CV. Commit and push this to deploy
-    
-</details>
-
-You can also run the deploy script manually:
-
-```bash
-npm run deploy
+```sh
+pnpm run deploy   # `pnpm deploy` is a different, built-in pnpm command
 ```
-
-which will build and push to the correct branch for you
