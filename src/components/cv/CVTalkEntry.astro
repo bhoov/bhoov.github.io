@@ -1,0 +1,65 @@
+---
+const { talk } = Astro.props;
+---
+
+<div class="cv-avoid-break">
+  <div class="cv-title">{talk.title}</div>
+  <div class="venues">
+    {
+      talk.venues.map((venue) => (
+        <div class="venue">
+          <div class="where">
+            {venue.locationUrl ? (
+              <div class="location-link">
+                <a href={venue.locationUrl} target="_blank" rel="noreferrer">{venue.location}</a>
+              </div>
+            ) : (
+              <div>{venue.location}</div>
+            )}
+            {venue.invited && <div class="invited">Invited</div>}
+          </div>
+          <div class="when">{venue.date}</div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .venues {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 300;
+  }
+  .venue {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    row-gap: 0.125rem;
+  }
+  .where {
+    display: flex;
+    column-gap: 0.5rem;
+  }
+  .location-link {
+    line-height: 1rem;
+  }
+  .invited {
+    align-self: flex-start;
+    padding: 0 0.5rem;
+    border: 1px solid var(--gray-400);
+    border-radius: 9999px;
+    color: var(--gray-400);
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+  .when {
+    align-self: flex-start;
+    text-align: right;
+    font-style: italic;
+    color: var(--gray-400);
+  }
+</style>

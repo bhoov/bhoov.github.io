@@ -1,0 +1,134 @@
+---
+/**
+ * "Let's connect!" box with a contact card per person.
+ * `people` are keys of `_data/contacts.yaml`.
+ */
+import { data } from "../data";
+
+interface Props {
+  people: string[];
+  title?: string;
+}
+const { people, title = "Let's connect! 🥳" } = Astro.props;
+
+const icons = {
+  homepage: "icons/home.svg",
+  linkedin: "icons/linkedin.svg",
+  email: "icons/email.svg",
+  twitter: "icons/Xlogo.svg",
+  bluesky: "icons/bluesky.svg",
+  github: "icons/github-alt.svg",
+  scholar: "icons/scholar.svg",
+};
+
+const cards = people.map((name) => {
+  const contact = data.contacts[name];
+  if (!contact) throw new Error(`ConnectWithMe: "${name}" is not in _data/contacts.yaml`);
+  return { name, ...contact };
+});
+const emails = cards.map((c) => c.links.email?.replace("mailto:", "")).filter(Boolean);
+---
+
+<div class="connect">
+  <h1>{title}</h1>
+  <div class="group-email">
+    Feel free to <a href={`mailto:${emails.join(",")}`}>send us a group email</a>
+  </div>
+  {
+    cards.map((person) => (
+      <div class="person">
+        <img src={person.img} alt={person.name} />
+        <div>
+          <div class="find">
+            Find <b>{person.name}</b> on:
+          </div>
+          <div class="contact-links">
+            {Object.entries(person.links as Record<string, string>).map(([kind, href]) => (
+              <a target="_blank" href={href} rel="noreferrer">
+                <object type="image/svg+xml" width="18px" height="18px" data={icons[kind]} />
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .connect {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    max-width: 36rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    background: var(--blue-100);
+  }
+  h1 {
+    margin: 0.5rem 0;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  .group-email {
+    font-style: italic;
+  }
+  .group-email a {
+    text-decoration: underline;
+  }
+  .group-email a:hover {
+    color: var(--blue-500);
+  }
+  .person {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1rem 0;
+  }
+  .person > * {
+    align-self: center;
+  }
+  .person img {
+    width: 80px;
+    border-radius: 1.5rem;
+    object-fit: contain;
+  }
+  .find {
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 300;
+  }
+  .find b {
+    font-weight: 700;
+  }
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .contact-links a {
+    padding: 0.5rem;
+    border-radius: 9999px;
+    background: var(--slate-100);
+  }
+  .contact-links a:hover {
+    background: var(--slate-300);
+  }
+  /* The <object> would otherwise take the clicks meant for the link around it. */
+  object {
+    pointer-events: none;
+  }
+  @media (min-width: 768px) {
+    .person {
+      gap: 2rem;
+    }
+    .contact-links {
+      gap: 1rem;
+    }
+  }
+</style>

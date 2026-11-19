@@ -1,0 +1,61 @@
+---
+import ProjectLink from "../ProjectLink.astro";
+
+const { school } = Astro.props;
+const advisorLabel = school.advisors?.length > 1 ? "Advisors: " : "Advisor:";
+---
+
+<div class="cv-entry">
+  <div class="cv-date">{school.date}</div>
+  <div class="cv-title degree">{school.degree}</div>
+  <div class="cv-place">
+    <a target="_blank" rel="noreferrer" href={school.institutionUrl}>{school.institution}</a>, {school.location}
+  </div>
+  {
+    school.advisors && (
+      <div class="advisors">
+        <span class="label">{advisorLabel}</span>
+        {school.advisors.map((advisor) => (
+          <a href={advisor.url} target="_blank" rel="noreferrer">{advisor.name}</a>
+        ))}
+      </div>
+    )
+  }
+  {
+    school.dissertation && (
+      <div class="dissertation">
+        <span class="label">Dissertation:</span>{" "}
+        <span class="dissertation-title">{school.dissertation.title}</span>{" "}
+        <ProjectLink inline link={{ type: "pdf", label: "PDF", url: school.dissertation.pdfUrl }} />{" "}
+        <ProjectLink inline link={{ type: "video", label: "Defense", url: school.dissertation.defenseUrl }} />
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .degree {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .advisors {
+    grid-column: 1;
+    display: flex;
+    column-gap: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  .label {
+    color: var(--gray-400);
+  }
+  .dissertation {
+    grid-column: 1 / 3;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 300;
+  }
+  .dissertation-title {
+    color: var(--gray-700);
+  }
+</style>
