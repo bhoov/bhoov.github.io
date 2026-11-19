@@ -2,6 +2,97 @@
 # coFirstAuthors: ["Author A", "Author B"]
 # coFirstAuthorNote: "* indicates equal contribution"
 
+- id: CRAM
+  title: "Classical Energies Learn to Reason 1,000x Faster than Looped Models"
+  shortTitle: CRAM
+  category: memory
+  authors:
+    - Benjamin Hoover
+    - Hugh Blayney
+    - James C. R. Whittington
+  venue: "ArXiv preprint"
+  venueShorthand: ArXiv
+  thumbnail: "imgs/thumbnails/cram.png"
+  type: preprint
+  defaultUrl: https://prefrontal.ai/news/cram/
+  links:
+    - type: pdf
+      url: https://arxiv.org/abs/2611.17309
+      label: PDF
+    - type: code
+      url: https://github.com/Prefrontal-AI/CRAM
+      label: Code
+    - type: url
+      url: https://prefrontal.ai/news/cram/
+      label: Blog
+    - type: x
+      url: https://x.com/Ben_Hoov/status/2121294692968993068
+      label: X thread
+  month: Nov
+  year: 2026
+  featured: true
+  featureDescription: >-
+    A learned version of Hopfield and Tank's energy from the 1980s solves 99.996% of Sudoku-Extreme and 100% of Maze-Unique test puzzles after 42 ms and 132 ms of training on one GPU, at least 1,000x faster than looped models.
+  selected: false
+  bibtex: |-
+    @article{hoover2026cram,
+      title={Classical Energies Learn to Reason 1,000x Faster than Looped Models},
+      author={Hoover, Benjamin and Blayney, Hugh and Whittington, James C. R.},
+      journal={arXiv preprint arXiv:2611.17309},
+      year={2026},
+      url={https://arxiv.org/abs/2611.17309}
+    }
+
+- id: LSA
+  title: "Latent Sparse Attention: Towards Subquadratic Ultra-Long Context Attention"
+  shortTitle: Latent Sparse Attention
+  category: efficiency
+  authors:
+    - Ales Kubicek
+    - Andrea Caciolai
+    - Liangzu Peng
+    - Sukrit Sumant
+    - Benjamin Hoover
+    - Fraser Greenlee
+    - Ruairidh M. Battleday
+    - Radim Urban
+    - Torsten Hoefler
+    - James C. R. Whittington
+  venue: "ArXiv preprint"
+  venueShorthand: ArXiv
+  thumbnail: "imgs/thumbnails/lsa.png"
+  type: preprint
+  defaultUrl: https://prefrontal.ai/news/lsa/
+  links:
+    - type: pdf
+      url: https://arxiv.org/abs/2610.42147
+      label: PDF
+    - type: code
+      url: https://github.com/Prefrontal-AI/latent-sparse-attention
+      label: Code
+    - type: url
+      url: https://prefrontal.ai/news/lsa/
+      label: Blog
+    - type: x
+      url: https://x.com/jcrwhittington/status/2117317159777177602
+      label: X thread
+  month: Oct
+  year: 2026
+  featured: false
+  featureDescription: >-
+    Keys are clustered hierarchically in a learned latent space and each query scores the clusters instead of every key. At 10M tokens this makes one attention layer up to 72.4x faster in prefill than full attention at similar accuracy.
+  selected: false
+  bibtex: |-
+    @misc{kubicek2026latentsparseattentionsubquadratic,
+      title={Latent Sparse Attention: Towards Subquadratic Ultra-Long Context Attention},
+      author={Ales Kubicek and Andrea Caciolai and Liangzu Peng and Sukrit Sumant and Benjamin Hoover and Fraser Greenlee and Ruairidh M. Battleday and Radim Urban and Torsten Hoefler and James C. R. Whittington},
+      year={2026},
+      eprint={2610.42147},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2610.42147}
+    }
+
 - id: NRGPT
   title: "NRGPT: An Energy-based Alternative for GPT"
   shortTitle: NRGPT
@@ -15,7 +106,7 @@
     - Dmitry Krotov
   venue: "International Conference on Learning Representations"
   venueShorthand: ICLR
-  location: Singapore
+  location: Rio de Janeiro, Brazil
   thumbnail: "imgs/thumbnails/nrgpt-thumbnail.png"
   type: conference
   defaultUrl: /nrgpt

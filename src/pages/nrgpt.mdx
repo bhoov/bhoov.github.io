@@ -1,0 +1,29 @@
+---
+layout: ../layouts/Project.astro
+title: "NRGPT: An Energy-based Alternative for GPT"
+note: Barebones page to important links to this work
+authors: [Nima Dehmamy, Benjamin Hoover, Bishwajit Saha, Leo Kozachkov, Jean-Jacques Slotine, Dmitry Krotov]
+connect: [Nima, Ben, Bishwajit, Leo, Jean-Jacques, Dima]
+---
+
+Generative Pre-trained Transformer (GPT) architectures are the most popular design for language modeling. Energy-based modeling is a different paradigm that views inference as a dynamical process operating on an energy landscape. We propose a minimal modification of the GPT setting to unify it with the EBM framework. The inference step of our model, which we call eNeRgy-GPT (NRGPT), is conceptualized as an exploration of the tokens on the energy landscape. We prove, and verify empirically, that under certain circumstances this exploration becomes gradient descent, although they don't necessarily lead to the best performing models. We demonstrate that our model performs well for simple language (Shakespeare dataset), algebraic ListOPS tasks, and richer settings such as OpenWebText language modeling. We also observe that our models may be more resistant to overfitting, doing so only during very long training.
+
+## Cite this work
+
+```bibtex
+@inproceedings{
+dehmamy2026nrgpt,
+title={{NRGPT}: An Energy-based Alternative for {GPT}},
+author={Nima Dehmamy and Benjamin Hoover and Bishwajit Saha and Leo Kozachkov and Jean-Jacques Slotine and Dmitry Krotov},
+booktitle={The Fourteenth International Conference on Learning Representations},
+year={2026},
+url={https://openreview.net/forum?id=B3Muyi2zgo}
+}
+```
+
+## Links
+
+- [ArXiv](https://arxiv.org/abs/2512.16762)
+- [OpenReview](https://openreview.net/forum?id=B3Muyi2zgo)
+- [Code](https://github.com/bhoov/nrgpt)
+- [Slideslive Video](https://recorder-v3.slideslive.com/#/share?share=109460&s=a5cb5c43-b963-498a-ac2a-cfdb97ffa581)

@@ -1,3 +1,15 @@
+- date: Nov 2026
+  HTMLdescription: >-
+    🚀 Announcing <a href="https://arxiv.org/abs/2611.17309">CRAM</a>, where we train a classical energy from the 1980s that reasons 1,000x faster than looped models. (<a href="https://prefrontal.ai/news/cram/">blog</a>, <a href="https://x.com/Ben_Hoov/status/2121294692968993068">went viral on X</a>)!
+
+- date: Oct 2026
+  HTMLdescription: >-
+    🚀 Announcing <a href="https://arxiv.org/abs/2610.42147">Latent Sparse Attention</a>: towards subquadratic attention that keeps full-attention accuracy to 10M tokens. (<a href="https://prefrontal.ai/news/lsa/">blog</a>, <a href="https://x.com/jcrwhittington/status/2117317159777177602">went viral on X</a>)!
+
+- date: Sep 2026
+  HTMLdescription: >-
+    🇬🇧 Moved to London to start at <a href="https://prefrontal.ai"><img src="icons/prefrontal.svg" alt="Prefrontal logo" style="display: inline; height: 1.15em; vertical-align: -0.2em;" /> Prefrontal</a> 🫡.
+
 - date: July 2026
   HTMLdescription: >-
     🥳 Defended <a href="/papers/benjamin-hoover-thesis.pdf">my thesis</a> titled "Memory as Computation: Associative Memory as a Foundation for Modern AI"! Watch recording on <a href="https://youtu.be/NoAnSDAQq0k">YouTube</a> 🎥.
@@ -9,6 +21,10 @@
 - date: May 2026
   HTMLdescription: >-
     🏅 Recognized as a Gold Reviewer (top 25%) for ICML 2026.
+
+- date: Mar 2026
+  HTMLdescription: >-
+    Had 🐣 #2 🤗
 
 - date: Jan 2026
   HTMLdescription: >-

@@ -1,0 +1,85 @@
+---
+/**
+ * A pill-shaped link with an icon, e.g. "PDF" or "Code".
+ * If `link.showStars` is set, a client script adds the GitHub star count.
+ */
+import { LINKS } from "../config";
+
+interface Props {
+  link: { type: string; label: string; url: string; showStars?: boolean };
+  inline?: boolean;
+}
+const { link, inline = false } = Astro.props;
+---
+
+<span class:list={["pill", { inline }]} data-stars-repo={link.showStars ? link.url : undefined}>
+  <a href={link.url} target="_blank" rel="noreferrer">
+    <span class="label">
+      <span class="iconify" data-icon={LINKS[link.type]} style="color: #515151"></span>
+      <span>{link.label}</span>
+    </span>
+  </a>
+  <span class="stars" hidden>
+    (<span class="count"><img src="icons/star.svg" alt="" class="award-img" /><span class="star-count"></span></span>)
+  </span>
+</span>
+
+<style>
+  .pill {
+    display: flex;
+    align-items: center;
+    column-gap: 0.25rem;
+    padding: 0.125rem 0.375rem;
+    border-radius: 1rem;
+    background: var(--blue-100);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+  }
+  .pill.inline {
+    display: inline-flex;
+  }
+  .pill:hover {
+    background: var(--blue-400);
+    color: white;
+  }
+  a {
+    text-decoration: none !important;
+  }
+  .label {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  /* Iconify replaces the placeholder with an <svg> outside Astro's scoping, so this selector must be global. */
+  .pill:hover :global(.label > svg) {
+    filter: brightness(0) invert(100%);
+  }
+  .stars {
+    display: flex;
+    align-items: center;
+    column-gap: 0.125rem;
+    color: var(--gray-500);
+  }
+  .count {
+    display: contents;
+    color: var(--rose-500);
+    font-weight: 600;
+  }
+  .stars img {
+    height: 0.5rem;
+  }
+</style>
+
+<script>
+  import { countRepoStars } from "../scripts/starCounter";
+
+  for (const el of document.querySelectorAll<HTMLElement>("[data-stars-repo]")) {
+    countRepoStars(el.dataset.starsRepo!)
+      .then(({ stars }) => {
+        el.querySelector(".star-count")!.textContent = String(stars);
+        el.querySelector<HTMLElement>(".stars")!.hidden = false;
+      })
+      .catch(() => {});
+  }
+</script>

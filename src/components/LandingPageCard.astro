@@ -1,0 +1,85 @@
+---
+import ProjectLink from "./ProjectLink.astro";
+
+interface Props {
+  project: Record<string, any>;
+}
+const { project } = Astro.props;
+---
+
+<div class="card" data-href={project.defaultUrl} role="link" tabindex="0">
+  <div>
+    <img src={project.thumbnail} alt={`Thumbnail for ${project.shortTitle}`} />
+    <h2>{project.shortTitle}</h2>
+    <div class="description">{project.featureDescription}</div>
+  </div>
+  <div class="links">
+    {project.links.map((link) => <ProjectLink link={link} />)}
+  </div>
+</div>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    background: var(--gray-100);
+    cursor: pointer;
+  }
+  @media (min-width: 640px) {
+    .card {
+      width: 18rem;
+    }
+  }
+  .card:hover,
+  .card:focus {
+    background: var(--gray-200);
+  }
+  img {
+    width: 100%;
+    height: 100px;
+    margin: 0 auto 1rem;
+    object-fit: cover;
+    object-position: left top;
+    transition: object-position 1.5s;
+  }
+  .card:hover img,
+  .card:focus img {
+    object-position: right bottom;
+  }
+  h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+  }
+  .description {
+    color: var(--gray-500);
+    font-weight: 300;
+    line-height: 1.25rem;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    width: 100%;
+  }
+</style>
+
+<script>
+  // Open the project's default URL when the card is clicked, unless the click was on one of its own links.
+  for (const card of document.querySelectorAll<HTMLElement>(".card[data-href]")) {
+    const open = (e: Event) => {
+      if ((e.target as HTMLElement).closest("a")) return;
+      window.open(card.dataset.href, "_blank", "noreferrer noopener");
+    };
+    card.addEventListener("click", open);
+    card.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") open(e);
+    });
+  }
+</script>
