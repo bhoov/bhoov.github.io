@@ -1,0 +1,50 @@
+/*
+ * Styles shared by the CV entry components in src/components/cv/.
+ * A .cv-entry stacks on narrow screens and becomes a two-column grid from 640px:
+ * title, place and details on the left, the date on the right.
+ */
+
+.cv-entry,
+.cv-avoid-break {
+	break-inside: avoid;
+}
+
+.cv-entry {
+	column-gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+	.cv-entry {
+		display: grid;
+		grid-template-columns: 3fr 1fr;
+	}
+	.cv-date {
+		text-align: right;
+	}
+}
+
+.cv-title {
+	grid-column: 1;
+	grid-row: 1;
+	color: black;
+	font-size: 1.125rem;
+	line-height: 1.25rem;
+	font-weight: 600;
+}
+
+.cv-date {
+	grid-column: 2;
+	align-self: center;
+	color: var(--gray-400);
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.cv-place {
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	font-weight: 300;
+	font-style: italic;
+}

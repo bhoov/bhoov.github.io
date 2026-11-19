@@ -1,0 +1,213 @@
+---
+import Base from "../layouts/Base.astro";
+import CVHeader from "../components/cv/CVHeader.astro";
+import CVEducationEntry from "../components/cv/CVEducationEntry.astro";
+import CVRoleEntry from "../components/cv/CVRoleEntry.astro";
+import CVAwardEntry from "../components/cv/CVAwardEntry.astro";
+import CVPublicationEntry from "../components/cv/CVPublicationEntry.astro";
+import CVTalkEntry from "../components/cv/CVTalkEntry.astro";
+import CVReviewerEntry from "../components/cv/CVReviewerEntry.astro";
+import { data } from "../data";
+import "../styles/cv.css";
+
+const { people, publications, education, experiences, awards, talks, teaching, reviewer, committee } = data;
+const funding = data.funding ?? [];
+const social = data.socialLinkInfo;
+
+const headerLinks = ["email", "homepage", "twitter", "github", "linkedin", "scholar", "cvpdf"];
+const publicationGroups = [
+  ["Conference", "conference"],
+  ["Journal", "journal"],
+  ["Tutorial", "tutorial"],
+  ["Demo", "demo"],
+  ["Workshop", "workshop"],
+  ["Preprints", "preprint"],
+].map(([title, type]) => ({ title, items: publications.filter((p) => p.type === type) }));
+---
+
+<Base title="Benjamin Hoover — CV">
+  <div class="cv">
+    <div class="header">
+      <h1>Benjamin Hoover</h1>
+      <h2>AI Researcher &amp; Engineer</h2>
+      <div class="contact">
+        {
+          headerLinks.map((link) => (
+            <div>
+              <a class:list={{ "screen-only": link === "cvpdf" }} href={social[link].href} target={link === "homepage" ? "" : "_blank"} rel="noreferrer">
+                <object type="image/svg+xml" data={social[link].icon} />
+                {social[link].label}
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <CVHeader title="Education" />
+    <div class="entries">
+      {education.map((school) => <CVEducationEntry school={school} />)}
+    </div>
+
+    {
+      [
+        ["Industry Research Experience", "industry"],
+        ["Academic Research Experience", "academic"],
+      ].map(([title, type]) => (
+        <>
+          <CVHeader title={title} />
+          <div class="entries">
+            {experiences
+              .filter((e) => e.type === type)
+              .map((e) => (
+                <CVRoleEntry title={e.institution} date={e.date} place={e.team} placeUrl={e.teamUrl} location={e.location} people={e.mentors} peopleLabel={["Mentor:", "Mentors: "]} description={e.description} directory={people} />
+              ))}
+          </div>
+        </>
+      ))
+    }
+
+    <div class="cv-avoid-break">
+      <CVHeader title="Grants and Funding" />
+      <div class="entries">
+        {funding.map((award) => <CVAwardEntry award={award} />)}
+      </div>
+    </div>
+
+    <CVHeader title="Awards and Honors" />
+    <div class="entries">
+      {awards.map((award) => <CVAwardEntry award={award} />)}
+    </div>
+
+    <CVHeader title="Publications" />
+    {
+      publicationGroups.map(({ title, items }) => (
+        <>
+          <CVHeader title={title} level={2} />
+          <div class="entries publications">
+            {items.map((publication) => <CVPublicationEntry publication={publication} people={people} />)}
+          </div>
+        </>
+      ))
+    }
+
+    <CVHeader title="Talks" />
+    <div class="entries">
+      {talks.map((talk) => <CVTalkEntry talk={talk} />)}
+    </div>
+
+    <CVHeader title="Teaching" />
+    <div class="entries">
+      {teaching.map((ta) => <CVRoleEntry title={ta.role} date={ta.date} place={ta.institution} placeUrl={ta.institutionUrl} location={ta.location} people={ta.instructors} peopleLabel={["Instructor:", "Instructors: "]} description={ta.description} directory={people} />)}
+    </div>
+
+    <CVHeader title="Service" />
+    <div class="service">
+      <div>
+        <div class="service-title">Reviewer</div>
+        <div class="service-list">
+          {reviewer.map((venue) => <CVReviewerEntry venue={venue} />)}
+        </div>
+      </div>
+      <div>
+        <div class="service-title">Organizing Committee</div>
+        <div class="service-list">
+          {committee.map((venue) => <CVReviewerEntry venue={venue} />)}
+        </div>
+      </div>
+    </div>
+
+    <div class="rendered-date">Last rendered: {new Date().toDateString()}</div>
+  </div>
+</Base>
+
+<style>
+  .cv {
+    width: 95%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .header {
+    margin-bottom: 2rem;
+  }
+  .header h1 {
+    margin-bottom: 0.25rem;
+  }
+  .header h2 {
+    margin-bottom: 0.5rem;
+    color: var(--gray-400);
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 300;
+  }
+  .contact {
+    width: 100%;
+    color: var(--gray-600);
+  }
+  .contact a {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .contact object {
+    align-self: center;
+    pointer-events: none;
+  }
+  @media (min-width: 440px) {
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      width: 83.333333%;
+    }
+  }
+  .entries {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .entries.publications {
+    gap: 1rem;
+  }
+  .service {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+  }
+  .service-title {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+  }
+  .service-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.25rem;
+  }
+  @media (min-width: 640px) {
+    .service-list {
+      row-gap: 0;
+    }
+  }
+  .rendered-date {
+    display: none;
+    margin: 4rem 0;
+    color: var(--gray-400);
+    font-weight: 300;
+    text-align: center;
+  }
+  @media print {
+    .rendered-date {
+      display: block;
+    }
+    .screen-only {
+      display: none !important;
+    }
+  }
+  /* Every link on the CV underlines on hover. */
+  :global(a:hover) {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  @page {
+    margin: 60px 80px;
+  }
+</style>

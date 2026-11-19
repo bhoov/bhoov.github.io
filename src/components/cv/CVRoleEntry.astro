@@ -1,0 +1,77 @@
+---
+/**
+ * A CV entry for a position: a research job or a teaching role.
+ * `people` are names in `_data/people.yaml` (mentors or instructors), shown after `peopleLabel`.
+ */
+interface Props {
+  title: string;
+  date: string;
+  place: string;
+  placeUrl: string;
+  location: string;
+  people?: string[];
+  peopleLabel: [string, string]; // singular and plural label
+  description?: string;
+  directory: Record<string, any>; // _data/people.yaml
+}
+const { title, date, place, placeUrl, location, people, peopleLabel, description, directory } = Astro.props;
+---
+
+<div class="cv-entry">
+  <div class="cv-date">{date}</div>
+  <div class="cv-title role-title">{title}</div>
+  <div class="cv-place">
+    <a target="_blank" rel="noreferrer" href={placeUrl}>{place}</a>, {location}
+  </div>
+  {
+    people && (
+      <div class="people">
+        <span class="label">{people.length > 1 ? peopleLabel[1] : peopleLabel[0]}</span>
+        {people.map((name, i) => (
+          <div>
+            <a href={directory[name].url} target="_blank" rel="noreferrer">{name}</a>{" "}
+            {i < people.length - 1 && <span class="bullet">•</span>}
+          </div>
+        ))}
+      </div>
+    )
+  }
+  <div class="details" set:html={description} />
+</div>
+
+<style>
+  .role-title {
+    margin-bottom: 0.25rem;
+  }
+  @media (min-width: 640px) {
+    .role-title {
+      margin-bottom: 0;
+    }
+  }
+  .people {
+    grid-column: 1;
+    display: flex;
+    column-gap: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  .label {
+    margin-right: 0.5rem;
+  }
+  .label,
+  .bullet {
+    color: var(--gray-400);
+  }
+  .people a {
+    color: var(--gray-500);
+  }
+  .details {
+    grid-column: 1 / 3;
+    padding-left: 1rem;
+    border-left: 2px solid var(--gray-400);
+    color: var(--gray-400);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 300;
+  }
+</style>

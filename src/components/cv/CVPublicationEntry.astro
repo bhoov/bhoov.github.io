@@ -1,0 +1,143 @@
+---
+import ProjectLink from "../ProjectLink.astro";
+
+interface Props {
+  publication: Record<string, any>;
+  people: Record<string, any>;
+  maxAuthorLength?: number; // authors shown before ", and Others"
+}
+const { publication, people, maxAuthorLength = 7 } = Astro.props;
+
+const authors: string[] = publication.authors;
+const overflow = authors.length > maxAuthorLength;
+const coFirstAuthors: string[] = publication.coFirstAuthors ?? [];
+const coFirstAuthorNote = publication.coFirstAuthorNote ?? "* indicates equal contribution";
+---
+
+<div class="publication cv-avoid-break">
+  <a href={publication.defaultUrl} target="_blank" rel="noreferrer">
+    <div class="cv-title pub-title">{publication.title}</div>
+  </a>
+  <div class="authors">
+    {
+      authors.map((author, i) => (
+        <div class="author" hidden={i >= maxAuthorLength} data-author-extra={i >= maxAuthorLength ? "" : undefined}>
+          {people[author] ? (
+            <a href={people[author].url} target="_blank" rel="noreferrer" class:list={{ me: people[author].me }}>{author}</a>
+          ) : (
+            <span>{author}</span>
+          )}
+          {coFirstAuthors.includes(author) && <sup aria-label="Equal contribution">*</sup>}
+          {overflow && i === maxAuthorLength - 1 ? (
+            <>
+              <span hidden data-author-extra>,</span>
+              <span class="show-authors">, and Others</span>
+            </>
+          ) : (
+            i < authors.length - 1 && <span>,</span>
+          )}
+        </div>
+      ))
+    }
+  </div>
+  {coFirstAuthors.length > 0 && <div class="co-first-note">{coFirstAuthorNote}</div>}
+  <div class="venue">{publication.venue} ({publication.venueShorthand}). {publication.year}.</div>
+  <div class="links">
+    {publication.links.map((link) => <ProjectLink link={link} />)}
+    {
+      publication.awards && (
+        <div class="awards">
+          {publication.awards.map((award) => (
+            <div class="award">
+              <a href={award.url} target="_blank"><img src="icons/award.svg" alt="" class="award-img" /></a>
+              <a href={award.url} target="_blank">{award.name}</a>
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .pub-title {
+    margin-bottom: 0.25rem;
+  }
+  .authors {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  .author {
+    display: flex;
+    color: var(--gray-500);
+    font-weight: 300;
+  }
+  .author a {
+    white-space: nowrap;
+  }
+  .me {
+    color: var(--gray-800);
+    font-weight: 600;
+  }
+  sup {
+    margin-left: 0.125rem;
+    color: var(--gray-500);
+    font-weight: 600;
+    line-height: 1;
+  }
+  .show-authors {
+    cursor: pointer;
+  }
+  .co-first-note {
+    margin-top: 0.125rem;
+    color: var(--gray-400);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 300;
+  }
+  .venue {
+    color: var(--gray-700);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 300;
+    font-style: italic;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.125rem;
+  }
+  .awards {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+  .award {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .award img {
+    height: 1rem;
+  }
+  .award a + a {
+    color: var(--rose-500);
+  }
+</style>
+
+<script>
+  // ", and Others" reveals the remaining authors of that publication.
+  for (const more of document.querySelectorAll<HTMLElement>(".publication .show-authors")) {
+    more.addEventListener("click", () => {
+      more.closest(".publication")!.querySelectorAll<HTMLElement>("[data-author-extra]").forEach((el) => (el.hidden = false));
+      more.remove();
+    });
+  }
+</script>

@@ -1,0 +1,29 @@
+---
+const { award } = Astro.props;
+---
+
+<div class="cv-entry">
+  <div class="cv-title">{award.name}</div>
+  <div class="cv-date">{award.date}</div>
+  <div class="description" set:html={award.description} />
+</div>
+
+<style>
+  .cv-entry {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
+  .cv-title {
+    line-height: 1.5rem;
+  }
+  .cv-date {
+    text-align: right;
+  }
+  .description {
+    grid-column: 1 / 3;
+    color: var(--gray-500);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 300;
+  }
+</style>

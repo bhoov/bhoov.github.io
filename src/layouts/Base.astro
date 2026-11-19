@@ -1,0 +1,38 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+}
+const { title = "Ben Hoover" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon2.ico" />
+    <title>{title}</title>
+    <script is:inline src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <slot name="head" />
+  </head>
+  <body>
+    <div class="layout">
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style>
+  .layout {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  @media (min-width: 640px) {
+    .layout {
+      width: 93%;
+    }
+  }
+</style>
