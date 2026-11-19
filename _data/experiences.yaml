@@ -1,3 +1,14 @@
+- institution: Prefrontal
+  institutionUrl: https://prefrontal.ai
+  location: "London, UK"
+  role: Researcher
+  team: AI Research Lab
+  teamUrl: "https://prefrontal.ai"
+  date: "Sep '26 - present"
+  type: industry
+  description: >-
+    Developing new AI algorithms and architectures: energy-based models for reasoning (<a href="https://prefrontal.ai/news/cram/">CRAM</a>) and subquadratic attention for ultra-long context (<a href="https://prefrontal.ai/news/lsa/">Latent Sparse Attention</a>).
+
 - institution: IBM Research
   institutionUrl: https://www.research.ibm.com/artificial-intelligence/
   location: "Cambridge, MA"

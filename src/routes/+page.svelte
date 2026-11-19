@@ -108,10 +108,12 @@
             class="text-slate-700 flex flex-col gap-4 leading-6 font-light main-col"
         >
             <p>
-                I am a Machine Learning PhD candidate at
-                <a href="https://poloclub.github.io/">Georgia Tech</a> advised by
-                <a href="https://poloclub.github.io/polochau/">Polo Chau</a>. I
-                successfully defended my PhD thesis on 6 July 2026. My research
+                I am a researcher at
+                <a href="https://prefrontal.ai">Prefrontal</a> in London. I
+                defended my Machine Learning PhD thesis at
+                <a href="https://poloclub.github.io/">Georgia Tech</a>, advised by
+                <a href="https://poloclub.github.io/polochau/">Polo Chau</a>, on
+                6 July 2026. My research
                 focuses on building more interpretable and
                 parameter efficient AI by rethinking the way we train and build
                 deep models, taking inspiration from Associative Memories and
