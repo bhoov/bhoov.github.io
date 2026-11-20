@@ -12,16 +12,16 @@
   dataIcon: mdi-linkedin 
   label: LinkedIn
 
-- name: Twitter
+- name: X
   group: 1
-  href: https://twitter.com/ben_hoov
+  href: https://x.com/ben_hoov
   faIcon: fa-twitter
-  dataIcon: mdi-twitter
+  dataIcon: ri:twitter-x-fill
   label: "@ben_hoov"
   shortLabel: "@ben_hoov"
   # color: "#1da1f2"
 
-- name: Github
+- name: GitHub
   group: 1
   href: https://github.com/bhoov
   faIcon: fa-github

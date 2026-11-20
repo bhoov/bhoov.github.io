@@ -6,5 +6,5 @@ export const LINKS = {
     video: "mdi-video",
     poster: "mdi-projector-screen",
     demo: "mdi-play",
-    x: "mdi-twitter"
+    x: "ri:twitter-x-fill"
 }

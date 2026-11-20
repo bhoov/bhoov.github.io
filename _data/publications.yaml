@@ -5,6 +5,17 @@
 - id: CRAM
   title: "Classical Energies Learn to Reason 1,000x Faster than Looped Models"
   shortTitle: CRAM
+  tagline: "1980s physics, trained to reason in milliseconds" # the core contribution, shown under the title on the home page
+  slug: cram # the work's page on this site: /research/cram
+  abstract: >-
+    Looped models have emerged as a prominent paradigm for reasoning, with successes on simple reasoning puzzles such as Sudoku-Extreme and Maze-Unique.
+    However, these models can be unstable, slow to train, and use many parameters and FLOPs to solve simple puzzles.
+    Descent on an energy not only mitigates these issues but also offers advantages: built-in early stopping, compute that adapts to problem difficulty, fast training without differentiating through a solver, and interpretable weights that learn the constraints of the puzzle.
+    Here we demonstrate this with a learned version of Hopfield & Tank's energy from the 80s, which we term CRAM, solves 99.996% of Sudoku-Extreme and 100% of Maze-Unique test puzzles after 42 ms and 132 ms of training on one GPU, at least 1,000x faster than looped models on these tasks.
+    CRAM also matches baseline looped models at their highest accuracy on Sudoku-Extreme using at least 282x fewer inference FLOPs.
+    Our work suggests two things.
+    First, that energies are an extremely promising direction for training reasoning from data.
+    Second, a caution against using trivially solvable benchmarks like Sudoku and Maze to test the scalability of looped reasoning techniques.
   category: memory
   authors:
     - Benjamin Hoover
@@ -13,6 +24,7 @@
   venue: "ArXiv preprint"
   venueShorthand: ArXiv
   thumbnail: "imgs/thumbnails/cram.png"
+  teaser: imgs/teasers/cram.webp # designed for the home page's 16:10 frame
   type: preprint
   defaultUrl: https://prefrontal.ai/news/cram/
   links:
@@ -31,6 +43,10 @@
   month: Nov
   year: 2026
   featured: true
+  awards:
+    - name: "Went viral on X (❤ 2.1k)"
+      short: "Viral on X (2.1k ❤)"
+      url: https://x.com/Ben_Hoov/status/2121294692968993068
   featureDescription: >-
     A learned version of Hopfield and Tank's energy from the 1980s solves 99.996% of Sudoku-Extreme and 100% of Maze-Unique test puzzles after 42 ms and 132 ms of training on one GPU, at least 1,000x faster than looped models.
   selected: false
@@ -96,6 +112,16 @@
 - id: NRGPT
   title: "NRGPT: An Energy-based Alternative for GPT"
   shortTitle: NRGPT
+  tagline: "A GPT whose tokens roll down an energy landscape" # the core contribution, shown under the title on the home page
+  slug: nrgpt # the work's page on this site: /research/nrgpt
+  abstract: >-
+    Generative Pre-trained Transformer (GPT) architectures are the most popular design for language modeling.
+    Energy-based modeling is a different paradigm that views inference as a dynamical process operating on an energy landscape.
+    We propose a minimal modification of the GPT setting to unify it with the EBM framework.
+    The inference step of our model, which we call eNeRgy-GPT (NRGPT), is conceptualized as an exploration of the tokens on the energy landscape.
+    We prove, and verify empirically, that under certain circumstances this exploration becomes gradient descent, although they don't necessarily lead to the best performing models.
+    We demonstrate that our model performs well for simple language (Shakespeare dataset), algebraic ListOPS tasks, and richer settings such as OpenWebText language modeling.
+    We also observe that our models may be more resistant to overfitting, doing so only during very long training.
   category: memory
   authors:
     - Nima Dehmamy
@@ -108,8 +134,13 @@
   venueShorthand: ICLR
   location: Rio de Janeiro, Brazil
   thumbnail: "imgs/thumbnails/nrgpt-thumbnail.png"
+  teaser: imgs/teasers/nrgpt.svg # designed for the home page's 16:10 frame
   type: conference
   defaultUrl: /nrgpt
+  moreLinks: # shown only on the work's page
+    - type: url
+      url: https://openreview.net/forum?id=B3Muyi2zgo
+      label: OpenReview
   links:
     - type: pdf
       url: https://arxiv.org/abs/2512.16762
@@ -117,9 +148,6 @@
     - type: code
       url: https://github.com/bhoov/nrgpt
       label: Code
-    - type: url
-      url: /nrgpt
-      label: Home
     - type: video
       url: "https://recorder-v3.slideslive.com/#/share?share=109460&s=a5cb5c43-b963-498a-ac2a-cfdb97ffa581"
       label: Slideslive Video
@@ -270,9 +298,17 @@
       url={https://openreview.net/forum?id=d7PjRsguov}
     }
 
-- id: EpaDAM
+- id: LSRDAM
   title: "Dense Associative Memory with Epanechnikov Energy"
-  shortTitle: Epanechnikov DenseAM
+  shortTitle: LSRDAM
+  tagline: "Exact recall, plus new memories that emerge" # the core contribution, shown under the title on the home page
+  slug: lsrdam # the work's page on this site: /research/lsrdam
+  abstract: >-
+    We propose a novel energy function for Dense Associative Memory (DenseAM) networks, the log-sum-ReLU (LSR), inspired by optimal kernel density estimation.
+    Unlike the common log-sum-exponential (LSE) function, LSR is based on the Epanechnikov kernel and enables exact memory retrieval with exponential capacity without requiring exponential separation functions.
+    Moreover, it introduces abundant additional \emph{emergent} local minima while preserving perfect pattern recovery -- a characteristic previously unseen in DenseAM literature.
+    Empirical results show that LSR energy has significantly more local minima (memories) that have comparable log-likelihood to LSE-based models.
+    Analysis of LSR's emergent memories on image datasets reveals a degree of creativity and novelty, hinting at this method's potential for both large-scale memory storage and generative tasks.
   category: memory
   authors:
     - Benjamin Hoover
@@ -284,14 +320,32 @@
   venueShorthand: NeurIPS
   location: San Diego, CA USA
   thumbnail: "imgs/thumbnails/epadam.jpg"
+  teaser: imgs/teasers/lsrdam.svg # designed for the home page's 16:10 frame
   type: conference
   # defaultUrl: https://poloclub.github.io/transformer-explainer/
+  moreLinks: # shown only on the work's page
+    - type: url
+      url: https://openreview.net/forum?id=ZbQ5Zq3zA3
+      label: OpenReview
+    - type: pdf
+      url: /slides/lsrdam-5min.pdf
+      label: Slides (5 min)
   links:
     - type: pdf
       url: https://arxiv.org/abs/2506.10801
       label: PDF
+    - type: code
+      url: https://github.com/bhoov/EpanechnikovDenseAM
+      label: Code
+    - type: pdf
+      url: /posters/lsrdam.jpg
+      label: Poster
+    - type: video
+      url: https://recorder-v3.slideslive.com/?share=106310&s=f2d9d915-d762-4d40-b2e8-9fbed019f1f6
+      label: Video
   awards:
     - name: "Spotlight, NeurIPS'25 (top 3%)"
+      short: "Spotlight (top 3%)"
       url: 
   month: Dec
   year: 2025
@@ -312,6 +366,14 @@
 - id: AMTutorial
   title: "Tutorial on Modern Methods in Associative Memory"
   shortTitle: "Tutorial on Associative Memory"
+  tagline: "A modern tour of Associative Memory" # the core contribution, shown under the title on the home page
+  slug: am-tutorial # the work's page on this site: /research/am-tutorial
+  abstract: >-
+    Associative Memories like the famous Hopfield Networks are elegant models for describing fully recurrent neural networks whose fundamental job is to store and retrieve information.
+    In the past few years they experienced a surge of interest due to novel theoretical results pertaining to their information storage capabilities, and their relationship with SOTA AI architectures, such as Transformers and Diffusion Models.
+    These connections open up possibilities for interpreting the computation of traditional AI networks through the theoretical lens of Associative Memories.
+    Additionally, novel Lagrangian formulations of these networks make it possible to design powerful distributed models that learn useful representations and inform the design of novel architectures.
+    This tutorial provides an approachable introduction to Associative Memories, emphasizing the modern language and methods used in this area of research, with practical hands-on mathematical derivations and coding notebooks.
   category: memory
   authors:
     - Dmitry Krotov
@@ -322,6 +384,7 @@
   venueShorthand: "ICML '25"
   location: Vancouver, BC Canada
   thumbnail: "imgs/thumbnails/amtutorial.webp"
+  teaser: imgs/teasers/amtutorial.webp # designed for the home page's 16:10 frame
   type: tutorial
   # defaultUrl: https://poloclub.github.io/transformer-explainer/
   links:
@@ -355,6 +418,15 @@
 - id: ConceptAttention
   title: "ConceptAttention: Diffusion Transformers Learn Highly Interpretable Features"
   shortTitle: "ConceptAttention"
+  tagline: "Diffusion transformers secretly segment concepts" # the core contribution, shown under the title on the home page
+  slug: concept-attention # the work's page on this site: /research/concept-attention
+  abstract: >-
+    Do the rich representations of multi-modal diffusion transformers (DiTs) exhibit unique properties that enhance their interpretability?
+    We introduce ConceptAttention, a novel method that leverages the expressive power of DiT attention layers to generate high-quality saliency maps that precisely locate textual concepts within images.
+    Without requiring additional training, ConceptAttention repurposes the parameters of DiT attention layers to produce highly contextualized concept embeddings, contributing the major discovery that performing linear projections in the output space of DiT attention layers yields significantly sharper saliency maps compared to commonly used cross-attention maps.
+    ConceptAttention even achieves state-of-the-art performance on zero-shot image segmentation benchmarks, outperforming 15 other zero-shot interpretability methods on the ImageNet-Segmentation dataset.
+    ConceptAttention works for popular image models and even seamlessly generalizes to video generation.
+    Our work contributes the first evidence that the representations of multi-modal DiTs are highly transferable to vision tasks like segmentation.
   category: vis
   authors:
     - Alec Helbling
@@ -366,6 +438,7 @@
   venueShorthand: "ICML '25"
   location: Vancouver, BC Canada
   thumbnail: "imgs/thumbnails/ConceptAttention.webp"
+  teaser: imgs/teasers/conceptattention.svg # designed for the home page's 16:10 frame
   type: conference
   # defaultUrl: https://poloclub.github.io/transformer-explainer/
   links:
@@ -384,8 +457,10 @@
       label: Demo
   awards:
     - name: "Oral Spotlight, ICML'25 (top 1%)"
+      short: "Oral (top 1%)"
       url: "https://icml.cc/virtual/2025/events/oral"
     - name: "Best Paper, VisCon Workshop@CVPR'25"
+      short: "Best Paper, Workshop@CVPR'25"
       url: "https://sites.google.com/stanford.edu/visual-concepts-workshops/home"
   month: July
   year: 2025
@@ -408,6 +483,15 @@
 - id: DrDAM
   title: "Dense Associative Memory through the Lens of Random Features"
   shortTitle: DenseAMs meet Random Features
+  tagline: "Add memories without adding parameters" # the core contribution, shown under the title on the home page
+  slug: drdam # the work's page on this site: /research/drdam
+  abstract: >-
+    Dense Associative Memories are high storage capacity variants of the Hopfield networks that are capable of storing a large number of memory patterns in the weights of the network of a given size.
+    Their common formulations typically require storing each pattern in a separate set of synaptic weights, which leads to the increase of the number of synaptic weights when new patterns are introduced.
+    In this work we propose an alternative formulation of this class of models using random features, commonly used in kernel methods.
+    In this formulation the number of network's parameters remains fixed.
+    At the same time, new memories can be added to the network by modifying existing weights.
+    We show that this novel network closely approximates the energy function and dynamics of conventional Dense Associative Memories and shares their desirable computational properties.
   category: memory
   authors:
     - Benjamin Hoover
@@ -419,8 +503,13 @@
   venueShorthand: "NeurIPS"
   location: Vancouver, BC Canada
   thumbnail: "imgs/thumbnails/drdam.png"
+  teaser: imgs/teasers/drdam.svg # designed for the home page's 16:10 frame
   type: conference
   # defaultUrl: https://poloclub.github.io/transformer-explainer/
+  moreLinks: # shown only on the work's page
+    - type: url
+      url: https://neurips.cc/virtual/2024/poster/96886
+      label: NeurIPS 2024 page
   links:
     - type: code
       url: https://github.com/bhoov/distributed_DAM
@@ -455,6 +544,18 @@
 - id: TransformerExplainer
   title: "Transformer Explainer: Interactive Learning of Text-Generative Models"
   shortTitle: Transformer Explainer
+  tagline: "See inside a live GPT-2, in your browser" # the core contribution, shown under the title on the home page
+  slug: transformer-explainer # the work's page on this site: /research/transformer-explainer
+  abstract: >-
+    The Transformer architecture underpins modern large language models powering state-of-the-art text generation and AI applications.
+    However, its complexity makes it difficult for non-experts to learn.
+    Existing resources often lack interactivity, rely on static descriptions of simplified architectures, or fail to reflect models' behavior with real data.
+    To address this gap, we introduce Transformer Explainer, an interactive visualization tool for non-experts to learn Transformers.
+    The tool integrates an overview illustrating the Transformer's data flow with on-demand explanations that gradually reveal mathematical details.
+    Smooth transitions across abstraction levels highlight the interplay between high-level structures and low-level operations.
+    Running a live GPT-2 instance directly in the browser, Transformer Explainer empowers learners to experiment with custom input and hyperparameters without setup, observing next-token predictions in real time.
+    A 90-participant user study showed that our tool offered significant advantages in improving user understanding and engagement.
+    Transformer Explainer has attracted over 490,000 users.
   category: vis
   authors:
     - Aeree Cho
@@ -469,6 +570,7 @@
   venueShorthand: VIS
   # location: New Orleans, LA, USA
   thumbnail: "imgs/thumbnails/transformer-explainer.gif"
+  teaser: imgs/teasers/transformerexplainer.webp # designed for the home page's 16:10 frame
   type: conference
   defaultUrl: https://poloclub.github.io/transformer-explainer/
   links:
@@ -487,11 +589,14 @@
       label: Video
   awards:
     - name: "Best Poster @VIS '24"
+      short: "Best Poster"
       url: "https://ieeevis.org/year/2023/info/awards/best-paper-awards"
     - name: 'Went Viral on X (❤ 1.9k️+)'
+      short: "Viral on X (1.9k ❤)"
       url: "https://twitter.com/omarsar0/status/1821986172215742716"
       # url: "https://x.com/rohanpaul_ai/status/1854321963876974775"
     - name: "#1 paper of the day🤗"
+      short: "#1 Paper of the Day"
       url: "https://huggingface.co/papers/2408.04619"
   month: Oct
   year: 2024
@@ -503,6 +608,14 @@
 - id: PlainSight
   title: "Memory in Plain Sight: A Survey of the Uncanny Resemblances between Diffusion Models and Associative Memories"
   shortTitle: Memory in Plain Sight
+  tagline: "Denoising is memory retrieval in disguise" # the core contribution, shown under the title on the home page
+  slug: memory-in-plain-sight # the work's page on this site: /research/memory-in-plain-sight
+  abstract: >-
+    The generative process of Diffusion Models (DMs) has recently set state-of-the-art on many AI generation benchmarks.
+    Though the generative process is traditionally understood as an "iterative denoiser", there is no universally accepted language to describe it.
+    We introduce a novel perspective to describe DMs using the mathematical language of memory retrieval from the field of energy-based Associative Memories (AMs), making efforts to keep our presentation approachable to newcomers to both of these fields.
+    Unifying these two fields provides insight that DMs can be seen as a particular kind of AM where Lyapunov stability guarantees are bypassed by intelligently engineering the dynamics (i.e., the noise and step size schedules) of the denoising process.
+    Finally, we present a growing body of evidence that records DMs exhibiting empirical behavior we would expect from AMs, and conclude by discussing research opportunities that are revealed by understanding DMs as a form of energy-based memory.
   category: memory
   authors:
     - Benjamin Hoover
@@ -515,8 +628,19 @@
   venueShorthand: AMHN@NeurIPS
   # location: New Orleans, LA, USA
   thumbnail: "imgs/thumbnails/PlainSight.png"
+  teaser: imgs/teasers/plainsight.svg # designed for the home page's 16:10 frame
   type: workshop
   defaultUrl: https://arxiv.org/abs/2309.16750
+  moreLinks: # shown only on the work's page
+    - type: url
+      url: https://openreview.net/forum?id=B1BL9go65H
+      label: OpenReview (short version)
+    - type: url
+      url: https://neurips.cc/virtual/2023/workshop/66524
+      label: NeurIPS 2023 workshop page
+    - type: x
+      url: https://twitter.com/Ben_Hoov/status/1708912750507024401
+      label: Announcement on X
   links:
     - type: pdf
       url: https://arxiv.org/abs/2309.16750
@@ -524,9 +648,6 @@
     - type: pdf
       url: /posters/memory-in-plain-sight-24x36.pdf
       label: Poster
-    - type: url
-      url: /memory-in-plain-sight
-      label: Home
   month: Oct
   year: 2023
   featured: true
@@ -547,6 +668,15 @@
 - id: EnergyTransformer
   title: "Energy Transformer"
   shortTitle: Energy Transformer
+  tagline: "A Transformer built as an Associative Memory" # the core contribution, shown under the title on the home page
+  slug: energy-transformer # the work's page on this site: /research/energy-transformer
+  abstract: >-
+    Our work combines aspects of three promising paradigms in machine learning, namely, attention mechanism, energy-based models, and associative memory.
+    Attention is the power-house driving modern deep learning successes, but it lacks clear theoretical foundations.
+    Energy-based models allow a principled approach to discriminative and generative tasks, but the design of the energy functional is not straightforward.
+    At the same time, Dense Associative Memory models or Modern Hopfield Networks have a well-established theoretical foundation, and allow an intuitive design of the energy function.
+    We propose a novel architecture, called the Energy Transformer (or ET for short), that uses a sequence of attention layers that are purposely designed to minimize a specifically engineered energy function, which is responsible for representing the relationships between the tokens.
+    In this work, we introduce the theoretical foundations of ET, explore its empirical capabilities using the image completion task, and obtain strong quantitative results on the graph anomaly detection and graph classification tasks.
   category: memory
   authors:
     - Benjamin Hoover
@@ -561,6 +691,16 @@
   venueShorthand: NeurIPS
   location: New Orleans, LA, USA
   defaultUrl: /energy-transformer
+  moreLinks: # shown only on the work's page
+    - type: code
+      url: https://github.com/Lemon-cmd/energy-transformer-torch
+      label: PyTorch code
+    - type: url
+      url: https://neurips.cc/virtual/2023/poster/71901
+      label: NeurIPS 2023 page
+    - type: x
+      url: https://twitter.com/Ben_Hoov/status/1730570603210404236
+      label: Announcement on X
   links:
     - type: pdf
       url: https://arxiv.org/abs/2302.07253
@@ -568,9 +708,6 @@
     - type: pdf
       url: /posters/energy-transformer-24x36.pdf
       label: Poster
-    - type: url
-      url: /energy-transformer
-      label: Home
     - type: code
       url: https://github.com/bhoov/energy-transformer-jax
       label: Code
@@ -585,10 +722,12 @@
   year: 2023
   awards:
     - name: "Spotlight, AMHN@NeurIPS'23"
+      short: "Workshop Spotlight"
       url: https://amhn.vizhub.ai/
   featured: true
   selected: true
   thumbnail: "imgs/thumbnails/energy-transformer.png"
+  teaser: imgs/teasers/energytransformer.svg # designed for the home page's 16:10 frame
   type: conference
   featureDescription: >-
     We derive an Associative Memory inspired by the famous Transformer architecture, where the forward pass through the model is memory retrieval by energy descent.
@@ -643,6 +782,16 @@
 - id: DiffusionExplainer
   title: "Diffusion Explainer: Visual Explanation for Text-to-image Stable Diffusion"
   shortTitle: Diffusion Explainer
+  tagline: "See how Stable Diffusion turns text into images" # the core contribution, shown under the title on the home page
+  slug: diffusion-explainer # the work's page on this site: /research/diffusion-explainer
+  abstract: >-
+    Diffusion-based generative models' impressive ability to create convincing images has garnered global attention.
+    However, their complex structures and operations often pose challenges for non-experts to grasp.
+    We present Diffusion Explainer, the first interactive visualization tool that explains how Stable Diffusion transforms text prompts into images.
+    Diffusion Explainer tightly integrates a visual overview of Stable Diffusion's complex structure with explanations of the underlying operations.
+    By comparing image generation of prompt variants, users can discover the impact of keyword changes on image generation.
+    A 56-participant user study demonstrates that Diffusion Explainer offers substantial learning benefits to non-experts.
+    Our tool has been used by over 10,300 users from 124 countries at https://poloclub.github.io/diffusion-explainer/.
   category: vis
   authors:
     - Seongmin Lee
@@ -664,6 +813,7 @@
   featureDescription: >-
     Diffusion models are complicated. We break down Stable Diffusion and explain each component of the model visually. Taught in Georgia Tech CSE6242 Data and Visual Analytics (typically 250-300 students per semester).
   thumbnail: "imgs/thumbnails/diffusion-explainer.png"
+  teaser: imgs/teasers/diffusionexplainer.svg # designed for the home page's 16:10 frame
   defaultUrl: https://poloclub.github.io/diffusion-explainer/
   links:
     - type: demo
@@ -794,6 +944,17 @@
 - id: HAMUX
   title: "HAMUX: A Universal Abstraction for Hierarchical Hopfield Networks"
   shortTitle: HAMUX
+  tagline: "Lego blocks for deep Hopfield networks" # the core contribution, shown under the title on the home page
+  slug: hamux # the work's page on this site: /research/hamux
+  abstract: >-
+    Conceptualized as Associative Memory, Hopfield Networks (HNs) are powerful models which describe neural network dynamics converging to a local minimum of an energy function.
+    HNs are conventionally described by a neural network with two layers connected by a matrix of synaptic weights.
+    However, it is not well known that the Hopfield framework generalizes to systems in which many neuron layers and synapses work together as a unified Hierarchical Associative Memory (HAM) model: a single network described by memory retrieval dynamics (convergence to a fixed point) and governed by a global energy function.
+    In this work we introduce a universal abstraction for HAMs using the building blocks of neuron layers (nodes) and synapses (edges) connected within a hypergraph.
+    We implement this abstraction as a software framework, written in JAX, whose autograd feature removes the need to derive update rules for the complicated energy-based dynamics.
+    Our framework, called HAMUX (HAM User eXperience), enables anyone to build and train hierarchical HNs using familiar operations like convolutions and attention alongside activation functions like Softmaxes, ReLUs, and LayerNorms.
+    HAMUX is a powerful tool to study HNs at scale, something that has never been possible before.
+    We believe that HAMUX lays the groundwork for a new type of AI framework built around dynamical systems and energy-based associative memories.
   category: memory
   authors:
     - Benjamin Hoover
@@ -820,6 +981,7 @@
       url: https://youtu.be/x_jJed5KjP8
       label: Video
   thumbnail: "imgs/thumbnails/hamux-thumbnail.jpg"
+  teaser: imgs/teasers/hamux.webp # designed for the home page's 16:10 frame
   month: Dec
   year: 2022
   featured: true
@@ -1200,6 +1362,16 @@
 - id: RXNMapper
   title: "RXNMapper: Unsupervised Attention Guided Atom Mapping"
   shortTitle: RXNMapper
+  tagline: "Transformers learn atom mapping with no labels" # the core contribution, shown under the title on the home page
+  slug: rxnmapper # the work's page on this site: /research/rxnmapper
+  abstract: >-
+    Humans use different domain languages to represent, explore, and communicate scientific concepts.
+    During the last few hundred years, chemists compiled the language of chemical synthesis inferring a series of "reaction rules" from knowing how atoms rearrange during a chemical transformation, a process called atom-mapping.
+    Atom-mapping is a laborious experimental task and, when tackled with computational methods, requires continuous annotation of chemical reactions and the extension of logically consistent directives.
+    Here, we demonstrate that Transformer Neural Networks learn atom-mapping information between products and reactants without supervision or human labeling.
+    Using the Transformer attention weights, we build a chemically agnostic, attention-guided reaction mapper and extract coherent chemical grammar from unannotated sets of reactions.
+    Our method shows remarkable performance in terms of accuracy and speed, even for strongly imbalanced and chemically complex reactions with nontrivial atom-mapping.
+    It provides the missing link between data-driven and rule-based approaches for numerous chemical reaction tasks.
   category: vis
   authors:
     - Philippe Schwaller
@@ -1209,6 +1381,7 @@
     - Teodoro Laino
   venue: Science Advances
   venueShorthand: "AAAS"
+  venueLabel: Sci. Adv. # overrides the label made from venueShorthand and year
   year: 2021
   month: Jan
   type: journal
@@ -1235,6 +1408,7 @@
       label: Code
       showStars: true
   thumbnail: "imgs/thumbnails/rxnmapper.png"
+  teaser: imgs/teasers/rxnmapper.webp # designed for the home page's 16:10 frame
   # description: "Science Advances 2021, #IOPPoster, SCS Fall 2020, ICML 2020 Workshop: AI for Scientific Discovery, ACS Fall 2020"
   description: >-
     Published in Science Advances 2021; <strong>Best Poster</strong> at 

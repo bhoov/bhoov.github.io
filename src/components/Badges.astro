@@ -1,0 +1,105 @@
+---
+/**
+ * One line of small badges for a work: awards (gold, trophy) and press coverage (grey, newspaper).
+ * The line never wraps; keep the `short` award names and press `badge` names brief enough to fit a phone card.
+ */
+import type { Badge } from "../lib/publications";
+
+interface Props {
+  badges: Badge[];
+  size?: "small" | "medium";
+}
+const { badges, size = "small" } = Astro.props;
+const icon = { award: "mdi-trophy-outline", press: "mdi-newspaper-variant-outline" };
+---
+
+{
+  badges.length > 0 && (
+    <ul class:list={["badges", size]}>
+      {badges.map((b) => (
+        <li class={b.kind}>
+          {b.url ? (
+            <a href={b.url} target="_blank" rel="noreferrer">
+              <span class="iconify" data-icon={icon[b.kind]} />
+              {b.label}
+            </a>
+          ) : (
+            <span>
+              <span class="iconify" data-icon={icon[b.kind]} />
+              {b.label}
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+<style>
+  .badges {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.3rem;
+    overflow-x: auto; /* a fallback: the short badge names are chosen to fit one line, even in a phone card */
+    scrollbar-width: none;
+  }
+  .badges::-webkit-scrollbar {
+    display: none;
+  }
+  li {
+    flex: none;
+  }
+  a,
+  li > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    font-weight: 600;
+    transition: background 150ms;
+  }
+  /* The medium size is for a work's page, from 640px; on phones it stays small so the row fits one line. */
+  @media (min-width: 640px) {
+    .medium a,
+    .medium li > span {
+      padding: 0.25rem 0.6rem;
+      font-size: 0.8rem;
+    }
+  }
+  /* Phones: no icons and tighter padding, so a work's badges fit one line in a card. */
+  @media (max-width: 639px) {
+    .badges {
+      gap: 0.25rem;
+    }
+    a,
+    li > span {
+      padding: 0.15rem 0.4rem;
+      font-size: 0.68rem;
+    }
+    /* Iconify swaps each placeholder for an <svg> without Astro's scope attribute, so select it through the scoped list. */
+    .badges :global(.iconify) {
+      display: none;
+    }
+  }
+  .award a,
+  .award > span {
+    background: #fdf3df;
+    color: #8a5300;
+  }
+  .award a:hover {
+    background: #fae6bd;
+  }
+  .press a,
+  .press > span {
+    background: var(--surface-sunken);
+    color: var(--text-secondary);
+  }
+  .press a:hover {
+    background: var(--rule);
+    color: var(--text-primary);
+  }
+</style>

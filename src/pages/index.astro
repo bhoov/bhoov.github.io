@@ -1,327 +1,535 @@
 ---
 import Base from "../layouts/Base.astro";
-import LandingPageCard from "../components/LandingPageCard.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import ResearchItem from "../components/ResearchItem.astro";
 import { data } from "../data";
+import { featuredPublications } from "../lib/publications";
 
-const featured = data.publications.filter((p) => p.featured);
-const maxNews = 6; // news items shown before "See more..."
+const featured = featuredPublications();
+const newsBase = 6; // news items shown at first, and after "Show less"
+const newsStep = 8; // news items each "Show more" adds
+
+// "Featured in": entries of _data/press.yaml that have a `logo`, one per outlet, ordered by `logoOrder`.
+const press = data.press
+  .filter((p, i, all) => p.logo && all.findIndex((q) => q.logo && q.outlet === p.outlet) === i)
+  .sort((a, b) => (a.logoOrder ?? 99) - (b.logoOrder ?? 99));
 ---
 
-<Base title="Ben Hoover">
+<Base title="Ben Hoover" site>
   <base slot="head" target="_blank" />
+  <SiteHeader />
 
-  {/* From 640px the page is a 12-column grid: dates sit in columns 1-2 and text in columns 3-10. */}
-  <div class="page">
-    <div class="hero main-col">
-      <div class="headshot">
-        <a href="imgs/people/me-headshot.jpg" target="_blank" rel="noreferrer">
-          <img src="imgs/people/me-headshot-small.jpg" alt="Ben's headshot" />
-        </a>
-      </div>
-      <div class="hero-text">
-        <div>
+  <main>
+    {/* Hero. The two canvases draw an energy landscape behind it; see src/scripts/energyLandscape.ts. */}
+    <section class="hero" id="top">
+      <canvas class="field" aria-hidden="true"></canvas>
+      <canvas class="probe" aria-hidden="true"></canvas>
+      <div class="container hero-grid">
+        <div class="hero-text">
           <h1>Hi, I'm Ben Hoover</h1>
-          <h2>I'm an AI Researcher studying <span>memory</span></h2>
-        </div>
-        <div class="socials">
-          <div class="social cv-link">
-            <a target="_blank" href="/cv" rel="noreferrer">CV</a>
+          <p class="subtitle">I build efficient AI using <span class="hl">physics</span></p>
+          <ul class="profiles" aria-label="Profiles">
+            {
+              data.socialLinks.map((link) => (
+                <li>
+                  <a href={link.href} rel="noreferrer" aria-label={link.name} title={link.name}>
+                    <span class="iconify" data-icon={link.dataIcon} />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+          {/* Astro drops whitespace that contains a newline next to an element, so keep inline links on the same line as their surrounding text. */}
+          <p class="tagline">I use energy-based models to build scalable AI that is <strong>smaller, faster, and easier to understand</strong>.</p>
+          <p class="bio prose-links">I'm a researcher at <a href="https://prefrontal.ai"><strong>Prefrontal</strong></a> in London, and I earned my Machine Learning PhD at <a href="https://poloclub.github.io/"><strong>Georgia Tech</strong></a> with <a href="https://poloclub.github.io/polochau/">Polo Chau</a>. I study AI as <strong>Associative Memory</strong>: models whose computation is the retrieval of a memory by descending an energy. My goal is AI that is interpretable, efficient and theoretically grounded by design, and that still scales to modern workloads. My research has been an <strong>oral at ICML</strong> (top 1%) and a <strong>spotlight at NeurIPS</strong> (top 3%), and <a href="/research/cram" target="_self">CRAM</a>, my latest model, learns to reason <strong>1,000x faster</strong> than looped models.</p>
+          <div class="press">
+            <span class="press-label">Featured in</span>
+            <ul>
+              {
+                press.map((item) => (
+                  <li>
+                    <a href={item.url} rel="noreferrer" title={`${item.outlet}: ${item.name}`}>
+                      <img src={`/${item.logo}`} alt={item.outlet} style={`height: ${item.logoHeight ?? 1.25}rem`} />
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
           </div>
-          {
-            data.socialLinks.map((link) => (
-              <div class="social">
-                <a target="_blank" href={link.href} rel="noreferrer">
-                  <span class="iconify" data-icon={link.dataIcon} style={`color: ${link.color || "#515151"}`} />
-                </a>
-              </div>
-            ))
-          }
         </div>
-      </div>
-    </div>
-
-    <div class="main-col">
-      <p class="tagline">
-        Understanding <a href="https://research.ibm.com/blog/what-are-foundation-models" target="_blank" rel="noreferrer">AI foundation models</a> from the perspective of large <a href="https://en.wikipedia.org/wiki/Associative_memory_(psychology)" target="_blank" rel="noreferrer">Associative Memories</a>.
-      </p>
-      {/* Astro drops whitespace that contains a newline next to an element, so keep inline links on the same line as their surrounding text. */}
-      <p class="bio">
-        I am a researcher at <a href="https://prefrontal.ai">Prefrontal</a> in London. I defended my Machine Learning PhD thesis at <a href="https://poloclub.github.io/">Georgia Tech</a>, advised by <a href="https://poloclub.github.io/polochau/">Polo Chau</a>, on 6 July 2026. My research focuses on building more interpretable and parameter efficient AI by rethinking the way we train and build deep models, taking inspiration from Associative Memories and <a href="http://www.scholarpedia.org/article/Hopfield_network">Hopfield Networks</a>. I like to visualize what happens inside AI models.
-      </p>
-    </div>
-
-    <h1 class="main-col">News</h1>
-    <div class="news-list">
-      {
-        data.news.map((blurb, i) => {
-          const extra = i >= maxNews ? { hidden: true, "data-news-extra": "" } : {};
-          return (
-            <>
-              <div class="news-date" {...extra}>{blurb.date}</div>
-              <div class="news-text main-col" {...extra} set:html={blurb.HTMLdescription} />
-            </>
-          );
-        })
-      }
-      {
-        data.news.length > maxNews && (
-          <button type="button" id="news-toggle" class="main-col">
-            See more...
-          </button>
-        )
-      }
-    </div>
-
-    <section id="thesis" class="main-col">
-      <p class="kicker">PhD Thesis · 2026</p>
-      <a class="thesis-title" href="/papers/benjamin-hoover-thesis.pdf" rel="noreferrer">Memory as Computation: Associative Memory as a Foundation for Modern AI</a>
-      <div class="thesis-links">
-        <a href="/papers/benjamin-hoover-thesis.pdf" rel="noreferrer">Read the thesis (PDF) →</a>
-        <a href="https://youtu.be/NoAnSDAQq0k" rel="noreferrer">Watch the defense (YouTube) →</a>
+        <figure class="portrait">
+          <a class="headshot" href="imgs/people/me-headshot.jpg" rel="noreferrer">
+            <img src="imgs/people/me-headshot-480.webp" alt="Ben's headshot" width="480" height="635" />
+          </a>
+          <figcaption>Retrieve <span class="memories">memories</span> by descending energy</figcaption>
+        </figure>
       </div>
     </section>
 
-    <h1 class="main-col highlights-title" id="selected-memory">Research Highlights</h1>
-    <div class="cards">
-      {featured.map((project) => <LandingPageCard project={project} />)}
-    </div>
-  </div>
+    {/* Thesis */}
+    <section class="thesis-band">
+      <div class="container thesis-grid">
+        <div>
+          <p class="eyebrow">PhD Thesis · Georgia Tech · 2026</p>
+          <h2><a href="/papers/benjamin-hoover-thesis.pdf" rel="noreferrer">Memory as Computation: Associative Memory as a Foundation for Modern AI</a></h2>
+        </div>
+        <div class="thesis-actions">
+          <a class="button light" href="/papers/benjamin-hoover-thesis.pdf" rel="noreferrer">
+            <span class="iconify" data-icon="mdi-file-document-outline" /> Read the thesis
+          </a>
+          <a class="button ghost" href="https://youtu.be/NoAnSDAQq0k" rel="noreferrer">
+            <span class="iconify" data-icon="mdi-play" /> Watch the defense
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* News */}
+    <section class="container section" id="news">
+      <div class="section-head">
+        <h2>News</h2>
+        <p>Papers, talks and other updates.</p>
+      </div>
+      <div>
+        <ol class="news-list prose-links">
+          {
+            data.news.map((blurb, i) => (
+              <li hidden={i >= newsBase}>
+                <span class="news-date">{blurb.date}</span>
+                <span class="news-text" set:html={blurb.HTMLdescription} />
+              </li>
+            ))
+          }
+        </ol>
+        <div class="news-actions" data-base={newsBase} data-step={newsStep}>
+          <button type="button" class="news-button" id="news-more">Show {newsStep} more</button>
+          <button type="button" class="news-button" id="news-less" hidden>Show less</button>
+        </div>
+      </div>
+    </section>
+
+    {/* Research */}
+    <section class="container section" id="research">
+      <div class="section-head">
+        <h2>Research</h2>
+        <p>Selected papers, tutorials and interactive tools. The <a href="/cv#publications" target="_self">CV</a> lists every publication.</p>
+      </div>
+      <div class="research-list">
+        {featured.map((project) => <ResearchItem project={project} />)}
+      </div>
+    </section>
+
+  </main>
+
+  <SiteFooter />
 </Base>
 
 <style>
-  /* Layout */
-  @media (min-width: 640px) {
-    .page {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      column-gap: 1rem;
-    }
-    .main-col {
-      grid-column: 3 / 11;
-    }
+  :global(html) {
+    scroll-padding-top: 4.5rem; /* section links land below the sticky header */
   }
-  @media (min-width: 768px) {
-    .page {
-      margin: 3rem 0;
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html) {
+      scroll-behavior: smooth;
     }
-  }
-  .main-col {
-    width: 100%;
-  }
-  a {
-    border-bottom: var(--link-underline);
   }
 
-  /* Header: headshot, name and social links */
+  /* Hero */
   .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 3rem 0 3.5rem;
+  }
+  .hero canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  /* The contour lines are full strength around the headshot and stay faint behind the text. */
+  .field {
+    -webkit-mask-image: radial-gradient(circle at var(--anchor-x, 80%) var(--anchor-y, 40%), black 0, black 120px, rgb(0 0 0 / 0.22) min(520px, 80vw));
+    mask-image: radial-gradient(circle at var(--anchor-x, 80%) var(--anchor-y, 40%), black 0, black 120px, rgb(0 0 0 / 0.22) min(520px, 80vw));
+  }
+  /* The retrieval path fades out more slowly than the contours, so it never crosses the text at full strength. */
+  .probe {
+    -webkit-mask-image: radial-gradient(circle at var(--anchor-x, 80%) var(--anchor-y, 40%), black 0, black 220px, transparent min(680px, 100vw));
+    mask-image: radial-gradient(circle at var(--anchor-x, 80%) var(--anchor-y, 40%), black 0, black 220px, transparent min(680px, 100vw));
+  }
+  .hero-grid {
+    position: relative;
     display: grid;
-    grid-template-columns: 90px 1fr;
+    gap: 2rem;
+  }
+  .portrait {
+    order: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 1rem;
+    margin: 0;
+  }
+  @media (min-width: 900px) {
+    .hero {
+      padding: 5.5rem 0 6rem;
+    }
+    .hero-grid {
+      grid-template-columns: minmax(0, 1fr) 18rem;
+      gap: 4rem;
+      align-items: center;
+    }
+    .portrait {
+      order: 0;
+    }
   }
   .headshot {
-    align-self: center;
+    display: block;
+    width: 8.5rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 0 0 6px var(--page), 0 0 0 7px color-mix(in srgb, var(--accent) 35%, transparent), var(--shadow-card-hover);
+    transition: transform 300ms;
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .headshot:hover {
+      transform: scale(1.03);
+    }
   }
   .headshot img {
-    border-radius: 0.5rem;
-    box-shadow: var(--shadow-lg);
+    width: 100%;
+    height: auto;
+    border-radius: 1.25rem;
   }
-  .hero-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  @media (min-width: 900px) {
+    .headshot {
+      width: 14rem;
+    }
   }
-  .hero h1 {
-    margin-bottom: 0.125rem;
-    color: var(--slate-700);
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-    font-weight: 600;
+  figcaption {
+    white-space: nowrap; /* one line; the font is small enough to fit the headshot's width */
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    background: color-mix(in srgb, var(--page) 85%, transparent);
+    color: var(--text-muted);
+    font-family: var(--font-label);
+    font-size: 0.68rem;
+    line-height: 1.5;
+    text-align: center;
   }
-  .hero h2 {
-    color: var(--slate-400);
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    font-weight: 300;
-  }
-  .hero h2 span {
-    color: var(--slate-500);
+  .memories {
+    color: var(--accent);
     font-weight: 500;
   }
-  @media (min-width: 768px) {
-    .hero {
-      grid-template-columns: 150px 1fr;
-      gap: 2rem;
-    }
-    .hero-text {
-      gap: 2rem;
-    }
-    .hero h1 {
-      font-size: 2.25rem;
-      line-height: 2.5rem;
-    }
-    .hero h2 {
-      font-size: 1.875rem;
-      line-height: 2.25rem;
-    }
-  }
-  .socials {
-    display: flex;
-    gap: 0.5rem;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-  @media (min-width: 440px) {
-    .socials {
-      gap: 1rem;
-    }
-  }
-  .social {
-    padding: 0.5rem;
+  /* A dot before "memories", drawn like the memory dots in the landscape. */
+  .memories::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 0.3em 0.1em 0.1em;
     border-radius: 9999px;
-    background: var(--slate-100);
+    background: var(--accent);
   }
-  .social:hover {
-    background: var(--slate-300);
+  .hero h1 {
+    color: var(--text-primary);
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    line-height: 1.02;
+    font-weight: 700;
+    letter-spacing: -0.04em;
   }
-  .cv-link {
-    color: var(--gray-600);
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+  .subtitle {
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    line-height: 1.3;
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
-
-  /* Introduction */
+  .hl {
+    color: var(--text-primary);
+    background: linear-gradient(transparent 62%, color-mix(in srgb, var(--accent) 22%, transparent) 62%);
+  }
   .tagline {
-    margin: 2rem 0;
-    padding-left: 1rem;
-    border-left: 2px solid var(--gray-200);
-    color: var(--gray-500);
-    font-size: 1.5rem;
-    line-height: 2rem;
+    max-width: 38rem;
+    margin-top: 2rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+  }
+  .tagline strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .tagline a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+    text-underline-offset: 3px;
+  }
+  .tagline a:hover {
+    color: var(--accent-strong);
   }
   .bio {
-    color: var(--slate-700);
-    font-weight: 300;
-    line-height: 1.5rem;
+    max-width: 38rem;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
   }
-
-  /* News */
-  .news-list {
+  .bio strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .press {
+    margin-top: 2rem;
+  }
+  .press-label {
+    color: var(--text-muted);
+    font-family: var(--font-label);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .press ul {
     display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
-    margin: 0 0.5rem;
-    overflow-y: auto;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.75rem;
+    margin-top: 0.75rem;
   }
-  @media (min-width: 640px) {
-    .news-list {
-      display: contents;
-    }
-    .news-date {
-      grid-column: 1 / 3;
-    }
+  /* The logos are recolored to ink (public/imgs/press/); they stay muted until hovered. */
+  .press img {
+    width: auto;
+    opacity: 0.5;
+    transition: opacity 150ms;
   }
-  .news-date {
-    justify-self: end;
-    color: var(--slate-400);
-    font-size: 0.75rem;
-    line-height: 1rem;
-    font-weight: 300;
+  .press a:hover img {
+    opacity: 1;
   }
-  .news-text {
-    margin-bottom: 0.5rem;
+  .profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
   }
-  .news-list :global(a) {
-    border-bottom: var(--link-underline);
+  .profiles a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.375rem;
+    height: 2.375rem;
+    border: 1px solid var(--rule);
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--surface) 85%, transparent);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    transition: color 150ms, border-color 150ms, background 150ms;
   }
-  #news-toggle {
-    justify-self: end;
-    text-align: left;
-    color: var(--slate-400);
-  }
-  #news-toggle:hover {
-    color: var(--slate-700);
+  .profiles a:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-strong);
   }
 
   /* Thesis */
-  #thesis {
-    margin-top: 3rem;
-    padding: 1.25rem;
-    border-radius: 0.5rem;
-    background: var(--slate-50);
-    box-shadow: 0 0 0 1px var(--slate-100);
+  .thesis-band {
+    position: relative;
+    padding: 2.5rem 0;
+    background: var(--ink);
+    color: white;
   }
-  .kicker {
-    margin-bottom: 0.5rem;
-    color: var(--slate-400);
-    font-size: 0.75rem;
-    line-height: 1rem;
+  .thesis-grid {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .thesis-grid {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 3rem;
+    }
+  }
+  .thesis-band .eyebrow {
+    margin-bottom: 0.625rem;
+    color: #8fb8ee;
+  }
+  .thesis-band h2 {
+    max-width: 44rem;
+    font-size: clamp(1.25rem, 2.6vw, 1.625rem);
+    line-height: 1.3;
     font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: -0.02em;
   }
-  .thesis-title {
-    display: block;
-    border-bottom: 0;
-    color: var(--slate-700);
-    font-size: 1.25rem;
-    line-height: 1.375;
-    font-weight: 600;
-    transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  .thesis-band h2 a:hover {
+    color: #c7dcf7;
   }
-  .thesis-title:hover {
-    color: var(--blue-500);
-  }
-  .thesis-links {
+  .thesis-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1.25rem;
-    margin-top: 0.75rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: 500;
+    gap: 0.75rem;
   }
-  .thesis-links a {
-    color: var(--blue-500);
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    border-radius: 0.625rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background 150ms, border-color 150ms, color 150ms;
   }
-  .thesis-links a:hover {
-    color: var(--blue-700);
+  .button.light {
+    background: white;
+    color: var(--ink);
   }
-  @media (min-width: 768px) {
-    #thesis {
-      padding: 1.25rem 1.5rem;
+  .button.light:hover {
+    background: #dbe8f9;
+  }
+  .button.ghost {
+    border: 1px solid rgb(255 255 255 / 0.25);
+    color: white;
+  }
+  .button.ghost:hover {
+    border-color: white;
+    background: rgb(255 255 255 / 0.08);
+  }
+
+  /* Sections: a heading column on the left and the content on the right, from 900px. */
+  .section {
+    display: grid;
+    gap: 1.5rem;
+    padding-top: 4.5rem;
+  }
+  @media (min-width: 900px) {
+    .section {
+      grid-template-columns: 15rem minmax(0, 1fr);
+      gap: 3rem;
+      padding-top: 6rem;
     }
-    .thesis-title {
-      font-size: 1.5rem;
-      line-height: 2rem;
+    .section-head {
+      position: sticky;
+      top: 5.5rem;
+      align-self: start;
+    }
+  }
+  /* Grid items default to their content's width as a minimum; the one-line badge rows would widen the column past the screen. */
+  .section > * {
+    min-width: 0;
+  }
+  .section-head h2 {
+    color: var(--text-primary);
+    font-size: 1.75rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .section-head p {
+    margin-top: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .section-head p a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .section-head p a:hover {
+    color: var(--accent-strong);
+  }
+
+  .research-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .research-list {
+      gap: 0.5rem;
     }
   }
 
-  /* Research highlights */
-  .highlights-title {
-    margin-top: 3rem;
+  /* News: a timeline. Dates on the left; on the right a vertical rule with one dot per item. */
+  .news-list li {
+    display: grid;
+    gap: 0.125rem;
   }
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+  .news-list li[hidden] {
+    display: none;
   }
   @media (min-width: 640px) {
-    .cards {
-      grid-column: 3 / 11;
+    .news-list li {
+      grid-template-columns: 6.5rem minmax(0, 1fr);
+      gap: 1.25rem;
+    }
+    .news-date {
+      text-align: right;
+      padding-top: 0.15rem;
     }
   }
-  @media (min-width: 768px) {
-    .cards {
-      grid-column: 2 / 12;
-    }
+  .news-date {
+    color: var(--text-muted);
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .news-text {
+    position: relative;
+    padding: 0 0 1.125rem 1.25rem;
+    border-left: 1px solid var(--rule);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .news-text::before {
+    content: "";
+    position: absolute;
+    top: 0.5rem;
+    left: -4px;
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--page);
+  }
+  .news-list :global(a) {
+    color: var(--text-primary);
+  }
+  .news-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+  .news-button {
+    padding: 0.5rem 0.875rem;
+    border: 1px solid var(--rule);
+    border-radius: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 150ms, border-color 150ms;
+  }
+  .news-button[hidden] {
+    display: none;
+  }
+  .news-button:hover {
+    border-color: var(--text-muted);
+    color: var(--text-primary);
   }
 </style>
 
 <script>
-  const toggle = document.getElementById("news-toggle");
-  toggle?.addEventListener("click", () => {
-    const expand = toggle.textContent!.trim() === "See more...";
-    document.querySelectorAll<HTMLElement>("[data-news-extra]").forEach((el) => (el.hidden = !expand));
-    toggle.textContent = expand ? "Collapse..." : "See more...";
-  });
+  import { mountEnergyLandscape } from "../scripts/energyLandscape";
+  import { mountNewsList } from "../scripts/newsList";
+
+  const hero = document.querySelector<HTMLElement>(".hero")!;
+  mountEnergyLandscape(hero, hero.querySelector(".field")!, hero.querySelector(".probe")!, hero.querySelector(".headshot")!, hero.querySelector(".hero-text")!);
+
+  const actions = document.querySelector<HTMLElement>(".news-actions")!;
+  mountNewsList(document.querySelector(".news-list")!, document.getElementById("news-more") as HTMLButtonElement, document.getElementById("news-less") as HTMLButtonElement, Number(actions.dataset.base), Number(actions.dataset.step));
 </script>

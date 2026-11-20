@@ -9,7 +9,8 @@ Built with [Astro](https://astro.build/) and [MDX](https://mdxjs.com/), styled w
   Any page or component can `import { data } from "../data"`.
 - `src/pages/` defines the routes.
   `index.astro` is the homepage and `cv.astro` is the CV.
-  Each project page (for example `epadam.mdx`) is an MDX file that uses `src/layouts/Project.astro`; see that file for its frontmatter fields.
+  Each featured work has a page at `/research/<slug>`, made by `src/pages/research/[slug].astro` from its entry in `_data/publications.yaml` (`slug`, `tagline`, `abstract`, `links`, `moreLinks`, `bibtex`).
+  Other standalone pages (for example `hopfield-networks-2.0.mdx`) are MDX files that use `src/layouts/Project.astro`; see that file for its frontmatter fields.
 - `src/components/` holds the components; `src/components/cv/` holds the CV entries.
 - Styles are plain CSS.
   `src/styles/global.css` has the color tokens (`--slate-400`, `--rose-900`, ...), a small reset and the base `h1` style.

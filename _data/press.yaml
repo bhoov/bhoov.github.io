@@ -1,3 +1,24 @@
+# `about` (optional): ids from publications.yaml that the article covers; the article is listed on those works' pages.
+# `badge` (optional): with `about`, the short name shown as a badge on those works on the home page.
+# `logo` (optional): an ink-colored SVG in public/imgs/press/; entries with a logo appear in the home page's "Featured in" row, one per outlet.
+# `logoOrder` (optional): position in that row, lowest first (by prestige).
+# `logoHeight` (optional): the logo's height on the home page, in rem (default 1.25), to even out wordmarks of different shapes.
+
+- name: "CRAM Solves Sudoku in 42 Milliseconds and Beats Looped Reasoning Models"
+  outlet: AlphaSignal
+  year: 2026
+  month: Nov
+  url: https://alphasignal.ai/news/cram-solves-sudoku-in-42-milliseconds-and-beats-looped-reasoning-models
+  about: [CRAM]
+  badge: "AlphaSignal"
+
+- name: "Preprint Shows Classical Energy Models Learn Reasoning Faster Than Looped Transformers"
+  outlet: CASRAI
+  year: 2026
+  month: Nov
+  url: https://casrai.org/news/classical-energies-reasoning-faster-looped-models-preprint-2026
+  about: [CRAM]
+
 - name: "What counts as plagiarism? AI-generated papers pose new risks"
   outlet: Nature
   year: 2025
@@ -9,12 +30,17 @@
   year: 2025
   month: Jul
   url: https://www.linkedin.com/pulse/how-physics-made-modern-ai-possible-quanta-magazine-pcsqe/?trackingId=4I%2BfnnLKTIaijNzFOnYPRw%3D%3D
+  about: [DiffusionExplainer]
+  badge: "Quanta"
 
 - name: "Researchers Uncover Hidden Ingredients Behind AI Creativity"
   outlet: Quanta Magazine
   year: 2025
   month: Jun
   url: https://www.quantamagazine.org/researchers-uncover-hidden-ingredients-behind-ai-creativity-20250630/
+  logo: imgs/press/quanta.svg
+  logoOrder: 2
+  logoHeight: 1.6
 
 - name: "IBM’s Dmitry Krotov wants to crack the ‘physics’ of memory"
   outlet: IBM Research Blog
@@ -28,6 +54,8 @@
   year: 2025
   month: May
   url: https://www.quantamagazine.org/the-strange-physics-that-gave-birth-to-ai-20250430/
+  about: [EnergyTransformer, PlainSight]
+  badge: "Quanta"
 
 - name: "Transformer Explainer: How I visualize the Magic Behind Modern LLMs"
   outlet: youtube
@@ -39,18 +67,25 @@
   year: 2024
   month: Aug
   url: https://www.marktechpost.com/2024/08/13/transformer-explainer-an-innovative-web-based-tool-for-interactive-learning-and-visualization-of-complex-ai-models-for-non-experts/
+  about: [TransformerExplainer]
 
 - name: "Breaking down the AI transformer"
   outlet: IBM Blogs
   year: 2024
   month: Aug
   url: https://research.ibm.com/blog/how-ai-transformers-work
+  about: [TransformerExplainer]
 
 - name: "A New Frontier for Hopfield Networks"
   outlet: Nature Reviews Physics
   year: 2023
   month: May
   url: https://www.nature.com/articles/s42254-023-00595-y
+  about: [EnergyTransformer]
+  badge: "Nature Rev. Physics"
+  logo: imgs/press/nature.svg
+  logoOrder: 1
+  logoHeight: 1.35
 
 - name: "What's Next in AI"
   outlet: Georgia Tech College of Computing news
@@ -80,6 +115,8 @@
   year: 2021
   month: Apr
   url: https://cen.acs.org/acs-news/acs-meeting-news/Machine-learning-maps-atoms/99/web/2021/04
+  about: [RXNMapper]
+  badge: "C&EN"
 
 - name: "Fruit Fly Brain Hacked For Language Processing"
   outlet: Discover Magazine
