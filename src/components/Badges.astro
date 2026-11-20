@@ -85,6 +85,14 @@ const icon = { award: "mdi-trophy-outline", press: "mdi-newspaper-variant-outlin
       display: none;
     }
   }
+  /* Narrow phones (under 380px) need a slightly smaller badge for the longest rows to fit. */
+  @media (max-width: 379px) {
+    a,
+    li > span {
+      padding: 0.15rem 0.35rem;
+      font-size: 0.62rem;
+    }
+  }
   .award a,
   .award > span {
     background: #fdf3df;

@@ -21,5 +21,7 @@ export default defineConfig({
     "/drdam": "/research/drdam",
     "/energy-transformer": "/research/energy-transformer",
     "/memory-in-plain-sight": "/research/memory-in-plain-sight",
+    // HAMUX is covered by the Associative Memory tutorial and no longer has its own page.
+    "/research/hamux": "/research/am-tutorial",
   },
 });

@@ -47,6 +47,9 @@
   year: 2025
   month: Jun
   url: https://research.ibm.com/blog/dmitry-krotov-ai-physics
+  logo: imgs/press/ibm.svg
+  logoOrder: 4
+  logoHeight: 1.05
   # awards: Front page of hacker news https://news.ycombinator.com/item?id=44382367
 
 - name: "The Strange Physics That Gave Birth to AI"
@@ -82,7 +85,7 @@
   month: May
   url: https://www.nature.com/articles/s42254-023-00595-y
   about: [EnergyTransformer]
-  badge: "Nature Rev. Physics"
+  badge: "Nature Rev. Phys."
   logo: imgs/press/nature.svg
   logoOrder: 1
   logoHeight: 1.35
@@ -123,6 +126,10 @@
   year: 2021
   month: Jan
   url: https://www.discovermagazine.com/the-sciences/fruit-fly-brain-network-hacked-for-language-processing
+  about: [FlyVec]
+  logo: imgs/press/discover.svg
+  logoOrder: 3
+  logoHeight: 1.15
 
 - name: "IBM shares AI tools to better understand and treat COVID-19"
   outlet: Engadget

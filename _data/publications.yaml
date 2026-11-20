@@ -722,7 +722,8 @@
   year: 2023
   awards:
     - name: "Spotlight, AMHN@NeurIPS'23"
-      short: "Workshop Spotlight"
+      short: "Workshop@NeurIPS'23"
+      cv: "Spotlight, Workshop@NeurIPS'23" # the CV's label; defaults to `short`
       url: https://amhn.vizhub.ai/
   featured: true
   selected: true
@@ -877,10 +878,13 @@
   # thumbnail: "imgs/thumbnails/diffusiondb.gif"
   awards:
     - name: "Best Paper Award, Honorable Mention"
+      short: "Best Paper Hon. Mention"
       url: "https://2023.aclweb.org/program/best_papers/"
     - name: "Went Viral"
+      short: "Viral on X"
       url: "https://twitter.com/jay4w/status/1592922807998218241"
     - name: "Oral Presentation"
+      short: "Oral"
       url: "https://aclanthology.org/2023.acl-long.51/"
   month: July
   year: 2023
@@ -944,8 +948,6 @@
 - id: HAMUX
   title: "HAMUX: A Universal Abstraction for Hierarchical Hopfield Networks"
   shortTitle: HAMUX
-  tagline: "Lego blocks for deep Hopfield networks" # the core contribution, shown under the title on the home page
-  slug: hamux # the work's page on this site: /research/hamux
   abstract: >-
     Conceptualized as Associative Memory, Hopfield Networks (HNs) are powerful models which describe neural network dynamics converging to a local minimum of an energy function.
     HNs are conventionally described by a neural network with two layers connected by a matrix of synaptic weights.
@@ -981,10 +983,13 @@
       url: https://youtu.be/x_jJed5KjP8
       label: Video
   thumbnail: "imgs/thumbnails/hamux-thumbnail.jpg"
-  teaser: imgs/teasers/hamux.webp # designed for the home page's 16:10 frame
   month: Dec
   year: 2022
-  featured: true
+  awards:
+    - name: "Spotlight, DLDE@NeurIPS'22"
+      short: "Spotlight"
+      url: https://dlde-2022.github.io/
+  featured: false
   selected: true
   featureDescription: >-
     We invent a software abstraction around "synapses" and "neurons" to assemble energy functions of complicated Associative Memories, where memory retrieval is performed through autograd.
@@ -1223,6 +1228,7 @@
   defualtUrl: http://lmdiff.net/
   awards:
     - name: "Best Demo Award, NeurIPS 2020"
+      short: "Best Demo"
       url: "https://neurips.cc/Conferences/2020/DemonstrationTrack"
   links:
     - type: url
