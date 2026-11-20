@@ -60,26 +60,29 @@ const href = pubUrl(project);
     box-shadow: var(--shadow-card);
     cursor: pointer;
   }
+  /* The 16:10 teasers are cropped to 16:9 here; their margins absorb the crop. */
   .thumb {
     position: relative;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
     background: white;
   }
-  /* The bottom fifth of the teaser fades into the card before the text starts. */
+  /* The bottom quarter of the teaser fades into the card, and the venue line starts at the end of the fade. */
   .thumb::after {
     content: "";
     position: absolute;
     inset: auto 0 0 0;
-    height: 20%;
+    height: 25%;
     background: linear-gradient(to bottom, transparent, var(--surface));
   }
   img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
   .body {
-    padding: 0.25rem 1.25rem 1.25rem;
+    position: relative;
+    margin-top: -0.75rem;
+    padding: 0 1.25rem 1.25rem;
   }
 
   /* From 640px: a row with the teaser in a framed 15rem column. */
@@ -97,6 +100,7 @@ const href = pubUrl(project);
       transition: background 200ms;
     }
     .thumb {
+      aspect-ratio: 16 / 10;
       align-self: start;
       overflow: hidden;
       border: 1px solid var(--rule);
@@ -107,7 +111,11 @@ const href = pubUrl(project);
     .thumb::after {
       display: none;
     }
+    img {
+      object-fit: contain;
+    }
     .body {
+      margin-top: 0;
       padding: 0;
     }
   }

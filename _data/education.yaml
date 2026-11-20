@@ -1,9 +1,9 @@
-- degree: "Machine Learning PhD Candidate"
+- degree: "PhD in Machine Learning"
   institution: Georgia Tech
   location: "Atlanta, GA"
-  date: "Aug 2021 - Dec 2026"
+  date: "Aug 2021 - Jul 2026"
   description: >-
-    Studying how to interpret AI Foundation Models through the lens of Associative Memory
+    Studied how to interpret AI Foundation Models through the lens of Associative Memory
   advisors:
     - name: Duen Horng (Polo) Chau
       url: https://faculty.cc.gatech.edu/~dchau/

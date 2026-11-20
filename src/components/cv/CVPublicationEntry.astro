@@ -50,7 +50,7 @@ const coFirstAuthorNote = publication.coFirstAuthorNote ?? "* indicates equal co
           {publication.awards.map((award) => (
             <div class="award">
               <a href={award.url} target="_blank"><img src="icons/award.svg" alt="" class="award-img" /></a>
-              <a href={award.url} target="_blank">{award.name}</a>
+              <a href={award.url} target="_blank" title={award.name}>{award.cv ?? award.short ?? award.name}</a>
             </div>
           ))}
         </div>
@@ -113,8 +113,8 @@ const coFirstAuthorNote = publication.coFirstAuthorNote ?? "* indicates equal co
   }
   .awards {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.125rem 1rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 600;
@@ -123,6 +123,7 @@ const coFirstAuthorNote = publication.coFirstAuthorNote ?? "* indicates equal co
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    white-space: nowrap;
   }
   .award img {
     height: 1rem;

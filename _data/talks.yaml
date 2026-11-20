@@ -1,7 +1,5 @@
 - title: "Memory as Computation: Associative Memories as a Foundation for Modern AI"
   venues:
-    - location: "Georgia Tech Thesis Proposal"
-      date: Nov 2025
     - location: "Great Sky AI"
       date: Nov 2025
       locationUrl: https://www.greatsky.ai/technology
@@ -19,6 +17,9 @@
     - location: "Archer Aviation"
       date: June 2026
       invited: true
+    - location: "PhD Thesis Defense, Georgia Tech"
+      date: Jul 2026
+      locationUrl: https://youtu.be/NoAnSDAQq0k
 
 - title: "Generative Associative Memory via Equilibrium Matching"
   venues:
