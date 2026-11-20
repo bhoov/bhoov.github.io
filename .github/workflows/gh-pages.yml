@@ -33,6 +33,8 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}} # the build fetches GitHub star counts for Code links (src/lib/github.ts)
       - run: pnpm run deploy-actions
         env: 
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

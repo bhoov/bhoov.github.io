@@ -1,0 +1,78 @@
+---
+/** Page footer: profile links and a closing line. */
+import { data } from "../data";
+import { hasBlog } from "../lib/site";
+---
+
+<footer class="site-footer">
+  <div class="container inner">
+    <div>
+      <p class="name">Ben Hoover</p>
+      <p class="where">AI Researcher at <a href="https://prefrontal.ai">Prefrontal</a>, London</p>
+    </div>
+    <ul class="profiles">
+      {
+        data.socialLinks.map((link) => (
+          <li>
+            <a href={link.href} target="_blank" rel="noreferrer">
+              <span class="iconify" data-icon={link.dataIcon} />
+              {link.name}
+            </a>
+          </li>
+        ))
+      }
+      {hasBlog && <li><a href="/blog/" target="_self">Blog</a></li>}
+      <li><a href="/cv" target="_self">CV</a></li>
+    </ul>
+  </div>
+  <div class="container colophon">© {new Date().getFullYear()} Benjamin Hoover</div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 6rem;
+    padding: 2.5rem 0 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem 3rem;
+  }
+  .name {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .where {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+  .where a:hover {
+    color: var(--accent-strong);
+  }
+  .profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    align-items: center;
+  }
+  .profiles a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 1.5rem;
+    height: 1.75rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    transition: color 150ms;
+  }
+  .profiles a:hover {
+    color: var(--accent-strong);
+  }
+  .colophon {
+    margin-top: 2rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+</style>

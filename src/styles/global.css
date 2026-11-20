@@ -2,9 +2,31 @@
  * Site-wide styles: color tokens, a small reset, and base element styles.
  * Component styles live in each component's <style> block.
  * Breakpoints used in components: 440px (xs), 640px (sm), 768px (md).
+ *
+ * The home and project pages use the semantic tokens below (--page ... --ink), set in Inter.
+ * The accent is the blog's blue (blog/bloggie/styles/site.css), so the site and blog share one link color.
+ * The CV keeps the older Tailwind-named tokens (--slate-*, --gray-*, ...) and the system font,
+ * so its printed PDF does not change.
  */
 
 :root {
+	--page: #fcfcfd; /* page background */
+	--surface: #ffffff; /* cards and panels */
+	--surface-sunken: #f4f5f7; /* hover and inset backgrounds */
+	--text-primary: #0f1218;
+	--text-secondary: #4a505c;
+	--text-muted: #858b97;
+	--rule: #e6e8ec; /* borders and dividers */
+	--accent: #2a78d6;
+	--accent-strong: #1b5cad; /* accent text on hover and on --accent-soft */
+	--accent-soft: #eaf2fc;
+	--ink: #0e1116; /* dark band behind the thesis */
+	--shadow-card: 0 1px 2px rgb(15 18 24 / 0.04), 0 2px 6px rgb(15 18 24 / 0.04);
+	--shadow-card-hover: 0 6px 12px -4px rgb(15 18 24 / 0.08), 0 16px 32px -8px rgb(15 18 24 / 0.14);
+	--font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	--font-label: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; /* small metadata labels: dates, venues */
+	--content-max: 1120px;
+
 	--font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
@@ -51,7 +73,10 @@ html {
 
 body {
 	margin: 0;
+	background: var(--page);
+	color: var(--text-primary);
 	line-height: inherit;
+	-webkit-font-smoothing: antialiased;
 	-webkit-print-color-adjust: exact;
 	print-color-adjust: exact;
 }
@@ -130,8 +155,58 @@ h1 {
 	filter: invert(31%) sepia(84%) saturate(1916%) hue-rotate(329deg) brightness(100%) contrast(92%);
 }
 
+/* Pages that use the new design (home, project pages) put this class on <body>. */
+.site {
+	font-family: var(--font-sans);
+	font-optical-sizing: auto;
+}
+
+/* Small uppercase metadata label, e.g. "PhD Thesis · 2026" or a venue. */
+.eyebrow {
+	color: var(--text-muted);
+	font-family: var(--font-label);
+	font-size: 0.72rem;
+	line-height: 1rem;
+	font-weight: 500;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+/* Centered page column for the new design. */
+.container {
+	width: 100%;
+	max-width: var(--content-max);
+	margin: 0 auto;
+	padding: 0 1.25rem;
+}
+@media (min-width: 768px) {
+	.container {
+		padding: 0 2rem;
+	}
+}
+
+/* A link in running text: accent underline that darkens on hover. */
+.prose-links a {
+	text-decoration: underline;
+	text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+	transition: color 150ms, text-decoration-color 150ms;
+}
+.prose-links a:hover {
+	color: var(--accent-strong);
+	text-decoration-color: var(--accent-strong);
+}
+
+::selection {
+	background: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
 @media print {
 	:root {
 		font-size: 80%;
+	}
+	body {
+		background: white;
 	}
 }

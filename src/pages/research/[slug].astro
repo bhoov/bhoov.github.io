@@ -1,0 +1,361 @@
+---
+/**
+ * The page of one work: /research/<slug>, made for every entry of _data/publications.yaml that has a `slug`.
+ * It shows the venue, title, tagline, all authors (linked, with a photo where _data/people.yaml has one), badges, links,
+ * the teaser figure, the abstract, press coverage, further links and the BibTeX entry.
+ */
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import ProjectLink from "../../components/ProjectLink.astro";
+import Badges from "../../components/Badges.astro";
+import { existsSync } from "node:fs";
+import { data } from "../../data";
+import { asset, badges, pressAbout, publicationsWithPages, venueLabel, type Link, type Publication } from "../../lib/publications";
+
+export function getStaticPaths() {
+  return publicationsWithPages().map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+
+const { p } = Astro.props as { p: Publication };
+const typeLabels: Record<string, string> = {
+  conference: "Conference paper",
+  workshop: "Workshop paper",
+  journal: "Journal article",
+  preprint: "Preprint",
+  tutorial: "Tutorial",
+  demo: "Demo",
+};
+const people: Record<string, { url?: string; picture?: string }> = data.people ?? {};
+// A photo is used only if its file exists in public/; otherwise the author gets initials.
+const photo = (path?: string) => (path && existsSync(`public/${path.replace(/^\//, "")}`) ? path : undefined);
+const authors = (p.authors as string[]).map((name) => ({ name, url: people[name]?.url, picture: photo(people[name]?.picture), me: name === "Benjamin Hoover" }));
+const initials = (name: string) => name.split(/\s+/).filter((w) => /^[A-Z]/.test(w)).map((w) => w[0]).slice(0, 2).join("");
+const press = pressAbout(p);
+const figure = p.teaser ?? p.thumbnail;
+const description = p.tagline ?? p.featureDescription;
+---
+
+<Base title={`${p.shortTitle} · Ben Hoover`} site>
+  <meta slot="head" name="description" content={description} />
+  <SiteHeader />
+
+  <main class="container page">
+    <a class="back" href="/#research">← Research</a>
+
+    <header class="head">
+      <p class="venue">{venueLabel(p)} <span>· {typeLabels[p.type] ?? p.type}</span></p>
+      <h1>{p.title}</h1>
+      {p.tagline && <p class="tagline">{p.tagline}</p>}
+      <ul class="authors" aria-label="Authors">
+        {
+          authors.map((a) => {
+            const face = a.picture ? <img src={asset(a.picture)} alt="" loading="lazy" /> : <span class="initials">{initials(a.name)}</span>;
+            return (
+              <li class:list={{ me: a.me }}>
+                {a.url ? (
+                  <a href={asset(a.url)} target={a.me ? "_self" : "_blank"} rel="noreferrer">
+                    {face}
+                    {a.name}
+                  </a>
+                ) : (
+                  <span>
+                    {face}
+                    {a.name}
+                  </span>
+                )}
+              </li>
+            );
+          })
+        }
+      </ul>
+      <div class="badges"><Badges badges={badges(p)} size="medium" /></div>
+      <div class="links">
+        {p.links.map((link: Link) => <ProjectLink link={link} variant="text" />)}
+      </div>
+    </header>
+
+    {
+      figure && (
+        <figure class="figure">
+          <img src={asset(figure)} alt={`Figure from ${p.shortTitle}`} />
+        </figure>
+      )
+    }
+
+    {
+      p.abstract && (
+        <section>
+          <h2>Abstract</h2>
+          <p class="abstract">{p.abstract}</p>
+        </section>
+      )
+    }
+
+    {
+      press.length > 0 && (
+        <section>
+          <h2>In the press</h2>
+          <ul class="press">
+            {press.map((a) => (
+              <li>
+                <span class="outlet">{a.outlet ?? "Video"}</span>
+                <a href={a.url} target="_blank" rel="noreferrer">
+                  {a.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      p.moreLinks && (
+        <section>
+          <h2>More</h2>
+          <div class="links">
+            {p.moreLinks.map((link: Link) => <ProjectLink link={link} variant="text" />)}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      p.bibtex && (
+        <section>
+          <div class="cite-head">
+            <h2>Cite</h2>
+            <button type="button" class="copy" data-copy-target="bibtex">
+              Copy BibTeX
+            </button>
+          </div>
+          <pre id="bibtex"><code>{p.bibtex.trim()}</code></pre>
+        </section>
+      )
+    }
+  </main>
+
+  <SiteFooter />
+</Base>
+
+<style>
+  .page {
+    max-width: calc(46rem + 4rem);
+    padding-top: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .page {
+      padding-top: 3.5rem;
+    }
+  }
+  .back {
+    display: inline-block;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 150ms;
+  }
+  .back:hover {
+    color: var(--accent-strong);
+  }
+
+  .head {
+    margin-top: 1.5rem;
+  }
+  .venue {
+    color: var(--accent);
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+  .venue span {
+    color: var(--text-muted);
+  }
+  h1 {
+    margin-top: 0.5rem;
+    color: var(--text-primary);
+    font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .tagline {
+    margin-top: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    line-height: 1.45;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .authors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.1rem;
+    margin-top: 1.5rem;
+  }
+  .authors a,
+  .authors li > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--text-secondary);
+    font-size: 0.925rem;
+    font-weight: 500;
+    transition: color 150ms;
+  }
+  .authors a:hover {
+    color: var(--accent-strong);
+  }
+  .authors .me a,
+  .authors .me > span {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .authors img,
+  .initials {
+    flex: none;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 9999px;
+    object-fit: cover;
+  }
+  .authors img {
+    box-shadow: 0 0 0 1px var(--rule);
+  }
+  .initials {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+    font-size: 0.68rem;
+    font-weight: 600;
+  }
+
+  .badges {
+    margin-top: 1.25rem;
+  }
+  .badges:empty {
+    display: none;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+
+  .figure {
+    margin: 2.25rem 0 0;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    border-radius: 1rem;
+    background: white;
+    box-shadow: var(--shadow-card);
+  }
+  .figure img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: contain;
+  }
+
+  section {
+    margin-top: 2.75rem;
+  }
+  h2 {
+    margin-bottom: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .abstract {
+    color: var(--text-secondary);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  section .links {
+    margin-top: 0;
+  }
+
+  .press li {
+    display: grid;
+    gap: 0.1rem;
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .press li:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  @media (min-width: 640px) {
+    .press li {
+      grid-template-columns: 11rem minmax(0, 1fr);
+      gap: 1rem;
+    }
+  }
+  .outlet {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .press a {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+    text-underline-offset: 3px;
+  }
+  .press a:hover {
+    color: var(--accent-strong);
+  }
+
+  .cite-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .copy {
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--rule);
+    border-radius: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: color 150ms, border-color 150ms;
+  }
+  .copy:hover {
+    border-color: var(--text-muted);
+    color: var(--text-primary);
+  }
+  pre {
+    overflow-x: auto;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--rule);
+    border-radius: 0.75rem;
+    background: var(--surface-sunken);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    white-space: pre;
+  }
+</style>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>("[data-copy-target]")) {
+    button.addEventListener("click", async () => {
+      const text = document.getElementById(button.dataset.copyTarget!)!.textContent!.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        button.textContent = "Copied";
+      } catch {
+        button.textContent = "Select and copy";
+      }
+      setTimeout(() => (button.textContent = "Copy BibTeX"), 1800);
+    });
+  }
+</script>

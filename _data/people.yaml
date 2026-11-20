@@ -1,13 +1,15 @@
 Benjamin Hoover:
   url: "/"
-  picture: "imgs/people/me-headshot.png"
+  picture: "imgs/people/me-headshot-480.webp"
   me: True
 
 Hugh Blayney:
   url: "https://x.com/HughBlayney"
+  picture: "imgs/people/hugh-blayney.webp"
 
 James C. R. Whittington:
   url: "https://x.com/jcrwhittington"
+  picture: "imgs/people/james-whittington.webp"
 
 Hendrik Strobelt:
   url: "http://hendrik.strobelt.com/"
@@ -71,11 +73,11 @@ Philippe Schwaller:
 
 JL Reymond:
   url: "http://www.gdb.unibe.ch/"
-  picture: "imgs/people/jl-reymond.png"
+  picture: "imgs/people/jl-reymond.jpg"
 
 Teodoro Laino:
   url: "https://research.ibm.com/people/teodoro-laino"
-  picture: "imgs/people/teo-laino.png"
+  picture: "imgs/people/teo-laino.jpg"
 
 Peter Ajemba:
   url: "https://www.linkedin.com/in/peter-ajemba/"
@@ -128,15 +130,19 @@ Saket Navlakha:
 
 Mohammed J. Zaki:
   url: "http://www.cs.rpi.edu/~zaki/"
+  picture: "imgs/people/mohammed-zaki.webp"
 
 Dmitry Krotov:
   url: "https://dmitrykrotov.com/"
+  picture: "imgs/people/dima-krotov.jpg"
 
 Bao Pham:
   url: "https://lemon-cmd.github.io/"
+  picture: "imgs/people/bao-pham.webp"
 
 Rameswar Panda:
   url: "https://rpand002.github.io/"
+  picture: "imgs/people/rameswar-panda.webp"
 
 Joseph Bullock:
   url: "https://josephpb.github.io/"
@@ -179,33 +185,41 @@ Miguel Luengo-Oroz:
   
 Polo Chau:
   url: "https://faculty.cc.gatech.edu/~dchau/"
+  picture: "imgs/people/polo-chau.jpeg"
 
 Zijie J. Wang:
   url: "https://zijie.wang/"
+  picture: "imgs/people/zijie-wang.webp"
 
 Evan Montoya:
   url: "https://www.linkedin.com/in/evan-montoya-b252391b4/"
 
 Haoyang Yang:
   url: "https://alexanderyang.me/"
+  picture: "imgs/people/haoyang-yang.webp"
 
 David Munechika:
   url: "https://www.linkedin.com/in/dmunechika/"
 
 Haekyu Park:
   url: "https://haekyu.com/"
+  picture: "imgs/people/haekyu-park.webp"
 
 Austin Wright:
   url: "https://www.austinpwright.com/"
+  picture: "imgs/people/austin-wright.webp"
 
 Seongmin Lee:
   url: "http://www.seongmin.xyz/"
+  picture: "imgs/people/seongmin-lee.webp"
 
 ShengYun Peng:
   url: "https://shengyun-peng.github.io/"
+  picture: "imgs/people/shengyun-peng.webp"
 
 Kevin Li:
   url: "https://www.kevinyli.com/"
+  picture: "imgs/people/kevin-li.webp"
 
 Albert Webson:
   url: "https://representation.ai/"
@@ -233,9 +247,11 @@ Nilaksh Das:
 
 Judy Hoffman:
   url: "https://faculty.cc.gatech.edu/~judy/"
+  picture: "imgs/people/judy-hoffman.webp"
 
 Zsolt Kira:
   url: "https://faculty.cc.gatech.edu/~zk15/"
+  picture: "imgs/people/zsolt-kira.webp"
 
 Mahdi Roozbahani:
   url: "https://www.cse.gatech.edu/people/mahdi-roozbahani"
@@ -287,27 +303,51 @@ Mayank Agarwal:
 
 Aeree Cho:
   url: "https://aereeeee.github.io/"
+  picture: "imgs/people/aeree-cho.webp"
 
 Grace C. Kim:
   url: "https://www.linkedin.com/in/chaeyeonggracekim/"
 
 Alexander Karpekov:
   url: "https://www.alexkarpekov.com/"
+  picture: "imgs/people/alexander-karpekov.webp"
 
 Alec Helbling:
   url: "https://alechelbling.com/"
+  picture: "imgs/people/alec-helbling.webp"
 
 Parikshit Ram:
   url: "https://rithram.github.io/"
+  picture: "imgs/people/pari.webp"
 
-Tunah Han Salih Meral:
+Tuna Han Salih Meral:
   url: "https://tunahansalih.github.io/"
+  picture: "imgs/people/tuna-meral.webp"
 
 Pinar Yanardag:
   url: "https://pinguar.org/"
+  picture: "imgs/people/pinar-yanardag.webp"
 
 Zhaoyang Shi:
   url: "https://10mzys.github.io/website/"
+  picture: "imgs/people/zhaoyang-shi.png"
 
 Krishnakumar Balasubramanian:
   url: "https://sites.google.com/view/kriznakumar/home"
+  picture: "imgs/people/krishna-balasubramanian.jpg"
+
+# Co-authors of NRGPT; photos from the old project page's contact cards (_data/contacts.yaml).
+Nima Dehmamy:
+  url: "https://nimadehmamy.github.io/"
+  picture: "imgs/people/nima-dehmamy.jpg"
+
+Bishwajit Saha:
+  picture: "imgs/people/bishwajit-saha.jpg"
+
+Leo Kozachkov:
+  url: "https://kozleo.github.io/"
+  picture: "imgs/people/leo-kozachkov.jpg"
+
+Jean-Jacques Slotine:
+  url: "https://web.mit.edu/nsl/www/"
+  picture: "imgs/people/jean-jacques-slotine.jpg"
