@@ -41,8 +41,8 @@ const press = data.press
             }
           </ul>
           {/* Astro drops whitespace that contains a newline next to an element, so keep inline links on the same line as their surrounding text. */}
-          <p class="tagline">I use energy-based models to build scalable AI that is <strong>smaller, faster, and easier to understand</strong>.</p>
-          <p class="bio prose-links">I'm a researcher at <a href="https://prefrontal.ai"><strong>Prefrontal</strong></a> in London, and I earned my Machine Learning PhD at <a href="https://poloclub.github.io/"><strong>Georgia Tech</strong></a> with <a href="https://poloclub.github.io/polochau/">Polo Chau</a>. My goal is AI that is interpretable, efficient and theoretically grounded by design, and that still scales to modern workloads. My research has been an <strong>oral at ICML</strong> (top 1%) and a <strong>spotlight at NeurIPS</strong> (top 3%), and <a href="/research/cram" target="_self">CRAM</a>, my latest model, learns to reason <strong>1,000x faster</strong> than looped models.</p>
+          <p class="tagline">Towards <strong>efficient, interpretable, and robust AI</strong>, built from memory, energy, and dynamics.</p>
+          <p class="bio prose-links">I'm a researcher at <a href="https://prefrontal.ai"><strong>Prefrontal</strong></a> in London, and I earned my Machine Learning PhD at <a href="https://poloclub.github.io/"><strong>Georgia Tech</strong></a> with <a href="https://poloclub.github.io/polochau/">Polo Chau</a>. My goal is AI that is theoretically grounded by design and still scales to modern workloads. My research has been an <strong>oral at ICML</strong> (top 1%) and a <strong>spotlight at NeurIPS</strong> (top 3%), and <a href="/research/cram" target="_self">CRAM</a>, my latest model, learns to reason <strong>1,000x faster</strong> than looped models.</p>
           <div class="press">
             <span class="press-label">Featured in</span>
             <ul>
@@ -194,6 +194,18 @@ const press = data.press
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .headshot:hover {
       transform: scale(1.03);
+    }
+  }
+  /* A retrieval that ends at the headshot pulses its ring (src/scripts/energyLandscape.ts adds the class). */
+  .headshot:global(.retrieved) {
+    animation: retrieved 700ms ease-out;
+  }
+  @keyframes retrieved {
+    0% {
+      box-shadow: 0 0 0 6px var(--page), 0 0 0 7px var(--accent), 0 0 0 7px color-mix(in srgb, var(--accent) 45%, transparent), var(--shadow-card-hover);
+    }
+    100% {
+      box-shadow: 0 0 0 6px var(--page), 0 0 0 7px color-mix(in srgb, var(--accent) 35%, transparent), 0 0 0 22px transparent, var(--shadow-card-hover);
     }
   }
   .headshot img {
