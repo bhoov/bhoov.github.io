@@ -9,6 +9,8 @@
  *
  * The field canvas draws the contours once per resize (marching squares on a grid of CELL px).
  * The probe canvas draws gradient descent on E from the pointer (or from a default point) to the memory it falls into.
+ * A tap or click plays the descent as motion: the query rolls down the path, and the memory it reaches pulses.
+ * The default descent also plays once on load. With reduced motion, the path is drawn at once.
  */
 
 type Memory = { x: number; y: number; s: number };
@@ -17,6 +19,8 @@ const CELL = 6; // grid spacing for the contour lines, px
 const LEVELS = Array.from({ length: 16 }, (_, k) => 0.5 * ((k + 1) * 0.42) ** 2); // E levels; rings about 0.42 s apart near a minimum
 const STEPS = 48; // gradient-descent steps per retrieval path
 const RATE = 0.22; // step size, as a fraction of s^2
+const ROLL_MS = 1100; // time for the query to roll down its path
+const PULSE_MS = 700; // the pulse at the retrieved memory
 
 // Small deterministic generator, so the landscape is the same on every load.
 function rng(seed: number) {
@@ -108,7 +112,8 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
 
   let visibleMemories: Memory[] = [];
 
-  const drawProbe = (start: [number, number]) => {
+  // `shown`: how many descent steps to draw (fractional; the last one is partial). `pulse`: 0 to 1 through the arrival pulse, or -1 for none.
+  const drawProbe = (start: [number, number], path = descend(memories, start[0], start[1]), shown = STEPS, pulse = -1) => {
     const ctx = probe.getContext("2d")!;
     ctx.clearRect(0, 0, width, height);
     // Memory dots in the full accent color, the same as "memories" in the caption and the retrieved dot.
@@ -119,13 +124,18 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
       ctx.arc(m.x, m.y, 3.5, 0, 2 * Math.PI);
       ctx.fill();
     }
-    const path = descend(memories, start[0], start[1]);
+    const whole = Math.floor(shown);
+    const part = shown - whole;
+    const next = path[Math.min(whole + 1, path.length - 1)];
+    const head: [number, number] = [path[whole][0] + part * (next[0] - path[whole][0]), path[whole][1] + part * (next[1] - path[whole][1])];
+    const rolling = shown < STEPS;
     ctx.strokeStyle = accent;
     ctx.lineWidth = 1.75;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.beginPath();
-    path.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)));
+    for (let i = 0; i <= whole; i++) (i ? ctx.lineTo(path[i][0], path[i][1]) : ctx.moveTo(path[i][0], path[i][1]));
+    ctx.lineTo(head[0], head[1]);
     ctx.stroke();
     // The query: a hollow ring where the path starts.
     ctx.fillStyle = "white";
@@ -133,14 +143,64 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
     ctx.arc(start[0], start[1], 4.5, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
-    // The retrieved memory: a filled dot where the path ends, unless that is under the headshot.
-    const [ex, ey] = path[path.length - 1];
+    // The rolling query, or the retrieved memory: a filled dot at the head of the path, unless that is under the headshot.
+    const [ex, ey] = rolling ? head : path[path.length - 1];
     if (Math.hypot(ex - memories[0].x, ey - memories[0].y) > anchor.offsetWidth / 2) {
       ctx.fillStyle = accent;
       ctx.beginPath();
       ctx.arc(ex, ey, 4.5, 0, 2 * Math.PI);
       ctx.fill();
+      // The arrival pulse: a ring that grows and fades around the retrieved memory.
+      if (pulse >= 0) {
+        ctx.save();
+        ctx.globalAlpha = 1 - pulse;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(ex, ey, 4.5 + 18 * Math.sqrt(pulse), 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.restore();
+      }
     }
+  };
+
+  // Roll the query from `start` down to its memory, then pulse it. A memory under the headshot pulses the headshot's ring instead (the `retrieved` class).
+  let rollFrame = 0;
+  const roll = (start: [number, number]) => {
+    cancelAnimationFrame(rollFrame);
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return drawProbe(start);
+    const path = descend(memories, start[0], start[1]);
+    const [ex, ey] = path[path.length - 1];
+    const atAnchor = Math.hypot(ex - memories[0].x, ey - memories[0].y) <= anchor.offsetWidth / 2;
+    // Position along the path by distance travelled, eased in and out, so the query visibly speeds up and settles.
+    // (Timed by step instead, it would cover most of the distance in the first few frames: the descent steps shrink geometrically.)
+    const cumulative = [0];
+    for (let i = 1; i < path.length; i++) cumulative.push(cumulative[i - 1] + Math.hypot(path[i][0] - path[i - 1][0], path[i][1] - path[i - 1][1]));
+    const total = cumulative[cumulative.length - 1];
+    const stepAt = (fraction: number) => {
+      const target = fraction * total;
+      let i = 0;
+      while (i < path.length - 2 && cumulative[i + 1] < target) i++;
+      const span = cumulative[i + 1] - cumulative[i];
+      return i + (span > 0 ? Math.min(1, (target - cumulative[i]) / span) : 1);
+    };
+    const ease = (x: number) => (x < 0.5 ? 4 * x ** 3 : 1 - (-2 * x + 2) ** 3 / 2);
+    const t0 = performance.now();
+    let arrived = false;
+    const frame = (now: number) => {
+      const t = now - t0;
+      if (t < ROLL_MS) drawProbe(start, path, stepAt(ease(t / ROLL_MS)));
+      else {
+        if (!arrived && atAnchor) {
+          anchor.classList.remove("retrieved");
+          void anchor.offsetWidth; // restart the CSS animation
+          anchor.classList.add("retrieved");
+        }
+        arrived = true;
+        drawProbe(start, path, STEPS, Math.min(1, (t - ROLL_MS) / PULSE_MS));
+      }
+      if (t < ROLL_MS + PULSE_MS) rollFrame = requestAnimationFrame(frame);
+    };
+    rollFrame = requestAnimationFrame(frame);
   };
 
   const layout = () => {
@@ -184,8 +244,11 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
     ctx.lineWidth = 1;
     contours(ctx, memories, width, height);
     setup(probe);
-    drawProbe(defaultStart);
+    if (firstLayout) roll(defaultStart);
+    else drawProbe(defaultStart);
+    firstLayout = false;
   };
+  let firstLayout = true;
 
   // Layout and probe drawing each keep their own pending frame, so a pointer move cannot cancel a pending re-layout.
   let layoutFrame = 0;
@@ -196,18 +259,30 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
   }).observe(host);
   const probeFrom = (start: [number, number]) => {
     cancelAnimationFrame(probeFrame);
+    cancelAnimationFrame(rollFrame);
     probeFrame = requestAnimationFrame(() => drawProbe(start));
   };
-  const probeAt = (e: PointerEvent) => {
-    if (quiet?.contains(e.target as Node)) return probeFrom(defaultStart);
+  const pointAt = (e: PointerEvent): [number, number] | null => {
+    if (quiet?.contains(e.target as Node)) return null;
     const box = host.getBoundingClientRect();
-    probeFrom([e.clientX - box.left, e.clientY - box.top]);
+    return [e.clientX - box.left, e.clientY - box.top];
   };
-  // A mouse or pen probes as it moves. A finger probes only where it taps: a touch drag is a scroll, and the path stays after the finger lifts.
+  // A mouse or pen draws the path as it moves. A tap or click rolls the query down the path; a touch drag is a scroll and leaves the path as it is.
+  // After a click, the mouse must move 12px before it takes over again, so a small hand movement does not cut the roll short.
+  let clickedAt: [number, number] | null = null;
   host.addEventListener("pointermove", (e) => {
-    if (e.pointerType !== "touch") probeAt(e);
+    if (e.pointerType === "touch") return;
+    const point = pointAt(e);
+    if (clickedAt && point && Math.hypot(point[0] - clickedAt[0], point[1] - clickedAt[1]) < 12) return;
+    clickedAt = null;
+    probeFrom(point ?? defaultStart);
   });
-  host.addEventListener("pointerdown", probeAt);
+  host.addEventListener("pointerdown", (e) => {
+    const start = pointAt(e);
+    clickedAt = start;
+    if (start) roll(start);
+    else if (e.pointerType !== "touch") probeFrom(defaultStart);
+  });
   host.addEventListener("pointerleave", (e) => {
     if (e.pointerType !== "touch") probeFrom(defaultStart);
   });
