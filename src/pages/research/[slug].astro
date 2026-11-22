@@ -12,6 +12,7 @@ import Badges from "../../components/Badges.astro";
 import { existsSync } from "node:fs";
 import { data } from "../../data";
 import { asset, badges, pressAbout, publicationsWithPages, venueLabel, type Link, type Publication } from "../../lib/publications";
+import { avatarImage, teaserImage } from "../../lib/images";
 
 export function getStaticPaths() {
   return publicationsWithPages().map((p) => ({ params: { slug: p.slug }, props: { p } }));
@@ -50,7 +51,7 @@ const description = p.tagline ?? p.featureDescription;
       <ul class="authors" aria-label="Authors">
         {
           authors.map((a) => {
-            const face = a.picture ? <img src={asset(a.picture)} alt="" loading="lazy" /> : <span class="initials">{initials(a.name)}</span>;
+            const face = a.picture ? <img src={avatarImage(a.picture)} alt="" width="96" height="96" loading="lazy" decoding="async" /> : <span class="initials">{initials(a.name)}</span>;
             return (
               <li class:list={{ me: a.me }}>
                 {a.url ? (
@@ -78,7 +79,7 @@ const description = p.tagline ?? p.featureDescription;
     {
       figure && (
         <figure class="figure">
-          <img src={asset(figure)} alt={`Figure from ${p.shortTitle}`} />
+          <img {...teaserImage(figure)} sizes="(min-width: 960px) 56rem, calc(100vw - 2rem)" width="960" height="600" alt={`Figure from ${p.shortTitle}`} decoding="async" />
         </figure>
       )
     }
@@ -257,6 +258,7 @@ const description = p.tagline ?? p.featureDescription;
   }
   .figure img {
     width: 100%;
+    height: auto;
     aspect-ratio: 16 / 10;
     object-fit: contain;
   }

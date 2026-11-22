@@ -7,7 +7,8 @@
  */
 import ProjectLink from "./ProjectLink.astro";
 import Badges from "./Badges.astro";
-import { asset, badges, pubUrl, venueLabel, type Link, type Publication } from "../lib/publications";
+import { badges, pubUrl, venueLabel, type Link, type Publication } from "../lib/publications";
+import { teaserImage } from "../lib/images";
 
 interface Props {
   project: Publication;
@@ -25,7 +26,7 @@ const href = pubUrl(project);
 
 <article class="item" data-href={href}>
   <div class="thumb">
-    <img src={asset(project.teaser ?? project.thumbnail)} alt={`Figure from ${project.shortTitle}`} loading="lazy" />
+    <img {...teaserImage(project.teaser ?? project.thumbnail)} sizes="(min-width: 640px) 15rem, calc(100vw - 2rem)" width="960" height="600" alt={`Figure from ${project.shortTitle}`} loading="lazy" decoding="async" />
   </div>
   <div class="body">
     <p class="venue">{venueLabel(project)}</p>

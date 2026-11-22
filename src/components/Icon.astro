@@ -1,0 +1,16 @@
+---
+/**
+ * An icon drawn inline at build time, so it shows with the page instead of popping in later.
+ * The icons are Iconify sets (Material Design Icons "mdi-…", Remix Icon "ri:…"), copied into src/lib/icons.json.
+ * To add one, copy its entry from https://api.iconify.design/<set>.json?icons=<name> into that file.
+ * The <svg> keeps the class "iconify" and the 1em size that the old Iconify script gave it, so existing styles still apply.
+ */
+import { iconSvg } from "../lib/icons";
+
+interface Props {
+  name?: string;
+}
+const { name } = Astro.props;
+---
+
+{name && <Fragment set:html={iconSvg(name)} />}

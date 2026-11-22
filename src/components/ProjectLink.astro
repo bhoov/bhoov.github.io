@@ -1,4 +1,5 @@
 ---
+import Icon from "./Icon.astro";
 /**
  * A pill-shaped link with an icon, e.g. "PDF" or "Code".
  * A Code link to a GitHub repository shows the repository's star count, fetched at build time (src/lib/github.ts).
@@ -19,7 +20,7 @@ const stars = link.type === "code" ? await githubStars(link.url) : null;
 
 <span class:list={["pill", variant, { inline }]}>
   <a href={asset(link.url)} target="_blank" rel="noreferrer">
-    <span class="iconify" data-icon={LINKS[link.type]}></span>
+    <Icon name={LINKS[link.type as keyof typeof LINKS]} />
     <span>{link.label}</span>
     {
       stars !== null && (

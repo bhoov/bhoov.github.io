@@ -1,4 +1,6 @@
 ---
+import Icon from "../components/Icon.astro";
+import { inlineIcons } from "../lib/icons";
 import Base from "../layouts/Base.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -34,7 +36,7 @@ const press = data.press
               data.socialLinks.map((link) => (
                 <li>
                   <a href={link.href} rel="noreferrer" aria-label={link.name} title={link.name}>
-                    <span class="iconify" data-icon={link.dataIcon} />
+                    <Icon name={link.dataIcon} />
                   </a>
                 </li>
               ))
@@ -60,7 +62,7 @@ const press = data.press
         </div>
         <figure class="portrait">
           <a class="headshot" href="imgs/people/me-headshot.jpg" rel="noreferrer">
-            <img src="imgs/people/me-headshot-480.webp" alt="Ben's headshot" width="480" height="635" />
+            <img src="imgs/people/me-headshot-480.webp" alt="Ben's headshot" width="480" height="635" fetchpriority="high" />
           </a>
           <figcaption>Retrieve <span class="memories">memories</span> by descending energy</figcaption>
         </figure>
@@ -76,10 +78,10 @@ const press = data.press
         </div>
         <div class="thesis-actions">
           <a class="button light" href="/papers/benjamin-hoover-thesis.pdf" rel="noreferrer">
-            <span class="iconify" data-icon="mdi-file-document-outline" /> Read the thesis
+            <Icon name="mdi-file-document-outline" /> Read the thesis
           </a>
           <a class="button ghost" href="https://youtu.be/NoAnSDAQq0k" rel="noreferrer">
-            <span class="iconify" data-icon="mdi-play" /> Watch the defense
+            <Icon name="mdi-play" /> Watch the defense
           </a>
         </div>
       </div>
@@ -97,7 +99,7 @@ const press = data.press
             data.news.map((blurb, i) => (
               <li hidden={i >= newsBase}>
                 <span class="news-date">{blurb.date}</span>
-                <span class="news-text" set:html={blurb.HTMLdescription} />
+                <span class="news-text" set:html={inlineIcons(blurb.HTMLdescription)} />
               </li>
             ))
           }
