@@ -94,10 +94,11 @@ function contours(ctx: CanvasRenderingContext2D, memories: Memory[], width: numb
   }
 }
 
-// `quiet`: elements inside `host` (the bio and the press logos) where the pointer does nothing anywhere in their box,
-// so the graphic does not distract from reading.
-// `text`: elements where the pointer does nothing only on their words (the boxes of their lines; for a link, its box),
-// so the empty space beside a short line (the name, the subtitle, the tagline, the profile icons) still works.
+// No trajectory, query ring or memory dot is ever drawn over text. The text is:
+// `quiet`: elements inside `host` (the bio and the press logos), as their whole box;
+// `text`: elements as the boxes of their lines (the name, the subtitle, the tagline, the caption), or for a link (the profile
+// icons) its box, so the empty space beside a short line is not text.
+// A click, tap or hover starts a query only where the whole descent from that point stays clear of the text; elsewhere it does nothing.
 // `touchLimit`: in the one-column layout (phones), taps above this element's bottom edge roll a query and taps below it do
 // nothing. The page reads its position from the `--touch-limit` CSS variable to fade the probe out below it.
 export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement, probe: HTMLCanvasElement, anchor: HTMLElement, quiet: Element[] = [], touchLimit?: HTMLElement, text: Element[] = []) {
@@ -260,6 +261,33 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
     rollFrame = requestAnimationFrame(frame);
   };
 
+  // The text, as rectangles in host coordinates (see the comment above mountEnergyLandscape).
+  const range = document.createRange();
+  const textRects = (): DOMRect[] => {
+    const box = host.getBoundingClientRect();
+    const rects: DOMRect[] = quiet.map((el) => el.getBoundingClientRect());
+    for (const el of text) {
+      if (el instanceof HTMLAnchorElement) rects.push(el.getBoundingClientRect());
+      else {
+        range.selectNodeContents(el);
+        rects.push(...range.getClientRects());
+      }
+    }
+    return rects.filter((r) => r.width > 0 && r.height > 0).map((r) => new DOMRect(r.left - box.left, r.top - box.top, r.width, r.height));
+  };
+  const CLEARANCE = 10; // px kept between the text and a line, ring or dot (a ring's radius is 4.5)
+  const onText = (rects: DOMRect[], [x, y]: Point, pad = CLEARANCE) => rects.some((r) => x >= r.left - pad && x <= r.right + pad && y >= r.top - pad && y <= r.bottom + pad);
+  // Whether a whole path stays clear of the text: each segment is checked every 3px, since the first descent steps are long.
+  const clearOfText = (path: Point[], rects = textRects()) => {
+    for (let i = 0; i < path.length; i++) {
+      const [x0, y0] = path[Math.max(0, i - 1)];
+      const [x1, y1] = path[i];
+      const n = Math.max(1, Math.ceil(Math.hypot(x1 - x0, y1 - y0) / 3));
+      for (let k = 1; k <= n; k++) if (onText(rects, [x0 + ((x1 - x0) * k) / n, y0 + ((y1 - y0) * k) / n])) return false;
+    }
+    return true;
+  };
+
   let layoutKey = "";
   let limitY = Infinity; // the touch limit's bottom edge, in host coordinates
   const stacked = () => matchMedia("(max-width: 899px)").matches; // the hero's one-column layout (src/pages/index.astro)
@@ -286,16 +314,21 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
       const m = { x: random() * width, y: random() * height, s: base * (0.4 + 0.45 * random()) };
       if (memories.every((o) => Math.hypot(o.x - m.x, o.y - m.y) > 1.5 * (o.s + m.s))) memories.push(m);
     }
-    // The default query: the first point on a ring around the headshot, starting down-left, whose descent ends at the headshot.
-    defaultStart = [ax - 1.7 * base, ay + 1.3 * base];
-    for (let k = 0; k < 24; k++) {
-      const angle = (0.75 + k / 24) * Math.PI;
-      const start: [number, number] = [ax + 1.8 * base * Math.cos(angle), ay - 1.8 * base * Math.sin(angle)];
-      const [ex, ey] = descend(memories, ...start).at(-1)!;
-      const inside = start[0] > 8 && start[0] < width - 8 && start[1] > 8 && start[1] < height - 8;
-      if (inside && Math.hypot(ex - ax, ey - ay) < 4) {
-        defaultStart = start;
-        break;
+    // The default query: the first point on a ring around the headshot, starting down-left, whose descent ends at the headshot
+    // and stays clear of the text. If no ring has one, the query starts under the headshot, so no path shows.
+    const rects = textRects();
+    defaultStart = [ax, ay];
+    search: for (const radius of [1.8, 1.5, 2.2]) {
+      for (let k = 0; k < 48; k++) {
+        const angle = (0.75 + k / 48) * 2 * Math.PI;
+        const start: Point = [ax + radius * base * Math.cos(angle), ay - radius * base * Math.sin(angle)];
+        const path = descend(memories, ...start);
+        const [ex, ey] = path[path.length - 1];
+        const inside = start[0] > 8 && start[0] < width - 8 && start[1] > 8 && start[1] < height - 8;
+        if (inside && Math.hypot(ex - ax, ey - ay) < 4 && clearOfText(path, rects)) {
+          defaultStart = start;
+          break search;
+        }
       }
     }
 
@@ -307,6 +340,7 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
       // Stacked layout (phones): the probe shows down to the limit, so so do the memory dots.
       if (stacked()) visibleMemories = memories.slice(1).filter((m) => m.y < limitY - 12);
     }
+    visibleMemories = visibleMemories.filter((m) => !onText(rects, [m.x, m.y]));
 
     const ctx = setup(field);
     ctx.strokeStyle = accent;
@@ -318,7 +352,12 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
     if (firstLayout) roll(defaultStart);
     else {
       if (preview) preview.path = descend(memories, ...preview.start);
-      if (active && !rolling) active.path = descend(memories, ...active.start);
+      if (preview && !clearOfText(preview.path, rects)) preview = null;
+      if (active && !rolling) {
+        active.path = descend(memories, ...active.start);
+        // After a resize the text may lie across the old query's path: go back to the default one.
+        if (!clearOfText(active.path, rects)) active = { start: defaultStart, path: descend(memories, ...defaultStart), shown: STEPS, pulse: -1 };
+      }
       draw();
     }
     firstLayout = false;
@@ -330,21 +369,19 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
     cancelAnimationFrame(layoutFrame);
     layoutFrame = requestAnimationFrame(layout);
   }).observe(host);
-  // Whether a screen point is on the words or links of `text`, with a small margin (larger for a finger).
-  const range = document.createRange();
-  const onText = (x: number, y: number) =>
-    text.some((el) => {
-      if (el instanceof HTMLAnchorElement) return inside(el.getBoundingClientRect(), x, y, 4);
-      range.selectNodeContents(el);
-      return [...range.getClientRects()].some((r) => inside(r, x, y, 6));
-    });
-  const inside = (r: DOMRect, x: number, y: number, pad: number) => x >= r.left - pad && x <= r.right + pad && y >= r.top - pad && y <= r.bottom + pad;
+  // Web fonts move the text without resizing the hero; lay out again once they have loaded.
+  document.fonts?.ready.then(() => {
+    layoutKey = "";
+    cancelAnimationFrame(layoutFrame);
+    layoutFrame = requestAnimationFrame(layout);
+  });
+  // A pointer starts a query only if the whole descent from it stays clear of the text.
   const pointAt = (e: PointerEvent): Point | null => {
     const box = host.getBoundingClientRect();
     const point: Point = [e.clientX - box.left, e.clientY - box.top];
-    if (e.pointerType === "touch" && touchLimit && stacked()) return point[1] <= limitY && !onText(e.clientX, e.clientY) ? point : null;
-    if (quiet.some((el) => el.contains(e.target as Node)) || onText(e.clientX, e.clientY)) return null;
-    return point;
+    if (e.pointerType === "touch" && touchLimit && stacked() && point[1] > limitY) return null;
+    if (quiet.some((el) => el.contains(e.target as Node))) return null;
+    return clearOfText(descend(memories, ...point)) ? point : null;
   };
   const setPreview = (point: Point | null) => {
     preview = point ? { start: point, path: descend(memories, point[0], point[1]) } : null;
