@@ -61,9 +61,9 @@ const press = data.press
           </div>
         </div>
         <figure class="portrait">
-          <a class="headshot" href="imgs/people/me-headshot.jpg" rel="noreferrer">
+          <div class="headshot">
             <img src="imgs/people/me-headshot-480.webp" alt="Ben's headshot" width="480" height="635" fetchpriority="high" />
-          </a>
+          </div>
           <figcaption>Retrieve <span class="memories">memories</span> by descending energy</figcaption>
         </figure>
       </div>
@@ -187,27 +187,36 @@ const press = data.press
     }
   }
   .headshot {
-    display: block;
+    position: relative;
     width: 8.5rem;
     border-radius: 1.25rem;
     box-shadow: 0 0 0 6px var(--page), 0 0 0 7px color-mix(in srgb, var(--accent) 35%, transparent), var(--shadow-card-hover);
-    transition: transform 300ms;
   }
-  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    .headshot:hover {
-      transform: scale(1.03);
-    }
+  /* A retrieval that ends at the headshot sends a faint ring outward from its frame, like the pulse at the other memories.
+     src/scripts/energyLandscape.ts adds the class. The ring fades in and out, so the frame itself never changes. */
+  .headshot::after {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border: 1.5px solid var(--accent);
+    border-radius: calc(1.25rem + 7px);
+    opacity: 0;
+    pointer-events: none;
   }
-  /* A retrieval that ends at the headshot pulses its ring (src/scripts/energyLandscape.ts adds the class). */
-  .headshot:global(.retrieved) {
-    animation: retrieved 700ms ease-out;
+  .headshot:global(.retrieved)::after {
+    animation: retrieved 900ms ease-out;
   }
   @keyframes retrieved {
     0% {
-      box-shadow: 0 0 0 6px var(--page), 0 0 0 7px var(--accent), 0 0 0 7px color-mix(in srgb, var(--accent) 45%, transparent), var(--shadow-card-hover);
+      opacity: 0;
+      transform: scale(1);
+    }
+    25% {
+      opacity: 0.45;
     }
     100% {
-      box-shadow: 0 0 0 6px var(--page), 0 0 0 7px color-mix(in srgb, var(--accent) 35%, transparent), 0 0 0 22px transparent, var(--shadow-card-hover);
+      opacity: 0;
+      transform: scale(1.12);
     }
   }
   .headshot img {
