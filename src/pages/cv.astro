@@ -73,7 +73,7 @@ const publicationGroups = [
             {experiences
               .filter((e) => e.type === type)
               .map((e) => (
-                <CVRoleEntry title={e.institution} date={e.date} place={e.team} placeUrl={e.teamUrl} location={e.location} people={e.mentors} peopleLabel={["Mentor:", "Mentors: "]} description={e.description} directory={people} />
+                <CVRoleEntry title={e.institution} job={e.role} date={e.date} place={e.team} placeUrl={e.teamUrl} location={e.location} people={e.mentors} peopleLabel={["Mentor:", "Mentors: "]} description={e.description} directory={people} />
               ))}
           </div>
         </>

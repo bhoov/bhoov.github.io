@@ -16,7 +16,7 @@
       - year: 2026
         url: https://journals.aps.org/prresearch/
 
-  - venue: Neural Information Processing Systems
+  - venue: Conference on Neural Information Processing Systems
     venueShorthand: NeurIPS
     years:
       - year: 2025
@@ -28,7 +28,7 @@
       - year: 2021
         url: https://nips.cc/Conferences/2021
 
-  - venue: International Conference for Learning Representations
+  - venue: International Conference on Learning Representations
     venueShorthand: ICLR
     years:
       - year: 2025
@@ -40,13 +40,13 @@
       - year: 2022
         url: https://iclr.cc/Conferences/2022
 
-  - venue: Workshops at the International Conference for Learning Representations
+  - venue: Workshops at the International Conference on Learning Representations
     venueShorthand: Workshops@ICLR
     years:
       - year: 2027
         url: https://iclr.cc/Conferences/2027
 
-  - venue: International Conference for Machine Learning
+  - venue: International Conference on Machine Learning
     venueShorthand: ICML
     years:
       - year: 2026

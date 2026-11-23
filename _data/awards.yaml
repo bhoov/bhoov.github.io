@@ -16,11 +16,6 @@
   description: "Generative Associative Memory via Equilibrium Matching, NFAM@ICLR 2026 (top 8 of 50+ submissions)"
   date: Apr 2026
 
-- name: "Nominated for Sigma Xi"
-  url: "https://www.sigmaxi.org/"
-  description: "The Scientific Research Honor Society"
-  date: Jan 2026
-
 - name: "Top Reviewer"
   url: "https://neurips.cc/Conferences/2025/ProgramCommittee"
   description: "NeurIPS 2025 (top 8% of 24k+ reviewers)"
@@ -48,7 +43,7 @@
   description: "Transformer Explainer, IEEE VIS 2024"
   date: Oct 2024
 
-- name: "2nd Place Poster 🥈"
+- name: "2nd Place Poster"
   description: "Energy Transformer, Georgia Tech Graduate Poster Symposium"
   date: Mar 2024
 

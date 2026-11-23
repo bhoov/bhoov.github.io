@@ -1,12 +1,21 @@
 ---
-/** One line of the CV's Press section: the outlet, the linked article title, and the date. */
+/**
+ * One line of the CV's Press section: the outlet, the linked article title, Ben's part in it, and the date.
+ * The part is the entry's `role` ("quoted"), or "on" and the short titles of the works it is `about`.
+ */
+import { data } from "../../data";
+
 const { item } = Astro.props;
+const shortTitle = (id: string) => data.publications.find((p: any) => p.id === id)?.shortTitle ?? id;
+const about: string[] = item.about ?? [];
+const part = item.role ?? (about.length ? `on ${about.map(shortTitle).join(" and ")}` : null);
 ---
 
 <div class="cv-entry press">
   <div class="headline">
     <span class="outlet">{item.outlet}</span>
     <a href={item.url} target="_blank" rel="noreferrer">{item.name}</a>
+    {part && <span class="part">· {part}</span>}
   </div>
   <div class="cv-date">{item.month} {item.year}</div>
 </div>
@@ -24,5 +33,10 @@ const { item } = Astro.props;
   }
   a {
     color: var(--text-secondary);
+  }
+  .part {
+    margin-left: 0.35rem;
+    color: var(--text-muted);
+    white-space: nowrap;
   }
 </style>

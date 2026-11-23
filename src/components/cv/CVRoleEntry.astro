@@ -2,26 +2,28 @@
 /**
  * A CV entry for a position: a research job or a teaching role.
  * `people` are names in `_data/people.yaml` (mentors or instructors), shown after `peopleLabel`.
+ * `job` (optional) is the job title, shown after the title (the employer); `place` (optional) is the team or school.
  */
 interface Props {
   title: string;
+  job?: string;
   date: string;
-  place: string;
-  placeUrl: string;
+  place?: string;
+  placeUrl?: string;
   location: string;
   people?: string[];
   peopleLabel: [string, string]; // singular and plural label
   description?: string;
   directory: Record<string, any>; // _data/people.yaml
 }
-const { title, date, place, placeUrl, location, people, peopleLabel, description, directory } = Astro.props;
+const { title, job, date, place, placeUrl, location, people, peopleLabel, description, directory } = Astro.props;
 ---
 
 <div class="cv-entry">
   <div class="cv-date">{date}</div>
-  <div class="cv-title role-title">{title}</div>
+  <div class="cv-title role-title">{title}{job && <span class="job">{job}</span>}</div>
   <div class="cv-place">
-    <a target="_blank" rel="noreferrer" href={placeUrl}>{place}</a>, {location}
+    {place && <><a target="_blank" rel="noreferrer" href={placeUrl}>{place}</a>, </>}{location}
   </div>
   {
     people && (
@@ -42,6 +44,12 @@ const { title, date, place, placeUrl, location, people, peopleLabel, description
 <style>
   .role-title {
     margin-bottom: 0.25rem;
+  }
+  /* The job title, after the employer: same line, lighter. */
+  .job {
+    margin-left: 0.5rem;
+    color: var(--text-secondary);
+    font-weight: 500;
   }
   @media (min-width: 640px) {
     .role-title {

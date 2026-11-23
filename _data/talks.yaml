@@ -11,7 +11,7 @@
     - location: "U Pitt ECE Grad Seminar"
       date: Apr 2026
       invited: true
-    - location: "Prefrontal AI"
+    - location: "Prefrontal"
       date: May 2026
       invited: true
     - location: "Archer Aviation"
@@ -61,7 +61,7 @@
     - location: "ICML 2025"
       date: Jul 2025
       locationUrl: https://tutorial.amemory.net/
-    - location: "AAAI 2026 Tutorial"
+    - location: "AAAI 2026"
       date: Jan 2026
       locationUrl: https://tutorial.amemory.net/
     # - location: "ICASSP 2026 Tutorial"
@@ -76,7 +76,7 @@
       locationUrl: https://sites.google.com/stanford.edu/visual-concepts-workshops/home
       invited: true
 
-- title: "Panel Moderator: Improving LLM's with Memory"
+- title: "Panel Moderator: Improving LLMs with Memory"
   venues:
     - location: "New Frontiers in Associative Memories Workshop @ ICLR 2026"
       date: Apr 2026
@@ -147,9 +147,8 @@
 
 - title: "The Inside Story"
   venues:
-    - location: MEng Graduation elected speaker
+    - location: MEng Graduation, elected speaker
       date: May 2018
-      invited: true
 
 - title: "Using Matlab's PRT to Accelerate Algorithm Development"
   venues:
@@ -162,4 +161,3 @@
     - location: "Cary Christian School Valedictorian Speech"
       locationUrl: https://myawesomeoliveshoots.com/2013/05/28/what-that-formerly-awkward-asian-guy-said-at-high-school-graduation-part-one/
       date: May 2013
-      invited: true

@@ -1,13 +1,13 @@
 - institution: Prefrontal
   institutionUrl: https://prefrontal.ai
   location: "London, UK"
-  role: Researcher
+  role: Technical Staff Member
   team: AI Research Lab
   teamUrl: "https://prefrontal.ai"
   date: "Sep '26 - present"
   type: industry
   description: >-
-    Developing new AI algorithms and architectures: energy-based models for reasoning (<a href="https://prefrontal.ai/news/cram/">CRAM</a>) and subquadratic attention for ultra-long context (<a href="https://prefrontal.ai/news/lsa/">Latent Sparse Attention</a>).
+    Building efficient, interpretable, and robust AI from energy-based models of memory and reasoning. Leading the first of these, <a href="https://prefrontal.ai/news/cram/">CRAM</a>, a classical energy that learns to reason at least 1,000x faster than looped models; also contributing to subquadratic attention for ultra-long context (<a href="https://prefrontal.ai/news/lsa/">Latent Sparse Attention</a>).
 
 - institution: IBM Research
   institutionUrl: https://www.research.ibm.com/artificial-intelligence/
@@ -18,7 +18,7 @@
   date: "Sep '18 - Aug '26"
   type: industry
   description: >-
-    Member of the <a href="https://researcher.ibm.com/researcher/view_group.php?id=5948">Visual AI Lab</a>, using visualization to bring insight and interactivity to powerful AI systems.
+    Built open-source tools to inspect language models (<a href="https://exbert.vizhub.ai">exBERT</a>, <a href="http://lmdiff.net/">LMdiff</a>) and showed that transformers learn to map atoms in chemical reactions without labels (<a href="http://rxnmapper.ai/">RXNMapper</a>, Science Advances). Then, with Dmitry Krotov, developed energy-based Associative Memories that scale to modern architectures: <a href="https://bhoov.com/research/energy-transformer">Energy Transformer</a>, <a href="https://bhoov.github.io/hamux/">HAMUX</a>, and Dense Associative Memories with random features and Epanechnikov energies.
   mentors:
     - Hendrik Strobelt
     - Dmitry Krotov
@@ -32,7 +32,7 @@
   date: "Summer '17"
   type: industry
   description: >-
-    Analyze trends in patient blood glucose levels for the sensor R&D team, developing algorithms that were incorporated into product by the end of the summer.
+    Analyzed trends in patients' blood glucose levels for the sensor R&D team and developed algorithms that went into the product by the end of the summer.
   mentors:
     - Peter Ajemba
     - Keith Nogueira
@@ -41,25 +41,22 @@
   institutionUrl: http://gatech.edu/
   location: "Atlanta, GA"
   # role: Bass Connections Undergrad Research Assistant
-  role: Ph.D. Researcher
+  role: PhD Researcher
   # team: "Bass Connections & Lynch Lab"
-  team: "Polo Club at School of Computational Science and Engineering"
+  team: "Polo Club of Data Science"
   teamUrl: "https://poloclub.github.io/"
   date: "Aug '21 - Jul '26"
   type: academic
   description: >-
-    Member of the Polo Club of Data Science where we innovate scalable, interactive, and interpretable tools that amplify human's ability to understand and interact with billion-scale data and machine learning models.
+    Developed Associative Memory as a foundation for modern AI, the subject of the <a href="/papers/benjamin-hoover-thesis.pdf">dissertation</a>, and co-developed interactive explainers of transformers and diffusion models (<a href="https://poloclub.github.io/transformer-explainer/">Transformer Explainer</a>, <a href="https://poloclub.github.io/diffusion-explainer/">Diffusion Explainer</a>).
   mentors:
     - Polo Chau
 
-- institution: "International Genetically Engineered Machine (iGEM)"
-  institutionUrl: http://2016.igem.org/
+- institution: "Lynch Lab (iGEM team), Duke"
+  institutionUrl: https://lynchlabduke.com/
   location: "Durham, NC"
   # role: Bass Connections Undergrad Research Assistant
-  role: Undergrad Research Assistant
-  # team: "Bass Connections & Lynch Lab"
-  team: "Lynch Lab"
-  teamUrl: "https://lynchlabduke.com/"
+  role: Undergraduate Research Assistant
   date: "Apr '15 - May '17"
   type: academic
   description: >-

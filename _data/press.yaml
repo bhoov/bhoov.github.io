@@ -3,7 +3,8 @@
 # `logo` (optional): an ink-colored SVG in public/imgs/press/; entries with a logo appear in the home page's "Featured in" row, one per outlet.
 # `logoOrder` (optional): position in that row, lowest first (by prestige).
 # `logoHeight` (optional): the logo's height on the home page, in rem (default 1.25), to even out wordmarks of different shapes.
-# The CV's Press section lists every entry that has an `outlet`, unless it sets `cv: false`.
+# The CV's Press section lists every entry that has an `outlet`, unless it sets `cv: false`. After the headline it notes
+# Ben's part: `role` if set (e.g. "quoted"), else "on" and the short titles of the works in `about`.
 
 - name: "CRAM Solves Sudoku in 42 Milliseconds and Beats Looped Reasoning Models"
   outlet: AlphaSignal
@@ -26,6 +27,7 @@
   year: 2025
   month: Aug
   url: https://www.nature.com/articles/d41586-025-02616-5
+  role: consulted
 
 - name: "How Physics Made Modern AI Possible"
   outlet: Quanta Magazine
@@ -41,6 +43,7 @@
   month: Jun
   url: https://www.quantamagazine.org/researchers-uncover-hidden-ingredients-behind-ai-creativity-20250630/
   about: [PlainSight] # quotes Ben and links to the paper (arXiv 2309.16750); no badge, since PlainSight already has a Quanta badge
+  role: quoted
   logo: imgs/press/quanta.svg
   logoOrder: 2
   logoHeight: 1.6
@@ -78,7 +81,7 @@
   about: [TransformerExplainer]
 
 - name: "Breaking down the AI transformer"
-  outlet: IBM Blogs
+  outlet: IBM Research Blog
   year: 2024
   month: Aug
   url: https://research.ibm.com/blog/how-ai-transformers-work
@@ -90,6 +93,7 @@
   month: May
   url: https://www.nature.com/articles/s42254-023-00595-y
   about: [EnergyTransformer]
+  role: cites Energy Transformer
   badge: "Nature Rev. Phys."
   logo: imgs/press/nature.svg
   logoOrder: 1
@@ -100,6 +104,7 @@
   year: 2023
   month: Apr
   url: https://www.cc.gatech.edu/news/manufacturing-finance-among-industries-benefit-whats-next-ai-2023
+  role: quoted
 
 - name: "How to tell if you can trust an AI"
   outlet: FreeThink
