@@ -160,6 +160,13 @@ const press = data.press
     -webkit-mask-image: radial-gradient(circle at var(--anchor-x, 80%) var(--anchor-y, 40%), black 0, black 220px, transparent min(680px, 100vw));
     mask-image: radial-gradient(circle at var(--anchor-x, 80%) var(--anchor-y, 40%), black 0, black 220px, transparent min(680px, 100vw));
   }
+  /* One column (phones): a tap anywhere down to the tagline rolls a query, so the probe shows down to there and fades out over the bio. */
+  @media (max-width: 899px) {
+    .probe {
+      -webkit-mask-image: linear-gradient(to bottom, black calc(var(--touch-limit, 640px) - 8px), transparent calc(var(--touch-limit, 640px) + 56px));
+      mask-image: linear-gradient(to bottom, black calc(var(--touch-limit, 640px) - 8px), transparent calc(var(--touch-limit, 640px) + 56px));
+    }
+  }
   .hero-grid {
     position: relative;
     display: grid;
@@ -565,7 +572,7 @@ const press = data.press
   import { mountNewsList } from "../scripts/newsList";
 
   const hero = document.querySelector<HTMLElement>(".hero")!;
-  mountEnergyLandscape(hero, hero.querySelector(".field")!, hero.querySelector(".probe")!, hero.querySelector(".headshot")!, hero.querySelector(".hero-text")!);
+  mountEnergyLandscape(hero, hero.querySelector(".field")!, hero.querySelector(".probe")!, hero.querySelector(".headshot")!, hero.querySelector(".hero-text")!, hero.querySelector(".tagline")!);
 
   const actions = document.querySelector<HTMLElement>(".news-actions")!;
   mountNewsList(document.querySelector(".news-list")!, document.getElementById("news-more") as HTMLButtonElement, document.getElementById("news-less") as HTMLButtonElement, Number(actions.dataset.base), Number(actions.dataset.step));

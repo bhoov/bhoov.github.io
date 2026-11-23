@@ -94,8 +94,10 @@ function contours(ctx: CanvasRenderingContext2D, memories: Memory[], width: numb
   }
 }
 
-// `quiet`: an element inside `host` (the bio text) where the pointer does not move the probe, so the graphic does not distract from reading.
-export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement, probe: HTMLCanvasElement, anchor: HTMLElement, quiet?: HTMLElement) {
+// `quiet`: an element inside `host` (the hero text) where a mouse does not move the probe, so the graphic does not distract from reading.
+// `touchLimit`: on touch screens, taps above this element's bottom edge roll a query (the text above it is short: name, subtitle, tagline);
+// taps below it, on the bio, do nothing. The page reads its position from the `--touch-limit` CSS variable to fade the probe out below it.
+export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement, probe: HTMLCanvasElement, anchor: HTMLElement, quiet?: HTMLElement, touchLimit?: HTMLElement) {
   const accent = getComputedStyle(host).getPropertyValue("--accent").trim() || "#2a78d6";
   let memories: Memory[] = [];
   let width = 0;
@@ -256,13 +258,15 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
   };
 
   let layoutKey = "";
+  let limitY = Infinity; // the touch limit's bottom edge, in host coordinates
+  const stacked = () => matchMedia("(max-width: 899px)").matches; // the hero's one-column layout (src/pages/index.astro)
   const layout = () => {
     const box = host.getBoundingClientRect();
     const a = anchor.getBoundingClientRect();
     const ax = a.left - box.left + a.width / 2;
     const ay = a.top - box.top + a.height / 2;
     // Skip a resize that changes nothing drawn (the observer also fires for changes that keep these the same).
-    const key = [box.width, box.height, ax, ay, a.width].map((v) => v.toFixed(1)).join();
+    const key = [box.width, box.height, ax, ay, a.width, touchLimit?.getBoundingClientRect().bottom ?? 0].map((v) => v.toFixed(1)).join();
     if (key === layoutKey) return;
     layoutKey = key;
     width = box.width;
@@ -294,6 +298,12 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
 
     const fade = Math.min(520, 0.8 * window.innerWidth); // where the field's CSS mask reaches transparent
     visibleMemories = memories.slice(1).filter((m) => Math.hypot(m.x - ax, m.y - ay) < 0.75 * fade);
+    if (touchLimit) {
+      limitY = touchLimit.getBoundingClientRect().bottom - box.top;
+      host.style.setProperty("--touch-limit", `${limitY}px`);
+      // Stacked layout (phones): the probe shows down to the limit, so so do the memory dots.
+      if (stacked()) visibleMemories = memories.slice(1).filter((m) => m.y < limitY - 12);
+    }
 
     const ctx = setup(field);
     ctx.strokeStyle = accent;
@@ -318,9 +328,11 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
     layoutFrame = requestAnimationFrame(layout);
   }).observe(host);
   const pointAt = (e: PointerEvent): Point | null => {
-    if (quiet?.contains(e.target as Node)) return null;
     const box = host.getBoundingClientRect();
-    return [e.clientX - box.left, e.clientY - box.top];
+    const point: Point = [e.clientX - box.left, e.clientY - box.top];
+    if (e.pointerType === "touch" && touchLimit && stacked()) return point[1] <= limitY ? point : null;
+    if (quiet?.contains(e.target as Node)) return null;
+    return point;
   };
   const setPreview = (point: Point | null) => {
     preview = point ? { start: point, path: descend(memories, point[0], point[1]) } : null;
