@@ -6,7 +6,7 @@ const { award } = Astro.props;
 <div class="cv-entry award">
   <div class="line">
     {award.url ? <a class="name" href={award.url} target="_blank" rel="noreferrer">{award.name}</a> : <span class="name">{award.name}</span>}
-    {award.description && <span class="description" set:html={award.description} />}
+    {award.description && <span class="description prose-links" set:html={award.description} />}
   </div>
   <div class="cv-date">{award.date}</div>
 </div>

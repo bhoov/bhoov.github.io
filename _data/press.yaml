@@ -53,6 +53,7 @@
   year: 2025
   month: Jun
   url: https://research.ibm.com/blog/dmitry-krotov-ai-physics
+  about: [EnergyTransformer]
   logo: imgs/press/ibm.svg
   logoOrder: 4
   logoHeight: 1.05
@@ -151,3 +152,4 @@
   year: 2020
   month: Apr
   url: https://www.engadget.com/ibm-coronavirus-ai-research-tools-162123059.html
+  about: [CogMol]

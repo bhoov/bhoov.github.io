@@ -1,36 +1,51 @@
 ---
+/**
+ * One line of the CV's Service section: the venue and its short name, then the years, each linked to that year's site.
+ * Set like the CV's other one-line entries (awards, press): the short name in bold, the venue in the secondary text
+ * color, the years in the label font of the dates.
+ */
 const { venue } = Astro.props;
 ---
 
 <div class="cv-avoid-break reviewer">
-  <span class="venue">{venue.venue} (<b>{venue.venueShorthand}</b>)</span>
-  {
-    venue.years.map((year, i) => (
-      <>
-        <a href={year.url} target="_blank" rel="noreferrer">{year.year}</a>
-        {i < venue.years.length - 1 && <span class="separator">·</span>}
-      </>
-    ))
-  }
+  <span class="venue"><b>{venue.venueShorthand}</b> {venue.venue}</span>
+  <span class="years">
+    {
+      venue.years.map((year, i) => (
+        <>
+          <a href={year.url} target="_blank" rel="noreferrer">{year.year}</a>
+          {i < venue.years.length - 1 && <span class="separator">·</span>}
+        </>
+      ))
+    }
+  </span>
 </div>
 
 <style>
   .reviewer {
-    margin: 0.125rem 0;
-    line-height: 1.25rem;
-    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.35rem;
   }
   .venue {
-    margin-right: 1rem;
+    margin-right: 0.6rem;
+    color: var(--text-secondary);
   }
   b {
+    margin-right: 0.2rem;
+    color: var(--text-primary);
     font-weight: 600;
   }
-  a,
-  .separator {
+  .years {
+    white-space: nowrap;
+    color: var(--text-muted);
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+  .years a {
     color: var(--text-muted);
   }
   .separator {
-    margin: 0 0.25rem;
+    margin: 0 0.3rem;
   }
 </style>

@@ -7,7 +7,7 @@
   date: "Sep '26 - present"
   type: industry
   description: >-
-    Building efficient, interpretable, and robust AI from energy-based models of memory and reasoning. Leading the first of these, <a href="https://prefrontal.ai/news/cram/">CRAM</a>, a classical energy that learns to reason at least 1,000x faster than looped models; also contributing to subquadratic attention for ultra-long context (<a href="https://prefrontal.ai/news/lsa/">Latent Sparse Attention</a>).
+    Building efficient, interpretable, and robust AI from energy-based models of memory and reasoning. Leading the first of these, <a href="/research/cram">CRAM</a>, a classical energy that learns to reason at least 1,000x faster than looped models; also contributing to subquadratic attention for ultra-long context (<a href="https://prefrontal.ai/news/lsa/">Latent Sparse Attention</a>).
 
 - institution: IBM Research
   institutionUrl: https://www.research.ibm.com/artificial-intelligence/
@@ -18,7 +18,7 @@
   date: "Sep '18 - Aug '26"
   type: industry
   description: >-
-    Built open-source tools to inspect language models (<a href="https://exbert.vizhub.ai">exBERT</a>, <a href="http://lmdiff.net/">LMdiff</a>) and showed that transformers learn to map atoms in chemical reactions without labels (<a href="http://rxnmapper.ai/">RXNMapper</a>, Science Advances). Then, with Dmitry Krotov, developed energy-based Associative Memories that scale to modern architectures: <a href="https://bhoov.com/research/energy-transformer">Energy Transformer</a>, <a href="https://bhoov.github.io/hamux/">HAMUX</a>, and Dense Associative Memories with random features and Epanechnikov energies.
+    Built open-source tools to inspect language models (<a href="https://exbert.vizhub.ai">exBERT</a>, <a href="http://lmdiff.net/">LMdiff</a>) and showed that transformers learn to map atoms in chemical reactions without labels (<a href="/research/rxnmapper">RXNMapper</a>, Science Advances). Then, with Dmitry Krotov, developed energy-based Associative Memories that scale to modern architectures: <a href="/research/energy-transformer">Energy Transformer</a>, <a href="https://bhoov.github.io/hamux/">HAMUX</a>, and Dense Associative Memories with <a href="/research/drdam">random features</a> and <a href="/research/lsrdam">Epanechnikov energies</a>.
   mentors:
     - Hendrik Strobelt
     - Dmitry Krotov
@@ -48,7 +48,7 @@
   date: "Aug '21 - Jul '26"
   type: academic
   description: >-
-    Developed Associative Memory as a foundation for modern AI, the subject of the <a href="/papers/benjamin-hoover-thesis.pdf">dissertation</a>, and co-developed interactive explainers of transformers and diffusion models (<a href="https://poloclub.github.io/transformer-explainer/">Transformer Explainer</a>, <a href="https://poloclub.github.io/diffusion-explainer/">Diffusion Explainer</a>).
+    Developed Associative Memory as a foundation for modern AI, the subject of the <a href="/papers/benjamin-hoover-thesis.pdf">dissertation</a>, and co-developed interactive explainers of transformers and diffusion models (<a href="/research/transformer-explainer">Transformer Explainer</a>, <a href="/research/diffusion-explainer">Diffusion Explainer</a>).
   mentors:
     - Polo Chau
 
@@ -56,7 +56,7 @@
   institutionUrl: https://lynchlabduke.com/
   location: "Durham, NC"
   # role: Bass Connections Undergrad Research Assistant
-  role: Undergraduate Research Assistant
+  role: Research Assistant
   date: "Apr '15 - May '17"
   type: academic
   description: >-

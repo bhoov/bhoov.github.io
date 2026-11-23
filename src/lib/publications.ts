@@ -10,6 +10,8 @@ export type Link = { type: string; label: string; url: string };
 
 /** The work's page on this site, for entries that have a `slug`. */
 export const pubUrl = (p: Publication) => `/research/${p.slug}`;
+/** Where a mention of a work links: its page on this site if it has one, else its own site (`defaultUrl`). */
+export const workUrl = (p: Publication): string | undefined => (p.slug ? pubUrl(p) : p.defaultUrl);
 
 /** Featured works with a page, newest year first (the order within a year follows the YAML file). */
 export const featuredPublications = (): Publication[] =>

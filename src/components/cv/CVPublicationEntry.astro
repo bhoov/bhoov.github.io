@@ -1,7 +1,7 @@
 ---
 import ProjectLink from "../ProjectLink.astro";
 import Badges from "../Badges.astro";
-import { badges, type Badge } from "../../lib/publications";
+import { badges, workUrl, type Badge } from "../../lib/publications";
 
 interface Props {
   publication: Record<string, any>;
@@ -24,7 +24,7 @@ const coFirstAuthorNote = publication.coFirstAuthorNote ?? "* indicates equal co
 <div class="publication cv-avoid-break">
   {/* The award and press badges follow the title's last word, and move to the next line when they do not fit. */}
   <div class="cv-title pub-title">
-    <a href={publication.defaultUrl} target="_blank" rel="noreferrer">{publication.title}</a>{" "}
+    <a href={workUrl(publication)} target={publication.slug ? "_self" : "_blank"} rel="noreferrer">{publication.title}</a>{" "}
     {cvBadges.length > 0 && <span class="title-badges"><Badges badges={cvBadges} wrap /></span>}
   </div>
   <div class="authors">

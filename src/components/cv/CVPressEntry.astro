@@ -4,18 +4,34 @@
  * The part is the entry's `role` ("quoted"), or "on" and the short titles of the works it is `about`.
  */
 import { data } from "../../data";
+import { workUrl } from "../../lib/publications";
 
 const { item } = Astro.props;
-const shortTitle = (id: string) => data.publications.find((p: any) => p.id === id)?.shortTitle ?? id;
-const about: string[] = item.about ?? [];
-const part = item.role ?? (about.length ? `on ${about.map(shortTitle).join(" and ")}` : null);
+// The works it is about, each linked to its page on this site (or its own site).
+const works = ((item.about ?? []) as string[]).map((id) => data.publications.find((p: any) => p.id === id)).filter(Boolean);
 ---
 
 <div class="cv-entry press">
   <div class="headline">
     <span class="outlet">{item.outlet}</span>
     <a href={item.url} target="_blank" rel="noreferrer">{item.name}</a>
-    {part && <span class="part">· {part}</span>}
+    {
+      item.role ? (
+        <span class="part">· {item.role}</span>
+      ) : (
+        works.length > 0 && (
+          <span class="part">
+            · on{" "}
+            {works.map((p: any, i: number) => (
+              <>
+                {i > 0 && " and "}
+                <a class="work" href={workUrl(p)}>{p.shortTitle ?? p.id}</a>
+              </>
+            ))}
+          </span>
+        )
+      )
+    }
   </div>
   <div class="cv-date">{item.month} {item.year}</div>
 </div>
@@ -38,5 +54,11 @@ const part = item.role ?? (about.length ? `on ${about.map(shortTitle).join(" and
     margin-left: 0.35rem;
     color: var(--text-muted);
     white-space: nowrap;
+  }
+  .part .work {
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--accent, #2a78d6) 45%, transparent);
+    text-underline-offset: 3px;
   }
 </style>

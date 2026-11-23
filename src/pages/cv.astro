@@ -120,19 +120,13 @@ const publicationGroups = [
     </div>
 
     <CVHeader title="Service" />
-    <div class="service">
-      <div>
-        <div class="service-title">Reviewer</div>
-        <div class="service-list">
-          {reviewer.map((venue) => <CVReviewerEntry venue={venue} />)}
-        </div>
-      </div>
-      <div>
-        <div class="service-title">Organizing Committee</div>
-        <div class="service-list">
-          {committee.map((venue) => <CVReviewerEntry venue={venue} />)}
-        </div>
-      </div>
+    <CVHeader title="Reviewer" level={2} />
+    <div class="service-list">
+      {reviewer.map((venue) => <CVReviewerEntry venue={venue} />)}
+    </div>
+    <CVHeader title="Organizing Committee" level={2} />
+    <div class="service-list">
+      {committee.map((venue) => <CVReviewerEntry venue={venue} />)}
     </div>
 
     {/* The footer: when this CV was built, and where to find it. The PDF has the same footer without its own download link. */}
@@ -252,25 +246,10 @@ const publicationGroups = [
   .entries.compact {
     gap: 0.3rem;
   }
-  .service {
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.75rem;
-  }
-  .service-title {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    font-weight: 700;
-  }
   .service-list {
     display: flex;
     flex-direction: column;
-    row-gap: 0.25rem;
-  }
-  @media (min-width: 640px) {
-    .service-list {
-      row-gap: 0;
-    }
+    row-gap: 0.3rem;
   }
   .cv-footer {
     display: flex;

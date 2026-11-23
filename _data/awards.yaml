@@ -1,5 +1,5 @@
 # Awards and honors on the CV, newest first. Each is one line: the award (`name`, linked to `url` if given), then `description`.
-# Keep `description` to one short clause: the work or venue, and the selectivity if known.
+# Keep `description` to one short clause: the work or venue, and the selectivity if known. A work with a page on this site links to it (/research/<slug>).
 #
 # - name:
 #   url: # optional
@@ -22,34 +22,34 @@
   date: Oct 2025
 
 - name: "Spotlight Paper"
-  description: "Dense Associative Memory with Epanechnikov Energy, NeurIPS 2025 (top 3% of 21k+ submissions)"
+  description: "<a href='/research/lsrdam'>Dense Associative Memory with Epanechnikov Energy</a>, NeurIPS 2025 (top 3% of 21k+ submissions)"
   date: Sep 2025
 
 - name: "Oral Poster"
   url: "https://sites.google.com/view/memvis-iccv2025-workshop/accepted-papers"
-  description: "Dense Associative Memory with Epanechnikov Energy, MemVis@ICCV 2025 (top 5 submissions)"
+  description: "<a href='/research/lsrdam'>Dense Associative Memory with Epanechnikov Energy</a>, MemVis@ICCV 2025 (top 5 submissions)"
   date: Aug 2025
 
 - name: "Oral Paper"
-  description: "ConceptAttention, ICML 2025 (top 1% of 12k+ submissions)"
+  description: "<a href='/research/concept-attention'>ConceptAttention</a>, ICML 2025 (top 1% of 12k+ submissions)"
   date: Jul 2025
 
 - name: "Best Paper"
   url: "https://sites.google.com/stanford.edu/visual-concepts-workshops/cvpr25"
-  description: "ConceptAttention, Workshop on Visual Concepts at CVPR 2025"
+  description: "<a href='/research/concept-attention'>ConceptAttention</a>, Workshop on Visual Concepts at CVPR 2025"
   date: Jun 2025
 
 - name: "Best Poster"
-  description: "Transformer Explainer, IEEE VIS 2024"
+  description: "<a href='/research/transformer-explainer'>Transformer Explainer</a>, IEEE VIS 2024"
   date: Oct 2024
 
 - name: "2nd Place Poster"
-  description: "Energy Transformer, Georgia Tech Graduate Poster Symposium"
+  description: "<a href='/research/energy-transformer'>Energy Transformer</a>, Georgia Tech Graduate Poster Symposium"
   date: Mar 2024
 
 - name: "Spotlight Paper"
   url: "https://amhn.vizhub.ai/"
-  description: "Energy Transformer, AMHN@NeurIPS 2023"
+  description: "<a href='/research/energy-transformer'>Energy Transformer</a>, AMHN@NeurIPS 2023"
   date: Dec 2023
 
 - name: "Best Paper Honorable Mention"
@@ -70,7 +70,7 @@
   date: Dec 2020
 
 - name: "Best Poster"
-  description: "RXNMapper, #IOPPoster 2020"
+  description: "<a href='/research/rxnmapper'>RXNMapper</a>, #IOPPoster 2020"
   date: Jul 2020
 
 - name: "Best Demo Runner-Up"
