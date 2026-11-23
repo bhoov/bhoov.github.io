@@ -572,9 +572,15 @@ const press = data.press
   import { mountNewsList } from "../scripts/newsList";
 
   const hero = document.querySelector<HTMLElement>(".hero")!;
-  mountEnergyLandscape(hero, hero.querySelector(".field")!, hero.querySelector(".probe")!, hero.querySelector(".headshot")!, hero.querySelector(".hero-text")!, hero.querySelector(".tagline")!, [
-    ...hero.querySelectorAll(".hero h1, .subtitle, .tagline, .profiles a"),
-  ]);
+  mountEnergyLandscape(
+    hero,
+    hero.querySelector(".field")!,
+    hero.querySelector(".probe")!,
+    hero.querySelector(".headshot")!,
+    [...hero.querySelectorAll(".bio, .press")],
+    hero.querySelector(".tagline")!,
+    [...hero.querySelectorAll(".hero h1, .subtitle, .tagline, .profiles a")],
+  );
 
   const actions = document.querySelector<HTMLElement>(".news-actions")!;
   mountNewsList(document.querySelector(".news-list")!, document.getElementById("news-more") as HTMLButtonElement, document.getElementById("news-less") as HTMLButtonElement, Number(actions.dataset.base), Number(actions.dataset.step));
