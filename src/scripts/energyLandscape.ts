@@ -96,7 +96,7 @@ function contours(ctx: CanvasRenderingContext2D, memories: Memory[], width: numb
 
 // No trajectory, query ring or memory dot is ever drawn over text. The text is:
 // `quiet`: elements inside `host` (the bio and the press logos), as their whole box;
-// `text`: elements as the boxes of their lines (the name, the subtitle, the tagline, the caption), or for a link (the profile
+// `text`: elements as the boxes of their lines (the name, the subtitle, the caption), or for a link (the profile
 // icons) its box, so the empty space beside a short line is not text.
 // A click, tap or hover starts a query only where the whole descent from that point stays clear of the text; elsewhere it does nothing.
 // `touchLimit`: in the one-column layout (phones), taps above this element's bottom edge roll a query and taps below it do

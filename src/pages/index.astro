@@ -30,7 +30,7 @@ const press = data.press
       <div class="container hero-grid">
         <div class="hero-text">
           <h1>Hi, I'm Ben Hoover</h1>
-          <p class="subtitle">I build efficient AI using <span class="hl">physics</span></p>
+          <p class="subtitle">I build <strong>efficient, interpretable, and robust</strong> AI from memory, energy, and dynamics</p>
           <ul class="profiles" aria-label="Profiles">
             {
               data.socialLinks.map((link) => (
@@ -43,7 +43,6 @@ const press = data.press
             }
           </ul>
           {/* Astro drops whitespace that contains a newline next to an element, so keep inline links on the same line as their surrounding text. */}
-          <p class="tagline">Towards <strong>efficient, interpretable, and robust AI</strong>, built from memory, energy, and dynamics.</p>
           <p class="bio prose-links">I'm a researcher at <a href="https://prefrontal.ai"><strong>Prefrontal</strong></a> in London, and I earned my Machine Learning PhD at <a href="https://poloclub.github.io/"><strong>Georgia Tech</strong></a> with <a href="https://poloclub.github.io/polochau/">Polo Chau</a>. My goal is to make energy-based AI practical at the scale of modern workloads. My research has been an <strong>oral at ICML</strong> (top 1%) and a <strong>spotlight at NeurIPS</strong> (top 3%), and <a href="/research/cram" target="_self">CRAM</a>, my latest model, learns to reason <strong>1,000x faster</strong> than looped models.</p>
           <div class="press">
             <span class="press-label">Featured in</span>
@@ -160,7 +159,7 @@ const press = data.press
     -webkit-mask-image: radial-gradient(circle at var(--anchor-x, 80%) var(--anchor-y, 40%), black 0, black 220px, transparent min(680px, 100vw));
     mask-image: radial-gradient(circle at var(--anchor-x, 80%) var(--anchor-y, 40%), black 0, black 220px, transparent min(680px, 100vw));
   }
-  /* One column (phones): a tap anywhere down to the tagline rolls a query, so the probe shows down to there and fades out over the bio. */
+  /* One column (phones): a tap anywhere down to the profile icons rolls a query, so the probe shows down to there and fades out over the bio. */
   @media (max-width: 899px) {
     .probe {
       -webkit-mask-image: linear-gradient(to bottom, black calc(var(--touch-limit, 640px) - 8px), transparent calc(var(--touch-limit, 640px) + 56px));
@@ -269,6 +268,7 @@ const press = data.press
     letter-spacing: -0.04em;
   }
   .subtitle {
+    max-width: 36rem;
     margin-top: 0.75rem;
     color: var(--text-muted);
     font-size: clamp(1.25rem, 3vw, 1.75rem);
@@ -276,34 +276,14 @@ const press = data.press
     font-weight: 500;
     letter-spacing: -0.02em;
   }
-  .hl {
-    color: var(--text-primary);
-    background: linear-gradient(transparent 62%, color-mix(in srgb, var(--accent) 22%, transparent) 62%);
-  }
-  .tagline {
-    max-width: 38rem;
-    margin-top: 2rem;
-    color: var(--text-secondary);
-    font-size: 1.2rem;
-    line-height: 1.55;
-    letter-spacing: -0.01em;
-  }
-  .tagline strong {
+  /* The selling points, in the text color and bolder than the rest of the line. */
+  .subtitle strong {
     color: var(--text-primary);
     font-weight: 600;
   }
-  .tagline a {
-    color: var(--text-primary);
-    text-decoration: underline;
-    text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
-    text-underline-offset: 3px;
-  }
-  .tagline a:hover {
-    color: var(--accent-strong);
-  }
   .bio {
     max-width: 38rem;
-    margin-top: 1rem;
+    margin-top: 1.75rem;
     color: var(--text-secondary);
     line-height: 1.7;
   }
@@ -578,8 +558,8 @@ const press = data.press
     hero.querySelector(".probe")!,
     hero.querySelector(".headshot")!,
     [...hero.querySelectorAll(".bio, .press")],
-    hero.querySelector(".tagline")!,
-    [...hero.querySelectorAll(".hero h1, .subtitle, .tagline, .profiles a, .portrait figcaption")],
+    hero.querySelector(".hero .profiles")!,
+    [...hero.querySelectorAll(".hero h1, .subtitle, .profiles a, .portrait figcaption")],
   );
 
   const actions = document.querySelector<HTMLElement>(".news-actions")!;
