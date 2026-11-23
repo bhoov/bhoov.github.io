@@ -44,7 +44,7 @@
   year: 2026
   featured: true
   awards:
-    - name: "Went viral on X (❤ 2.1k)"
+    - name: "Viral on X (2.1k ❤)"
       short: "Viral on X (2.1k ❤)"
       url: https://x.com/Ben_Hoov/status/2121294692968993068
   featureDescription: >-
@@ -216,11 +216,15 @@
   type: workshop
   defaultUrl: https://openreview.net/forum?id=4zjhUaeeVh
   awards:
-    - name: "Spotlight"
+    - name: "Oral"
+      url: https://nfam2026.amemory.net/schedule
   links:
     - type: pdf
       url: https://openreview.net/pdf?id=4zjhUaeeVh
       label: PDF
+    - type: url
+      url: https://openreview.net/forum?id=4zjhUaeeVh
+      label: OpenReview
   month: Apr
   year: 2026
   featured: false
@@ -590,8 +594,8 @@
   awards:
     - name: "Best Poster @VIS '24"
       short: "Best Poster"
-      url: "https://ieeevis.org/year/2023/info/awards/best-paper-awards"
-    - name: 'Went Viral on X (❤ 1.9k️+)'
+      url: "https://ieeevis.org/year/2024/program/awards/awards"
+    - name: "Viral on X (1.9k ❤)"
       short: "Viral on X (1.9k ❤)"
       url: "https://twitter.com/omarsar0/status/1821986172215742716"
       # url: "https://x.com/rohanpaul_ai/status/1854321963876974775"
@@ -880,7 +884,7 @@
     - name: "Best Paper Award, Honorable Mention"
       short: "Best Paper Hon. Mention"
       url: "https://2023.aclweb.org/program/best_papers/"
-    - name: "Went Viral"
+    - name: "Viral on X"
       short: "Viral on X"
       url: "https://twitter.com/jay4w/status/1592922807998218241"
     - name: "Oral Presentation"

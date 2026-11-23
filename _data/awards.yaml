@@ -7,17 +7,17 @@
 #   date:
 
 - name: "Gold Reviewer"
-  url: "https://icml.cc/Conferences/2026"
+  url: "https://icml.cc/Conferences/2026/ProgramCommittee#gold"
   description: "ICML 2026 (top 25% of 17.7k+ reviewers)"
   date: May 2026
 
-- name: "Spotlight Paper"
-  url: "https://openreview.net/forum?id=4zjhUaeeVh"
-  description: "Generative Associative Memory via Equilibrium Matching, NFAM@ICLR 2026 (top 8 of 50+ submissions)"
+- name: "Oral Paper"
+  url: "https://nfam2026.amemory.net/schedule"
+  description: "<a href='https://openreview.net/forum?id=4zjhUaeeVh'>Generative Associative Memory via Equilibrium Matching</a>, NFAM@ICLR 2026 (top 8 of 50+ submissions)"
   date: Apr 2026
 
 - name: "Top Reviewer"
-  url: "https://neurips.cc/Conferences/2025/ProgramCommittee"
+  url: "https://neurips.cc/Conferences/2025/ProgramCommittee#top-reviewer"
   description: "NeurIPS 2025 (top 8% of 24k+ reviewers)"
   date: Oct 2025
 
@@ -40,6 +40,7 @@
   date: Jun 2025
 
 - name: "Best Poster"
+  url: "https://ieeevis.org/year/2024/program/awards/awards"
   description: "<a href='/research/transformer-explainer'>Transformer Explainer</a>, IEEE VIS 2024"
   date: Oct 2024
 
