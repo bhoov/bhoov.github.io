@@ -39,10 +39,10 @@ homepage:
 
 email:
   name: Email
-  # The address is stored reversed and base64-encoded, so neither this public repository nor the built site has it in plain text (src/lib/email.ts).
+  # The address is stored reversed and base64-encoded, so neither this public repository nor the built HTML has it in plain text (src/lib/email.ts). The CV's PDF shows it as plain text.
   # To change it, encode the new address with: node -e 'console.log(btoa([..."new@address.com"].reverse().join("")))'
   encoded: bW9jLmxpYW1nQDQzcmV2b29obmVi
-  href: https://bhoov.com/email # opens the visitor's email app (src/pages/email.astro)
+  href: "#" # the page sets the mailto: link from `encoded`
   icon: "icons/email.svg"
   dataIcon: mdi-email-outline
   label: Email

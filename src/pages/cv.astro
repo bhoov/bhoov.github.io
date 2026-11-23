@@ -28,7 +28,7 @@ const publicationGroups = [
   ["Demo", "demo"],
   ["Workshop", "workshop"],
   ["Preprints", "preprint"],
-].map(([title, type]) => ({ title, items: publications.filter((p) => p.type === type) }));
+].map(([title, type]) => ({ title, items: publications.filter((p) => p.type === type).sort((a, b) => b.year - a.year) })); // newest first; same-year works keep their order in the file
 ---
 
 <Base title="Benjamin Hoover — CV" fonts>
@@ -289,22 +289,7 @@ const publicationGroups = [
   .cv-footer a {
     color: var(--text-secondary);
   }
-  /* The email address: text on screen, an image in print (src/lib/email.ts). */
-  .cv :global(.email-print) {
-    display: none;
-    vertical-align: -0.27em; /* in a line of text (the footer): the image is 1.3em tall with the text centered */
-  }
-  .contact :global(.email-print) {
-    position: relative;
-    top: 0.2em; /* in the header, a flex row centers the image; this lines its text up with the other links */
-  }
   @media print {
-    .cv :global([data-email-text]) {
-      display: none;
-    }
-    .cv :global(.email-print) {
-      display: inline-block;
-    }
     .cv-footer {
       padding-bottom: 0;
     }

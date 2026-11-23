@@ -50,7 +50,8 @@ const coFirstAuthorNote = publication.coFirstAuthorNote ?? "* indicates equal co
     }
   </div>
   {coFirstAuthors.length > 0 && <div class="co-first-note">{coFirstAuthorNote}</div>}
-  <div class="venue">{publication.venue} ({publication.venueShorthand}). {publication.year}.</div>
+  {/* The short name in parentheses, unless the venue's name already contains it (e.g. "ArXiv preprint (ArXiv)"). */}
+  <div class="venue">{publication.venue}{publication.venueShorthand && !publication.venue.includes(publication.venueShorthand) && ` (${publication.venueShorthand})`}. {publication.year}.</div>
   <div class="links">
     {publication.links.map((link) => <ProjectLink link={link} />)}
   </div>

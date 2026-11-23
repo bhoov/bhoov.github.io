@@ -26,8 +26,10 @@ const advisorLabel = school.advisors?.length > 1 ? "Advisors: " : "Advisor:";
       <div class="dissertation">
         <span class="label">Dissertation:</span>{" "}
         <span class="dissertation-title">{school.dissertation.title}</span>{" "}
-        <ProjectLink inline link={{ type: "pdf", label: "PDF", url: school.dissertation.pdfUrl }} />{" "}
-        <ProjectLink inline link={{ type: "video", label: "Defense", url: school.dissertation.defenseUrl }} />
+        <span class="dissertation-links">
+          <ProjectLink inline link={{ type: "pdf", label: "PDF", url: school.dissertation.pdfUrl }} />{" "}
+          <ProjectLink inline link={{ type: "video", label: "Defense", url: school.dissertation.defenseUrl }} />
+        </span>
       </div>
     )
   }
@@ -54,6 +56,10 @@ const advisorLabel = school.advisors?.length > 1 ? "Advisors: " : "Advisor:";
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 300;
+  }
+  /* The two links wrap together, so "Defense" never sits alone on a line. */
+  .dissertation-links {
+    white-space: nowrap;
   }
   .dissertation-title {
     color: var(--text-primary);

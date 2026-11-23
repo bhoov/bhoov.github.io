@@ -1,58 +1,21 @@
 /**
- * Keep an email address out of plain text: in this public repository, in the built HTML and in the CV's PDF.
+ * Keep an email address out of plain text in this public repository and in the built HTML.
  *
  * _data/socialLinkInfo.yaml stores the address reversed and base64-encoded (`email.encoded`).
- * Pages put that string in a `data-email` attribute; `revealEmails` (below, run in the browser) decodes it:
- * - on screen, the link shows the address and opens the visitor's email app;
- * - in print (the CV's PDF), the address is a PNG image drawn on a canvas, so the PDF has it as an image, not as text,
- *   and the link goes to https://bhoov.com/email, a page that opens the email app (src/pages/email.astro).
- * Crawlers that read HTML or extract PDF text do not find the address; one that runs the page's JavaScript can.
+ * Pages put that string in a `data-email` attribute; `revealEmails` (below, run in the browser) decodes it
+ * into the link's `mailto:` and fills the link's `[data-email-text]` with the address.
+ * The CV's PDF is printed from the page after this runs, so it has the address as plain text and a working mailto: link.
+ * Crawlers that read the HTML do not find the address; one that runs the page's JavaScript, or reads the PDF, can.
  */
 
 export const decodeEmail = (encoded: string): string => [...atob(encoded)].reverse().join("");
 
-/** Decode every `a[data-email]`: set its click to open the email app, and fill its `[data-email-text]` with the address. */
-export async function revealEmails() {
-  const links = [...document.querySelectorAll<HTMLAnchorElement>("a[data-email]")];
-  await document.fonts.ready; // the canvas copy is drawn in the page's font
-  for (const link of links) {
+export function revealEmails() {
+  for (const link of document.querySelectorAll<HTMLAnchorElement>("a[data-email]")) {
     const address = decodeEmail(link.dataset.email!);
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      location.href = `mailto:${address}`;
-    });
+    link.href = `mailto:${address}`;
     const text = link.querySelector<HTMLElement>("[data-email-text]");
-    if (!text) continue;
-    text.textContent = address;
-    const image = drawText(text, address);
-    text.after(image);
-    await image.decode();
+    if (text) text.textContent = address;
   }
   document.documentElement.dataset.emailReady = ""; // scripts/print-cv.mjs waits for this before printing
-}
-
-// The address as an image for print, sized in em so it scales with the print font size.
-// It is a PNG, not the canvas itself: some Chrome versions print a canvas's text as PDF text.
-function drawText(text: HTMLElement, address: string): HTMLImageElement {
-  const style = getComputedStyle(text);
-  const size = parseFloat(style.fontSize);
-  const scale = 4; // pixels per CSS pixel, for a sharp print
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d")!;
-  const font = `${style.fontStyle} ${style.fontWeight} ${size * scale}px ${style.fontFamily}`;
-  ctx.font = font;
-  const width = Math.ceil(ctx.measureText(address).width);
-  canvas.width = width;
-  canvas.height = Math.ceil(size * scale * 1.3);
-  ctx.font = font; // resizing the canvas resets its state
-  ctx.fillStyle = style.color;
-  ctx.textBaseline = "middle";
-  ctx.fillText(address, 0, canvas.height / 2);
-  const image = document.createElement("img");
-  image.className = "email-print";
-  image.alt = ""; // the link around it is labeled by the on-screen text
-  image.src = canvas.toDataURL("image/png");
-  image.style.width = `${width / scale / size}em`;
-  image.style.height = "1.3em";
-  return image;
 }

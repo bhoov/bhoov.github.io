@@ -15,7 +15,7 @@
       date: May 2026
       invited: true
     - location: "Archer Aviation"
-      date: June 2026
+      date: Jun 2026
       invited: true
     - location: "PhD Thesis Defense, Georgia Tech"
       date: Jul 2026
@@ -59,7 +59,7 @@
 - title: "Tutorial on Modern Methods in Associative Memory"
   venues:
     - location: "ICML 2025"
-      date: July 2025
+      date: Jul 2025
       locationUrl: https://tutorial.amemory.net/
     - location: "AAAI 2026 Tutorial"
       date: Jan 2026
@@ -72,7 +72,7 @@
 - title: "ConceptAttention: Visualize Any Concept in Your Generated Images"
   venues:
     - location: "CVPR Workshop on Visual Concepts"
-      date: June 2025
+      date: Jun 2025
       locationUrl: https://sites.google.com/stanford.edu/visual-concepts-workshops/home
       invited: true
 

@@ -381,7 +381,7 @@
     - Parikshit Ram
     - Bao Pham
   venue: "International Conference on Machine Learning"
-  venueShorthand: "ICML '25"
+  venueShorthand: ICML
   location: Vancouver, BC Canada
   thumbnail: "imgs/thumbnails/amtutorial.webp"
   teaser: imgs/teasers/amtutorial.webp # designed for the home page's 16:10 frame
@@ -435,7 +435,7 @@
     - Pinar Yanardag
     - Polo Chau
   venue: "International Conference on Machine Learning"
-  venueShorthand: "ICML '25"
+  venueShorthand: ICML
   location: Vancouver, BC Canada
   thumbnail: "imgs/thumbnails/ConceptAttention.webp"
   teaser: imgs/teasers/conceptattention.svg # designed for the home page's 16:10 frame

@@ -15,7 +15,7 @@ const browser = await puppeteer.launch({ args: ["--no-sandbox", "--disable-setui
 try {
   const page = await browser.newPage();
   await page.goto(`http://localhost:${server.port}/cv`, { waitUntil: "networkidle0" });
-  // Wait for the email address to be drawn as an image (src/lib/email.ts), so the PDF has no address in its text.
+  // Wait for the email link to be decoded (src/lib/email.ts).
   await page.waitForFunction(() => "emailReady" in document.documentElement.dataset, { timeout: 10000 });
   // Links to this site are relative on the page; in the PDF they would point at this local server. Point them at bhoov.com.
   await page.evaluate(() => {
