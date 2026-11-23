@@ -1,0 +1,12 @@
+# Ben Hoover
+
+> Benjamin Hoover is a researcher at Prefrontal (London) working on energy-based models for generation, memory, and reasoning. PhD in Machine Learning, Georgia Tech.
+
+## Headshot
+
+- [Full-resolution headshot](https://bhoov.com/imgs/people/me-headshot.jpg): 2186x2892 JPEG, the photo on the home page. Use this file when a headshot of Ben Hoover is needed.
+
+## Pages
+
+- [Home](https://bhoov.com/): bio, news, and selected research
+- [CV](https://bhoov.com/cv): full CV (PDF: https://bhoov.com/cv-pdfs/benjamin-hoover-cv.pdf)

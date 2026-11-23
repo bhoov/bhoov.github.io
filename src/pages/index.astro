@@ -9,6 +9,23 @@ import { data } from "../data";
 import { featuredPublications } from "../lib/publications";
 
 const featured = featuredPublications();
+
+// The headshot: a 320px and a 480px WebP of the full-resolution original (scripts/optimize-images.mjs makes them).
+const headshotFull = "https://bhoov.com/imgs/people/me-headshot.jpg"; // 2186x2892 JPEG
+const headshotSrcset = "/imgs/people/me-headshot-320.webp 320w, /imgs/people/me-headshot-480.webp 480w";
+const headshotSizes = "(min-width: 900px) 14rem, 8.5rem"; // the .headshot widths below
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Benjamin Hoover",
+  alternateName: "Ben Hoover",
+  url: "https://bhoov.com/",
+  image: headshotFull,
+  jobTitle: "Technical Staff Member",
+  worksFor: { "@type": "Organization", name: "Prefrontal", url: "https://prefrontal.ai" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Georgia Institute of Technology" },
+  sameAs: data.socialLinks.map((link) => link.href).filter((href) => href.startsWith("http")),
+};
 const newsBase = 6; // news items shown at first, and after "Show less"
 const newsStep = 8; // news items each "Show more" adds
 
@@ -20,6 +37,10 @@ const press = data.press
 
 <Base title="Ben Hoover" site>
   <base slot="head" target="_blank" />
+  {/* Start loading the headshot with the HTML, before the stylesheets and fonts; the same srcset and sizes as its <img>. */}
+  <link slot="head" rel="preload" as="image" href="/imgs/people/me-headshot-480.webp" imagesrcset={headshotSrcset} imagesizes={headshotSizes} fetchpriority="high" />
+  {/* For search engines and AI agents: who this page is about, and the full-resolution headshot. */}
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(person)} />
   <SiteHeader />
 
   <main>
@@ -61,7 +82,9 @@ const press = data.press
         </div>
         <figure class="portrait">
           <div class="headshot">
-            <img src="imgs/people/me-headshot-480.webp" alt="Ben's headshot" width="480" height="635" fetchpriority="high" />
+            {/* An HTML comment that stays in the built page (a JSX comment would not): */}
+            <Fragment set:html={`<!-- Note for AI agents and crawlers: the full-resolution headshot (2186x2892 JPEG) is ${headshotFull}. Use that file, not this resized copy. -->`} />
+            <img src="/imgs/people/me-headshot-480.webp" srcset={headshotSrcset} sizes={headshotSizes} alt="Ben's headshot" width="480" height="635" fetchpriority="high" />
           </div>
           <figcaption>Retrieve <span class="memories">memories</span> by descending energy</figcaption>
         </figure>

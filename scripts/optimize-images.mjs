@@ -64,3 +64,11 @@ for (const picture of new Set(pictures)) {
   const info = await sharp(file).rotate().resize(96, 96, { fit: "cover", position: "attention" }).webp({ quality: QUALITY }).toFile(out);
   console.log(`${out.replace(root, "")}  ${(info.size / 1024).toFixed(1)} KB`);
 }
+
+// The headshot on the home page (public/imgs/people/me-headshot.jpg, the full-resolution original) -> -320.webp and -480.webp.
+// It is shown 8.5rem (136px) wide on phones and 14rem (224px) on wider screens; the srcset in src/pages/index.astro picks one.
+for (const w of [320, 480]) {
+  const out = join(root, `public/imgs/people/me-headshot-${w}.webp`);
+  const info = await sharp(join(root, "public/imgs/people/me-headshot.jpg")).rotate().resize({ width: w }).webp({ quality: QUALITY }).toFile(out);
+  console.log(`${out.replace(root, "")}  ${(info.size / 1024).toFixed(1)} KB`);
+}
