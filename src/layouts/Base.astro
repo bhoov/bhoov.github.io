@@ -5,8 +5,13 @@ interface Props {
   title?: string;
   site?: boolean; // the new design: full-width page with its own containers. False keeps the old centered column (the CV).
   fonts?: boolean; // load Inter and JetBrains Mono; on by default for `site` pages, and the CV asks for them too
+  description?: string; // the search-result snippet and the text of a link preview (Slack, X, LinkedIn, email)
+  image?: string; // the link-preview image, a path in public/; JPEG or PNG, since some sites do not show WebP or GIF
 }
-const { title = "Ben Hoover", site = false, fonts = site } = Astro.props;
+const DESCRIPTION = "I'm a researcher at Prefrontal in London. I build efficient, interpretable, and robust AI from associative memory, energy, and dynamics.";
+const { title = "Ben Hoover", site = false, fonts = site, description = DESCRIPTION, image = "og.png" } = Astro.props;
+const pageUrl = new URL(Astro.url.pathname.replace(/(index)?\.html$/, ""), Astro.site).href; // the build writes cv.html; GitHub Pages serves it at /cv
+const imageUrl = new URL(image.replace(/^\//, ""), Astro.site).href;
 ---
 
 <!doctype html>
@@ -14,11 +19,23 @@ const { title = "Ben Hoover", site = false, fonts = site } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    {/* The thesis target (public/favicon.svg, with dark-theme colors); scripts/make-icons.mjs makes the .ico and .png from it. */}
-    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {/* The thesis target (public/favicon.svg, with dark-theme colors); scripts/make-icons.mjs makes the .ico and .png from it.
+        Browsers cache a favicon by URL for each page they have visited, so increase `?v=` whenever the icon changes. */}
+    <link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48" />
+    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
     <title>{title}</title>
+    {/* Link previews: Open Graph (Slack, LinkedIn, email clients) and the X card. The preview image is made by scripts/make-og-image.mjs. */}
+    <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ben Hoover" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Ben_Hoov" />
     {
       fonts && (
         <>

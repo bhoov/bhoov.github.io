@@ -35,10 +35,11 @@ const initials = (name: string) => name.split(/\s+/).filter((w) => /^[A-Z]/.test
 const press = pressAbout(p);
 const figure = p.teaser ?? p.thumbnail;
 const description = p.tagline ?? p.featureDescription;
+// The link preview shows the work's thumbnail when it is a JPEG or PNG; otherwise the site's preview image.
+const previewImage = /\.(png|jpe?g)$/i.test(p.thumbnail ?? "") ? p.thumbnail : undefined;
 ---
 
-<Base title={`${p.shortTitle} · Ben Hoover`} site>
-  <meta slot="head" name="description" content={description} />
+<Base title={`${p.shortTitle} · Ben Hoover`} site description={description} image={previewImage}>
   <SiteHeader />
 
   <main class="container page">
