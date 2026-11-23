@@ -64,6 +64,12 @@ const section = (id: string) => (onHome ? `#${id}` : `/#${id}`);
     width: 1.375rem;
     height: 1.375rem;
   }
+  /* Below 360px the name and the links need the mark's width. */
+  @media (max-width: 359px) {
+    .mark {
+      display: none;
+    }
+  }
   nav {
     display: flex;
     align-items: center;
