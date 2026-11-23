@@ -1,0 +1,1 @@
+import{t as e}from"./email.Bvu_0Cp6.js";var t=document.querySelector(`.email-page`),n=e(t.dataset.email),r=document.createElement(`a`);r.href=`mailto:${n}`,r.textContent=n,t.querySelector(`.address`).replaceChildren(r),location.replace(`mailto:${n}`);
