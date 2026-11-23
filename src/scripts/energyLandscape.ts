@@ -4,8 +4,11 @@
  *   E(x) = -log sum_i exp(-|x - m_i|^2 / (2 s_i^2))
  *
  * x       -- a point on the canvas, in CSS pixels
- * m_i     -- stored memory i (a minimum of E); memory 0 sits under the anchor element (the headshot)
+ * m_i     -- stored memory i; memory 0 sits under the anchor element (the headshot)
  * s_i     -- width of memory i's basin, in CSS pixels
+ *
+ * The neighbouring basins pull each local minimum of E a few pixels away from its m_i.
+ * The memory dots are drawn at these minima, where gradient descent ends, not at the m_i.
  *
  * The field canvas draws the contours once per resize (marching squares on a grid of CELL px).
  * The probe canvas draws gradient descent on E from the pointer (or from a default point) to the memory it falls into.
@@ -18,7 +21,8 @@ type Memory = { x: number; y: number; s: number };
 
 const CELL = 6; // grid spacing for the contour lines, px
 const LEVELS = Array.from({ length: 16 }, (_, k) => 0.5 * ((k + 1) * 0.42) ** 2); // E levels; rings about 0.42 s apart near a minimum
-const STEPS = 48; // gradient-descent steps per retrieval path
+const STEPS = 64; // gradient-descent steps per retrieval path; enough to end within 0.1 px of the minimum
+const SETTLE_STEPS = 1000; // gradient-descent steps to locate each local minimum
 const RATE = 0.22; // step size, as a fraction of s^2
 const ROLL_MS = 1100; // time for the query to roll down its path
 const PULSE_MS = 700; // the pulse at the retrieved memory
@@ -42,9 +46,9 @@ function energy(memories: Memory[], x: number, y: number) {
 
 // Gradient descent: grad E = sum_i p_i (x - m_i) / s_i^2, where p_i is the softmax weight of memory i.
 // Each step is scaled by the weighted s^2, so the step size is the same fraction of the distance in every basin.
-function descend(memories: Memory[], x: number, y: number) {
+function descend(memories: Memory[], x: number, y: number, steps = STEPS) {
   const path: [number, number][] = [[x, y]];
-  for (let t = 0; t < STEPS; t++) {
+  for (let t = 0; t < steps; t++) {
     const q = memories.map((m) => ((x - m.x) ** 2 + (y - m.y) ** 2) / (2 * m.s * m.s));
     const q0 = Math.min(...q);
     const w = q.map((v) => Math.exp(q0 - v));
@@ -117,7 +121,8 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
     return ctx;
   };
 
-  let visibleMemories: Memory[] = [];
+  let minima: [number, number][] = []; // the local minimum of E in each memory's basin; minima[i] belongs to memories[i]
+  let visibleMemories: [number, number][] = []; // the minima drawn as memory dots
 
   // Two trajectories share the probe canvas:
   // - the active one, which a tap or click rolls (and the default one on load); it stays drawn until the next tap or click;
@@ -127,7 +132,7 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
   let active: Active | null = null; // set by the first layout
   let preview: { start: Point; path: Point[] } | null = null;
 
-  const underHeadshot = ([x, y]: Point) => Math.hypot(x - memories[0].x, y - memories[0].y) <= anchor.offsetWidth / 2;
+  const underHeadshot = ([x, y]: Point) => Math.hypot(x - minima[0][0], y - minima[0][1]) <= anchor.offsetWidth / 2;
   const ring = (ctx: CanvasRenderingContext2D, [x, y]: Point, r: number) => {
     ctx.beginPath();
     ctx.arc(x, y, r, 0, 2 * Math.PI);
@@ -145,11 +150,11 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
     ctx.strokeStyle = accent;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
-    // Memory dots in the full accent color, the same as "memories" in the caption and the retrieved dot.
+    // Memory dots, at the local minima of E, in the full accent color, the same as "memories" in the caption and the retrieved dot.
     // They are on this unmasked canvas, so only the ones inside the visible part of the contours are drawn.
     ctx.fillStyle = accent;
-    for (const m of visibleMemories) {
-      ring(ctx, [m.x, m.y], 3.5);
+    for (const point of visibleMemories) {
+      ring(ctx, point, 3.5);
       ctx.fill();
     }
 
@@ -314,6 +319,8 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
       const m = { x: random() * width, y: random() * height, s: base * (0.4 + 0.45 * random()) };
       if (memories.every((o) => Math.hypot(o.x - m.x, o.y - m.y) > 1.5 * (o.s + m.s))) memories.push(m);
     }
+    // The local minimum of E in each memory's basin: descend from m_i until the steps are negligible.
+    minima = memories.map((m) => descend(memories, m.x, m.y, SETTLE_STEPS).at(-1)!);
     // The default query: the first point on a ring around the headshot, starting down-left, whose descent ends at the headshot
     // and stays clear of the text. If no ring has one, the query starts under the headshot, so no path shows.
     const rects = textRects();
@@ -325,7 +332,7 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
         const path = descend(memories, ...start);
         const [ex, ey] = path[path.length - 1];
         const inside = start[0] > 8 && start[0] < width - 8 && start[1] > 8 && start[1] < height - 8;
-        if (inside && Math.hypot(ex - ax, ey - ay) < 4 && clearOfText(path, rects)) {
+        if (inside && Math.hypot(ex - minima[0][0], ey - minima[0][1]) < 4 && clearOfText(path, rects)) {
           defaultStart = start;
           break search;
         }
@@ -333,14 +340,14 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
     }
 
     const fade = Math.min(520, 0.8 * window.innerWidth); // where the field's CSS mask reaches transparent
-    visibleMemories = memories.slice(1).filter((m) => Math.hypot(m.x - ax, m.y - ay) < 0.75 * fade);
+    visibleMemories = minima.slice(1).filter(([x, y]) => Math.hypot(x - ax, y - ay) < 0.75 * fade);
     if (touchLimit) {
       limitY = touchLimit.getBoundingClientRect().bottom - box.top;
       host.style.setProperty("--touch-limit", `${limitY}px`);
       // Stacked layout (phones): the probe shows down to the limit, so so do the memory dots.
-      if (stacked()) visibleMemories = memories.slice(1).filter((m) => m.y < limitY - 12);
+      if (stacked()) visibleMemories = minima.slice(1).filter(([, y]) => y < limitY - 12);
     }
-    visibleMemories = visibleMemories.filter((m) => !onText(rects, [m.x, m.y]));
+    visibleMemories = visibleMemories.filter((point) => !onText(rects, point));
 
     const ctx = setup(field);
     ctx.strokeStyle = accent;
