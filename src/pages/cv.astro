@@ -15,6 +15,9 @@ import "../styles/cv.css";
 const { people, publications, education, experiences, awards, talks, teaching, reviewer, committee } = data;
 const funding = data.funding ?? [];
 const social = data.socialLinkInfo;
+// Service venues, most recent year first; venues with the same latest year keep their order in the YAML file.
+const latest = (venue: { years: { year: number }[] }) => Math.max(...venue.years.map((y) => Number(y.year)));
+const byLatest = <T extends { years: { year: number }[] }>(venues: T[]) => [...venues].sort((a, b) => latest(b) - latest(a));
 const email = social.email.encoded; // the address, encoded (src/lib/email.ts)
 const updated = new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); // the build date
 // Press: entries of _data/press.yaml with an outlet, newest first as in the file, unless they set `cv: false`.
@@ -122,11 +125,11 @@ const publicationGroups = [
     <CVHeader title="Service" />
     <CVHeader title="Reviewer" level={2} />
     <div class="service-list">
-      {reviewer.map((venue) => <CVReviewerEntry venue={venue} />)}
+      {byLatest(reviewer).map((venue) => <CVReviewerEntry venue={venue} />)}
     </div>
     <CVHeader title="Organizing Committee" level={2} />
     <div class="service-list">
-      {committee.map((venue) => <CVReviewerEntry venue={venue} />)}
+      {byLatest(committee).map((venue) => <CVReviewerEntry venue={venue} />)}
     </div>
 
     {/* The footer: when this CV was built, and where to find it. The PDF has the same footer without its own download link. */}

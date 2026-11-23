@@ -5,16 +5,17 @@
  * color, the years in the label font of the dates.
  */
 const { venue } = Astro.props;
+const years = [...venue.years].sort((a, b) => Number(b.year) - Number(a.year)); // newest first
 ---
 
 <div class="cv-avoid-break reviewer">
   <span class="venue"><b>{venue.venueShorthand}</b> {venue.venue}</span>
   <span class="years">
     {
-      venue.years.map((year, i) => (
+      years.map((year, i) => (
         <>
           <a href={year.url} target="_blank" rel="noreferrer">{year.year}</a>
-          {i < venue.years.length - 1 && <span class="separator">·</span>}
+          {i < years.length - 1 && <span class="separator">·</span>}
         </>
       ))
     }
