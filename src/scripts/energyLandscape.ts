@@ -97,7 +97,9 @@ function contours(ctx: CanvasRenderingContext2D, memories: Memory[], width: numb
 // `quiet`: an element inside `host` (the hero text) where a mouse does not move the probe, so the graphic does not distract from reading.
 // `touchLimit`: on touch screens, taps above this element's bottom edge roll a query (the text above it is short: name, subtitle, tagline);
 // taps below it, on the bio, do nothing. The page reads its position from the `--touch-limit` CSS variable to fade the probe out below it.
-export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement, probe: HTMLCanvasElement, anchor: HTMLElement, quiet?: HTMLElement, touchLimit?: HTMLElement) {
+// `touchText`: above the limit, a tap on one of these does nothing: on a text element, only on its words (the boxes of its lines),
+// so the empty space beside a short line still rolls; on a link, anywhere in its box.
+export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement, probe: HTMLCanvasElement, anchor: HTMLElement, quiet?: HTMLElement, touchLimit?: HTMLElement, touchText: Element[] = []) {
   const accent = getComputedStyle(host).getPropertyValue("--accent").trim() || "#2a78d6";
   let memories: Memory[] = [];
   let width = 0;
@@ -327,10 +329,19 @@ export function mountEnergyLandscape(host: HTMLElement, field: HTMLCanvasElement
     cancelAnimationFrame(layoutFrame);
     layoutFrame = requestAnimationFrame(layout);
   }).observe(host);
+  // Whether a screen point is on the words or links of `touchText`, with a small margin for a finger.
+  const range = document.createRange();
+  const onText = (x: number, y: number) =>
+    touchText.some((el) => {
+      if (el instanceof HTMLAnchorElement) return inside(el.getBoundingClientRect(), x, y, 4);
+      range.selectNodeContents(el);
+      return [...range.getClientRects()].some((r) => inside(r, x, y, 6));
+    });
+  const inside = (r: DOMRect, x: number, y: number, pad: number) => x >= r.left - pad && x <= r.right + pad && y >= r.top - pad && y <= r.bottom + pad;
   const pointAt = (e: PointerEvent): Point | null => {
     const box = host.getBoundingClientRect();
     const point: Point = [e.clientX - box.left, e.clientY - box.top];
-    if (e.pointerType === "touch" && touchLimit && stacked()) return point[1] <= limitY ? point : null;
+    if (e.pointerType === "touch" && touchLimit && stacked()) return point[1] <= limitY && !onText(e.clientX, e.clientY) ? point : null;
     if (quiet?.contains(e.target as Node)) return null;
     return point;
   };
