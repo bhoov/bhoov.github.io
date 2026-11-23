@@ -7,7 +7,7 @@
   date: "Sep '26 - present"
   type: industry
   description: >-
-    Building efficient, interpretable, and robust AI from energy-based models of memory and reasoning. Leading the first of these, <a href="/research/cram">CRAM</a>, a classical energy that learns to reason at least 1,000x faster than looped models; also contributing to subquadratic attention for ultra-long context (<a href="https://prefrontal.ai/news/lsa/">Latent Sparse Attention</a>).
+    Building energy-based models for generation, memory, and reasoning.
 
 - institution: IBM Research
   institutionUrl: https://www.research.ibm.com/artificial-intelligence/
@@ -18,7 +18,7 @@
   date: "Sep '18 - Aug '26"
   type: industry
   description: >-
-    Built open-source tools to inspect language models (<a href="https://exbert.vizhub.ai">exBERT</a>, <a href="http://lmdiff.net/">LMdiff</a>) and showed that transformers learn to map atoms in chemical reactions without labels (<a href="/research/rxnmapper">RXNMapper</a>, Science Advances). Then, with Dmitry Krotov, developed energy-based Associative Memories that scale to modern architectures: <a href="/research/energy-transformer">Energy Transformer</a>, <a href="https://bhoov.github.io/hamux/">HAMUX</a>, and Dense Associative Memories with <a href="/research/drdam">random features</a> and <a href="/research/lsrdam">Epanechnikov energies</a>.
+    Scaled Hopfield networks and associative memories, and developed interpretability tools for language models.
   mentors:
     - Hendrik Strobelt
     - Dmitry Krotov
@@ -32,7 +32,7 @@
   date: "Summer '17"
   type: industry
   description: >-
-    Analyzed trends in patients' blood glucose levels for the sensor R&D team and developed algorithms that went into the product by the end of the summer.
+    Delivered blood-glucose AI algorithms that shipped in sensor products.
   mentors:
     - Peter Ajemba
     - Keith Nogueira
@@ -48,7 +48,7 @@
   date: "Aug '21 - Jul '26"
   type: academic
   description: >-
-    Developed Associative Memory as a foundation for modern AI, the subject of the <a href="/papers/benjamin-hoover-thesis.pdf">dissertation</a>, and co-developed interactive explainers of transformers and diffusion models (<a href="/research/transformer-explainer">Transformer Explainer</a>, <a href="/research/diffusion-explainer">Diffusion Explainer</a>).
+    Wrote my PhD dissertation on <a href="/papers/benjamin-hoover-thesis.pdf">Memory as Computation</a>, establishing associative memory as a foundation for modern AI.
   mentors:
     - Polo Chau
 
@@ -60,7 +60,7 @@
   date: "Apr '15 - May '17"
   type: academic
   description: >-
-    Designed experiments to analyze CRISPR-Cas9 binding effects in bacteria, using machine learning to discover patterns in the data.
+    Analyzed CRISPR-Cas9 experiments in bacteria with ML.
   mentors:
     - Eirik Adim Moreb
     - Michael D. Lynch
