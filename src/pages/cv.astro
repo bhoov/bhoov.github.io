@@ -292,11 +292,11 @@ const publicationGroups = [
   /* The email address: text on screen, an image in print (src/lib/email.ts). */
   .cv :global(.email-print) {
     display: none;
-    vertical-align: -0.27em; /* in a line of text (the footer): the canvas is 1.3em tall with the text centered */
+    vertical-align: -0.27em; /* in a line of text (the footer): the image is 1.3em tall with the text centered */
   }
   .contact :global(.email-print) {
     position: relative;
-    top: 0.2em; /* in the header, a flex row centers the canvas; this lines its text up with the other links */
+    top: 0.2em; /* in the header, a flex row centers the image; this lines its text up with the other links */
   }
   @media print {
     .cv :global([data-email-text]) {

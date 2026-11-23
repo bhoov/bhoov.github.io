@@ -4,7 +4,7 @@
  * _data/socialLinkInfo.yaml stores the address reversed and base64-encoded (`email.encoded`).
  * Pages put that string in a `data-email` attribute; `revealEmails` (below, run in the browser) decodes it:
  * - on screen, the link shows the address and opens the visitor's email app;
- * - in print (the CV's PDF), the address is drawn on a canvas, so the PDF has it as an image, not as text,
+ * - in print (the CV's PDF), the address is a PNG image drawn on a canvas, so the PDF has it as an image, not as text,
  *   and the link goes to https://bhoov.com/email, a page that opens the email app (src/pages/email.astro).
  * Crawlers that read HTML or extract PDF text do not find the address; one that runs the page's JavaScript can.
  */
@@ -24,20 +24,20 @@ export async function revealEmails() {
     const text = link.querySelector<HTMLElement>("[data-email-text]");
     if (!text) continue;
     text.textContent = address;
-    text.after(drawText(text, address));
+    const image = drawText(text, address);
+    text.after(image);
+    await image.decode();
   }
   document.documentElement.dataset.emailReady = ""; // scripts/print-cv.mjs waits for this before printing
 }
 
-// The address as an image for print: a canvas sized in em, so it scales with the print font size.
-function drawText(text: HTMLElement, address: string): HTMLCanvasElement {
+// The address as an image for print, sized in em so it scales with the print font size.
+// It is a PNG, not the canvas itself: some Chrome versions print a canvas's text as PDF text.
+function drawText(text: HTMLElement, address: string): HTMLImageElement {
   const style = getComputedStyle(text);
   const size = parseFloat(style.fontSize);
   const scale = 4; // pixels per CSS pixel, for a sharp print
   const canvas = document.createElement("canvas");
-  canvas.className = "email-print";
-  canvas.setAttribute("role", "img");
-  canvas.setAttribute("aria-label", "email address");
   const ctx = canvas.getContext("2d")!;
   const font = `${style.fontStyle} ${style.fontWeight} ${size * scale}px ${style.fontFamily}`;
   ctx.font = font;
@@ -48,7 +48,11 @@ function drawText(text: HTMLElement, address: string): HTMLCanvasElement {
   ctx.fillStyle = style.color;
   ctx.textBaseline = "middle";
   ctx.fillText(address, 0, canvas.height / 2);
-  canvas.style.width = `${width / scale / size}em`;
-  canvas.style.height = "1.3em";
-  return canvas;
+  const image = document.createElement("img");
+  image.className = "email-print";
+  image.alt = ""; // the link around it is labeled by the on-screen text
+  image.src = canvas.toDataURL("image/png");
+  image.style.width = `${width / scale / size}em`;
+  image.style.height = "1.3em";
+  return image;
 }
