@@ -5,8 +5,7 @@
  *
  * The home and project pages use the semantic tokens below (--page ... --ink), set in Inter.
  * The accent is the blog's blue (blog/bloggie/styles/site.css), so the site and blog share one link color.
- * The CV keeps the older Tailwind-named tokens (--slate-*, --gray-*, ...) and the system font,
- * so its printed PDF does not change.
+ * The CV uses the same text colors and fonts; it keeps a few older Tailwind-named tokens (--rose-*, --blue-*) for its headings and link pills.
  */
 
 :root {

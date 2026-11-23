@@ -15,6 +15,12 @@ const browser = await puppeteer.launch({ args: ["--no-sandbox", "--disable-setui
 try {
   const page = await browser.newPage();
   await page.goto(`http://localhost:${server.port}/cv`, { waitUntil: "networkidle0" });
+  // Wait for the email address to be drawn as an image (src/lib/email.ts), so the PDF has no address in its text.
+  await page.waitForFunction(() => "emailReady" in document.documentElement.dataset, { timeout: 10000 });
+  // Links to this site are relative on the page; in the PDF they would point at this local server. Point them at bhoov.com.
+  await page.evaluate(() => {
+    for (const a of document.querySelectorAll("a[href]")) a.href = new URL(a.getAttribute("href"), "https://bhoov.com/").href;
+  });
   await mkdir(`${root}build/cv-pdfs`, { recursive: true });
   await page.pdf({
     path: outputs[0],

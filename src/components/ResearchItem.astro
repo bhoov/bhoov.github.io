@@ -46,7 +46,7 @@ const href = pubUrl(project);
     <div class="badges"><Badges badges={badges(project)} /></div>
     <p class="description">{project.featureDescription}</p>
     <div class="links">
-      {project.links.map((link: Link) => <ProjectLink link={link} variant="text" />)}
+      {project.links.map((link: Link) => <ProjectLink link={link} />)}
     </div>
   </div>
 </article>

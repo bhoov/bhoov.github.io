@@ -1,0 +1,28 @@
+---
+/** One line of the CV's Press section: the outlet, the linked article title, and the date. */
+const { item } = Astro.props;
+---
+
+<div class="cv-entry press">
+  <div class="headline">
+    <span class="outlet">{item.outlet}</span>
+    <a href={item.url} target="_blank" rel="noreferrer">{item.name}</a>
+  </div>
+  <div class="cv-date">{item.month} {item.year}</div>
+</div>
+
+<style>
+  .headline {
+    grid-column: 1;
+    font-size: 0.875rem;
+    line-height: 1.35rem;
+  }
+  .outlet {
+    margin-right: 0.4rem;
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  a {
+    color: var(--text-secondary);
+  }
+</style>

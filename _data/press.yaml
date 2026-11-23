@@ -3,6 +3,7 @@
 # `logo` (optional): an ink-colored SVG in public/imgs/press/; entries with a logo appear in the home page's "Featured in" row, one per outlet.
 # `logoOrder` (optional): position in that row, lowest first (by prestige).
 # `logoHeight` (optional): the logo's height on the home page, in rem (default 1.25), to even out wordmarks of different shapes.
+# The CV's Press section lists every entry that has an `outlet`, unless it sets `cv: false`.
 
 - name: "CRAM Solves Sudoku in 42 Milliseconds and Beats Looped Reasoning Models"
   outlet: AlphaSignal
@@ -18,6 +19,7 @@
   month: Nov
   url: https://casrai.org/news/classical-energies-reasoning-faster-looped-models-preprint-2026
   about: [CRAM]
+  badge: "CASRAI"
 
 - name: "What counts as plagiarism? AI-generated papers pose new risks"
   outlet: Nature
@@ -38,6 +40,7 @@
   year: 2025
   month: Jun
   url: https://www.quantamagazine.org/researchers-uncover-hidden-ingredients-behind-ai-creativity-20250630/
+  about: [PlainSight] # quotes Ben and links to the paper (arXiv 2309.16750); no badge, since PlainSight already has a Quanta badge
   logo: imgs/press/quanta.svg
   logoOrder: 2
   logoHeight: 1.6
@@ -61,12 +64,14 @@
   badge: "Quanta"
 
 - name: "Transformer Explainer: How I visualize the Magic Behind Modern LLMs"
-  outlet: youtube
+  outlet: YouTube
+  cv: false # a viewer's video, not press coverage
   year: 2024
   month: Aug
   url: https://www.youtube.com/watch?v=X8ZCFnEKk5U
 
 - name: "Transformer Explainer: An Innovative Web-Based Tool for Interactive Learning and Visualization of Complex AI Models for Non-Experts"
+  outlet: MarkTechPost
   year: 2024
   month: Aug
   url: https://www.marktechpost.com/2024/08/13/transformer-explainer-an-innovative-web-based-tool-for-interactive-learning-and-visualization-of-complex-ai-models-for-non-experts/
@@ -77,7 +82,7 @@
   year: 2024
   month: Aug
   url: https://research.ibm.com/blog/how-ai-transformers-work
-  about: [TransformerExplainer]
+  about: [TransformerExplainer] # no badge: the home page's Transformer Explainer row has no room left on a phone
 
 - name: "A New Frontier for Hopfield Networks"
   outlet: Nature Reviews Physics
@@ -101,12 +106,16 @@
   year: 2022
   month: Apr
   url: https://www.freethink.com/hard-tech/trustworthy-ai
+  about: [SharedInterest]
+  badge: "FreeThink"
 
 - name: "Do Humans and AI Think Alike?"
   outlet: SciTechDaily
   year: 2022
   month: Apr
   url: https://scitechdaily.com/do-humans-and-ai-think-alike/
+  about: [SharedInterest]
+  badge: "SciTechDaily"
 
 - name: "Yannic Kilcher's Vlog"
   year: 2021
@@ -127,6 +136,7 @@
   month: Jan
   url: https://www.discovermagazine.com/the-sciences/fruit-fly-brain-network-hacked-for-language-processing
   about: [FlyVec]
+  badge: "Discover"
   logo: imgs/press/discover.svg
   logoOrder: 3
   logoHeight: 1.15

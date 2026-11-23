@@ -2,21 +2,22 @@
 import Icon from "./Icon.astro";
 /**
  * One line of small badges for a work: awards (gold, trophy) and press coverage (grey, newspaper).
- * The line never wraps; keep the `short` award names and press `badge` names brief enough to fit a phone card.
+ * The line never wraps, unless `wrap` is set (the CV, where a work can have more badges than fit); keep the `short` award names and press `badge` names brief enough to fit a phone card.
  */
 import type { Badge } from "../lib/publications";
 
 interface Props {
   badges: Badge[];
   size?: "small" | "medium";
+  wrap?: boolean;
 }
-const { badges, size = "small" } = Astro.props;
+const { badges, size = "small", wrap = false } = Astro.props;
 const icon = { award: "mdi-trophy-outline", press: "mdi-newspaper-variant-outline" };
 ---
 
 {
   badges.length > 0 && (
-    <ul class:list={["badges", size]}>
+    <ul class:list={["badges", size, { wrap }]}>
       {badges.map((b) => (
         <li class={b.kind}>
           {b.url ? (
@@ -43,6 +44,10 @@ const icon = { award: "mdi-trophy-outline", press: "mdi-newspaper-variant-outlin
     gap: 0.3rem;
     overflow-x: auto; /* a fallback: the short badge names are chosen to fit one line, even in a phone card */
     scrollbar-width: none;
+  }
+  .badges.wrap {
+    flex-wrap: wrap;
+    overflow: visible;
   }
   .badges::-webkit-scrollbar {
     display: none;

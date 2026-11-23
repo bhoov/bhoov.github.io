@@ -30,7 +30,7 @@ const { talk } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 0.125rem;
-    color: var(--gray-600);
+    color: var(--text-secondary);
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 300;
@@ -50,16 +50,18 @@ const { talk } = Astro.props;
   .invited {
     align-self: flex-start;
     padding: 0 0.5rem;
-    border: 1px solid var(--gray-400);
+    border: 1px solid var(--rule);
     border-radius: 9999px;
-    color: var(--gray-400);
+    color: var(--text-muted);
     font-size: 0.75rem;
     line-height: 1rem;
   }
   .when {
     align-self: flex-start;
     text-align: right;
-    font-style: italic;
-    color: var(--gray-400);
+    color: var(--text-muted);
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
   }
 </style>

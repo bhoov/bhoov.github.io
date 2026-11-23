@@ -10,13 +10,13 @@
 }
 
 .cv-entry {
-	column-gap: 0.5rem;
+	column-gap: 1.5rem;
 }
 
 @media (min-width: 640px) {
 	.cv-entry {
 		display: grid;
-		grid-template-columns: 3fr 1fr;
+		grid-template-columns: minmax(0, 1fr) auto; /* the date takes the width it needs; the text gets the rest */
 	}
 	.cv-date {
 		text-align: right;
@@ -26,20 +26,21 @@
 .cv-title {
 	grid-column: 1;
 	grid-row: 1;
-	color: black;
-	font-size: 1.125rem;
-	line-height: 1.25rem;
+	color: var(--text-primary);
+	font-size: 1rem;
+	line-height: 1.4rem;
 	font-weight: 600;
 }
 
+/* Dates in the site's label font, as in the home page's news list. */
 .cv-date {
 	grid-column: 2;
 	align-self: center;
-	color: var(--gray-400);
-	font-size: 0.875rem;
+	color: var(--text-muted);
+	font-family: var(--font-label);
+	font-size: 0.75rem;
 	line-height: 1.25rem;
-	font-weight: 300;
-	font-style: italic;
+	letter-spacing: 0.02em;
 }
 
 .cv-place {

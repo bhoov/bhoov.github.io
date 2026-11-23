@@ -1,29 +1,28 @@
 ---
+/** One line of the CV's awards or funding: the award (linked if it has a `url`), a short description, and the date. */
 const { award } = Astro.props;
 ---
 
-<div class="cv-entry">
-  <div class="cv-title">{award.name}</div>
+<div class="cv-entry award">
+  <div class="line">
+    {award.url ? <a class="name" href={award.url} target="_blank" rel="noreferrer">{award.name}</a> : <span class="name">{award.name}</span>}
+    {award.description && <span class="description" set:html={award.description} />}
+  </div>
   <div class="cv-date">{award.date}</div>
-  <div class="description" set:html={award.description} />
 </div>
 
 <style>
-  .cv-entry {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+  .line {
+    grid-column: 1;
+    font-size: 0.875rem;
+    line-height: 1.35rem;
   }
-  .cv-title {
-    line-height: 1.5rem;
-  }
-  .cv-date {
-    text-align: right;
+  .name {
+    margin-right: 0.4rem;
+    color: var(--text-primary);
+    font-weight: 600;
   }
   .description {
-    grid-column: 1 / 3;
-    color: var(--gray-500);
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: 300;
+    color: var(--text-secondary);
   }
 </style>

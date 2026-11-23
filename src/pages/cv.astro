@@ -7,12 +7,18 @@ import CVAwardEntry from "../components/cv/CVAwardEntry.astro";
 import CVPublicationEntry from "../components/cv/CVPublicationEntry.astro";
 import CVTalkEntry from "../components/cv/CVTalkEntry.astro";
 import CVReviewerEntry from "../components/cv/CVReviewerEntry.astro";
+import CVPressEntry from "../components/cv/CVPressEntry.astro";
 import { data } from "../data";
+import Icon from "../components/Icon.astro";
 import "../styles/cv.css";
 
 const { people, publications, education, experiences, awards, talks, teaching, reviewer, committee } = data;
 const funding = data.funding ?? [];
 const social = data.socialLinkInfo;
+const email = social.email.encoded; // the address, encoded (src/lib/email.ts)
+const updated = new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); // the build date
+// Press: entries of _data/press.yaml with an outlet, newest first as in the file, unless they set `cv: false`.
+const press = data.press.filter((p) => p.outlet && p.cv !== false);
 
 const headerLinks = ["email", "homepage", "twitter", "github", "linkedin", "scholar", "cvpdf"];
 const publicationGroups = [
@@ -25,23 +31,30 @@ const publicationGroups = [
 ].map(([title, type]) => ({ title, items: publications.filter((p) => p.type === type) }));
 ---
 
-<Base title="Benjamin Hoover — CV">
+<Base title="Benjamin Hoover — CV" fonts>
   <div class="cv">
     <div class="header">
       <h1>Benjamin Hoover</h1>
       <h2>AI Researcher &amp; Engineer</h2>
-      <div class="contact">
+      <ul class="contact">
         {
           headerLinks.map((link) => (
-            <div>
-              <a class:list={{ "screen-only": link === "cvpdf" }} href={social[link].href} target={link === "homepage" ? "" : "_blank"} rel="noreferrer">
-                <object type="image/svg+xml" data={social[link].icon} />
-                {social[link].label}
-              </a>
-            </div>
+            <li class:list={{ "screen-only": link === "cvpdf" }}>
+              {link === "email" ? (
+                <a href={social.email.href} data-email={email}>
+                  <Icon name={social.email.dataIcon} />
+                  <span class="label" data-email-text>Email</span>
+                </a>
+              ) : (
+                <a href={social[link].href} target={link === "homepage" ? "" : "_blank"} rel="noreferrer">
+                  <Icon name={social[link].dataIcon} />
+                  <span class="label">{social[link].label}</span>
+                </a>
+              )}
+            </li>
           ))
         }
-      </div>
+      </ul>
     </div>
 
     <CVHeader title="Education" />
@@ -69,14 +82,19 @@ const publicationGroups = [
 
     <div class="cv-avoid-break">
       <CVHeader title="Grants and Funding" />
-      <div class="entries">
+      <div class="entries compact">
         {funding.map((award) => <CVAwardEntry award={award} />)}
       </div>
     </div>
 
     <CVHeader title="Awards and Honors" />
-    <div class="entries">
+    <div class="entries compact">
       {awards.map((award) => <CVAwardEntry award={award} />)}
+    </div>
+
+    <CVHeader title="Press" />
+    <div class="entries compact">
+      {press.map((item) => <CVPressEntry item={item} />)}
     </div>
 
     <CVHeader title="Publications" />
@@ -117,47 +135,110 @@ const publicationGroups = [
       </div>
     </div>
 
-    <div class="rendered-date">Last rendered: {new Date().toDateString()}</div>
+    {/* The footer: when this CV was built, and where to find it. The PDF has the same footer without its own download link. */}
+    <footer class="cv-footer">
+      <span>Updated {updated}</span>
+      <a href="/">bhoov.com</a>
+      <a class="screen-only" href={social.cvpdf.href} target="_blank" rel="noreferrer">Download PDF</a>
+      <a href={social.email.href} data-email={email}><span data-email-text>Email</span></a>
+    </footer>
   </div>
 </Base>
 
+<script>
+  import { revealEmails } from "../lib/email";
+  revealEmails();
+</script>
+
 <style>
+  /* The site's type: Inter for text, JetBrains Mono for dates (src/styles/cv.css). */
   .cv {
+    color: var(--text-primary);
+    font-family: var(--font-sans);
     width: 95%;
     max-width: 900px;
     margin: 0 auto;
   }
+  /* Room above the name on screen; the printed page has its own margin (@page). */
   .header {
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+    padding-top: 2rem;
+  }
+  @media (min-width: 640px) {
+    .header {
+      padding-top: 3.5rem;
+    }
+  }
+  @media print {
+    .header {
+      padding-top: 0;
+    }
   }
   .header h1 {
-    margin-bottom: 0.25rem;
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 2rem;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.03em;
   }
   .header h2 {
-    margin-bottom: 0.5rem;
-    color: var(--gray-400);
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-weight: 300;
+    margin: 0.15rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
   }
+  /* Contact links on one row that wraps, like the site's footer. */
   .contact {
-    width: 100%;
-    color: var(--gray-600);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.1rem;
+    margin-top: 0.6rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5rem;
   }
   .contact a {
-    display: flex;
-    gap: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    white-space: nowrap;
   }
-  .contact object {
-    align-self: center;
-    pointer-events: none;
+  .contact :global(.iconify) {
+    color: var(--text-muted);
   }
-  @media (min-width: 440px) {
+  /* Phones: two columns with a smaller font. The email address, the longest label, takes the first row; the other six fill three rows.
+     A label still too long for its column ends in "…". */
+  @media (max-width: 639px) {
     .contact {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      width: 83.333333%;
+      column-gap: 0.75rem;
+      font-size: 0.8rem;
+      line-height: 1.4rem;
     }
+    .contact li {
+      min-width: 0;
+    }
+    .contact li:first-child {
+      grid-column: 1 / -1;
+    }
+    .contact a {
+      display: flex;
+      max-width: 100%;
+    }
+    .contact a > :global(.iconify) {
+      flex: none;
+    }
+    .contact .label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .contact a:hover,
+  .contact a:hover :global(.iconify) {
+    color: var(--accent-strong);
   }
   .entries {
     display: flex;
@@ -166,6 +247,10 @@ const publicationGroups = [
   }
   .entries.publications {
     gap: 1rem;
+  }
+  /* One-line entries (funding, awards, press) sit closer together. */
+  .entries.compact {
+    gap: 0.3rem;
   }
   .service {
     display: flex;
@@ -187,25 +272,49 @@ const publicationGroups = [
       row-gap: 0;
     }
   }
-  .rendered-date {
+  .cv-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 1.25rem;
+    margin-top: 3rem;
+    padding: 1.25rem 0 3.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--text-muted);
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.02em;
+  }
+  .cv-footer a {
+    color: var(--text-secondary);
+  }
+  /* The email address: text on screen, an image in print (src/lib/email.ts). */
+  .cv :global(.email-print) {
     display: none;
-    margin: 4rem 0;
-    color: var(--gray-400);
-    font-weight: 300;
-    text-align: center;
+    vertical-align: -0.27em; /* in a line of text (the footer): the canvas is 1.3em tall with the text centered */
+  }
+  .contact :global(.email-print) {
+    position: relative;
+    top: 0.2em; /* in the header, a flex row centers the canvas; this lines its text up with the other links */
   }
   @media print {
-    .rendered-date {
-      display: block;
+    .cv :global([data-email-text]) {
+      display: none;
+    }
+    .cv :global(.email-print) {
+      display: inline-block;
+    }
+    .cv-footer {
+      padding-bottom: 0;
     }
     .screen-only {
       display: none !important;
     }
   }
-  /* Every link on the CV underlines on hover. */
-  :global(a:hover) {
-    cursor: pointer;
-    text-decoration: underline;
+  /* Links turn the site's accent color on hover; links inside sentences are underlined as on the site (.prose-links). */
+  .cv :global(a:hover) {
+    color: var(--accent-strong);
   }
   @page {
     margin: 60px 80px;

@@ -1,5 +1,7 @@
 ---
 import ProjectLink from "../ProjectLink.astro";
+import Badges from "../Badges.astro";
+import { badges, type Badge } from "../../lib/publications";
 
 interface Props {
   publication: Record<string, any>;
@@ -11,13 +13,20 @@ const { publication, people, maxAuthorLength = 7 } = Astro.props;
 const authors: string[] = publication.authors;
 const overflow = authors.length > maxAuthorLength;
 const coFirstAuthors: string[] = publication.coFirstAuthors ?? [];
+// The site's badges: awards (by their CV label) and press coverage.
+const cvBadges: Badge[] = [
+  ...(publication.awards ?? []).map((a: any) => ({ label: a.cv ?? a.short ?? a.name, url: a.url, kind: "award" as const })),
+  ...badges(publication).filter((b) => b.kind === "press"),
+];
 const coFirstAuthorNote = publication.coFirstAuthorNote ?? "* indicates equal contribution";
 ---
 
 <div class="publication cv-avoid-break">
-  <a href={publication.defaultUrl} target="_blank" rel="noreferrer">
-    <div class="cv-title pub-title">{publication.title}</div>
-  </a>
+  {/* The award and press badges follow the title's last word, and move to the next line when they do not fit. */}
+  <div class="cv-title pub-title">
+    <a href={publication.defaultUrl} target="_blank" rel="noreferrer">{publication.title}</a>{" "}
+    {cvBadges.length > 0 && <span class="title-badges"><Badges badges={cvBadges} wrap /></span>}
+  </div>
   <div class="authors">
     {
       authors.map((author, i) => (
@@ -44,24 +53,18 @@ const coFirstAuthorNote = publication.coFirstAuthorNote ?? "* indicates equal co
   <div class="venue">{publication.venue} ({publication.venueShorthand}). {publication.year}.</div>
   <div class="links">
     {publication.links.map((link) => <ProjectLink link={link} />)}
-    {
-      publication.awards && (
-        <div class="awards">
-          {publication.awards.map((award) => (
-            <div class="award">
-              <a href={award.url} target="_blank"><img src="icons/award.svg" alt="" class="award-img" /></a>
-              <a href={award.url} target="_blank" title={award.name}>{award.cv ?? award.short ?? award.name}</a>
-            </div>
-          ))}
-        </div>
-      )
-    }
   </div>
 </div>
 
 <style>
   .pub-title {
     margin-bottom: 0.25rem;
+  }
+  /* Separated from the title by a space, not a margin, so badges that wrap start flush left. */
+  .title-badges {
+    display: inline-flex;
+    vertical-align: 0.1em;
+    font-weight: 400;
   }
   .authors {
     display: flex;
@@ -72,19 +75,19 @@ const coFirstAuthorNote = publication.coFirstAuthorNote ?? "* indicates equal co
   }
   .author {
     display: flex;
-    color: var(--gray-500);
+    color: var(--text-secondary);
     font-weight: 300;
   }
   .author a {
     white-space: nowrap;
   }
   .me {
-    color: var(--gray-800);
+    color: var(--text-primary);
     font-weight: 600;
   }
   sup {
     margin-left: 0.125rem;
-    color: var(--gray-500);
+    color: var(--text-secondary);
     font-weight: 600;
     line-height: 1;
   }
@@ -93,13 +96,13 @@ const coFirstAuthorNote = publication.coFirstAuthorNote ?? "* indicates equal co
   }
   .co-first-note {
     margin-top: 0.125rem;
-    color: var(--gray-400);
+    color: var(--text-muted);
     font-size: 0.75rem;
     line-height: 1rem;
     font-weight: 300;
   }
   .venue {
-    color: var(--gray-700);
+    color: var(--text-primary);
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 300;
@@ -108,28 +111,9 @@ const coFirstAuthorNote = publication.coFirstAuthorNote ?? "* indicates equal co
   .links {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.125rem;
-  }
-  .awards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.125rem 1rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: 600;
-  }
-  .award {
-    display: flex;
     align-items: center;
-    gap: 0.25rem;
-    white-space: nowrap;
-  }
-  .award img {
-    height: 1rem;
-  }
-  .award a + a {
-    color: var(--rose-500);
+    gap: 0.35rem;
+    margin-top: 0.3rem;
   }
 </style>
 

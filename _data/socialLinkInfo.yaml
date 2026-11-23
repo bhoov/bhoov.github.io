@@ -13,13 +13,12 @@ linkedin:
   label: benhoov
 
 twitter:
-  name: Twitter
-  href: https://twitter.com/ben_hoov
-  faIcon: fa-twitter
-  dataIcon: mdi-twitter
-  icon: "icons/twitter.svg"
+  name: X
+  href: https://x.com/ben_hoov
+  faIcon: fa-x-twitter
+  dataIcon: ri:twitter-x-fill
+  icon: "icons/x-twitter.svg"
   label: "@ben_hoov"
-  # color: "#1da1f2"
 
 github:
   name: Github
@@ -35,16 +34,22 @@ homepage:
   href: /
   faIcon: fa-house
   icon: "icons/home.svg"
+  dataIcon: mdi-home-outline
   label: "bhoov.com"
 
 email:
   name: Email
-  href: mailto:bhoov@gatech.edu
+  # The address is stored reversed and base64-encoded, so neither this public repository nor the built site has it in plain text (src/lib/email.ts).
+  # To change it, encode the new address with: node -e 'console.log(btoa([..."new@address.com"].reverse().join("")))'
+  encoded: bW9jLmxpYW1nQDQzcmV2b29obmVi
+  href: https://bhoov.com/email # opens the visitor's email app (src/pages/email.astro)
   icon: "icons/email.svg"
-  label: "bhoov@gatech.edu"
+  dataIcon: mdi-email-outline
+  label: Email
 
 cvpdf:
   name: CV
   href: cv-pdfs/benjamin-hoover-cv.pdf
   icon: "icons/cv.svg"
+  dataIcon: mdi-file-document-outline
   label: CV PDF

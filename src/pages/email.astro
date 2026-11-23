@@ -1,0 +1,51 @@
+---
+/**
+ * /email: opens the visitor's email app addressed to Ben. The CV's PDF links here instead of to a mailto: link,
+ * so the PDF does not contain the address as text (src/lib/email.ts).
+ */
+import Base from "../layouts/Base.astro";
+import { data } from "../data";
+
+const encoded = data.socialLinkInfo.email.encoded;
+---
+
+<Base title="Email Ben Hoover" site>
+  <meta slot="head" name="robots" content="noindex" />
+  <main class="email-page" data-email={encoded}>
+    <p>Opening your email app…</p>
+    <p class="fallback">If nothing happens, write to <span class="address">the address on <a href="/cv">my CV</a></span>.</p>
+  </main>
+</Base>
+
+<script>
+  import { decodeEmail } from "../lib/email";
+
+  const main = document.querySelector<HTMLElement>(".email-page")!;
+  const address = decodeEmail(main.dataset.email!);
+  const link = document.createElement("a");
+  link.href = `mailto:${address}`;
+  link.textContent = address;
+  main.querySelector(".address")!.replaceChildren(link);
+  location.replace(`mailto:${address}`);
+</script>
+
+<style>
+  .email-page {
+    max-width: 32rem;
+    margin: 0 auto;
+    padding: 6rem 1.5rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .fallback {
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  .email-page :global(a) {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

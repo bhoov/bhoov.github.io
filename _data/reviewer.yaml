@@ -10,6 +10,12 @@
       - year: 2025
         url: https://www.comsoc.org/publications/journals/ieee-tnse
 
+  - venue: Physical Review Research
+    venueShorthand: PRResearch
+    years:
+      - year: 2026
+        url: https://journals.aps.org/prresearch/
+
   - venue: Neural Information Processing Systems
     venueShorthand: NeurIPS
     years:

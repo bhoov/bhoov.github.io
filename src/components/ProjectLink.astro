@@ -1,9 +1,8 @@
 ---
 import Icon from "./Icon.astro";
 /**
- * A pill-shaped link with an icon, e.g. "PDF" or "Code".
+ * A small bordered link with an icon, e.g. "PDF" or "Code", used on the home page, the works' pages and the CV.
  * A Code link to a GitHub repository shows the repository's star count, fetched at build time (src/lib/github.ts).
- * `variant="text"` is the bordered style of the home page and the works' pages; the default pill is the CV's.
  */
 import { LINKS } from "../config";
 import { githubStars, formatStars } from "../lib/github";
@@ -12,13 +11,12 @@ import { asset } from "../lib/publications";
 interface Props {
   link: { type: string; label: string; url: string };
   inline?: boolean;
-  variant?: "pill" | "text";
 }
-const { link, inline = false, variant = "pill" } = Astro.props;
+const { link, inline = false } = Astro.props;
 const stars = link.type === "code" ? await githubStars(link.url) : null;
 ---
 
-<span class:list={["pill", variant, { inline }]}>
+<span class:list={["pill", { inline }]}>
   <a href={asset(link.url)} target="_blank" rel="noreferrer">
     <Icon name={LINKS[link.type as keyof typeof LINKS]} />
     <span>{link.label}</span>
@@ -37,10 +35,11 @@ const stars = link.type === "code" ? await githubStars(link.url) : null;
   .pill {
     display: flex;
     align-items: center;
-    border-radius: 9999px;
-    background: var(--accent-soft);
-    color: var(--accent-strong);
-    font-size: 0.75rem;
+    border: 1px solid var(--rule);
+    border-radius: 0.5rem;
+    background: var(--surface);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
     line-height: 1rem;
     font-weight: 500;
     transition: background 150ms, color 150ms, border-color 150ms;
@@ -49,32 +48,18 @@ const stars = link.type === "code" ? await githubStars(link.url) : null;
     display: inline-flex;
   }
   .pill:hover {
-    background: var(--accent);
-    color: white;
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-strong);
   }
   /* The padding is on the link, not the pill, so the whole pill is a tap target. */
   a {
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    padding: 0.2rem 0.55rem;
+    padding: 0.35rem 0.6rem;
     border-bottom: 0 !important;
     text-decoration: none !important;
-  }
-  .pill.text {
-    border: 1px solid var(--rule);
-    border-radius: 0.5rem;
-    background: var(--surface);
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-  }
-  .pill.text a {
-    padding: 0.35rem 0.6rem;
-  }
-  .pill.text:hover {
-    border-color: var(--accent);
-    background: var(--accent-soft);
-    color: var(--accent-strong);
   }
   .stars {
     display: inline-flex;
@@ -91,8 +76,5 @@ const stars = link.type === "code" ? await githubStars(link.url) : null;
     width: 0.8em;
     height: 0.8em;
     fill: #e8a317;
-  }
-  .pill:not(.text):hover .stars svg {
-    fill: currentColor;
   }
 </style>

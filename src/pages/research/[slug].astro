@@ -72,7 +72,7 @@ const description = p.tagline ?? p.featureDescription;
       </ul>
       <div class="badges"><Badges badges={badges(p)} size="medium" /></div>
       <div class="links">
-        {p.links.map((link: Link) => <ProjectLink link={link} variant="text" />)}
+        {p.links.map((link: Link) => <ProjectLink link={link} />)}
       </div>
     </header>
 
@@ -116,7 +116,7 @@ const description = p.tagline ?? p.featureDescription;
         <section>
           <h2>More</h2>
           <div class="links">
-            {p.moreLinks.map((link: Link) => <ProjectLink link={link} variant="text" />)}
+            {p.moreLinks.map((link: Link) => <ProjectLink link={link} />)}
           </div>
         </section>
       )
